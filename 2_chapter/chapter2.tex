@@ -1,0 +1,779 @@
+% this file is called up by thesis.tex
+% content in this file will be fed into the main document
+
+
+
+\chapter{A statistical approach for inferring the 3D structure of the genome} % top level followed by section, subsection
+\graphicspath{{2_chapter/figures/}}
+
+
+\section{Motivation:} Recent technological advances allow the
+measurement, in a single Hi-C experiment, of the frequencies of
+physical contacts among pairs of genomic loci at a genome-wide
+scale. The next challenge is to infer, from the resulting DNA-DNA
+contact maps, accurate three dimensional models of how chromosomes
+fold and fit into the nucleus. Many existing
+inference methods rely upon {\em multidimensional scaling} (MDS), in
+which the pairwise distances of the inferred model are optimized to
+resemble pairwise distances derived directly from the contact
+counts. These approaches, however, often optimize a heuristic objective
+function and require strong assumptions about the biophysics of
+DNA to transform interaction frequencies to spatial distance, and thereby
+may lead to incorrect structure reconstruction.
+
+\section{Methods:}
+We propose a novel approach to infer a consensus three-dimensional
+structure of a genome from Hi-C data. The method incorporates a
+statistical model of the contact counts, assuming that the counts
+between two loci follow a Poisson distribution whose intensity decreases
+with the physical distances between the loci. The method can automatically
+adjust the transfer function relating the spatial distance to the Poisson
+intensity and infer a genome structure that best explains the observed data.
+
+\section{Results:}
+We compare two variants of our Poisson method, with or without
+optimization of the transfer function, to four different MDS-based
+algorithms---two metric MDS methods using different stress functions,
+a nonmetric version of MDS, and ChromSDE, a recently described, advanced
+MDS method---on a wide range of simulated datasets. We demonstrate that the
+Poisson models reconstruct better structures than all MDS-based methods,
+particularly at low coverage and high resolution, and we highlight the
+importance of optimizing the transfer function. On publicly available Hi-C data
+from mouse embryonic stem cells, we show that the Poisson methods lead to more
+reproducible structures than MDS-based methods when we use data generated using
+different restriction enzymes, and when we reconstruct structures at different
+resolutions.
+\section{Availability:} A Python implementation of the proposed method
+is available at \href{http://cbio.ensmp.fr/pastis}{http://cbio.ensmp.fr/pastis}.
+
+
+\section{Introduction}
+
+Spatial and temporal three-dimensional (3D) genome architecture is
+thought to play an important role in many genomic functions, but is
+still poorly understood \citep{vansteensel:genomics}. In recent years, the
+technique of chromosome conformation capture (3C)
+\citep{dekker:capturing}, which identifies physical contacts between
+different genomic loci and yields information about their relative
+spatial distance in the nucleus, has paved the way for the systematic
+analysis of the 3D structure of DNA. Coupled with high-throughput
+sequencing, genome-wide conformation capture assays, broadly referred
+to as {\em Hi-C} \citep{lieberman-aiden:comprehensive}, have emerged
+as promising techniques to investigate the global structure of DNA at
+various resolutions. Hi-C has opened new avenues to understanding many
+biological processes including gene regulation, DNA replication,
+somatic copy number alterations and epigenetic changes
+\citep{shen:map,ryba:evolutionarily, de:DNA, dixon:topological}.
+
+A typical Hi-C experiment yields a DNA {\em contact map}, that is, a
+matrix indicating the frequency of interactions between all pairs of
+loci at a given resolution.  A fundamental question is then to
+reconstruct the 3D structure of the genome from this contact map. Two
+general approaches have been proposed for that purpose: (i)
+\emph{consensus methods} that aim at inferring a unique mean structure
+representative of the data and (ii) \emph{ensemble methods} that
+yield a population of structures.
+
+Consensus approaches \citep{duan:three,
+  tanizawa:mapping, bau:three-dimensional} model each
+chromosome by a chain of beads, convert the contact map frequencies
+into pairwise distances (which we refer as \emph{wish
+  distances}) using various biophysical models of DNA, and infer a 3D
+conformation that best matches the pairwise distances by solving a
+multidimensional scaling (MDS) problem
+\citep{kruskal:multidimensional2}. Converting interaction counts to
+physical wish distances requires, however, strong assumptions which
+are not always met in practice. For example, this mapping may change
+from one organism to another \citep{fudenberg:higher-order}, from one
+resolution to another \citep{zhang:inference}, from one genomic distance 
+range to another \citep{ay:statistical}, or from one time point to 
+another during the cell cycle \citep{le:high-resolution, ay:three-dimensional}.
+
+To alleviate this problem, \citet{zhang:inference} proposed ChromSDE,
+a method that jointly optimizes the 3D structure and a parameter of
+the function that maps contact frequencies to spatial distances, in
+addition to modifying the objective function of MDS. \citet{ben-elazar:spatial}
+proposed an approach akin to \emph{nonmetric MDS}
+\citep{kruskal:multidimensional}, where the 3D structure and the wish
+distances are alternatingly optimized in an attempt to preserve coherence
+between the ranking of pairwise distances and the ranking of pairwise
+contact frequencies.
+
+As for the ensemble methods, \citet{rousseau:three} and
+\citet{hu:bayesian} describe two formal probabilistic models of contact
+frequencies and their relationship with physical distances. They then
+use a Markov chain Monte Carlo (MCMC) sampling procedure to produce an
+ensemble of 3D structures consistent with the observed contact counts.
+\citet{kalhor:genome} propose an optimization framework that generates
+a population of structures by enforcing each contact to define an active
+constraint in only a fraction of the inferred structures, thereby mimicking the
+heterogeneity of contacts coming from each cell in the Hi-C sample.
+Applying a similar method to budding yeast, \citet{tjong:physical}
+demonstrate that a large population of structures inferred using known
+physical constraints of yeast genome architecture can recapitulate, to a
+large extent, the consensus contact map observed from Hi-C experiments.
+
+Both consensus and ensemble models have benefits and
+limitations. Ensemble approaches are biologically more accurate,
+because Hi-C data is derived from a population of cells, each with
+potentially a unique 3D architecture. An inferred population of 3D
+structures may therefore better reflect the diversity of structures
+than a single consensus structure.  In concordance with such ensemble
+methods, a recent development in Hi-C
+technology, assaying chromatin conformation at a single cell level,
+demonstrates that chromatin structure varies highly from cell to cell
+by modeling the single-copy X chromosomes of a male mouse cell line
+\citep{nagano:single-cell}.
+
+However, an ensemble approach
+raises the question of interpretability: one often has to fall back to
+interpreting a mean signal from the population structure
+\citep{kalhor:genome} or to selecting a few structures, representative
+in some way of the diversity of the population
+\citep{rousseau:three}.  Consensus
+methods, in contrast, provide a single structure more amenable to
+visual inspection and analysis.  This structure can be seen as a useful
+\emph{model} to recapitulate the rich information captured in Hi-C data
+and to allow easy integration with other sources of data, such as
+RNA-seq, which are usually also population based. In addition, despite
+the stochasticity of cell-to-cell variations, certain hallmarks
+of genome organization observed by consensus methods, such as chromosome
+territories or topological domain organization, are conserved across
+different cells \citep{nagano:single-cell,hu:bayesian}.
+Computationally, ensemble methods are more demanding than consensus methods
+since they need to sample from a very large dimensional space of possible
+structures with complicated likelihood landscapes. Optimization-based
+consensus methods are usually faster to converge to a local optimum,
+but may miss the global optimum corresponding to the best structure when
+the objective function is non-convex.
+
+
+In this work, we focus on the consensus approach, and we propose a new
+method to infer a 3D structure from Hi-C data. We propose to
+replace the arbitrary loss function minimized by existing MDS-based
+approaches by a better-motivated likelihood function derived from a
+statistical model, similar to the one use by a previous ensemble method \citep{hu:bayesian}.
+Specifically, our proposed method models the interaction frequency between two
+loci by a Poisson model (PM), the intensity of which decreases with the
+increasing spatial distance between the pair of loci.
+Similar to the problem of inferring the wish distances
+from interaction frequencies faced by MDS-based approaches, our model
+faces the difficulty of transforming spatial distances into
+intensities of the Poisson distribution. To solve this problem,
+we propose two variant methods. The first method (PM1) uses a default
+transfer function motivated by a biophysical model, whereas the second
+method (PM2) uses a parametric family of transfer functions, the parameters
+of which are automatically optimized together with the 3D structure to best
+explain the observed data.
+
+We compare both PM variants to four MDS-based methods, including metric
+MDS with two stress functions, nonmetric MDS and ChromSDE. We demonstrate
+on simulated data that the new models reconstruct more accurate 3D structures
+than all MDS-based methods, especially at low coverage and high resolution.
+We also assess the negative effect of using an incorrect transfer function,
+and we show that PM2 is able to overcome this difficulty. On real data, we show
+that, compared to MDS-based methods, PM1 and PM2 generate more similar models
+when applied to replicate experiments performed with different restriction enzymes
+or when applied to the same data at varying resolutions. The results suggest that
+the Poisson model methods we describe here provide promising alternatives to
+current methods for consensus DNA structure inference.
+
+\section{Approach}
+
+We model chromosomes as series of beads in 3D, each bead representing
+a genomic window of a given length, and we denote by $\Xb =
+(x_1,\ldots,x_n) \in \RR^{3 \times n}$ the coordinate matrix of the
+structure, where $n$ denotes the total number of beads in the genome
+(for example, $n=1216$ at 10kb resolution for the yeast genome) and
+$x_i\in\RR^3$ represents the 3D coordinate of the $i$-th bead. The Hi-C
+data can be summarized as an $n$-by-$n$ matrix $\mathbf{c}$ in which
+each row and column corresponds to a genomic locus, and each matrix
+entry $c_{ij}$ is a number, called the {\em contact frequency} or {\em
+  contact count}, indicating the number of times locus $i$ and $j$
+were observed to contact one another. The matrix is by construction
+square and symmetric.
+
+\subsection{Data normalization}
+The raw contact count matrix suffers from many biases, some technical (from
+the sequencing and mapping) and others biological (inherent to the physical
+properties of chromatin) \citep{yaffe:probabilistic, imakaev:iterative}.
+Therefore, before inferring the 3D structure of the genome, we normalize each
+raw contact matrix using iterative correction and eigenvalue decomposition
+(ICE) \citep{imakaev:iterative}, a method based on the assumption that all
+loci should interact equally. Due to mappability issues, some beads have zero
+contact counts. We remove these beads from the optimization and only try to
+infer the positions of beads with nonzero contact counts.
+
+
+\subsection{MDS-based methods}
+
+\subsubsection{Metric MDS}
+
+Metric MDS is a classical method to infer coordinates of points given their
+approximate pairwise Euclidean distances~\citep{kruskal:multidimensional2}. To
+use MDS in the context of DNA structure inference from Hi-C data, we need to
+assign each pair of beads ($i$, $j$) a physical wish distance
+$\delta_{ij}$---i.e., the distance that we aim to capture with our 3D
+model---derived from the bead pair's contact count $c_{ij}$. Performing this
+assignment requires us to decide how contact counts are transformed into physical
+distances. In Section~\ref{sec:evaluating_parameters} we discuss a commonly used
+transformation of the form $\delta_{ij} = \gamma
+c_{ij}^{-3}$ if $c_{ij}>0$ motivated by polymer physics.
+Metric MDS then places all the beads in 3D space such that
+the Euclidean distance $d_{ij}(\Xb) = \|x_i - x_j\|$ between the beads $i$ and
+$j$ is as close as possible to the wish distance $\delta_{ij}$. Denoting by
+$\Dcal$ the subset of indices whose distances we wish to constrain (typically,
+the set of pairs $(i,j)$ with non-zero contact counts $c_{ij}>0$), metric MDS
+attempts to minimize the following objective function, usually called the \emph{raw
+stress}:
+\begin{equation}\label{eq:mds1}
+\renewcommand{\arraystretch}{2}
+\begin{array}{ccll}
+\underset{\mathbf{X}}{\text{minimize}} & &
+\underset{(i,j) \in \mathcal{D}}{\sum} \big(d_{ij}(\Xb) - \delta_{ij}\big)^2 \,.&\\
+\end{array}
+\end{equation}
+
+In two previous studies that use metric MDS,
+\citet{duan:three} and \citet{tanizawa:mapping} infer the 3D structure of DNA
+from Hi-C data by solving Equation \ref{eq:mds1}, limiting $\Dcal$ to pairs of
+indices with statistically significant contact counts (FDR 0.01\%). Both methods use
+additional constraints such as
+minimum and maximum distances between adjacent beads, minimum pairwise
+distances between arbitrary beads to avoid clashes, and organism-specific constraints that concern the
+positioning of centromeres, telomeres and ribosomal RNA coding regions. In
+the experiments we present here, we simply solve Equation~\ref{eq:mds1} without
+any constraints but including all pairs of beads with positive counts in $\Dcal$, and we call the
+resulting method MDS1. In general, we have observed that
+adding constraints related to minimal and maximal distances between beads
+is unnecessary, because the structures found by MDS1 typically fulfill all of these constraints (data not shown).
+
+A drawback of the raw stress of Equation~\ref{eq:mds1} in our context is that the
+quadratic form is dominated by large values, corresponding to pairs of loci
+with large wish distances (i.e., small contact counts). Because these counts are
+less reliable than large contact counts, we propose a variant of MDS1, which
+we call MDS2, where we weight the contribution of a pair $(i,j)$ in the stress
+by a factor inversely proportional to the square wish distance between the corresponding
+beads:
+\begin{equation}\label{eq:mds2}
+\renewcommand{\arraystretch}{2}
+\begin{array}{ccll}
+\underset{\mathbf{X}}{\text{minimize}} & &
+\underset{(i,j) \in \mathcal{D}}{\sum} \delta_{ij}^{-2} \big(d_{ij}(\Xb) - \delta_{ij}\big)^2 \,.&\\
+\end{array}
+\end{equation}
+While other weighting schemes could be proposed to decrease the influence of
+pairs with large wish distances, we found this formulation to be quite robust
+in practice. Notice that MDS2 can be thought of as a quadratic approximation of
+the raw stress (minimized by MDS1) applied to log-transformed distances, because
+in the setting $d_{ij}(\Xb) \approx \delta_{ij}$ it holds that:
+\begin{equation*}
+\begin{split}
+\sum_{(i,j) \in \mathcal{D}} \br{\log d_{ij}(\Xb) - \log \delta_{ij}}^2
+& = \sum_{(i,j) \in \mathcal{D}} \log\br{\frac{d_{ij}(\Xb)}{\delta_{ij}}}^2 \\
+& \approx \sum_{(i,j) \in \mathcal{D}} \br{ \frac{d_{ij}(\Xb)}{\delta_{ij}}-1}^2 \,.
+\end{split}
+\end{equation*}
+Both MDS1 and MDS2 implicitly
+ignore non-interacting pairs of beads (i.e., pairs with zero contact
+counts).
+
+In addition to MDS1 and MDS2, we include in our benchmark ChromSDE
+\citep{zhang:inference}, a recently proposed method which also attempts to
+minimize a weighted stress function penalized by an additional term to push
+non-interacting pairs far from each other. In addition, ChromSDE optimizes the
+exponent of the transfer function that maps from contact counts to
+wish distances. However, it
+does not infer the relative positions of chromosomes. Accordingly, we compare
+only the reconstruction of each individual chromosome produced by each method. Note
+that, because intra-chromosomal counts are more reliable than inter-chromosomal
+counts, ChromSDE should not be penalized compared to the other methods by
+only considering intra-chromosomal counts.
+
+\subsubsection{Nonmetric MDS (NMDS)}
+\label{sec:nmds}
+
+The derivation of the transfer function from contact counts to 3D wish distances, 
+needed by metric MDS-based methods, relies on strong
+assumptions about the physics of DNA
+(Section~\ref{sec:evaluating_parameters}). NMDS \citep{shepard:analysis,kruskal:multidimensional} offers an alternative 
+way to proceed, which was proposed in the context of DNA structure inference 
+from Hi-C data by \citet{ben-elazar:spatial}. Instead of inferring physical
+distances from the contact matrices, NMDS relies on the sole
+hypothesis that if two loci $i$ and $j$ are observed to be in contact more
+often than loci $k$ and $\ell$, then $i$ and $j$ should be closer in 3D space
+than $k$ and $\ell$.  Using this hypothesis, NMDS attempts to solve the
+following problem:
+\begin{problem}
+Given a set of similarities $c_{ij}$ (e.g., the contact frequency between $i$ and $j$), find 
+$\mathbf{X} \in R^{3 \times n}$ such that:
+\begin{equation}
+\label{eq:ordinal_constraint}
+c_{ij} \geq c_{k\ell} \Leftrightarrow \|x_i - x_j\|_2 \leq \|x_k -
+x_\ell\|_2 \,.
+\end{equation}
+\end{problem}
+Equation~\ref{eq:ordinal_constraint} is known as the nonmetric
+constraint, or the ordinal constraint. This problem was first introduced
+by \citet{shepard:analysis} and formalized as an optimization problem
+by \citet{kruskal:multidimensional}. It can be solved by minimizing the
+cost function:
+\begin{equation}
+\underset{\mathbf{X,\Theta}}{\text{minimize}}
+\  \sum_{i, j} \frac{\br{\|x_i - x_j\|_2 -
+\Theta(c_{ij})}^2}{\Theta(c_{ij})^2},
+\end{equation}
+with respect to the embedding $\mathbf{X}$ and the function $\Theta$,
+where $\Theta$ is a decreasing function. Algorithms to solve this
+optimization problem involve iterating over two steps: (1) fixing
+$\Theta$ and minimizing the objective function with respect to $\mathbf{X}$ (hence falling
+back to solve MDS2), and (2) fitting $\Theta$ to the
+new configuration $\mathbf{X}$ subject to the ordinal
+constraints. This second step of the algorithm can be performed using an
+isotonic regression method, such as the pool adjacent violator
+algorithm \citep{best:minimizing}.
+
+A trivial solution of this problem is to set $\Theta$ equal to
+$0$. In this case all points will collapse on the origin. To avoid this collapse,
+we add additional constraints on $\mathbf{X}$ or on
+$\Theta$, such as $\sum_{i, j} \|x_i - x_j\|_2 = K$ for some constant
+value of $K$.
+
+\subsection{Poisson model}
+\label{sec:pm}
+
+Instead of metric or non metric MDS-based methods, which attempt to minimize a stress function that measures a discrepancy between the wish distances and the 3D distances of the structure, we propose to cast the problem of structure inference as a maximum likelihood problem. For that purpose, we need to define a probabilistic model of contact counts parametrized by the 3D structure that we want to infer from contact count observations.
+
+For that purpose, we take a model similar to the one used in the BACH algorithm~\citep{hu:bayesian} and model the contact frequencies $(c_{ij})_{(i,j)\in\Dcal}$ as independent Poisson random variables, where the Poisson parameter of $c_{ij}$ is a decreasing function of $d_{ij}(\Xb)$ of the form $\beta d_{ij}(\Xb)^\alpha$, for some parameters $\beta>0$ and $\alpha<0$.
+We can then express
+the likelihood as
+\[
+\ell(\mathbf{X}, \alpha, \beta) =
+  \prod_{i, j} \frac{(\beta d_{ij}^{\alpha})^{c_{ij}}}{c_{ij}!}
+	\exp (- \beta d_{ij}^{\alpha})\,.
+\]
+By maximizing the log likelihood, a new optimization problem naturally
+emerges from this formulation:
+\begin{equation}
+\renewcommand{\arraystretch}{2}
+\begin{array}{cll}
+\underset{\alpha, \beta, \textbf{X}}{\text{max}} &
+\mathcal{L}(\mathbf{X}, \alpha, \beta) = \underset{i<j\leq n}{\sum}  c_{ij}
+\alpha \log d_{ij} + c_{ij} \log \beta - \beta d_{ij}^\alpha &\\
+\end{array}
+\end{equation}
+With this new formulation, we can either provide the parameter $\alpha$, using
+prior knowledge, and only optimize the structure and $\beta$ (which depends on
+the dataset), or we can use a nonmetric approach, by inferring $\alpha$.
+We refer to the former as PM1 and to the latter as PM2.
+
+PM2 is solved using a coordinate-descent algorithm:
+first choose randomly an $\mathbf{X}$ configuration, then iterate
+between maximizing $\mathcal{L}$ with respect to $\alpha$ and $\beta$
+ and, fixing $\alpha$ and $\beta$ and maximizing $\mathcal{L}$
+with respect to $\mathbf{X}$.  In this work, we try to
+initialize $\textbf{X}$ with a good approximation of the solution by
+first evaluating the parameters $\alpha$ and $\beta$ using some prior
+knowledge and initialize $\textbf{X}$ with the inferred structure from
+the MDS.
+
+%\begin{equation}
+%\frac{\partial \mathcal{L}}{\partial{\alpha}}(\alpha, \beta, \textbf{X}) =
+%  \sum_{i, j \in \mathcal{D}} c_{ij} \log d_{ij} - \beta  d_{ij}^{\alpha} \log d_{ij}
+%\end{equation}
+
+%\todo{If space allows, we could write some more equations, like the minimum in $\beta$ or the gradients.}
+%\todo{We should change the name EM (expectation-minimization) because what we do is quite different from standard EM. In standard EM, one would model observed data (count matrix C) and hidden variable (X) through a parametric model $P_a(C,X)$. To optimize the parameter a, one would first perform a E step where we would compute $E_a(X|C)$ , and then adjust the parameters. What we do is not computing the expectation of the structure, but instead the best structure (that maximizes $P_a(X|C)$, assuming a uniform prior on X) before reoptimizing the weights. To make a comparison with a more classical model, it is as if for hidden markov models we would run a Viterbi to find the most likely hidden variables, then optimize the parameters to maximize the likelihood of the hidden variables, as opposed to the EM approach (Baum-Welsh) where instead of Viterbi we need to estimate the expectation of the hidden variables. Mathematically, the EM procedure ensures that the likelihood of the observations observe, while what we do does not. By the way, a real EM may be relevant, in fact it would probably involve sampling a family of structures (as in the population methods), then do the average distances over the populations and optimize the parameters on that (details to be checked...).}
+
+All optimization problems (MDS1, MDS2, NMDS, PM1 and PM2) were solved using IPOPT, an interior point filter
+algorithm \citep{wachter:on} and the isotonic regression implementation from
+the Python toolbox Scikit-Learn for NMDS \citep{pedegrosa:scikit}.
+
+
+\subsection{Default contact-to-distance transfer function}
+\label{sec:evaluating_parameters}
+
+A prerequisite for both the MDS and the PM1 model (and for good initialization
+of the NMDS and PM2 methods) is a function that converts from contact counts
+to wish distances.  Extensive previous studies of the behaviour of polymers in
+general and DNA in particular have yielded proposed relationships between, on
+the one hand, the genomic distance $s$ and contact counts $c$ and, on the
+other hand, genomic distance $s$ and physical distances $d$ for several
+classes of polymers \citep{grosberg:role, lieberman-aiden:comprehensive,
+fudenberg:higher-order}. For a fractal globule polymer, representative of
+mammalian DNA, the contact count is inversely proportional to the genomic
+distance ($c \sim s ^{-1}$), whereas the volume scales linearly with the
+subchain length ($d^3 \sim s$), from which we deduce a relationship between
+$d$ and $c$ of the form $d \sim c ^{-1/3}$. For an equilibrium globule,
+representative of a smaller genome such as {\em S.\ cerevisae}, the
+relationships differ: $c \sim s ^{-3/2}$ and $d \sim s ^ {1 / 2}$ up to a
+maximum distance, corresponding to the size of the nucleus in which the DNA is
+confined. Conveniently, coupling those two relationships for either type of
+polymer yields the same mapping between contact counts and physical distances:
+\begin{equation}
+d \sim c ^{-1/3}.
+\end{equation}
+Thus, by default we convert contact counts $c_{ij}$ into 3D wish distances
+$\delta_{ij}$ using the following relationship:
+\begin{equation}
+\delta_{ij} = \gamma c_{ij} ^{-1/3},
+\end{equation}
+where $\gamma$ defines the scale of the structure. It is important to note that 
+this relationship holds true for only a subset of the full genomic distance range and
+that this range varies for different genomes. In practice, we will not
+infer $\gamma$ for the MDS and NMDS problem: the structures can easily be
+rescaled after convergence to match biological knowledge of the organism
+studied.
+
+\subsection{Data}
+\label{sec:data}
+
+In order to test various 3D architecture inference methods, we
+conducted experiments on both simulated datasets and publicly
+available genome-wide Hi-C datasets.
+
+For the simulation, we generated 170 data sets using the yeast genome
+architecture proposed by \citet{duan:three}. Because the repetitive
+rDNA on yeast chromosome XII cannot be observed in practice, we
+discard all contacts involving these loci, and we do not infer the
+position of the corresponding rDNA. We generate these 170 datasets
+using the following model:
+\begin{equation}\label{eq:simu}
+c_{ij} = P(\beta d_{ij}^\alpha),
+\end{equation}
+where $\alpha = -3$ (corresponding to the theoretical exponent discussed in Section~\ref{sec:evaluating_parameters})
+and $\beta$ varies between $0.01$ and $0.7$ ($0.01$, $0.01$, $0.02$, $0.03$,
+$0.04$, $0.05$,
+$0.06$, $0.07$, $0.08$, $0.09$, $0.1$, $0.15$, $0.2$, $0.3$, $0.4$, $0.5$, $0.6$,
+$0.7$) with 10
+different random generator seeds, thus obtaining 10 different datasets per
+parameter.
+The $\beta$ parameter controls the number of contact counts in the
+datasets. A low $\beta$ will yield a dataset with few counts; hence, the
+corresponding wish distance matrix will be less likely to be close to the true
+distance matrix. To estimate how noisy the generated data is, we compute the
+following measure of signal-to-noise ratio (SNR):
+\begin{equation}
+SNR = \frac{\sum{c_{ij}}}{\sqrt{\sum (\beta d_{ij} ^{\alpha} - c_{ij})^2}}\,.
+\end{equation}
+The numerator (the signal) corresponds to the number of counts, and
+the denominator (the noise) corresponds to the sum of deviation
+between each count and its expected value.  We use this first ensemble
+of simulated datasets to assess the robustness to noise of the
+different methods. Note that in actual data, the SNR gets smaller when we sequence fewer reads or when we infer a structure at a higher resolution.
+
+We simulated another ensemble of datasets to compare nonmetric and metric
+methods when the parameters provided to the different algorithms are not
+the correct ones. We generate 20 datasets according to
+Equation~\ref{eq:simu}, with $\alpha$ between $-4$ and $-2$ ($-4$, $-3.5$,
+$-3$, $-2.5$, $-2$) and $\beta$ between
+$0.4$ and $0.7$ ($0.4$, $0.5$, $0.6$, $0.7$).
+
+We also applied our methods to publicly available Hi-C data from mouse
+embryonic stem cells (mESC) \citep{dixon:topological}.  We started with the
+data at 20~kb resolution and considered only chromosomes 1 to 19, with both
+available restriction enzymes (HindIII and NcoI).  We then subsampled the data
+at resolutions of 100~kb, 200~kb, 500~kb and 1~Mb.
+Note that the methods studied here infer a single copy per
+chromosomes, thus yielding a consensus model for both homologous chromosomes.
+
+
+\subsection{Structure similarity measures}
+In order to assess the ability of a method to reconstruct a known
+structure from simulated data, or the stability of the reconstructed structure with respect to change in resolution or library preparation, we need quantitative measures of similarity between 3D structure. We use two such measures: the root mean square deviation (RMSD) and the distance error, which we now explain.
+
+The RMSD is a
+standard way to compare two sets of structures described by their
+coordinates $\mathbf{X}, \mathbf{X}' \in R^{3 \times n}$, widely used for example to compare protein 3D structures. It is given by:
+\begin{equation*}
+RMSD = \min_{\mathbf{X}^*} \sqrt{\sum_{i = 1}^n (\mathbf{X}_{i} -
+  \mathbf{X}_{i}^*)^2} \,,
+\end{equation*}
+where the structure $\mathbf{X}^*$ is obtained by translating,
+rotating and rescaling $\mathbf{X}'$ ($\mathbf{X}^* = s \mathbf{R X'} -
+\mathbf{t}$, where $\mathbf{R} \in R^{3 \times 3}$ is a rotation
+matrix, $\mathbf{t} \in R^{3}$ is a translation vector, and $s$ is a
+scaling factor). Because ChromSDE
+does not infer the relative position of chromosomes, the RMSD values we report below
+are sums of RMSDs computed independently on each chromosome.
+
+We also directly compare the 3D distance matrices corresponding to the two structures with the distance error:
+\begin{equation*}
+\text{distanceError} = \sqrt{\sum_{i, j = 0}^n (d_{ij}(\Xb) - d_{i, j}(\Xb'))^2} \,.
+\end{equation*}
+
+
+The main difference between the optimization formulated by ChromSDE
+and those of the other methods is the penalty assigned to
+non-interacting beads.  Due to this penalty, ChromSDE should recover
+better long distances than other MDS-based methods.  This property is
+not well captured by the RMSD measure, therefore, we also compute how
+well the distance matrix is recovered with the distance error, which assigns most of the weight to long distances. We
+expect that methods based on MDS, which optimize an objective function
+based on the distance matrix, should perform better on this measure
+than others.
+
+\section{Results}
+
+To assess the relative strength of our new Poisson model-based methods, PM1 and PM2, we compare them to a panel of four MDS-based methods: MDS1, MDS2, NMDS and ChromSDE on simulated and real data.
+
+\subsection{Simulated Hi-C data}
+
+We first tested the six methods on data simulated as explained in Section~\ref{sec:data}.
+
+\begin{figure}
+\includegraphics[width=\linewidth]{{varoquaux.78.fig1}.pdf}
+\caption{\textbf{Performance evaluation on simulated data, varying the parameter $\beta$.}
+\textbf{A} RMSD of each experiment for varying values of the parameter $\beta$. ChromSDE
+failed to yield consistent results for 14 experiments (It reported the wrong number of beads
+in the results file.), and the PM2 algorithm
+failed to converge at the desired precision for one experiment (It exceeded the
+maximum number of iterations.).
+\textbf{B} Distance error of each experiment for varying values of $\beta$.
+\textbf{C} Average SNR for each $\beta$. Higher SNR corresponds to better quality data.
+}
+\label{fig:generated_data}
+\end{figure}
+
+\subsubsection{Performance as a function of SNR}
+
+We ran all six methods---MDS1, MDS2, NMDS, PM1, PM2 and ChromSDE---on the 170
+simulated datasets with varying SNR levels. Our goal here is to assess how
+well the different methods manage to reconstruct a known 3D structure from
+simulated data at different SNR levels. Remember that SNR estimates how far
+the empirical counts differ from their expectations; in real Hi-C data, SNR
+typically decreases when we have fewer reads in total, or when we want to
+increase the resolution of the structure. In this first series of experiments,
+we provide the correct count-to-distance or distance-to-count transfer
+functions to the methods that need them (MDS1, MDS2, PM1). In this setting,
+for infinite SNR, all methods should consistently estimate the correct
+structure.
+
+Figure~\ref{fig:generated_data} shows the performance of the different methods
+in terms of RMSD (top) and distance error (middle) as a function of the
+$\beta$ parameter, which controls the SNR (bottom). As expected, all methods
+perform well when the SNR is high, but exhibit marked differences in
+performance for finite SNR. In the low SNR setting (SNR $< 2$), both PM1 and
+PM2 significantly outperform all MDS-based methods, in both RMSD and distance
+error. Interestingly, we observe no significant difference between PM1 and
+PM2, which shows that there is no price to pay in terms of inferred structure
+if we don't specify the exponent of the distance-to-count transfer function.
+In this setting, PM2 is able to estimate the structure accurately enough to
+produce a structure of the same quality as PM1. Among MDS-based methods, we
+see that NMDS generally outperforms MDS2, which itself outperforms MDS1. This
+observation highlights that in the non-asymptotic, low SNR setting, the choice
+of stress function influences the performance of MDS. ChromSDE performs better
+than other MDS-based methods on datasets with a low SNR, corresponding to
+datasets with low coverage and, consequently, many non-interacting pairs of
+beads. This may be due to the way ChromSDE explicitly handles such pairs. On
+the other hand, in a more favorable setting (SNR $>2$), ChromSDE does not
+perform as well as other MDS-based method; we hypothesize that when the
+coverage is high enough, taking into account non-interacting pairs of beads
+does not add any additional information. Since ChromSDE is not better than
+other MDS-based methods, and requires much longer to run, we do not report its
+performance on the next experiments and instead focus on the differences
+between the other MDS-based methods and the PM methods.
+
+\subsubsection{Metric versus nonmetric methods: robustness to incorrect parameter estimation}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{{varoquaux.78.fig2}.pdf}
+\caption{\textbf{Performance evaluation for simulated data, varying
+    the parameter $\alpha$.} The figure plots the average RMSD of the
+  inferred structures for a range of $\alpha$ values.  As $\alpha$
+  increases, the SNR of the dataset also increases.}
+\label{fig:rmsd_alpha}
+\end{figure}
+
+Three of the methods tested, which we collectively refer to as \emph{metric} methods, require as input a count-to-distance or distance-to-count transfer function: MDS1, MDS2 and PM1. In reality, however, the DNA may not follow the ideal physical laws underlying the default transfer function discussed in Section~\ref{sec:evaluating_parameters}, and the structures inferred from these methods may diverge from the correct one because of miss-specification of the transfer function.
+
+To assess this phenomenon, and evaluate the robustness of the different methods (including NMDS and PM2, which automatically infer a transfer function), we now study
+the performance of the methods on datasets generated with varying
+$\alpha$ parameters. We therefore run the MDS1, MDS2, NMDS, PM1 and PM2 methods on the second
+ensemble of simulated datasets. We provide the default transfer function to
+all metric methods, thus inducing a miss-specification for all simulated
+datasets with $\alpha\neq -3$.
+
+Figure~\ref{fig:rmsd_alpha} shows the RMSD of each method, averaged
+over the datasets with different $\beta$, as a function of $\alpha$.
+The performance curve of PM1, which is the best method when the data
+are simulated with the correct parameter $\alpha=-3$, exhibits a
+characteristic U-shape centered around $\alpha = -3$. This curve
+confirms that PM1 performs better when given the true parameter and
+performs worse as $\alpha$ moves away from $-3$. On the other hand,
+the performance curves of the two other metric methods, MDS1 and MDS2,
+do not exactly follow this trend: MDS1 and NMDS perform increasingly
+better when $\alpha$ decreases, and MDS2 achieves the best performance
+when $\alpha = -3.5$. This phenomenon occurs because in our
+simulation, when $\alpha$ decreases, the SNR for a given $\beta$
+increases, counterbalancing the negative effect of the transfer
+function miss-specification.  Thus, for MDS-based methods, it is
+apparently more important to have more data than to have a correct
+$\alpha$ parameter. Finally, we see that, as expected, the non-metric
+approaches, NMDS and PM2, are more robust to transfer function
+misspecification than the metric approaches, because they
+automatically estimate it. When the parameter is wrong, PM2
+outperforms the other methods for low SNR, whereas for high SNR, NMDS
+performs better.
+
+\subsection{Real Hi-C data}
+
+We now test the different methods on real Hi-C data. Since in this case the
+true consensus structure is unknown, we investigate the behaviors of the
+different methods in terms of their ability to infer consistent structures
+from different datasets and across resolutions.
+
+\begin{table*}
+\begin{center}
+\begin{tabular}{ccccccccccccc}
+\hline
+Resolution &  Corr &
+\multicolumn{2}{c}{MDS1} &
+\multicolumn{2}{c}{MDS2} &
+\multicolumn{2}{c}{NMDS} &
+\multicolumn{2}{c}{PM1} &
+\multicolumn{2}{c}{PM2} \\
+&&& RMSD & Corr & RMSD & Corr & RMSD &Corr & RMSD & Corr & RMSD & Corr \\
+\hline
+1~Mb  & 0.981 & 13.13 & 0.945 & 5.54 & 0.964 &  5.80 & 0.965 & 7.28  & 0.931 & \textbf{4.92} & \textbf{0.976} \\
+500~kb & 0.959 & 10.00 & 0.942 & 5.68 & 0.959 & 5.67 & 0.959 & 7.14 & 0.913 & \textbf{4.66} & \textbf{0.968} \\
+200~kb & 0.845 & 5.64 & 0.940 & 3.74 & 0.945 & 3.73 & 0.946 & 4.01 & 0.891 & \textbf{3.42} & \textbf{0.958} \\
+100~kb &  0.605 & 5.07 & 0.736 & 2.53  & 0.676 & 2.52 & 0.666 & \textbf{2.51} & 0.664 & 2.76 & \textbf{0.771}\\
+\hline
+\end{tabular}
+\end{center}
+
+\caption{\textbf{Stability across enzyme replicates.} For each resolution, the
+table lists the Spearman
+correlation the two enzyme replicate datasets, and, for each inference
+method, the average RMSD and Spearman correlation between pairs of structures
+inferred from the two datasets.  Boldface values correspond to the best RMSD
+or correlation values among all five methods.  In general, higher resolution
+leads to a lower correlation between pairs of inferred structures.}
+
+\label{table:results_real_data}
+\end{table*}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{clllll}
+\hline
+   & MDS1 & MDS2 & NMDS & PM1 & PM2 \\
+\hline
+{\em RMSD }        & 14.86 & 12.92 & 12.98 & 13.03 & \textbf{11.48} \\
+{\em Correlation } &  0.781 & 0.754 & 0.738 & 0.737 & \textbf{0.807} \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\textbf{Stability across resolution.} The table lists the
+  average RMSD and Spearman correlation between pairs of structures of
+  different resolutions. In bold are the lowest average RMSD and
+  highest average Spearman correlation. These values were computed on
+  mouse ESC HindIII libraries \cite{dixon:topological})}
+\label{table:real_hic_stability}
+\end{table}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{{varoquaux.78.fig3}.png}
+\end{center}
+\caption{\textbf{Predicted structures for chromosome 1 at different resolution}
+Contact counts matrices and predicted
+structures for the MDS2, NMDS, PM1 and PM2 methods at 1~Mb (\textbf{A}),
+ 500~kb (\textbf{B}), 200~kb (\textbf{C}),
+100~kb (\textbf{D})}
+\label{fig:real_data}
+\end{figure*}
+
+\subsubsection{Stability to enzyme replicates}
+
+The Hi-C assay depends upon a restriction enzyme to cleave the DNA after
+cross-linking, and the same sequence library can be analyzed multiple times
+using different enzymes.  Although the resulting restriction fragments will
+differ, we expect {\em a priori} that the overall genome architecture should
+be the same from such replicate experiments.  We therefore evaluate each
+genome architecture inference method with respect to the similarity of the
+structures inferred from two replicate Hi-C experiments that differ only in
+the choice of restriction enzyme.  Specifically, we apply each method to two
+enzyme replicates, HindIII and NcoI, carried out in mouse ES cells
+\citep{dixon:topological} for chromosomes 1--19.
+
+To measure the stability of the methods, we compute (1) the Spearman
+correlation between the two pairwise Euclidean distance matrices of
+the pairs of predicted structures and (2) the RMSD between the
+rescaled predicted structures.  Note that, before computing our two
+error measures, we filter out from the pair of structures any beads
+for which the inference hasn't been done on either dataset, i.e.,
+beads that have zero contact counts in either data set.
+
+To give a sense of how similar the two replicate datasets are, we also
+compute the Spearman correlation directly on the data, rather than on
+the inferred structures.  As expected
+(Table~\ref{table:results_real_data}), the higher the resolution is,
+the lower the correlation between the pairs of datasets is and the
+more different the inferred structures are.
+Across different enzyme replicates, the PM2 method yielded significantly
+higher correlation than all of the other methods ($p < 0.05$,
+signed-rank test
+adjusted for multiple tests with a Bonferroni correction).
+
+
+
+\subsubsection{Stability to resolution}
+
+\citet{zhang:spatial} show that the mapping from contact counts to
+physical distance differs from one resolution to another, underscoring
+the importance of good parameter estimation. To study the stability of
+the structure inference methods to changes in resolution, we compute
+the RMSD between pairs of structures inferred at different
+resolutions.  Let $(\textbf{X}, \textbf{Y}) \in (R^{3 \times n}, R^{3
+  \times m})$ be a pair of predicted structures such that $n < m$
+(i.e., $\textbf{X}$ is a structure at a lower resolution than
+$\textbf{Y}$). We compute a downsampled structure $\textbf{Y}^* \in
+X^{3 \times n}$ at the same resolution as $\textbf{X}$ by averaging
+the coordinates of beads.  We then compute the RMSD between this new
+structure $\textbf{Y}^*$ and $\textbf{X}$, as well as a corresponding
+Spearman correlation of the distance matrices.
+
+Results are shown in Figure~\ref{fig:real_data} and
+Table~\ref{table:real_hic_stability}. PM2 is significantly ($p < 0.05$)
+more stable to resolution changes, both in terms of RMSD and correlation of
+distances.
+
+\section{Discussion and conclusion}
+
+In this work, we present a novel method for inferring a consensus genomic 3D
+structure from Hi-C data. The method maximizes a likelihood derived from a
+statistical model of the relationship between the contact counts and physical
+distances, and includes an automatic tuning of the parameters defining the
+link between a 3D distance and the Poisson parameter of the corresponding
+contact count. We showed in simulations that the new method outperforms a
+panel of MDS-based approaches, including ChromSDE, which optimize an often
+ad-hoc stress function. The improvement is particularly important at low SNR,
+corresponding to more difficult problems where we want to increase the
+resolution of the model with a fixed total number of reads; this is typically
+the situation where one expects a correct maximum likelihood estimator to
+outperform more {\em ad hoc} estimators. We also showed that misspecification
+in the count-to-distance transfer function can harm the performance of metric
+methods, while our model can adapt to unknown distributions within a
+parametric family. Finally, we also demonstrated, on real Hi-C data, the
+robustness of our methods to resolution change and enzyme duplicated datasets.
+
+Our probabilistic model of reads is similar to the model proposed
+by~\citet{hu:bayesian}; however, instead of generating a family of structures
+by MCMC we use the model for direct maximum likelihood estimation of a
+consensus structure. Although the consensus structure might not be a
+definitive structure {\em in vivo}, it provides us with a rich model for
+further analysis, conserving hallmarks of genome organization such as the
+water lily form of the budding yeast \citep{duan:three} or topological domains
+\citep{kalhor:genome}.
+
+The Poisson model underlying our approach remains very basic and could be
+subject to many improvements.  For example, physical constraints, such as the
+size of the nucleus, could be incorporated into the model. Better models for
+zero entries may be possible, because those can either come either from
+non-interacting loci or from measurement errors due to, e.g., mappability
+problems. Overall, expressing the structure inference problem as a maximum
+likelihood problem offers a principled way to improve the method by improving
+the probabilistic model of measured dat.

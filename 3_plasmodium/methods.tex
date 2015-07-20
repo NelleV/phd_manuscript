@@ -1,0 +1,513 @@
+\section*{Methods}
+\subsection*{Experimental protocols}
+
+\subsubsection*{{\em P.\ falciparum} strain and culture conditions}
+{\em P.\ falciparum} strain 3D7 was maintained in human O+ erythrocytes in
+5\% haematocrit according to a previously described protocol \citep{trager:human}.
+Cultures were synchronized twice at ring stage with 5\% D-sorbitol treatments
+performed eight hours apart \citep{lambros:synchronization}. Parasites were
+harvested 48 hours after the first sorbitol treatment (0h; ring stage), and
+then 18 hours (early trophozoite stage) and 36 hours (late schizont stage)
+thereafter. The developmental stage of the parasites was verified by microscopy
+using Giemsa-stained blood smears prior to harvesting.
+
+\subsubsection*{Cross-linking}
+Aspirated {\em P.\ falciparum} cultures were pooled into 50 ml centrifuge
+tubes and filled up to 35 ml with phosphate buffered saline (PBS) warmed
+to 37$^\circ$C. Cultures were treated with 3 ml 16\% formaldehyde
+(1.25\% final concentration) and incubated for 25 min at 37$^\circ$C while rocking.
+Formaldehyde was quenched with 5.2 ml 1.25 M glycine (final concentration 150 mM)
+for 15 min at 37$^\circ$C while rocking, followed by 15 min at 4$^\circ$C while
+rocking. PBS was used instead of formaldehyde and glycine for the not cross-linked
+control. Cultures were spun at 660 $\times$ g for 20 min at 4$^\circ$C. Not
+cross-linked control parasites were treated with 5 volumes 0.15\% saponin in water
+and incubated 10 min at 4$^\circ$C while rocking. PBS was used instead of saponin
+for the cross-linked parasites. Parasites were spun at 660 $\times$ g for 15 min
+at 4$^\circ$C. Pellets were washed multiple times until clean and stored at -80$^\circ$C.
+
+\subsubsection*{Tethered conformation capture procedure}
+We applied an adapted Hi-C method referred to as tethered conformation capture
+(TCC) \citep{kalhor:genome} to map the intra and interchromosomal contacts in
+{\em Plasmodium falciparum}. For a detailed description of the overall protocol
+see Supplementary Note 1.
+
+\subsubsection*{DNA-FISH}
+For each 10 kb locus of interest, we determined the location for which on average
+the highest number of contact counts were observed and designed DNA probes targeting
+the 2 kb region surrounding this location. Probes were prepared using Fluorescein-High
+Prime and Biotin-High Prime kits (Roche) according to manufacturer's instructions.
+Template DNA was prepared by PCR (5 min at 95$^\circ$C, 35 cycles of 30 sec at
+98$^\circ$C followed by 150 sec at 62$^\circ$C, and 5 min at 62$^\circ$C) using
+the KAPA HiFi DNA Polymerase HotStart ReadyMix. Sequences of primers used for probe
+generation are shown in Supplementary Table~\ref*{table:FISHprimers}. For a detailed
+description of the DNA-FISH protocol see Supplementary Note 3. The percentage of
+colocalization was determined by visual inspection of $>$100 cells per condition.
+
+\subsection*{Computational methods}
+
+\subsubsection*{Mapping and filtering of sequence data}
+\label{met:mapping}
+We first trimmed each end of the paired-end reads from all samples to 40~bp.
+%as our read lengths varied between 47 to 101~bp.
+We used FastQC~\citep{andrews:fastqc}
+% (\url{http://www.bioinformatics.babraham.ac.uk/projects/fastqc})
+reports of aggregate read qualities for each sample to determine the amount
+of trimming required from each end of the read to keep the highest quality
+$40$-bp region.
+%For short reads we only trimmed the reads from the $5'$ end, whereas for long reads we trimmed from both the $5'$ and the $3'$ ends.
+% read lengths = 51 51 51 51 51 51 47 51 47 51 47 51 97 101 47 51 97 101
+% trim 5' = 8 8 8 8 8 8 7 8 7 8 7 8 27 27 7 8 27 27
+% trim 3' = 3 3 3 3 3 3 0 3 0 3 0 3 30 34 0 3 30 34
+
+To filter out reads from human DNA, we mapped the trimmed paired-end reads to
+the human genome (UCSC hg19) using the short read alignment mode of BWA (v0.5.9)~\citep{li:fast} 
+with default parameter settings. Each end of the paired reads was mapped
+individually. We post-processed the alignment results to extract reads that
+mapped with an edit distance of at most 3. We then eliminated all pairs for
+which at least one of the ends mapped to the human genome without any filtering
+on the mapping quality or uniqueness. This loose mapping criteria is used to
+assure that any read pair that is likely to come from human blood contamination
+in the parasite samples is filtered out from our further analysis of
+{\em Plasmodium} genome architecture.
+
+We mapped the remaining paired-end reads to the \emph{Plasmodium falciparum 3D7}
+reference genome (PlasmoDB v9.0). We post-processed the alignment results further
+to extract the reads that mapped (i) uniquely to one location in the reference
+genome, (ii) with an alignment quality score of at least 30 (which corresponds to
+a 1 in 1000 chance that the mapping is incorrect), and (iii) with an edit distance
+of at most 2. We extracted the paired-end reads with both ends mapping to the
+{\em Plasmodium} genome. We then identified potential PCR duplicates, i.e., pairs
+of read-pairs with identical genomic coordinates, and retained only one copy of
+each. We also filtered out reads that map to intrachromosomal loci that are
+$\le$1~kb apart. We refer to the remaining reads as \emph{informative reads}. We
+computed chromosomal contact maps using only these informative reads. Supplementary
+File 1 summarizes the results of applying this pipeline to our sequencing libraries.
+
+
+\subsubsection*{Calculating noise level and percentage of long range contacts}
+\label{met:ICP}
+We calculated two measures that provide estimates of the noise level and efficiency
+of the assay. The first is the interchromosomal contact probability (ICP)
+index \citep{kalhor:genome}:
+\[
+ICP=\frac{\sum{\text{interchr contact counts}}} {\sum{\text{intrachr contact counts ($>$1 kb)}}}
+\]
+In the denominator, the intrachromosomal contact counts exclude contacts between
+pairs of loci $\le$1~kb apart. Smaller ICP values indicate a better signal-to-noise
+ratio, assuming that the real data (signal) will be enriched for intrachromosomal
+contacts, whereas noise will be dominated by interchromosomal contacts. The second
+number is the percent of long-range contacts (PLRC) extracted from the initial set
+of paired-end reads that remain after filtering the reads that mapped to human genome:
+\[
+PLRC=\frac{\sum{\text{interchr contact counts}} + \sum{\text{intrachr contact counts ($>$20 kb)}}} {\text{Number of raw reads after human DNA filtering}}
+\]
+The bigger this percentage is, the more information the dataset provides about
+non-adjacent chromatin contacts for the amount of sequencing in hand.
+
+
+\subsubsection*{Aggregating data relative to 10~kb windows}
+\label{met:10kb}
+Digesting the DNA with a frequently cutting restriction enzyme yields a very large
+number of possible pairs of restriction fragments (i.e., locus pairs). In our case,
+digesting the {\em Plasmodium} genome with MboI, which cuts at the 4~bp recognition
+site ``GATC'', yielded 28,784 fragments (mean length 810~bp) corresponding to
+33,114,193 intrachromosomal and 336,629,028 interchromosomal locus pairs. For 3D
+modeling, we partitioned the {\em Plasmodium} genome into a collection of
+non-overlapping 10~kb windows, and we assigned each restriction fragment to the
+10~kb window that covers the majority of the bases in the fragment. This operation
+reduced the number of possible fragments from 28,784 to 2,337 and the number of
+possible locus pairs from $3.7 \times 10^8$ to 2,715,615 (228,539 intrachromosomal
+and 2,487,076 interchromosomal).
+
+\subsubsection*{Normalizing raw contact maps}
+\label{met:normalization}
+For each possible pair of 10~kb loci, we refer to the total number of informative
+read pairs that link the two loci as the {\em contact count}, and we refer to the
+two-dimensional matrix containing these contact counts as the {\em raw contact map}.
+We normalized the raw contact maps in two steps.  First, we ranked loci by their
+percentage of intrachromosomal contacts with zero counts, and we filtered out the
+top 2\% of this list. This removes all loci for which the signal to noise ratio
+is too low (typically, regions of low mappability). Second, we applied an iterative
+correction and eigenvector decomposition (ICE) method~\citep{imakaev:iterative}
+that attempts to eliminate systematic biases in Hi-C data. The method estimates a
+bias vector with one entry per locus. The tensor product of the bias vector with
+itself generates a bias matrix $B$ that can be used to convert the raw contact map
+into a normalized contact map.
+
+\subsubsection*{Estimating power-law fits to intrachromosomal contact probabilities}
+\label{met:power-law}
+It has been observed in the literature that for a pair of intrachromosomal loci,
+the relationship between genomic distance and the expected contact count can be
+estimated by a log-linear model \citep{lieberman-aiden:comprehensive, fudenberg:higher-order}.
+This log-linear model is captured by a power-law fit of the form $P(s) \sim s^\alpha$
+where $s$ denotes the genomic distance, $P(s)$ denotes the expected contact
+probability at distance $s$ and $\alpha$ is the gradient of the log-linear fit.
+For each stage, we first calculated $P(s)$ by segregating all intrachromosomal locus
+pairs into $b=50$ equal-occupancy bins. This procedure involves enumerating all
+possible intrachromosomal locus pairs (including pairs that have a contact count of zero),
+sorting the pairs in increasing order according to their genomic distances, and then
+segregating the resulting list into $b$ quantiles. For each bin $i$, we computed the
+average number of contact counts per locus pair $\hat{c}_i$, and the average contact
+distance $\hat{s}_i$ over all locus pairs in the bin. Then, for each bin $i$,
+$P(\hat{s}_i)= \frac{\hat{c}_i}{N}$ where $N$ is the sum of all observed intrachromosomal
+contact counts. We then found the best linear fit to $\log P(s)$ versus $\log s$ in
+a given genomic distance range. Note that the control library  ``TROPH.-cont.''
+was not subjected to normalization.
+
+
+\subsubsection*{Assigning statistical significance to normalized contact maps}
+\label{met:fithic}
+To obtain a set of high confidence contacts for each stage, we subjected the contact
+maps at 10 kb resolution to a statistical confidence estimation procedure
+\citep{ay:statistical}. We first accounted for the effect of genomic distance on the
+intrachromosomal contact probability by fitting a smoothing spline to capture this
+effect. We then accounted for biases using the normalization procedure described
+above. Finally, we calculated p-values for intra and interchromosomal contacts and
+corrected them jointly for multiple hypothesis testing to compute q-values, which
+are used to filter contacts at a desired false discovery rate. For a detailed
+description of the statistical significance estimation procedure see Supplementary Note 2.
+
+\subsubsection*{Identifying stage-specific contacts}
+\label{met:spageSpecific}
+We determined the contacts that are specific to only one stage or to two out of three stages
+as follows. First, we sorted the lists of contacts at 10~kb resolution according to increasing
+p-values computed as described above for each stage. Then, we extracted contacts that are
+ranked in top 1,000 in each stage and checked to see whether they appear among top 10,000
+contacts for the other two stages. We labeled these contacts as stage-specific because they
+are among the strongest contacts for one stage but not among moderately-strong contacts for
+the other two stages. Similarly, we labeled contacts that are in top 1,000 in two out of
+three stages but not in top 10,000 for the third stage. To perform gene set enrichment
+analysis (GSEA), we extracted the lists of genes that are involved in stage-specific contacts
+(only ring, only trophozoite or only schizont) as well as contacts common to two stages
+(common to ring and trophozoite, common to ring and schizont or common to trophozoite and schizont).
+
+
+\subsubsection*{Inferring the 3D structures}
+\label{met:inferring}
+Our method for inferring the 3D structures is based on the method of \cite{duan:three}.
+Each chromosome is modeled as a series of beads on a string, spaced approximately
+10~kb apart. We associated with each pair of beads $x_i$ and $x_j$ a physical
+{\em wish distance} $\delta_{ij}$---i.e., the distance that we aim to capture with
+our 3D model---derived from the bead pair's contact count $c_{ij}$. We then
+placed all the beads in 3D space such that the distance $d_{ij}$ between the beads
+$i$ and $j$ is as close as possible to the wish distance $\delta_{ij}$.
+
+\paragraph{Wish distances: }
+
+To obtain the wish distances, we note that two proximal intrachromosomal loci
+are likely to come into contact due to random looping of the DNA, and that
+this ``polymer packing'' contact likelihood can be expressed as a function of
+the genomic distance $s$ between the loci. We then assumed that two loci with
+observed contact count $c_{ij}$ will have the same physical distance
+$\delta^{ij}$ as two intrachromosomal loci with expected contact count
+$c_{ij}$ by polymer packing. The relationship between the expected contact
+frequencies and the genomic distances $s$ suggests that \textit{P.\
+falciparum}'s DNA behaves like a fractal globule polymer
+\citep{lieberman-aiden:comprehensive} (Supplementary Fig.
+\ref*{suppfig:power-law}). Any crumpled polymer exhibits a well-defined
+relationship between its genomic length $s$ and the physical distance $d$
+\citep{grosberg:role}:
+\begin{equation}
+d \sim s^{1 / 3}
+\label{eq:fractal_globule}
+\end{equation}
+Therefore, using the relationship between genomic distances $s$ and
+contact frequencies $c$, obtained by the fitting of the linear
+model, and the relationship between physical distances $d$ and genomic
+distances $s$ (Equation~\ref{eq:fractal_globule}), we inferred a
+mapping between contact frequencies $c$ and physical distances $d$
+up to a factor. We arbitrarily set the distance of the two beads with
+the smallest non-zero contact count $c_\text{min}$ to be at a
+certain percentage $\beta$ of the nucleus diameter. Note that
+$c_\text{min}$ is not necessarily equal 1 since the contact counts are
+normalized. The $\beta$ parameter hence sets the scaling of the physical
+distances. We then obtain:
+\begin{equation}
+\delta_{ij} = \frac{\beta 2 r}{c_\text{min}^{\alpha / 3}} c_{ij}^{\alpha / 3}
+\end{equation}
+where $r$ is the nucleus radius, and $\alpha$ the coefficient obtained
+in the linear model fitting (range: 30--500~kb, $\alpha=-0.963$ for rings,
+$\alpha = -1.124$ for trophozoites, $\alpha = -1.013$ for schizonts).
+We set all distances larger than the nucleus diameter to this value.
+
+\paragraph{Optimization: } Given the resulting physical wish distances, we
+defined the following optimization problem to find a structure $\mathbf{X}
+\in R^{3 \times n}$, where $n$ is the number of beads:
+\begin{equation*}
+\renewcommand{\arraystretch}{2}
+\begin{array}{ccll}
+\underset{\mathbf{X}}{\text{minimize}} & &
+\underset{\delta_{ij} \in \mathcal{D}}{\sum} \frac{1}{\delta_{ij}^2}\big(d_{ij} - \delta_{ij}\big)^2 &\\
+\text{subject to}
+& & x_i^Tx_i \leq r_{\rm max}^2, \quad
+& i = 1:n\\
+& & d_{i, i+1} \leq b^{\rm max} , \quad
+& i = \{1:n \;|\; {\rm chr}_i = {\rm chr}_{i+1}\}\\
+\end{array}
+\end{equation*}
+where $d_{ij}$ is the Euclidean distance between beads $x_i$ and
+$x_j$, $\mathcal{D} = \{ \delta_{ij} | \delta_{ij} \neq 0\}$ is
+the set of non-zero wish distances, and $b^{\rm max}$ is defined below.
+
+The constraints are as follows:
+\begin{enumerate}
+\item \emph{All loci must lie within a spherical nucleus centered on the origin. }
+  Electron microscopy experiments show that the nucleus roughly resembles a
+  sphere, with the radius depending on the stage of the organism.  In
+  this work, we use a nuclear radius of $r = 350$~nm for the ring
+  stage, $r=850$~nm for the trophozoite stage and $r=425$~nm for the
+  schizont stage \citep{bannister:making, weiner:3d}.
+\item \emph{Two adjacent loci must not to be too far apart.}
+  1000~bp of chromatin occupies a distance between 6.6--9.1~nm
+  \citep{berger:high}. Because we use 10~kb resolution, we set $b^\text{max} = 91$~nm.
+\end{enumerate}
+
+\paragraph{Initialization:}
+We create a population of 100 independently optimized structures by initializing
+$\textbf{X}$ randomly from a standard normal distribution.
+
+\paragraph{Measuring similarities between structures:}
+
+To compare pairs of structures ($X$, $Y$) we used the standard RMSD measure:
+
+\begin{equation}
+\text{RMSD} = \text{min}_{X^*} \sqrt{\frac{1}{n} \sum_{i = 0}^n (x^*_i - y_i) ^ 2}
+\end{equation}
+where $X^*$ is obtained by translating and rotating $X$. To compare structures
+of different scale (e.g., different $\beta$ values), we seek, in addition of the
+translation and rotation factor, the scaling factor that minimizes the RMSD
+between structures.
+
+Another similarity measure we use to compare two structures is the average difference
+of their pairwise distance matrices (at 10 kb resolution), which we denote by
+\textit{distance difference}:
+\begin{equation}
+\text{distance difference} = \frac{1}{n(n - 1)/2} \sum_{i > j} |d^X_{ij} - d^Y_{ij}|
+\end{equation}
+where $d^X$ and $d^Y$ are the Euclidean distance matrices of the structures
+$X$ and $Y$.
+
+\paragraph{Clustering the population of structures:}
+
+In order to see whether the structures fall into discrete groups, we computed
+the RMSD between pairs of structures and performed hierarchical clustering on 
+the resulting $100\times100$ distance matrix for each stage 
+(Supplementary Fig.~\ref*{suppfig:CHindices}).
+
+\paragraph{Choosing the parameter $\beta$:}
+As noted above, the parameter $\beta$ controls the scaling of the inferred 3D
+structure. A small value of $\beta$ will yield a structure with a very dense
+center, and a large value of $\beta$ will push all beads against the nuclear
+envelope. The literature suggests that chromatin should abut the nuclear
+envelope \citep{weiner:3d}. Assuming the chromatin should also occupy the
+center of the nucleus, we ran the entire optimization multiple times, and we
+selected a value of $\beta$ that yields a chromatin density as close as
+possible to a uniform distribution.
+
+This procedure required that we estimate the density of chromatin at a
+distance $\ell$ from the center of the nucleus.  To do so, we first
+created an intermediate function
+\[
+f(\ell) = \sum_{i = 1}^N g\left(\ell - \sqrt{x_i ^2 + y_i^2 + z_i^2}\right),
+\]
+where $g(\cdot)$ is a Gaussian ($\mu = 0$, $\sigma = 10$~nm).  The
+standard deviation $\sigma$ of the Gaussian corresponds to the
+uncertainty of the position of each bead. The estimated density $D(\ell)$
+was then computed as a generalized histogram, using discretized distance bins
+$\ell_i$. To ensure that the volume was constant for each bin, the bin spacings
+were defined as $\ell_i = i^{1 / 3} \ell_1$, where we chose $\ell_1 = \frac{r}{3}$.
+We then normalized the histogram to sum to one.
+
+Let $D_i$ be the density of bin $i$ and let $n_{\text{bins}}$ be the
+number of bins. To select $\beta$, we defined the scoring function
+
+\begin{equation}
+\text{score} = \sqrt{\sum_{i = 1}^{n_\text{bins}} \left(D_i -
+\frac{1}{n_\text{bins}}\right)^2},
+\end{equation}
+which corresponds to the mean squared error between the estimated density and
+the expected density. The resulting density scores are shown in Supplementary
+Table~\ref*{table:density}, with the minimal value for each stage in boldface.
+
+\subsubsection*{Eigenvalue decomposition and chromatin compartments}
+\label{met:compartments}
+To identify chromatin compartments, for each stage, we
+carried out eigenvalue decomposition on the matrix of Euclidean
+distances between locus pairs. For each chromosome we used the
+intrachromosomal 3D distance matrix at a resolution of 10~kb, where
+each 10~kb locus is represented by the 3D coordinate of its
+midpoint. We then calculated the Spearman correlation between each
+pair of rows of the 3D distance matrix and applied eigenvalue
+decomposition (using the \emph{eig} function in MATLAB) to this
+correlation matrix. The sign of the first eigenvector defined a
+compartment assignment for each 10~kb locus at each stage. We also
+aggregated all three stages and calculated a set of aggregate compartments
+(Supplementary Fig.~\ref*{suppfig:perChrFigs}, fourth row of figures on each page)
+which divided each chromosome into three main compartments (i.e.,
+telomeric-centromeric-telomeric or left(L)-mid(M)-right(R)).
+
+\subsubsection*{Kernel canonical correlation analysis}
+\label{met:kCCA}
+
+We used an approach based on kernel canonical correlation analysis (kCCA)
+\citep{bach:kernel,vert:graph,vert:extracting} to extract gene expression profiles that
+simultaneously capture the variance of the gene expression data and exhibit
+coherence with respect to the 3D structure.
+
+Let $\mathcal{G}$ be the set of $n$ genes. Each gene $g\in\mathcal{G}$ is
+characterized by its log expression profile $e(g) = \left( e_1(g), \ldots,
+e_p(g)\right) \in \mathbb{R}^p$ at $p$ timepoints
+and by its position $x(g) \in \mathbb{R}^3$
+in 3D
+space. We assume that the set of gene expression profiles is mean centered and
+unit variance scaled, i.e., $\sum_{g\in\mathcal{G}}e_i(g) = 0$ and
+$\frac{1}{|\mathcal{G}|}\sum_{g\in\mathcal{G}} e_i(g)^2 = 1$ for
+$i=1,\ldots,p$.
+
+Let $v\in\mathbb{R}^p$ be a direction in the expression profile space. To
+assess whether $v$ is representative of the observed expression profiles, we computed
+the percentage of variance explained among the gene expression profiles once
+they are projected onto $v$, defined by
+\begin{equation}\label{eq:variance}
+V(v) = \frac{\sum_{g \in \mathcal{G}} \left(v^T e(g)\right)^2}{\|v\|^2}\,.
+\end{equation}
+The larger $V(v)$ is, the more $v$ explains the differences between gene
+expression profiles, and the more likely $v$ is to correspond to some
+biological event which influences the expression of many genes. $V(v)$ is, for
+example, maximized by principal component analysis.
+
+Instead of just asking the profile $v$ to capture variance among gene expression, we
+simultaneously asked it to exhibit coherence with respect to the 3D structure.
+For that purpose, we defined for every $f\in\mathbb{R}^n$ a function $S(f)$
+that quantifies how smoothly $f$ varies in 3D. $f$ can be thought of as a
+vector of scores, one score being assigned to each gene.  Because we know the
+3D coordinates of each gene we can imagine $f$ as a set of scores in 3D.
+Following a standard approach in kernel methods \citep{scholkopf:learning}, we
+quantified the smoothness of $f$ with the function
+\begin{equation}\label{eq:smoothness}
+S(f) = \frac{f^\top K^{-1}_{3D} f}{||f||^2}\,,
+\end{equation}
+where $K_{3D}$ is the $n\times n$ matrix whose $(i,j)$ entry is the Gaussian
+kernel between genes $i$ and $j$, namely, $\exp\left(-||x(i) - x(j)||^2 /
+2\sigma^2\right)$. The smaller $S(f)$ is, the more smoothly $f$ is distributed
+in 3D.
+
+We then combined the ideas of capturing variance (Equation~\ref{eq:variance}) and being
+smooth in 3D (Equation~\ref{eq:smoothness}) by designing a joint objective function
+over $v$ and $f$ to ensure that (i) $v$ captures a lot of variance, (ii) $f$
+is smooth in 3D, and (iii) $f$ is maximally correlated with the vector
+$\left(v^\top e(g)\right)_{g\in\mathcal{G}}$. In words, we aimed to ensure that
+genes which are positively correlated with $v$ (and those which are negatively
+correlated) tend to be co-localized in 3D. We designed the function by following
+the approach of \cite{bach:kernel}, who show that $v$ and $f$
+can be found by solving a kCCA problem equivalent to the following generalized
+eigenvalue problem:
+\[
+\left(\begin{array}{cc}0 & K_E K_{3D} \\ K_{3D} K_E & 0\end{array}\right)
+\left(\begin{array}{c}\alpha \\ \beta\end{array}\right)
+= \rho
+\left(\begin{array}{cc}(K_E+\delta I)^2 & 0 \\ 0 & (K_{3D}+\delta I)^2\end{array}\right)
+\left(\begin{array}{c}\alpha \\ \beta\end{array}\right)\,,
+\]
+where $K_{3D}$ is the $n \times n$ matrix whose $(i,j)$-th entry is $e(i)^\top
+e(j)$, and $\delta$ is a small regularization parameter. Once we found the
+generalized eigenvectors $(\alpha,\beta)^\top$, ranked by decreasing
+eigenvalue $\rho$, we recovered a pair $(v,f)$ by $v = \sum_{g\in\mathcal{G}}
+\alpha_g e(g)$ and $f=K_{3D} \beta$.
+
+We computed the profiles for several values of $\sigma$ (0.01, 0.02, 0.05,
+0.1) and $\delta$ (0.01, 0.02, 0.04, 0.06) and obtained highly correlated results
+(correlation $>0.99$ for all pairs of profiles). Therefore, we chose
+$\sigma = 0.01$ and $\delta = 0.02$ for the rest of the analysis.
+
+\subsubsection*{Gene set enrichment analysis}
+\label{met:GSEA}
+To detect set of genes highly or poorly correlated kCCA profiles, we apply gene
+set enrichment analysis (GSEA) \citep{subramanian:gene}. Unlike a traditional
+GO term enrichment analysis, this method takes as input a ranked list of genes
+rather than a set of genes; hence, GSEA takes full advantage of the results of
+the kCCA.  The procedure detects sets of genes enriched at the top or at the
+bottom of the ranked list of genes. We applied GSEA to the ranked list of projections
+of expression profiles on the first and second extracted profile. Corresponding
+p-values were computed using $4,000$ permutations. We also used GSEA in our
+comparison gene sets that are involved in contacts that are specific to either
+one stage or two out of three stages.
+
+
+\subsubsection*{Volume exclusion model}
+\label{met:volume-exclusion}
+
+Following the methodology of \cite{tjong:physical}, we
+constructed a population of three-dimensional structures by modeling
+chromosomes as random configurations subject to the following
+constraints:
+\begin{enumerate}
+\item Each chromosome is modeled as a series of $N$ beads spaced 3.2~kb apart,
+  with consecutive beads restrained to be 30~nm apart.
+\item Overlaps between beads are prevented by imposing a volume
+  exclusion constraint for all pairs of beads.
+\item All chromosomes lie within a spherical nucleus of a specified
+  radius.
+\item All centromeres are colocalized in a small sphere of radius
+  50~nm abutting the nuclear envelope.
+\item All telomeres are located within 50~nm of the nuclear envelope.
+\end{enumerate}
+We formulated an optimization problem that includes, in addition to the
+constraints, a penalty term that accounts for chromatin stiffness by
+placing an angular restraint between three consecutive beads:
+\begin{equation}
+\frac{1}{2} k_{\text{angle}} \sum^{N - 2}_{i = 1} \left( 1 - \frac{x_{i + 1} -
+x_i}{\|x_{i + 1} - x_i\|} \cdot \frac{x_{i + 2} - x_{i + 1}}{\|x_{i + 2} -
+  x_{i + 1}\|} \right)^2\,,
+\end{equation}
+where $x_i \in \mathbb{R}^3$ is the coordinate vector of bead $i$.
+We used the Integrated Modeling Platform (IMP) \citep{bau:three-dimensional}
+to generate 5,000 budding yeast structures with a nuclear radius of
+1000~nm, and 5,000 {\em Plasmodium} structures for each of the three
+stages with nuclear radii of 350~nm, 850~nm and 425~nm, respectively.
+
+Following \cite{tjong:physical}, we used the population of structures to
+generate a volume exclusion (VE) contact frequency matrix $C$,
+considering that two beads are in contact when they are $\leq$45~nm apart.
+The contact frequency matrix was then aggregated to a resolution of
+32~kb and normalized following the ICE procedure as described above,
+resulting in a contact frequency matrix
+$c_{ij}^{VE}$ for $i,j=1,\ldots,N$ according to the VE model.
+
+In order to compare the VE contact matrix to experimental Hi-C data,
+we similarly computed the Hi-C contact count matrix at a resolution of
+3.2~kb, aggregated it at 32~kb, and normalized the same way as the VE
+contact frequency matrix to get a Hi-C contact matrix
+$c_{ij}^{HIC}$ for $i,j=1,\ldots,N$.
+
+We then compared both matrices by computing the row-based Pearson correlation
+\citep{tjong:physical} defined as the average Pearson correlation between their rows.
+\begin{equation}\label{eq:pearson}
+\frac{1}{N} \sum_{i=1}^{N} \frac{
+  N \sum_{j \neq i}^N c_{ij}^{\text{HIC}}{c}_{ij}^{\text{VE}} -
+  \sum_{j \neq i}^N {c}_{ij}^{\text{HIC}} \sum_{j \neq i}^N {c}_{ij}^{\text{VE}}
+}{
+\sqrt{N \sum_{j \neq i }^N({c}_{ij}^{\text{HIC}})^2 - (\sum_{j \neq i}^N
+{c}_{ij}^{\text{HIC}})^2}
+\sqrt{N \sum_{j \neq i }^N({c}_{ij}^{\text{VE}})^2 - (\sum_{j \neq i}^N
+{c}_{ij}^{\text{VE}})^2}}\,.
+\end{equation}
+Furthermore, we also computed a \emph{normalized} row-based Pearson correlation
+between the matrices by replacing the counts $c^{VE}_{ij}$ and $c^{HIC}_{ij}$
+in~(Equation~\ref{eq:pearson}) by their ratio to an expected count $c^E_{ij}$ that we
+would expect if there was no structural information in the matrix, besides
+the obvious decrease of contacts between loci at increasing genomic
+distance. To estimate the
+expected frequencies $c^E_{ij}$ used to define the ratios, we fit an
+isotonic regression to the mapping between genomic distance and the average
+contact frequency at this genomic distance. The isotonic regression
+allows us
+to fit a non-increasing mapping between genomic distance and contact
+frequency, thus correcting the effect of enrichment of contact frequencies
+at chromosome ends. This mapping allowed us to define $e_{ij}^E$ as the expected
+count corresponding to the genomic distance between loci $i$ and $j$ in the
+case of intrachromosomal contacts, and to the genome-wide average of
+inter chromosomal counts in case of interchromosomal contacts.
+
+
+

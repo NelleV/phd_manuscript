@@ -1,0 +1,171 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\section{RPKM}
+
+We first briefly recall the definition of RPKM (reads per kilobase per
+million mapped reads), widely used to quantify the expression level
+of genes in RNA-seq experiments. Let
+\begin{itemize}
+\item $l$ be the length (in bp) of the coding region of a gene,
+\item $c$ be the number of mappable reads that fall onto the gene's
+  exon, and
+\item $m$ be the total number of mapped reads.
+\end{itemize}
+Then the RPKM of the gene is:
+$$
+RPKM = \frac{c}{ml}\times \alpha\,,
+$$
+with $\alpha=10^9$. Note that when when $l$ is expressed in kilobases, and $m$ in millions, then the constant $10^9$ disappears since the RPKM is then just:
+$$
+RPKM = \frac{c}{(m \times 10^{-6})\times (l \times 10^{-3})}\,.
+$$
+
+Why do we need the constant $\alpha=10^9$? It seems to be a happy
+coincidence that (i) it leads to simple computation, since genomic
+lengths are naturally expressed in kb and read counts in millions, and
+(ii) it leads to values easy to manipulate, typically between $0$ and
+$100$ for human genes. Some ``rules of thumb'' are even sometimes
+proposed, such as $RPKM<10$ meaning low expression, $10<RPKM<30$
+meaning normal expression, and $RPKM>100$ meaning highly expressed.
+
+In order to understand why $\alpha=10^9$ leads to such ``normal''
+values, we can for example compute the average RPKM over the
+genes. Assume for simplicity that the genome is made of $n$ genes of
+length $l$, thus corresponding to a total coding size on the genome of
+$L_c=nl$. The average RPKM is then
+\[
+<RPKM> = \frac{1}{n} \sum_{g} \frac{c_g}{ml} \times \alpha = \frac{\alpha}{nl} = \frac{\alpha}{L_c}\,,
+\]
+where $c_g$ denotes the number of reads falling onto gene $g$, and
+where we used the fact that the total read count is $m=\sum_g
+c_g$. For example, for the human genome, where coding sequences
+represent about $2\%$ of the $3\times 10^9$ genome, we have $L_c = 6\times 10^7$
+and therefore an average RPKM of order $15$ when we take
+$\alpha=10^9$. This is observed empirically, and justifies the ``rule
+of thumb'' that $RPKM\sim 15$ means normal expression.
+
+However, this observation also shows that RPKM is not normalized for
+genome length, but scales inversely proportional to the total coding
+length for an organism. This means in particular that any ``rule of
+thumb'' for RPKM values is limited to a given genome, and should be
+rescaled to be adapted to a different species. Of course, an easy fix
+would be to divide by the total coding length in the definition of
+RPKM.
+
+In summary:
+\begin{itemize}
+\item RPKM normalizes the counts by the total number of mapped reads
+  (to be able to compare different experiments) and by the gene length
+  (to be able to compare different genes within an experiment).
+\item The $\alpha=10^9$ constant in the definition of RPKM is
+  convenient because (i) it makes the computation easy to perform
+  (express the length in kb and the total number of mapped reads in
+  millions, then divide), and (ii) it leads to average values of about
+  $15$ for the human genome, which is easy to remember.
+\item Unfortunately, RPKM is not normalized across species: for a
+  fixed constant $\alpha$, RPKM scales as $1/L_c$, the inverse of the
+  total coding length. This means that for a genome with half as many
+  coding bases as the human genome, the ``normal'' RPKM is $30$
+  instead of $15$. A normalization by $L_c$ in the definition of RPKM
+  would have been useful to address this issue.
+\end{itemize}
+
+\section{$RPK^2M$}
+
+For Hi-C experiments, we need to normalize the number of reads linking
+two loci by two factors: (1) the total number of mapped reads (to be
+able to compare different experiments), and (2) the ``surface" of the
+mapped region, i.e., the product of the loci lengths. Indeed, read
+count is expected to increase linearly with respect to each of the
+loci's length. More precisely, denoting by $l_1$ and $l_2$ the lengths
+(in bp) of the two interacting loci, we define:
+\[
+RPK^2M = \frac{c}{ml_1l_2}\times \beta\,,
+\]
+where $\beta$ is a scaling factor.
+Note that the name $RPK^2M$ suggests taking $\beta=10^{12}$, corresponding to expressing $m$ in millions and each length in kilobases, and leading to the simple division:
+\[
+RPK^2M = \frac{c}{(m \times 10^{-6})\times (l_1 \times 10^{-3}) \times (l_2 \times 10^{-3})}\,.
+\]
+
+Is $\beta=10^{12}$ a good choice? In terms of usability, the answer is
+yes, because it is common to express length in kb and read counts in
+millions, leading to a simple division. Contrary to RPKM, however, it
+is not obvious that the resulting $RPK^2 M$ values will fall in the
+interval $[0,100]$. To quantify this, we can compute the average
+$RPK^2M$ of all pairs of loci. We suppose that the genome is made of
+$n$ loci of length $l$, corresponding to a genome size $L_G = nl$. The
+average $RPK^2M$ over all pairs of loci is then
+\[
+<RPK^2M> = \frac{1}{n^2} \sum_{i,j=1}^n \frac{c_{i,j}}{ml^2}\times \beta = \frac{\beta}{n^2 l^2} = \frac{\beta}{L_G^2}\,,
+\]
+where we used the fact that the total count is $m=\sum_{i,j=1}^n
+c_{i,j}$. We now see that the mean $RPK^2M$ scales as the inverse of
+the square of the genome size. For example, for {\em P.\ falciparum} with
+$L_G = 25 \times 10^6$, keeping the default $\beta=10^{12}$ leads to an
+average $RPK^2M$ of about $1.6\times10^{-3}$; for the human genome
+($L_G=3\times 10^9$) we get $<RPK^2M> \sim 10^{-7}$. These values look a bit
+small, so one may decide to choose another, larger constant $\beta$
+(but then the name $RPK^2M$ loses its relevance).
+
+However, a caveat with this computation is that most interactions take
+place within nearby loci along the genome; hence, the global average
+over all pairs of loci may not be a very relevant value to define the
+scaling. In other words, the interaction matrix is rather sparse,
+except near the diagonal. An alternative quantity of interest could
+therefore be the mean value taken near the diagonal. Suppose for
+example that we know that ``most'' interactions (e.g., a fraction
+$0<\gamma<1$ of all reads) fall between loci at distance at most $D$
+(in bp) of each other. Then a locus mostly interacts with its $D/l$
+nearest loci.  We can estimate the average $RPK^2M$ among the loci
+involved in this interactions as follows:
+\[
+<RPK^2M> = \frac{1}{n\times D/l} \sum_{i=1}^n \sum_{j=i}^{i+D/l}  \frac{c_{i,j}}{ml^2}\times \beta = \frac{\gamma \beta}{nDl} = \frac{\gamma\beta}{D L_G}\,,
+\]
+where we used the fact that $ \sum_{i=1}^n \sum_{j=i}^{i+D/l} c_{i,j}
+= \gamma m$.  Say, for example, that $50\%$ of counts are found
+between loci less than $10^5$ bp apart; then the average $RPK^2M$ ``near the
+diagonal'' for {\em P.\ falciparum} becomes $0.5\times 10^{12} / (10^5
+\times 2.5 \times 10^7) = 0.2$, which starts looking easier to plot on
+a graph.
+
+In summary:
+\begin{itemize}
+\item The name $RPK^2M$, which is good for ``marketing,'' suggests
+  taking implicitly the constant $\beta=10^{12}$. Similar to $RPKM$,
+  this approach leads to a computation that is easy to perform (simple
+  division without scaling constants when distances are expressed in
+  kilobasepairs and the total number of mappable reads in
+  millions). However, contrary to RPKM, one should expect ``small''
+  values.
+\item Like RPKM, $RPK^2M$ is not normalized for genome length (its
+  average value scales inversely proportional to the square of the
+  genome length), meaning that comparison of values across species
+  with different genome lengths are meaning less. As easy fix would be
+  to divide by the genome length.
+\item The important aspect of $RPK^2M$ is the square in $K^2$, meaning
+  that the unit of $RPK^2M$ is the inverse of a square length (in
+  contrast to RPKM, which is the inverse of a length).
+\item At some point there was a discussion about whether we should not
+  consider some "$RPK^2M^2$" to set the scaling constant to
+  $\beta=10^{18}$ instead of $10^9$.  Although changing the constant
+  could make sense to have values in a better range, I think
+  $RPK^2M^2$ is definitively not a good name because it suggests that
+  the unit is the inverse of a square distance times the inverse of a
+  count, which is wrong. If we divide by the square of the total read
+  count, then we are not invariant anymore to changes in total read
+  counts. To change the constant, we should instead change the $M$
+  (which means millions) by something else, typically $RPK^2G$ for
+  $\beta=10^{15}$, or $RPK^2T$ for $\beta=10^{18}$.
+\item The choice of the scaling factor $\beta$ remains arbitrary
+  anyway, so choosing between $RPK^2M$, $RPK^2G$ or $RPK^2T$ is an
+  aesthetic question. I'd rather stay with $RPK^2M$ for its similarity
+  with $RPKM$ and its simplicity to compute, with the caveat that it
+  could take on small values.
+\end{itemize}
+
+
+\end{document}
