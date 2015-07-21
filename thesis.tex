@@ -1,189 +1,289 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Masters/Doctoral Thesis 
+% LaTeX Template
+% Version 1.43 (17/5/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original authors:
+% Steven Gunn 
+% http://users.ecs.soton.ac.uk/srg/softwaretools/document/templates/
+% and
+% Sunil Patel
+% http://www.sunilpatel.co.uk/thesis-template/
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Note:
+% Make sure to edit document variables in the Thesis.cls file
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% ----------------------------------------------------------------------
-%                   LATEX TEMPLATE FOR PhD THESIS
-% ----------------------------------------------------------------------
 
-% based on Harish Bhanderi's PhD/MPhil template, then Uni Cambridge
-% http://www-h.eng.cam.ac.uk/help/tpl/textprocessing/ThesisStyle/
-% corrected and extended in 2007 by Jakob Suckale, then MPI-CBG PhD programme
-% and made available through OpenWetWare.org - the free biology wiki
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
 
+\documentclass[11pt, oneside]{Thesis} % The default font size and one-sided printing (no margin offsets)
+% oneside : better for pdf reading
+% twoside : better if printed in book format
 
-%: Style file for Latex
-% Most style definitions are in the external file PhDthesisPSnPDF.
-% In this template package, it can be found in ./Latex/Classes/
-\documentclass[twoside,11pt]{Latex/Classes/PhDthesisPSnPDF}
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
 
-%: Macro file for Latex
-% Macros help you summarise frequently repeated Latex commands.
-% Here, they are placed in an external file /Latex/Macros/MacroFile1.tex
-% An macro that you may use frequently is the figuremacro (see introduction.tex)
-\include{Latex/Macros/MacroFile1}
+\usepackage[utf8]{inputenc} % For French accents
+\usepackage{cite} % for multiple quotes
+\usepackage[]{algorithm2e} % for algorithm environment
+\usepackage{amsmath}
+\usepackage{multirow}
+\newtheorem{problem}{Problem}
 
-\newcommand{\todo}[1]{\textbf{[TODO: #1]}}
-\newcommand{\note}[1]{\textbf{[NOTE: #1]}}
-\newcommand{\OMIT}[1]{}
+\usepackage[square, comma, numbers, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+\usepackage{graphicx}
+\hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
+\title{\ttitle} % Defines the thesis title - don't touch this
+\usepackage{afterpage} %% To add blank pages
+
 \newcommand{\Xb}{\textbf{X}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\Dcal}{\mathcal{D}}
 \newcommand {\br}[1]{\left(#1\right)}
 
-\usepackage{amsmath}
-\usepackage{multirow}
-\newtheorem{problem}{Problem}
 
 
-%: ----------------------------------------------------------------------
-%:                  TITLE PAGE: name, degree,..
-% ----------------------------------------------------------------------
-% below is to generate the title page with crest and author name
-
-%if output to PDF then put the following in PDF header
-\ifpdf  
-    \pdfinfo { /Title  (nvaroquaux\_phd)
-               /Creator (Nelle Varoquaux)
-               /Producer (pdfTeX)
-               /Author (nelle.varoquaux@ensmp.fr)
-               /CreationDate (26:201505)  %format D:YYYYMMDDhhmmss
-               %/ModDate (D:YYYYMMDDhhmm)
-               %/Subject (xyz)
-               /Keywords (3D structure, genome, Hi-C, inference) }
-    \pdfcatalog { /PageMode (/UseOutlines)
-                  /OpenAction (fitbh)  }
-\fi
-
-\title{Inferring the three dimensional structure of the genome}
-
-% ----------------------------------------------------------------------
-% The section below defines www links/email for author and institutions
-% They will appear on the title page of the PDF and can be clicked
-\ifpdf
-  \author{\href{mailto:nelle.varoquaux@ensmp.fr}{Nelle Varoquaux}}
-%  \cityofbirth{born in XYZ} % uncomment this if your university requires this
-%  % If city of birth is required, also uncomment 2 sections in PhDthesisPSnPDF
-%  % Just search for the "city" and you'll find them.
-  \collegeordept{\href{http://u900.curie.fr}{Institut Curie, INSERM U900, Mines ParisTech}}
-  \university{\href{http://ensmp.fr}{Ecole Doctorale "Complexité du vivant" - UPMC}}
-
-  % The crest is a graphics file of the logo of your research institution.
-  % Place it in ./0_frontmatter/figures and specify the width
-  \crestuniv{\includegraphics[width=5cm]{logo_upmc.png}}
-  \crest{\includegraphics[width=12cm]{logo_U900.png}}
-  
-% If you are not creating a PDF then use the following. The default is PDF.
-\else
-  \author{Nelle Varoquaux}
-%  \cityofbirth{born in XYZ}
-  \collegeordept{Institut Curie, INSERM U900, Mines ParisTech}
-  \university{Mines ParisTech}
-  \crestuniv{\includegraphics[width=5cm]{logo_upmc.png}}
-  \crest{\includegraphics[width=12cm]{logo_U900.png}}
-\fi
-
-\renewcommand{\submittedtext}{PhD Report}
-\degree{}
-\degreedate{2015 March 26th}
-\supervisor{Jean-Philippe Vert $^{1,2,3}$}
-\affiliation{$^1$Institut Curie, Paris, France $^2$INSERM, U900, Paris, France $^3$Mines ParisTech, Fontainebleau, France $^4$CNRS UMR3215, Paris, France $^5$INSERM U934, Paris, France}
-% ----------------------------------------------------------------------
-       
-% turn of those nasty overfull and underfull hboxes
-\hbadness=10000
-\hfuzz=50pt
-
-
-%: --------------------------------------------------------------
-%:                  FRONT MATTER: dedications, abstract,..
-% --------------------------------------------------------------
 
 \begin{document}
 
-%\language{english}
+\frontmatter % Use roman page numbering style (i, ii, iii, iv...) for the pre-content pages
 
-% sets line spacing
-\renewcommand\baselinestretch{1.2}
-\baselineskip=18pt plus1pt
+%%% Add a blank page 
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \newpage}
+
+\setstretch{1.3} % Line spacing of 1.3
+
+% Define the page headers using the FancyHdr package and set up for one-sided printing
+\fancyhead{} % Clears all page headers and footers
+\rhead{\thepage} % Sets the right side header to show the page number
+\lhead{} % Clears the left side page header
+
+\pagestyle{fancy} % Finally, use the "fancy" page style to implement the FancyHdr headers
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % New command to make the lines in the title page
+
+% PDF meta-data
+\hypersetup{pdftitle={\ttitle}}
+\hypersetup{pdfsubject=\subjectname}
+\hypersetup{pdfauthor=\authornames}
+\hypersetup{pdfkeywords=\keywordnames}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Personal Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\OMIT}[1]{} % Act as a ``comment'' anywhere in the text
+\newcommand{\jp}[1]{\textcolor{red}{{\bf [JP: #1]}}} % Add Specific comment (JP)
+\newcommand{\mm}[1]{\textcolor{red}{{\bf [MM: #1]}}} % Add Specific comment (Matahi)
+\newcommand{\fr}[1]{\textcolor{red}{{\bf [FR: #1]}}} % Add Specific comment (Fabien)
+\newcommand{\todo}[1]{\textcolor{red}{{\bf [To Do: #1]}}} % Add TO DO
+\newcommand{\finish}{\textcolor{red}{{\bf [TO FINISH]}}} % Add TO FINISH
+\newcommand{\addquote}{\textcolor{red}{{\bf [Missing Quote] }}} % Need to add a quote
+\newcommand{\addref}[1]{\textcolor{red}{{\bf [Reference from: #1] }}} % Need to add a quote
+\newcommand{\rewrite}{\textcolor{red}{{\em [Rewrite] }}} % Badly written need to rewrite
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\begin{center}
+
+\textsc{\LARGE \univname}\\[1.5cm] % University name
+\textsc{\Large Doctoral Thesis}\\[1.5cm] % Thesis type
+
+\HRule \\[0.4cm] % Horizontal line
+{\huge \bfseries \ttitle}\\[0.4cm] % Thesis title
+\HRule \\[1.5cm] % Horizontal line
+ 
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+\href{http://cbio.ensmp.fr/~nvaroquaux}{\authornames} % Author name - remove the \href bracket to remove the link
+\end{flushleft}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Supervisor:} \\
+\href{http://cbio.ensmp.fr/~jvert}{\supnameOne} \\ % Supervisor name - remove the \href bracket to remove the link  
+\end{flushright}
+\end{minipage}\\[3cm]
+ 
+\large \textit{A thesis submitted in fulfilment of the requirements\\ for the degree of \degreename}\\[0.3cm] % University requirement text
+\textit{in the}\\[0.4cm]
+\groupname\\\deptname\\[2cm] % Research group name and department name
+ 
+{\large \today}\\[4cm] % Date
+%\includegraphics{Logo} % University/department logo - uncomment to place it
+ 
+\vfill
+\end{center}
+
+\afterpage{\blankpage} % Blank page behind the cover
+
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	DECLARATION PAGE
+%	Your institution may give you a different text to place here
+%----------------------------------------------------------------------------------------
+
+% \Declaration{
+% 
+% \addtocontents{toc}{\vspace{1em}} % Add a gap in the Contents, for aesthetics
+% 
+% I, \authornames, declare that this thesis titled, '\ttitle' and the work presented in it are my own. I confirm that:
+% 
+% \begin{itemize} 
+% \item[\tiny{$\blacksquare$}] This work was done wholly or mainly while in candidature for a research degree at this University.
+% \item[\tiny{$\blacksquare$}] Where any part of this thesis has previously been submitted for a degree or any other qualification at this University or any other institution, this has been clearly stated.
+% \item[\tiny{$\blacksquare$}] Where I have consulted the published work of others, this is always clearly attributed.
+% \item[\tiny{$\blacksquare$}] Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
+% \item[\tiny{$\blacksquare$}] I have acknowledged all main sources of help.
+% \item[\tiny{$\blacksquare$}] Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.\\
+% \end{itemize}
+%  
+% Signed:\\
+% \rule[1em]{25em}{0.5pt} % This prints a line for the signature
+%  
+% Date:\\
+% \rule[1em]{25em}{0.5pt} % This prints a line to write the date
+% }
+% 
+% 
+% \clearpage % Start a new page
 
 
-%: ----------------------- generate cover page ------------------------
+%----------------------------------------------------------------------------------------
+%	QUOTATION PAGE
+%----------------------------------------------------------------------------------------
 
-\maketitle  % command to print the title page with above variables
-
-
-%: ----------------------- cover page back side ------------------------
-% Your research institution may require reviewer names, etc.
-% This cover back side is required by Dresden Med Fac; uncomment if needed.
-%
-%\newpage
-%\vspace{10mm}
-%1. Reviewer: Name
-%
-%\vspace{10mm}
-%2. Reviewer: 
-%
-%\vspace{20mm}
-%Day of the defense:
-%
-%\vspace{20mm}
-%\hspace{70mm}Signature from head of PhD committee:
+%% Add empty page
 
 
+\pagestyle{empty} % No headers or footers for the following pages
 
-%: ----------------------- abstract ------------------------
+\null\vfill % Add some space to move the quote down the page a bit
 
-% Your institution may have specific regulations if you need an abstract and where it is to be placed in the document. The default here is just after title.
+%\textit{``There are three kinds of lies: lies, damned lies, and statistics.''}
 
-\include{0_frontmatter/abstract}
+%\begin{flushright}
+%Mark Twain
+%\end{flushright}
 
-% The original template provides and abstractseparate environment, if your institution requires them to be separate. I think it's easier to print the abstract from the complete thesis by restricting printing to the relevant page.
-% \begin{abstractseparate}
-%   \input{Abstract/abstract}
-% \end{abstractseparate}
+\vfill\vfill\vfill\vfill\vfill\vfill\null % Add some space at the bottom to position the quote just right
 
+\afterpage{\blankpage} % Blank page
 
-%: ----------------------- tie in front matter ------------------------
-
-%\frontmatter
-\include{0_frontmatter/dedication}
-\include{0_frontmatter/acknowledgement}
+\clearpage % Start a new page
 
 
-%: ----------------------- contents ------------------------
+%\include{0_frontmatter/abstract}
+%\include{0_frontmatter/dedication}
+%\include{0_frontmatter/acknowledgement}
+%\include{0_frontmatter/glossary} 
 
-\setcounter{secnumdepth}{3} % organisational level that receives a numbers
-\setcounter{tocdepth}{3}    % print table of contents for level 3
-\tableofcontents            % print the table of contents
-% levels are: 0 - chapter, 1 - section, 2 - subsection, 3 - subsection
-
-
-%: ----------------------- list of figures/tables ------------------------
-
-%\listoffigures	% print list of figures
+\clearpage % Start a new page
 
 
-%: ----------------------- glossary ------------------------
+%----------------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%----------------------------------------------------------------------------------------
 
-% Tie in external source file for definitions: /0_frontmatter/glossary.tex
-% Glossary entries can also be defined in the main text. See glossary.tex
-%%%   Glossary is not supported by ShareLaTeX now, sorry!!!
-\include{0_frontmatter/glossary} 
-%
-%\begin{multicols}{2} % \begin{multicols}{#columns}[header text][space]
-%\begin{footnotesize} % scriptsize(7) < footnotesize(8) < small (9) < normal (10)
-%
-%\printnomenclature[1.5cm] % [] = distance between entry and description
-%\label{nom} % target name for links to glossary
-%
-%\end{footnotesize}
-%\end{multicols}
+\pagestyle{fancy} % The page style headers have been "empty" all this time, now use the "fancy" headers as defined before to bring them back
 
+\lhead{\emph{Contents}} % Set the left side page header to "Contents"
+\tableofcontents % Write out the Table of Contents
 
+\lhead{\emph{List of Figures}} % Set the left side page header to "List of Figures"
+\listoffigures % Write out the List of Figures
 
-%: --------------------------------------------------------------
-%:                  MAIN DOCUMENT SECTION
-% --------------------------------------------------------------
+\lhead{\emph{List of Tables}} % Set the left side page header to "List of Tables"
+\listoftables % Write out the List of Tables
 
-% the main text starts here with the introduction, 1st chapter,...
+%----------------------------------------------------------------------------------------
+%	ABBREVIATIONS
+%----------------------------------------------------------------------------------------
+
+\clearpage % Start a new page
+
+\setstretch{1.5} % Set the line spacing to 1.5, this makes the following tables easier to read
+
+% \lhead{\emph{Abbreviations}} % Set the left side page header to "Abbreviations"
+%\listofsymbols{ll} % Include a list of Abbreviations (a table of two columns)
+%{
+%\textbf{LAH} & \textbf{L}ist \textbf{A}bbreviations \textbf{H}ere \\
+%\textbf{Acronym} & \textbf{W}hat (it) \textbf{S}tands \textbf{F}or \\
+%}
+
+% %----------------------------------------------------------------------------------------
+% %	PHYSICAL CONSTANTS/OTHER DEFINITIONS
+% %----------------------------------------------------------------------------------------
+% 
+% \clearpage % Start a new page
+% 
+% \lhead{\emph{Physical Constants}} % Set the left side page header to "Physical Constants"
+% 
+% \listofconstants{lrcl} % Include a list of Physical Constants (a four column table)
+% {
+% Speed of Light & $c$ & $=$ & $2.997\ 924\ 58\times10^{8}\ \mbox{ms}^{-\mbox{s}}$ (exact)\\
+% % Constant Name & Symbol & = & Constant Value (with units) \\
+% }
+% 
+% %----------------------------------------------------------------------------------------
+% %	SYMBOLS
+% %----------------------------------------------------------------------------------------
+% 
+% \clearpage % Start a new page
+% 
+% \lhead{\emph{Symbols}} % Set the left side page header to "Symbols"
+% 
+% \listofnomenclature{lll} % Include a list of Symbols (a three column table)
+% {
+% $a$ & distance & m \\
+% $P$ & power & W (Js$^{-1}$) \\
+% % Symbol & Name & Unit \\
+% 
+% & & \\ % Gap to separate the Roman symbols from the Greek
+% 
+% $\omega$ & angular frequency & rads$^{-1}$ \\
+% % Symbol & Name & Unit \\
+% }
+
+%----------------------------------------------------------------------------------------
+%	DEDICATION
+%----------------------------------------------------------------------------------------
+
+\setstretch{1.3} % Return the line spacing back to 1.3
+
+\pagestyle{empty} % Page style needs to be empty for this page
+
+% \dedicatory{For/Dedicated to/To my Family} % Dedication text
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - CHAPTERS
+%----------------------------------------------------------------------------------------
+
+\mainmatter % Begin numeric (1,2,3...) page numbering
+
+\pagestyle{fancy} % Return the page headers back to the "fancy" style
+
+% Include the chapters of the thesis as separate files from the Chapters folder
+% Uncomment the lines as you write the chapters
+
 \mainmatter
 
 \renewcommand{\chaptername}{} % uncomment to print only "1" not "Chapter 1"
@@ -202,59 +302,51 @@
 
 \include{4_centurion/chapter4}        
 
-\include{8_software/chapter8}        
-
-% --------------------------------------------------------------
-%:                  BACK MATTER: appendices, refs,..
-% --------------------------------------------------------------
-
-% the back matter: appendix and references close the thesis
+\include{5_perspectives/perspectives}
 
 
-%: ----------------------- bibliography ------------------------
+%\include{8_centurion_supplementaries/supp}
 
-% The section below defines how references are listed and formatted
-% The default below is 2 columns, small font, complete author names.
-% Entries are also linked back to the page number in the text and to external URL if provided in the BibTex file.
 
-% PhDbiblio-url2 = names small caps, title bold & hyperlinked, link to page 
-\begin{multicols}{2} % \begin{multicols}{ # columns}[ header text][ space]
-\begin{tiny} % tiny(5) < scriptsize(7) < footnotesize(8) < small (9)
+%
+\afterpage{\blankpage} % Blank page if needed so that each chapter starts on the right side
 
-%\bibliographystyle{Latex/Classes/PhDbiblio-url2} % Title is link if provided
-\renewcommand{\bibname}{References} % changes the header; default: Bibliography
+%----------------------------------------------------------------------------------------
+%	THESIS CONTENT - APPENDICES
+%----------------------------------------------------------------------------------------
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\appendix % Cue to tell LaTeX that the following 'chapters' are Appendices
+
+% Include the appendices of the thesis as separate files from the Appendices folder
+% Uncomment the lines as you write the Appendices
+
+%\input{Appendices/AppendixA}
+%\input{Appendices/AppendixB}
+%\input{Appendices/AppendixC}
+
+\addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
+
+\backmatter
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\label{Bibliography}
+
+\lhead{\emph{Bibliography}} % Change the page header to say "Bibliography"
+
+%\bibliographystyle{unsrtnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
+%\bibliographystyle{apalike} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 
 \bibliographystyle{plainnat}
-\bibliography{refs} 
 
-\end{tiny}
-\end{multicols}
+\bibliography{refs} % The references (bibliography) information are stored in the file named "Bibliography.bib"
 
-% --------------------------------------------------------------
-% Various bibliography styles exit. Replace above style as desired.
-
-% in-text refs: (1) (1; 2)
-% ref list: alphabetical; author(s) in small caps; initials last name; page(s)
-%\bibliographystyle{Latex/Classes/PhDbiblio-case} % title forced lower case
-%\bibliographystyle{Latex/Classes/PhDbiblio-bold} % title as in bibtex but bold
-%\bibliographystyle{Latex/Classes/PhDbiblio-url} % bold + www link if provided
-
-%\bibliographystyle{Latex/Classes/jmb} % calls style file jmb.bst
-% in-text refs: author (year) without brackets
-% ref list: alphabetical; author(s) in normal font; last name, initials; page(s)
-
-% in-text refs: author (year) without brackets
-% (this works with package natbib)
+%%%% ALSO VERIFY THAT THE LAST COVER IS ON THE RIGHT SIDE  !!!
+% \afterpage{\blankpage}
 
 
-% --------------------------------------------------------------
-
-% according to Dresden med fac summary has to be at the end
-%\include{0_frontmatter/abstract}
-
-%: Declaration of originality
-%\include{9_backmatter/declaration}
-
-
-
-\end{document}
+\end{document}  
