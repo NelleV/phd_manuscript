@@ -6,14 +6,41 @@ Accurate identification of centromere locations in yeast genomes using Hi-C}
 \graphicspath{{4_centurion/figures/}}
 
 
+% Résumé en francais
+
+Les centromères sont essentiels pour une segrégation correcte des
+chromosomes. Malgré d'énormes efforts de recherche, la position des
+centromères chez la levure demeure difficile à inférer, et est inconnue pour
+la pluparts des espèces. Récemment, le protocol de capture de conformation des
+chromosome, Hi-C, a été utilisé pour diverses applications (séquençage
+\textit{de novo} de génome, deconvolution d'échantillon métagénomique, et
+inférence de la position des centromères chez la levure). Nous décrivons ici
+une méthode, nommée Centurion, permettant l'inférence jointe de la position de
+tous les centromères dans un génome à partir de données Hi-C en exploitant la
+tendance qu'ont les centromères de colocalizer dans le noyau. Nous démontrons
+dans un premier temps la précision de Centurion en identifiant les centromères
+dans des données Hi-C à haute couverture chez la levure de boulanger
+\textit{S. cerevisiae} et le parasite responsable de la malaria \textit{P.
+falciparum}. Nous utilisons ensuite Centurion pour prédire la position des
+centromeres dans 14 autres espèces de levure. Parmi tous les organismes que
+nous étudions, Centurion prédit 89\% de centromeres à moins de 5~kb de leur
+position. Nous démontrons par ailleurs la robustess de notre approach dans des
+jeux de données à faible couverture. Finallement, nous prédisons les
+coordonées de centromeres dans 6 espèces qui n'ont pour l'instant aucune
+annotation. Ces résultats montrent que Centurion peut être utilisé pour
+l'identification de centromères pour différentes espèces de levures, ainsi que
+d'autre organisme.
+
+% Abstract
+
 Centromeres are essential for proper chromosome segregation. Despite extensive
 research, centromere locations in yeast genomes remain difficult to infer, and
 in most species they are still unknown. Recently, the chromatin conformation
 capture assay, Hi-C, has been re-purposed for diverse applications, including
-\textit{de novo} genome assembly, deconvolution of metagenomic samples, and inference
-of centromere locations. We describe a method, Centurion, that jointly infers
-the locations of all centromeres in a single genome from Hi-C data by
-exploiting the centromeres' tendency to cluster in 3D space. We first
+\textit{de novo} genome assembly, deconvolution of metagenomic samples, and
+inference of centromere locations. We describe a method, Centurion, that
+jointly infers the locations of all centromeres in a single genome from Hi-C
+data by exploiting the centromeres' tendency to cluster in 3D space. We first
 demonstrate the accuracy of Centurion in identifying known centromere
 locations from high coverage Hi-C data of budding yeast and a human malaria
 parasite. We then use Centurion to infer centromere locations in 14 yeast
@@ -28,8 +55,8 @@ microorganisms.
 \section{Introduction}
 
 Centromeres are chromosomal regions whose function enables faithful chromosome
-segregation via formation of the kinetochore \cite{Bloom:centromeric}. These
-elements are also key regulators of genome stability \cite{Feng:centromere}
+segregation via formation of the kinetochore \citep{Bloom:centromeric}. These
+elements are also key regulators of genome stability \citep{Feng:centromere}
 and replication timing \citep{koren:epigenetically, pohl:functional}. In
 animal and plant genomes, centromeres are large heterochromatic zones, but
 many yeast species have {\em point centromeres}, which are sequence
@@ -87,13 +114,13 @@ In yeasts, centromeres are tethered by microtubules to the spindle
 pole body, leading to centromere clustering \citep{mizuguchi:cohesin}.
 Similar clustering is also present in other organisms, such as the
 parasite \textit{Plasmodium falciparum} and the plant
-\textit{Arabidopsis thaliana} \cite{ay:three-dimensional,
+\textit{Arabidopsis thaliana} \citep{ay:three-dimensional,
   feng:genome-wide}.
 The clustering of elements creates a
 distinct peak of interactions between chromosomes in the \textit{trans} Hi-C
 matrix, and an X-shape in the \textit{cis}-elements of the inter-chromosomal
 contact counts pearson correlation matrix.
-Marie-Nelly \textit{et al. }~\cite{marie-nelly:filling} exploit this
+\citet{marie-nelly:filling} exploit this
 X-shape structure in \textit{trans} contact counts correlation
 matrices to first detect a 40~kb window containing each centromere.
 In a subsequent step,
@@ -161,8 +188,8 @@ novo} centromere calls.
 
 \subsection{Single organism Hi-C data}
 We use Hi-C data gathered in two previous studies: an asynchronous budding yeast
-(\textit{S. cerevisiae}) sample \cite{duan:three} and three different stages of
-the human malaria parasite \textit{P. falciparum} \cite{ay:three-dimensional}.
+(\textit{S. cerevisiae}) sample \citep{duan:three} and three different stages of
+the human malaria parasite \textit{P. falciparum} \citep{ay:three-dimensional}.
 For the budding yeast Hi-C data we download and use the files HindIII + MspI
 (intra and inter)
 from \url{http://noble.gs.washington.edu/proj/yeast-architecture/sup.html}.
@@ -189,7 +216,7 @@ which cannot be uniquely assigned to a single organism, thereby reducing contami
 between contact maps. Second, because of the longer read lengths
 for the metagenomic libraries compared to single organisms (80--101~bp versus 20--50~bp), we
 post-process the non-mapped reads that contain a cleavage site for the restriction enzyme
-used for the library generation, as previously described \cite{ay:identifying}. This post-processing
+used for the library generation, as previously described \citep{ay:identifying}. This post-processing
 increases the number of informative contacts extracted from the metagenomic Hi-C libraries by
 5-15\% depending on the read length and the cleavage site frequency. The resulting set of
 informative contacts are processed further at appropriate resolution, as described below.
@@ -214,7 +241,7 @@ centromere-containing scaffolds could not be merged.
 \subsection{Data normalization}
 
 Hi-C contact counts are subjected to many biases (GC-content, mappability,
-etc) \cite{yaffe:probabilistic}. To correct for technical biases, we apply 
+etc) \citep{yaffe:probabilistic}. To correct for technical biases, we apply 
 to the raw contact counts an iterative correction and eigenvector decomposition
 (ICE) method proposed by Imakaev \textit{et al}.~\cite{imakaev:iterative},
 based on the assumption
@@ -375,7 +402,7 @@ the 16 different chromosomes. While our predictions were within 1~kb of the
 known centromere coordinates for the chromosomes V, VI, IX, XIII and XV
 (respectively, 59~bp, 235~bp, 111~bp, 289~bp and 163~bp away), they were more
 than 5~kb away for chromosomes III, VII and XII (respectively, 5011~bp, 5327~bp
-and 6457~bp away).  
+and 6457~bp away).
 While the cause of this fluctuation of accuracy is not yet known,
 chromosomes III and XII house the only major blocks of heterochromatin
 in this genome other than telomeres
@@ -384,7 +411,7 @@ respectively), suggesting that linked heterochromatinized loci may interfere
 with accurate centromere prediction.
 
 We then applied our method to a second species, the malaria parasite
-\textit{P. falciparum}, which is responsible for the most virulent 
+\textit{P. falciparum}, which is responsible for the most virulent
 form of malaria \citep{who:malaria}. We recently used Hi-C to provide a global
 picture of the genome architecture of \textit{P. falciparum} at three stages
 (ring, schizont and trophozoite) throughout its erythrocytic life cycle in
@@ -619,7 +646,7 @@ enables more precise centromere calls at fine scales.
 
 While centromeres are a fundamental element in the biology of genomes, their
 identification in diverse species has proven difficult due to sequence
-divergence and limitations of available tools.  In this work, we have
+divergence and limitations of available tools. In this work, we have
 developed a novel method, Centurion, that uses centromere colocalization and
 the pattern it creates in Hi-C contact maps to jointly call centromeres for
 all chromosomes of an organism.

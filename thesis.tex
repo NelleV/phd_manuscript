@@ -37,9 +37,12 @@
 \usepackage[]{algorithm2e} % for algorithm environment
 \usepackage{amsmath}
 \usepackage{multirow}
+\usepackage{siunitx}
+\usepackage{grffile}
+\usepackage[toc,page]{appendix}
 \newtheorem{problem}{Problem}
 
-\usepackage[square, comma, numbers, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
+\usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
 \usepackage{graphicx}
 \hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
 \title{\ttitle} % Defines the thesis title - don't touch this
@@ -84,9 +87,6 @@
 % Personal Commands
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\OMIT}[1]{} % Act as a ``comment'' anywhere in the text
-\newcommand{\jp}[1]{\textcolor{red}{{\bf [JP: #1]}}} % Add Specific comment (JP)
-\newcommand{\mm}[1]{\textcolor{red}{{\bf [MM: #1]}}} % Add Specific comment (Matahi)
-\newcommand{\fr}[1]{\textcolor{red}{{\bf [FR: #1]}}} % Add Specific comment (Fabien)
 \newcommand{\todo}[1]{\textcolor{red}{{\bf [To Do: #1]}}} % Add TO DO
 \newcommand{\finish}{\textcolor{red}{{\bf [TO FINISH]}}} % Add TO FINISH
 \newcommand{\addquote}{\textcolor{red}{{\bf [Missing Quote] }}} % Need to add a quote
@@ -191,7 +191,7 @@
 
 %\include{0_frontmatter/abstract}
 %\include{0_frontmatter/dedication}
-%\include{0_frontmatter/acknowledgement}
+\include{0_frontmatter/acknowledgement}
 %\include{0_frontmatter/glossary} 
 
 \clearpage % Start a new page
@@ -305,9 +305,6 @@
 \include{5_perspectives/perspectives}
 
 
-%\include{8_centurion_supplementaries/supp}
-
-
 %
 \afterpage{\blankpage} % Blank page if needed so that each chapter starts on the right side
 
@@ -322,9 +319,7 @@
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-%\input{Appendices/AppendixA}
-%\input{Appendices/AppendixB}
-%\input{Appendices/AppendixC}
+\include{8_centurion_supplementaries/supp}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
@@ -340,7 +335,6 @@
 
 %\bibliographystyle{unsrtnat} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
 %\bibliographystyle{apalike} % Use the "unsrtnat" BibTeX style for formatting the Bibliography
-
 \bibliographystyle{plainnat}
 
 \bibliography{refs} % The references (bibliography) information are stored in the file named "Bibliography.bib"
