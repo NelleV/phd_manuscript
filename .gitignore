@@ -1,0 +1,14 @@
+*.pdf
+*.lof
+*.lot
+*.nlo
+*.aux
+*.log
+*.brf
+*.blg
+*.out
+*.bbl
+*.toc
+*.swp
+*.swo
+*.*~
