@@ -26,25 +26,26 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[11pt, oneside]{Thesis} % The default font size and one-sided printing (no margin offsets)
+\documentclass[11pt, oneside, chapterprefix=True]{Thesis} % The default font size and one-sided printing (no margin offsets)
 % oneside : better for pdf reading
 % twoside : better if printed in book format
 
 \graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
 
 \usepackage[utf8]{inputenc} % For French accents
-\usepackage{cite} % for multiple quotes
 \usepackage[]{algorithm2e} % for algorithm environment
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{multirow}
 \usepackage{siunitx}
 \usepackage{grffile}
+\usepackage{changepage}
 \usepackage[toc,page]{appendix}
 \newtheorem{problem}{Problem}
 
 \usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
 \usepackage{graphicx}
-\hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
+\hypersetup{urlcolor=black, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
 \title{\ttitle} % Defines the thesis title - don't touch this
 \usepackage{afterpage} %% To add blank pages
 
@@ -53,8 +54,52 @@
 \newcommand{\Dcal}{\mathcal{D}}
 \newcommand {\br}[1]{\left(#1\right)}
 
+\renewcommand*{\thesection}{\S\enspace\arabic{section}}
 
+\newcommand\abstractname{Abstract}
 
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1.2ex \hfill \kern \z@}
+\def\@makechapterhead#1{
+  \vspace*{10\p@}%
+  {\parindent \z@ \centering \reset@font
+        \thickhrulefill\quad 
+        \scshape\bfseries\textit{\@chapapp{}  \thechapter}  
+        \quad \thickhrulefill
+        \par\nobreak
+        \vspace*{10\p@}%
+        \interlinepenalty\@M
+        \hrule
+        \vspace*{10\p@}%
+        \Huge \bfseries #1 \par\nobreak
+        \par
+        \vspace*{10\p@}%
+        \hrule
+        \vskip 100\p@
+  }}
+
+\newenvironment{work}{
+\small \em}{\vskip 80\p@}
+
+\def\thinhrulefill{\leavevmode \leaders \hrule height .2ex \hfill \kern \z@}
+
+\renewenvironment{abstract}[1]{
+\vspace*{10\p@}%
+{\parindent \z@ \centering \reset@font
+  \thinhrulefill\quad 
+  \scshape\bfseries\textit{#1}
+  \quad \thinhrulefill
+  \par\nobreak
+  \vspace*{10\p@}%
+  \interlinepenalty\@M}
+\small
+\setstretch{1.5}
+\begin{adjustwidth}{3em}{3em}
+}{
+\end{adjustwidth}
+\vspace{1em}
+\vskip 80\p@
+}
 
 \begin{document}
 
@@ -212,6 +257,10 @@
 \lhead{\emph{List of Tables}} % Set the left side page header to "List of Tables"
 \listoftables % Write out the List of Tables
 
+\fancyhead{}
+\lhead{\leftmark}
+\rhead{\thepage}
+
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS
 %----------------------------------------------------------------------------------------
@@ -286,7 +335,7 @@
 
 \mainmatter
 
-\renewcommand{\chaptername}{} % uncomment to print only "1" not "Chapter 1"
+%\renewcommand{\chaptername}{} % uncomment to print only "1" not "Chapter 1"
 
 
 %: ----------------------- subdocuments ------------------------

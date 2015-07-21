@@ -1,38 +1,49 @@
 % this file is called up by thesis.tex
 % content in this file will be fed into the main document
 
-\chapter{
+\chapter[Identification of centromere locations using Hi-C]{
 Accurate identification of centromere locations in yeast genomes using Hi-C}
 \graphicspath{{4_centurion/figures/}}
 
+\begin{work}
+
+This chapter has been published in a slightly modified form in
+\citep{varoquaux:accurate}, as joint work with Ivan Liachko, Josh Burton,
+Ferhat Ay, Jay Shendure, Maitreya Dunham, Jean-Philippe Vert and Bill Noble.
+
+\end{work}
 
 % Résumé en francais
 
-Les centromères sont essentiels pour une segrégation correcte des
-chromosomes. Malgré d'énormes efforts de recherche, la position des
-centromères chez la levure demeure difficile à inférer, et est inconnue pour
-la pluparts des espèces. Récemment, le protocol de capture de conformation des
-chromosome, Hi-C, a été utilisé pour diverses applications (séquençage
-\textit{de novo} de génome, deconvolution d'échantillon métagénomique, et
-inférence de la position des centromères chez la levure). Nous décrivons ici
-une méthode, nommée Centurion, permettant l'inférence jointe de la position de
-tous les centromères dans un génome à partir de données Hi-C en exploitant la
-tendance qu'ont les centromères de colocalizer dans le noyau. Nous démontrons
-dans un premier temps la précision de Centurion en identifiant les centromères
-dans des données Hi-C à haute couverture chez la levure de boulanger
-\textit{S. cerevisiae} et le parasite responsable de la malaria \textit{P.
-falciparum}. Nous utilisons ensuite Centurion pour prédire la position des
-centromeres dans 14 autres espèces de levure. Parmi tous les organismes que
-nous étudions, Centurion prédit 89\% de centromeres à moins de 5~kb de leur
-position. Nous démontrons par ailleurs la robustess de notre approach dans des
-jeux de données à faible couverture. Finallement, nous prédisons les
-coordonées de centromeres dans 6 espèces qui n'ont pour l'instant aucune
-annotation. Ces résultats montrent que Centurion peut être utilisé pour
-l'identification de centromères pour différentes espèces de levures, ainsi que
-d'autre organisme.
+\begin{abstract}{Résumé}
 
+Les centromères sont indispensables pour une segrégation correcte des
+chromosomes lors de la mitose. Malgré d'énormes efforts de recherche, la
+position des centromères chez la levure reste de nos jours difficile à
+inférer, et est inconnue pour la pluparts des espèces. Récemment, le protocol
+de capture de conformation des chromosome, Hi-C, a été reciblé pour diverses
+applications: séquençage \textit{de novo} de génome, deconvolution
+d'échantillon métagénomique, et inférence de la position des centromères chez
+la levure. Nous décrivons ici une méthode, nommée Centurion, permettant
+l'inférence jointe de la position de tous les centromères dans un génome à
+partir de données Hi-C en exploitant la propriété qu'ont les centromères à
+colocalizer dans le noyau de certains organismes. Nous démontrons dans un
+premier temps la précision de Centurion en identifiant les centromères dans
+des données Hi-C à haute couverture chez la levure de boulanger \textit{S.
+cerevisiae} et le parasite responsable de la malaria \textit{P. falciparum}.
+Nous utilisons ensuite Centurion pour prédire la position des centromères dans
+14 autres espèces de levure. Parmi tous les organismes que nous étudions,
+Centurion prédit 89\% de centromeres à moins de 5~kb de leur position. Nous
+démontrons par ailleurs la robustess de notre approach dans des jeux de
+données à faible couverture. Finallement, nous prédisons les coordonées de
+centromeres dans 6 espèces qui n'ont pour l'instant aucune annotation. Ces
+résultats montrent que Centurion peut être utilisé pour l'identification de
+centromères pour différentes espèces de levures, ainsi que d'autres organismes.
+
+\end{abstract}
 % Abstract
 
+\begin{abstract}{Abstract}
 Centromeres are essential for proper chromosome segregation. Despite extensive
 research, centromere locations in yeast genomes remain difficult to infer, and
 in most species they are still unknown. Recently, the chromatin conformation
@@ -51,6 +62,7 @@ predict centromere coordinates for six yeast species that currently lack
 centromere annotations. These results show that Centurion can be used for
 centromere identification for diverse species of yeast and possibly other
 microorganisms.
+\end{abstract}
 
 \section{Introduction}
 
