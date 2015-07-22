@@ -17,28 +17,31 @@ Ferhat Ay, Jay Shendure, Maitreya Dunham, Jean-Philippe Vert and Bill Noble.
 
 \begin{abstract}{Résumé}
 
-Les centromères sont indispensables pour une segrégation correcte des
-chromosomes lors de la mitose. Malgré d'énormes efforts de recherche, la
-position des centromères chez la levure reste de nos jours difficile à
-inférer, et est inconnue pour la pluparts des espèces. Récemment, le protocol
-de capture de conformation des chromosome, Hi-C, a été reciblé pour diverses
-applications: séquençage \textit{de novo} de génome, deconvolution
-d'échantillon métagénomique, et inférence de la position des centromères chez
-la levure. Nous décrivons ici une méthode, nommée Centurion, permettant
-l'inférence jointe de la position de tous les centromères dans un génome à
-partir de données Hi-C en exploitant la propriété qu'ont les centromères à
-colocalizer dans le noyau de certains organismes. Nous démontrons dans un
-premier temps la précision de Centurion en identifiant les centromères dans
-des données Hi-C à haute couverture chez la levure de boulanger \textit{S.
-cerevisiae} et le parasite responsable de la malaria \textit{P. falciparum}.
-Nous utilisons ensuite Centurion pour prédire la position des centromères dans
-14 autres espèces de levure. Parmi tous les organismes que nous étudions,
-Centurion prédit 89\% de centromeres à moins de 5~kb de leur position. Nous
-démontrons par ailleurs la robustess de notre approach dans des jeux de
-données à faible couverture. Finallement, nous prédisons les coordonées de
-centromeres dans 6 espèces qui n'ont pour l'instant aucune annotation. Ces
+Les centromères sont des élèments génomiques permettant une une segrégation
+correcte des chromosomes lors de la division cellulaire. Malgré leur
+importance dans le développement de la cellule et l'important effort de
+recherche qui leur ait dédié, la position des centromères chez la levure est
+souvent, même de nos jours, difficile à inférer, et est inconnue chez la
+pluparts des espèces. Récemment, le protocol de capture de conformation des
+chromosome Hi-C a été reciblé pour diverses applications: séquençage
+\textit{de novo} de génome, deconvolution d'échantillon métagénomique, et
+inférence de la position des centromères chez la levure. Nous décrivons ici
+une méthode, nommée Centurion, permettant l'inférence jointe de la position de
+tous les centromères dans un génome à partir de données Hi-C en exploitant la
+propriété qu'ont les centromères à colocalizer dans le noyau de certains
+organismes. Nous démontrons dans un premier temps la précision de notre
+algorithme, en identifiant les centromères dans des données Hi-C à haute
+couverture chez la levure de boulanger \textit{S. cerevisiae} et le parasite
+responsable de la malaria \textit{P. falciparum}. Nous utilisons ensuite
+Centurion pour prédire la position des centromères dans 14 autres espèces de
+levure d'un échantillon métagénomique. Parmi tous les organismes que nous
+étudions, Centurion prédit 89\% de centromeres à moins de 5~kb de leur
+position. Nous démontrons par ailleurs la robustesse de notre approche sur des
+jeux de données à faible couverture. Finalement, nous inférons la position
+des centromeres dans 6 espèces qui n'ont pour l'instant aucune annotation. Ces
 résultats montrent que Centurion peut être utilisé pour l'identification de
-centromères pour différentes espèces de levures, ainsi que d'autres organismes.
+centromères pour différentes espèces de levures, ainsi que d'autres
+organismes.
 
 \end{abstract}
 % Abstract
@@ -372,8 +375,8 @@ maps at 40~kb resolution.
 overlaid with Centurion's centromere calls (dashed black line) and ground
 truth (red line) for chr 2, 3, 4 and 12.
 \textbf{D.} Average errors of centromere calls for Centurion (black) and
-Marie-Nelly \textit{et al}.~\cite{marie-nelly:filling} method for \textit{S. cerevisiae} data from
-Duan \textit{et al}.~\cite{duan:genome-wide} and the three stages of \textit{P. falciparum} when
+\citet{marie-nelly:filling} method for \textit{S. cerevisiae} data from
+\citet{duan:genome-wide} and the three stages of \textit{P. falciparum} when
 both methods are initialized with the ground truth centromere coordinates.
 }
 \label{fig:high_resolution_results}
@@ -431,7 +434,7 @@ human blood \citep{ay:three-dimensional}. Centromere coordinates for
 \textit{P. falciparum} were only identified systematically relatively recently
 \citep{hoeijmakers:plasmodium}. We applied Centurion to the contact maps of
 each of these three stages at 10~kb, 20~kb and 40~kb resolutions
-(Supplementary Fig.~3).
+(Appendix Fig~\ref{suppfig:error_diff_res_pf}).
 As with \textit{S. cerevisiae}, we observe some
 variation in the accuracies of our predictions for each chromosome. However,
 overall, the accuracy is very high. At 10~kb resolution, for example,
@@ -454,7 +457,7 @@ centromere is close to a locus with few interacting bins. The latter case
 leads to bias from the normalization procedure because the few nonzero entries
 in this sparse region are over-corrected. We also investigated whether the
 accuracy of our prediction varies by life cycle stage and matrix resolution
-(Supplementary Fig.~1). Many chromosomes are given
+(Appendix Fig~\ref{suppfig:raw_vs_normed_pf}). Many chromosomes are given
 consistently poor centromere calls across all life cycle stages and at all
 resolutions, corroborating the observations above that the predictions tend to
 be influenced by biases intrinsic to the genome around those centromeres, such
@@ -475,16 +478,16 @@ chromosomes at once, might alleviate this instability. To test this
 hypothesis, we applied the Marie-Nelly \textit{et al}.\
 method to the same four
 datasets (one \textit{S. cerevisiae} and three \textit{P. falciparum})
-described above. As shown in Supplementary
-Figure~4, in each of these four
+described above. As shown in Appendix 
+Figure~\ref{suppfig:marie_nelly_vs_us_HR}, in each of these four
 datasets Centurion identifies centromeres with better accuracy than the
 Marie-Nelly \textit{et al}.\ method.
 For instance, the colocalization of rDNA
 clusters and virulence genes in \textit{P. falciparum} drastically changes the pattern
 of the correlation matrix used by Marie-Nelly
 \textit{et al}.\ to pre-localize
-their centromere calls, thus confounding their prediction (Supplementary
-Fig.~5).
+their centromere calls, thus confounding their prediction (Appendix
+Fig.~\ref{suppfig:pearson_corr_pf}).
 
 We also asked whether the improvement of Centurion over
 Marie-Nelly \textit{et al}.\ method is due to the
@@ -517,17 +520,17 @@ These bootstrapped samples were obtained by drawing a contact count for each
 pair of loci i and j from a Poisson distribution of intensity $c_{ij}$. We
 then ran the optimization process on the bootstrapped data sets, starting with
 initial values randomly placed within 40 kb of the centromere calls from our
-optimization in Supplementary Tables~1,
-2, 3 and
-4. Our results show that the optimization is
+optimization in Appendix Tables~\ref{supptable:sc_results},
+\ref{supptable:rings_results}, \ref{supptable:trophs_results} and
+\ref{supptable:schizonts_results}. Our results show that the optimization is
 very stable (average variance of 25~bp for ring, 6~bp for schizont and 12~bp
 for trophozoite), suggesting that the stochastic sampling of the sequencing
 procedure does not significantly affect centromere predictions.
 
 We then sought to investigate the extent to which the matrix resolution and
 sequencing depth affect the accuracy of Centurion's predictions. As already
-seen in Supplementary Figures~2 and
-3, different species give different
+seen in Appendix Figures~\ref{suppfig:error_diff_res_sc} and
+\ref{suppfig:error_diff_res_pf}, different species give different
 results: for \textit{S. cerevisiae}, increasing the matrix resolution to 10~kb
 results in lowered accuracy of centromere calls, while in \textit{P.
 falciparum} the call quality improves slightly. We speculated that our ability
@@ -579,37 +582,41 @@ one more (\textit{S. bayanus}) \citep{scannell:awesome, souciet:comparative,
 mcdowall:pombase, dujon:genome}.
 
 We aligned the reads from the metagenomic Hi-C datasets to these yeast
-species' reference genomes (see Methods). The quality of the individual
-species datasets differ greatly because the organisms vary in abundance in the
-metagenomic samples, and because many sequences are shared nearly identically
-between organisms, making the number of uniquely mappable reads for each
-organism range between 109~k for one of the \textit{S. cerevisiae} strains to
-26~M for the bacteria \textit{V. fischeri}. Consequently, the sparsity of the
-matrices is variable (Supp Tables~5 and
-6). Furthermore, some contact counts matrices include at
-least one interaction count for more than 99\% of all possible locus pairs,
-whereas other matrices are below 5\%. Similarly, in the 40~kb matrices, the
-average number of interchromosomal contact counts per bin varies from less
-than 0.004 to more than 200. In particular, the matrices for the four
-\textit{S. cerevisiae} strains are very sparse: the reference genomes of the
-four strains are very similar to one another; thus, we are not able to map
-reads uniquely. We therefore discarded those strains from our analysis, as
-well as organisms with incomplete reference genomes. We applied Centurion to
-the remaining 14 yeasts (\textit{E. gossypii}, \textit{K. lactis}, \textit{K.
-wickerhamii}, \textit{L. kluyveri}, \textit{L. waltii}, \textit{S. bayanus},
-\textit{S. kudriavzevii}, \textit{S. mikatae}, \textit{S. paradoxus},
-\textit{S. stipitis}, \textit{P. pastoris}, \textit{L. thermotolerans},
-\textit{S. pombe}, \textit{S. rouxii}) on both 20~kb and 40~kb contact maps.
+species' reference genomes (see Appendix~\ref{suppnotes:initialization}). The
+quality of the individual species datasets differ greatly because the
+organisms vary in abundance in the metagenomic samples, and because many
+sequences are shared nearly identically between organisms, making the number
+of uniquely mappable reads for each organism range between 109~k for one of
+the \textit{S. cerevisiae} strains to 26~M for the bacteria \textit{V.
+fischeri}. Consequently, the sparsity of the matrices is variable (Appendix
+Tables~\ref{supptable:m2_qc} and \ref{supptable:my_qc}). Furthermore,
+some contact counts matrices include at least
+one interaction count for more than 99\% of all possible locus pairs, whereas
+other matrices are below 5\%. Similarly, in the 40~kb matrices, the average
+number of interchromosomal contact counts per bin varies from less than 0.004
+to more than 200. In particular, the matrices for the four \textit{S.
+cerevisiae} strains are very sparse: the reference genomes of the four strains
+are very similar to one another; thus, we are not able to map reads uniquely.
+We therefore discarded those strains from our analysis, as well as organisms
+with incomplete reference genomes. We applied Centurion to the remaining 14
+yeasts (\textit{E. gossypii}, \textit{K. lactis}, \textit{K. wickerhamii},
+\textit{L. kluyveri}, \textit{L. waltii}, \textit{S. bayanus}, \textit{S.
+kudriavzevii}, \textit{S. mikatae}, \textit{S. paradoxus}, \textit{S.
+stipitis}, \textit{P. pastoris}, \textit{L. thermotolerans}, \textit{S.
+pombe}, \textit{S. rouxii}) on both 20~kb and 40~kb contact maps.
 
 Across these 14 species Centurion performs well, both on high-coverage
 datasets (\textit{K. lactis}, \textit{L. kluyveri}, \textit{S. bayanus}) and
 low-coverage datasets (\textit{S. mikatae}), at 20~kb and 40~kb, finding
 centromeres at an average deviation from the ground truth of 10~kbp
-(Figure~\ref{fig:metagenomic_results}B and Supplementary Figure~6).
+(Figure~\ref{fig:metagenomic_results}B and Appendix
+Figure~\ref{suppfig:metagenomic_sample_40}).
 Given this success with yeasts with
 known centromere positions, we next made \textit{de novo} centromere calls for the
 other 6 yeast species present in the metagenomic samples. These regions,
-visualized in Supplementary Figures~15--20, are strong candidates for
+visualized in Appendix Figures~\ref{suppfig:KL_calls}, \ref{suppfig:LK_calls},
+\ref{suppfig:SB_calls}, \ref{suppfig:SM_calls}, \ref{suppfig:SK_calls},
+\ref{suppfig:LT_calls}, \ref{suppfig:zP_calls}, \ref{suppfig:ZR_calls}, are strong candidates for
 experimental validation by other approaches. One feature that is shared by
 centromeres across all studied fungi is that they reside in regions of early
 replication timing \citep{koren:epigenetically, pohl:functional}. Thus if our
@@ -620,7 +627,7 @@ our predictions. Accordingly, we
 overlaid the positions of our centromere calls in \textit{P. pastoris}, where
 replication has been recently profiled \citep{liachko:gc-rich}. In all four
 chromosomes, \textit{P.\ pastoris} centromere predictions lay in regions of
-early replication timing (Supplementary Fig.~21),
+early replication timing (Appendix Fig.~\ref{suppfig:ppas_timing}),
 lending support to our predictions.
 
 \subsection{The effect of the choice of restriction enzyme}
