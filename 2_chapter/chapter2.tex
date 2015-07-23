@@ -3,11 +3,62 @@
 
 
 
-\chapter{A statistical approach for inferring the 3D structure of the genome} % top level followed by section, subsection
+\chapter[Inferring the 3D structure of the genome]{A statistical approach for inferring the 3D structure of the genome}
 \graphicspath{{2_chapter/figures/}}
 
+\begin{work}
 
-\section{Motivation:} Recent technological advances allow the
+This chapter has been published in a slightly modified form in
+\citep{varoquaux:statistical} and presented at ISMB 2014, as joint work with
+Ferhat Ay, Bill Noble and Jean-Philippe Vert.
+
+\end{work}
+
+% Résumé en francais
+
+\begin{abstract}{Résumé}
+Des récents développement dans les protocoles biologiques permettent désormais de
+mesurer les fréquences d'interaction entre toutes les paires de loci d'un
+génome, et ce, en une seule experience. Naturellement, le défi suivant est
+d'inférer des modèles tri-dimensionnels de la manière dont les chromosomes se
+replient dans le noyau de la cellule. Les inférences proposées jusqu'à présent
+reposent souvent sur des méthodes dites \textit{multidimensional scaling} (MDS),
+lesquelles optimizent une structure telle que les distances relatives entre
+éléments ressemblent au mieux à celles dérivées directement des fréquences
+d'interaction. Ces approches optimizent une fonction objective "heuristique",
+et repose sur de fortes hypothèses sur la biophysique de l'ADN pour dériver
+des distances euclidiennes à partir des fréquences d'interaction. Celles-ci
+peuvent donc mener à des modèles incorrectes de la structure de l'ADN.
+
+Dans ce travail, nous proposons une nouvelle méthode pour inférer une
+structure 3D consensus du génome à partir de données Hi-C. Notre méthode
+repose sur un modèle statistique des fréquences d'interaction. Nous modélisons
+les fréquences d'interaction comme une distribution de Poisson dont
+l'intensité dépends de la distance physique entre paires de loci. Notre
+méthode peut automatiquement ajuster les paramètres de la fonction reliant
+fréquences d'interaction et distance physique, et infère un modèle expliquant
+au mieux les données.
+
+Nous comparons deux variantes de notre méthode (avec ou sans optimization des
+paramètre de la fonction de transfert) à quatre algorithmes utilisant MDS:
+(deux MDS métrique, dont les fonctions objectives diffèrent, une version non
+métrique de cet algorithme, et ChromSDE qui propose une version récente et
+convexe du MDS) sur des données simulées. Nous démontrons que notre modèle de
+Poisson reconstruit des modèles plus précis que toutes les méthodes MDS, en
+particulier lorsque la couverture est faible ou que les données Hi-C sont à
+haute résolution, soulignant ainsi l'importance du choix de la fonction
+objective à optimizen. Sur des données Hi-C publique de cellules embryonique
+de souris, nous montrons que les méthodes Poisson infèrent des structures plus
+stables, plus reproductibles et plus robustes lorsque le protocole biologique
+diffère et à différente résolution.
+
+Une implémentation Python de notre méthode est disponible à 
+\href{http://cbio.ensmp.fr/pastis}{http://cbio.ensmp.fr/pastis}.
+\end{abstract}
+
+
+\begin{abstract}{Abstract}
+\textbf{Motivation:} Recent technological advances allow the
 measurement, in a single Hi-C experiment, of the frequencies of
 physical contacts among pairs of genomic loci at a genome-wide
 scale. The next challenge is to infer, from the resulting DNA-DNA
@@ -21,7 +72,7 @@ function and require strong assumptions about the biophysics of
 DNA to transform interaction frequencies to spatial distance, and thereby
 may lead to incorrect structure reconstruction.
 
-\section{Methods:}
+\textbf{Methods:}
 We propose a novel approach to infer a consensus three-dimensional
 structure of a genome from Hi-C data. The method incorporates a
 statistical model of the contact counts, assuming that the counts
@@ -30,7 +81,7 @@ with the physical distances between the loci. The method can automatically
 adjust the transfer function relating the spatial distance to the Poisson
 intensity and infer a genome structure that best explains the observed data.
 
-\section{Results:}
+\textbf{Results:}
 We compare two variants of our Poisson method, with or without
 optimization of the transfer function, to four different MDS-based
 algorithms---two metric MDS methods using different stress functions,
@@ -43,9 +94,10 @@ from mouse embryonic stem cells, we show that the Poisson methods lead to more
 reproducible structures than MDS-based methods when we use data generated using
 different restriction enzymes, and when we reconstruct structures at different
 resolutions.
-\section{Availability:} A Python implementation of the proposed method
-is available at \href{http://cbio.ensmp.fr/pastis}{http://cbio.ensmp.fr/pastis}.
 
+\textbf{Availability:} A Python implementation of the proposed method
+is available at \href{http://cbio.ensmp.fr/pastis}{http://cbio.ensmp.fr/pastis}.
+\end{abstract}
 
 \section{Introduction}
 

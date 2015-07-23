@@ -1,10 +1,25 @@
 % this file is called up by thesis.tex
 % content in this file will be fed into the main document
 
-\chapter{Genome architecture of the \emph{P. falciparum} genome} % top level followed by section, subsection
+\chapter[Genome architecture of the \emph{P. falciparum}
+genome]{Three-dimensional modeling of the {\em P. falciparum} genome during
+the erythrocytic cycle reveals a strong connection between genome
+architecture and gene expression} % top level followed by section, subsection
 
 \graphicspath{{3_plasmodium/figures/}}
 
+\begin{work}
+
+This chapter has been published in a slightly modified form in
+\citep{ay:three-dimensional}, as joint work with Evelien Bunnik, Ferhat Ay,
+Sebastiaan Bol, Jacques Prudhomme, Jean-Philippe Vert, Bill Noble and Karine
+Le Roch.
+
+\end{work}
+
+
+
+\begin{abstract}{Abstract}
 The development of the human malaria parasite {\em Plasmodium falciparum} is
 controlled by coordinated changes in gene expression throughout its complex
 life cycle, but the corresponding regulatory mechanisms are incompletely
@@ -28,9 +43,9 @@ profiles. Overall, our results are indicative of a strong association between
 the {\em P. falciparum} spatial genome organization and gene expression.
 Understanding the molecular processes involved in genome conformation dynamics
 could contribute to the discovery of novel antimalarial strategies.
+\end{abstract}
 
-
-\section*{Introduction}
+\section{Introduction}
 
 Malaria remains a major contributor to the global burden of disease, with an
 estimated 219 million infected individuals and 660,000 deaths annually
@@ -89,9 +104,9 @@ correlation with gene expression levels. Collectively, our results suggest
 that the {\em P. falciparum} genome organization and gene expression are
 strongly interconnected.
 
-\section*{Results}
+\section{Results}
 
-\subsection*{Assaying genome architecture of {\em P. falciparum} at three stages using Hi-C}
+\subsection{Assaying genome architecture of {\em P. falciparum} at three stages using Hi-C}
 
 To study the genome architecture of {\em P. falciparum}, we harvested
 parasites at three stages of the infected red blood cell cycle: after invasion
@@ -100,33 +115,33 @@ activity at the trophozoite stage (18h) and near the end of the cycle at the
 schizont stage (36h), just before the newly formed parasites are released into
 the bloodstream. Next, we applied the Hi-C protocol \citep{kalhor:genome} with
 modifications to accommodate the extremely AT-rich genome of the malaria
-parasite (Fig.~\ref{fig:fig1}a, Supplementary Note 1, Supplementary File 1).
+parasite (Fig.~\ref{fig:fig1}a, Appendix Note 1, Appendix File 1).
 As a control, we prepared a sample for which chromatin contacts were not
 preserved by crosslinking of DNA and proteins.
 
 We evaluated the quality of the resulting data for each sample. First, we
 confirmed that the contact probability between two intrachromosomal loci
 exhibits a log-linear decay with increasing genomic distance
-(Fig.~\ref{fig:fig1}b, Supplementary Fig.~\ref*{suppfig:power-law}). Second,
+(Fig.~\ref{fig:fig1}b, Appendix Fig.~\ref{suppfig:power-law}). Second,
 we obtained lower numbers of interchromosomal contacts from crosslinked
 samples relative to both random expectation and our control sample
-(Supplementary Table~\ref*{table:ICP}). Third, we observed that the percentage
+(Appendix Table~\ref{table:ICP}). Third, we observed that the percentage
 of long-range contacts (either interchromosomal or intrachromosomal $>$20 kb)
 was significantly higher than control and comparable to the numbers observed
-in yeast \citep{duan:three} (Supplementary Table~\ref*{table:ICP}). Together,
+in yeast \citep{duan:three} (Appendix Table~\ref{table:ICP}). Together,
 these results indicated that we successfully assayed the {\em P. falciparum}
 genome architecture with a high signal-to-noise ratio. We then coalesced the
 mapped read pairs into a raw contact count matrix at 10 kb resolution, and we
 corrected for potential technical and experimental biases
-\citep{imakaev:iterative} (Fig.~\ref{fig:fig1}c, Supplementary
-Fig.~\ref*{suppfig:ICE}) . The resulting normalized contact maps were used to
+\citep{imakaev:iterative} (Fig.~\ref{fig:fig1}c, Appendix
+Fig.~\ref{suppfig:ICE}) . The resulting normalized contact maps were used to
 identify a subset of high-confidence contacts for each stage (Methods,
-Supplementary Note 2, Supplementary File 2)~\citep{ay:statistical}. We
+Appendix Note 2, Appendix File 2)~\citep{ay:statistical}. We
 identified pairs of genes that show evidence of stage-specific contacts
 (Methods) and then applied gene set enrichment analysis to the set of genes
 that participate in such contacts.  This analysis identified significant
-enrichment of VRSM genes for the ring and trophozoite stages (Supplementary
-Table~\ref*{table:GSEAcompareStages}). This observation suggests that the
+enrichment of VRSM genes for the ring and trophozoite stages (Appendix
+Table~\ref{table:GSEAcompareStages}). This observation suggests that the
 proximity between some VRSM clusters changes from the ring to trophozoite
 stages, even though both stages show overall colocalization of VRSM clusters.
 A similar enrichment analysis conducted using contacts that are specific to
@@ -137,15 +152,15 @@ Normalized contact count and confidence score matrices exhibit a canonical
 ``X'' shape, indicative of a folded chromosome architecture anchored at the
 centromere, as previously observed in yeast \citep{duan:three,
 tanizawa:mapping} and the bacterium {\em C. crescentus}
-\citep{umbarger:three-dimensional} (Fig.~\ref{fig:fig1}c-d, Supplementary
-Fig.~\ref*{suppfig:perChrFigs}). However, chromosomes that harbor
+\citep{umbarger:three-dimensional} (Fig.~\ref{fig:fig1}c-d, Appendix
+Fig.~\ref{suppfig:perChrFigs}). However, chromosomes that harbor
 non-subtelomeric clusters of genes involved in antigenic variation and immune
-evasion (Supplementary File 3; VRSM genes: {\em var}, {\em rifin}, {\em
+evasion (Appendix File 3; VRSM genes: {\em var}, {\em rifin}, {\em
 stevor} and {\em Pfmc-2tm})---chromosomes 4, 6, 7, 8 and 12---exhibit
-additional folding structure (Fig.~\ref{fig:fig1}c-d, Supplementary
-Fig.~\ref*{suppfig:perChrFigs}).
+additional folding structure (Fig.~\ref{fig:fig1}c-d, Appendix
+Fig.~\ref{suppfig:perChrFigs}).
 
-\subsection*{Three-dimensional modeling recapitulates known organizational principles of {\em Plasmodium} genome}
+\subsection{Three-dimensional modeling recapitulates known organizational principles of {\em Plasmodium} genome}
 
 To better characterize the genome architecture, we generated for each stage
 100 consensus 3D structures, each of which summarizes the population average
@@ -163,34 +178,34 @@ thus averaging the signal from these multiple nuclei per cell.
 We performed a series of experiments to assess the robustness of our 3D
 inference procedure.  Our results showed only slight changes in the inferred
 3D models when we varied the parameter used in conversion of contact counts to
-expected distances (Supplementary Table~\ref*{table:stabilityToBeta}). This
+expected distances (Appendix Table~\ref{table:stabilityToBeta}). This
 was also true when we removed from the inference the two types of spatial
 constraints related to nuclear volume and to distances between adjacent beads
-(Supplementary Table~\ref*{table:stabilityToConstraints}). Finally, our
+(Appendix Table~\ref{table:stabilityToConstraints}). Finally, our
 experiments on the impact of the initialization step (Methods) showed that
 structures inferred from different initial configurations are highly similar
-(Supplementary Fig.~\ref*{suppfig:compareStructurePairs}), do not fall into
-discrete clusters (Supplementary Fig.~\ref*{suppfig:CHindices}) and all such
-structures exhibit common organizational hallmarks (Supplementary
-Fig.~\ref*{suppfig:clusteringIn100Structures}). Because of the stability of
+(Appendix Fig.~\ref{suppfig:compareStructurePairs}), do not fall into
+discrete clusters (Appendix Fig.~\ref{suppfig:CHindices}) and all such
+structures exhibit common organizational hallmarks (Appendix
+Fig.~\ref{suppfig:clusteringIn100Structures}). Because of the stability of
 our inference procedure, hereafter we generally present and discuss the
 results for only one representative structure per stage.
 
 Although the modeling procedure contains no explicit constraints on telomere
 or centromere locations, we observe strong colocalization of both sets of loci
-across all three stages (Fig.~\ref{fig:fig2}a, Supplementary
-Fig.~\ref*{suppfig:3Dcentromeres}, Supplementary Table~\ref*{table:witten}),
+across all three stages (Fig.~\ref{fig:fig2}a, Appendix
+Fig.~\ref{suppfig:3Dcentromeres}, Appendix Table~\ref{table:witten}),
 with centromeres and telomeres localizing in distal regions of the nucleus. To
 understand further the colocalization patterns of centromeres and telomeres in
 each stage, we divided each chromosome into three compartments
 (left--mid--right or telomeric--centromeric--telomeric) using eigenvalue
 decomposition (Methods) and then performed hierarchical clustering on the
-matrix of pairwise distances between compartments (Supplementary
-Fig.~\ref*{suppfig:compDists}). At each stage, we observed clusters that are
+matrix of pairwise distances between compartments (Appendix
+Fig.~\ref{suppfig:compDists}). At each stage, we observed clusters that are
 comprised primarily of either centromeric or telomeric compartments. In
 particular, during the trophozoite stage, all the centromeric compartments
 fall into two main clusters suggesting strong colocalization of all
-centromeres for this stage (Supplementary Fig.~\ref*{suppfig:compDists}d).
+centromeres for this stage (Appendix Fig.~\ref{suppfig:compDists}d).
 Such strong colocalization has previously been observed by immunofluoresence
 microscopy at the trophozoite and schizont stages but not at the early ring
 stage \citep{hoeijmakers:plasmodium}. However, when the size of the nucleus is
@@ -209,26 +224,26 @@ multiple independent microscopy experiments \citep{duraisingh:heterochromatin,
 dzikowski:mechanisms, lopez-rubio:genome-wide, hoeijmakers:plasmodium}.
 
 
-\subsection*{Virulence gene clusters on different chromosomes colocalize in 3D}
+\subsection{Virulence gene clusters on different chromosomes colocalize in 3D}
 
 In addition to centromeres and telomeres, we observed for all VRSM gene
 clusters, both internal and subtelomeric, a significant colocalization with
-one another (Fig.~\ref{fig:fig2}a, Supplementary Table~\ref*{table:witten}).
+one another (Fig.~\ref{fig:fig2}a, Appendix Table~\ref{table:witten}).
 The significant colocalization for VRSM clusters as well as for centromeres
 and telomeres were all reproducible when we used contact counts instead of 3D
-distances to perform colocalization tests similar to Supplementary
-Table~\ref*{table:witten} (data not shown). Given colocalization of the
+distances to perform colocalization tests similar to Appendix
+Table~\ref{table:witten} (data not shown). Given colocalization of the
 telomeres, colocalization of subtelomeric clusters is not surprising. However,
 the proximity of internal VRSM clusters with one another and with subtelomeric
 clusters is unexpected under the random polymer looping model and, to the best
 of our knowledge, observed experimentally for the first time. To further
 validate these results inferred from our 3D models, we performed DNA
-fluorescence {\em in situ} hybridization (FISH) (Methods, Supplementary Note
+fluorescence {\em in situ} hybridization (FISH) (Methods, Appendix Note
 3) on an interchromosomal pair of strongly interacting (at 10 kb resolution)
 VRSM clusters: the internal cluster from chromosome 7 and a subtelomeric
 cluster from chromosome 8. We observed strong colocalization by FISH ($>$90\%
-of cells, Fig.~\ref{fig:fig2}b, Supplementary Fig.~\ref*{suppfig:fish}a,
-Supplementary Table~\ref*{table:FISHprimers}), providing independent support
+of cells, Fig.~\ref{fig:fig2}b, Appendix Fig.~\ref{suppfig:fish}a,
+Appendix Table~\ref{table:FISHprimers}), providing independent support
 for the clustering of VRSM genes. Although previous FISH results indicated
 that {\em var} genes form 2 to 5 clusters in 3D per cell
 \citep{freitas-junior:frequent, lopez-rubio:genome-wide}, others recently
@@ -239,15 +254,15 @@ as for H3K36me3 that marks both active and silenced {\em var} genes
 a population average, we are unable to distinguish between multiple VRSM gene
 clusters in 3D if the genes are randomly distributed among clusters from cell
 to cell. Using FISH experiments, we also observed strong colocalization
-($>$90\% of cells, Fig.~\ref{fig:fig2}c, Supplementary
-Fig.~\ref*{suppfig:fish}b) for a pair of interchromosomal loci located outside
+($>$90\% of cells, Fig.~\ref{fig:fig2}c, Appendix
+Fig.~\ref{suppfig:fish}b) for a pair of interchromosomal loci located outside
 VRSM clusters with consistent strong interactions at all three stages, while
 colocalization was not observed for a pair of non-interacting interchromosomal
-loci ($<$10\% of cells, Supplementary Fig.~\ref*{suppfig:fish}c). These
+loci ($<$10\% of cells, Appendix Fig.~\ref{suppfig:fish}c). These
 results demonstrate that our population average Hi-C data agrees with a
 majority of single cell FISH images.
 
-\subsection*{Highly transcribed rDNA units colocalize in 3D during the ring stage}
+\subsection{Highly transcribed rDNA units colocalize in 3D during the ring stage}
 
 Similar to VRSM genes, the rDNA genes are strictly regulated during the
 parasite life cycle. In {\em P. falciparum}, these genes are dispersed on
@@ -269,10 +284,10 @@ schizonts (1.23x), Fig.~\ref{fig:fig3}b-c) during which the two rDNA units are
 not transcribed \citep{mancio-silva:clustering}. Reanalysis of the Lemieux
 {\em et al.} data using our processing pipeline also showed this enrichment
 consistently in three different NF54-derived strains in the ring stage (6.06x,
-4.47x and 4.61x, respectively, Supplementary
-Fig.~\ref*{suppfig:rDNAunitsOn3D}a-c). Control libraries from both studies do
-not exhibit this enrichment (Fig.~\ref{fig:fig3}d, Supplementary
-Fig.~\ref*{suppfig:rDNAunitsOn3D}d). Our 3D models for the ring stage place
+4.47x and 4.61x, respectively, Appendix
+Fig.~\ref{suppfig:rDNAunitsOn3D}a-c). Control libraries from both studies do
+not exhibit this enrichment (Fig.~\ref{fig:fig3}d, Appendix
+Fig.~\ref{suppfig:rDNAunitsOn3D}d). Our 3D models for the ring stage place
 these two A-type rDNA units near the nuclear periphery. Together with the
 strong colocalization between A-type rDNA, these results suggest the existence
 of perinuclear transcriptionally active compartments. Such compartments may
@@ -281,20 +296,20 @@ chromatin around (sub)telomeric regions marked by the repressive H3K9me3
 modification \citep{lopez-rubio:genome-wide}. We did not observe an overall
 colocalization between all rDNA units in the ring stage, including the three
 18S, 5.8S, 28S units and one 5S unit that are not expressed during asexual
-erythrocytic cycle (Supplementary Table~\ref*{table:witten}).  This
+erythrocytic cycle (Appendix Table~\ref{table:witten}).  This
 observation suggests that genomic location may influence rDNA expression by
 the preferential colocalization of the expressed rDNA units, away from the
 non-expressed units.
 
-\subsection*{Transcriptionally active trophozoite stage exhibits an open chromatin structure}
+\subsection{Transcriptionally active trophozoite stage exhibits an open chromatin structure}
 
 Assaying three different time points, we observed significant changes in
 chromatin structure throughout the erythrocytic cycle. To visualize high-level
 changes, we generated animations showing the movement of chromosomes as the
-parasite progresses through its cell cycle (Supplementary Files 4-18). We then
+parasite progresses through its cell cycle (Appendix Files 4-18). We then
 characterized global chromatin changes by analyzing the relationship between
-contact frequency and genomic distance (Fig.~\ref{fig:fig1}b, Supplementary
-Fig.~\ref*{suppfig:power-law}). The gradient of the log-linear fit is very
+contact frequency and genomic distance (Fig.~\ref{fig:fig1}b, Appendix
+Fig.~\ref{suppfig:power-law}). The gradient of the log-linear fit is very
 close to -1 in both the ring and schizont stages (-0.98 and -0.96,
 respectively) indicative of a fractal globule genome architecture that is
 usually found in higher eukaryotes \citep{lieberman-aiden:comprehensive}.
@@ -312,13 +327,13 @@ counts and,  therefore, the above mentioned difference is independent of our
 Furthermore, the difference in the gradient value for trophozoites compared to
 the two other stages is consistent for each chromosome, suggesting that all
 chromosomes change their folding behavior during the trophozoite stage
-(Supplementary Table~\ref*{table:scalingFactors}).
+(Appendix Table~\ref{table:scalingFactors}).
 
 In order to further investigate whether trophozoites show a more open
 chromatin structure than the two other stages, we systematically compared our
 data across all three stages. First, we computed and compared intra and
-interchromosomal contact probabilities for each stage (Supplementary
-Fig.~\ref*{suppfig:intraVSinter}). We observed that intrachromosomal contacts,
+interchromosomal contact probabilities for each stage (Appendix
+Fig.~\ref{suppfig:intraVSinter}). We observed that intrachromosomal contacts,
 even at very large distances, are more prevalent than interchromosomal
 contacts for all three stages, suggesting the existence and preservation of
 chromosome territories throughout the erythrocytic cycle. However, the
@@ -332,24 +347,24 @@ spheres that contain any locus from chromosome {\em i} also contain a locus
 from another chromosome {\em j}. Our results using different sphere sizes, and
 controlling for the varying nuclear diameter, consistently exhibited the
 highest amount of intermingling for the trophozoite stage and the highest
-territory preservation for the schizont stage (Supplementary
-Fig.~\ref*{suppfig:territory}).
+territory preservation for the schizont stage (Appendix
+Fig.~\ref{suppfig:territory}).
 
 To understand the architectural dynamics responsible for the systematic
 changes in chromatin compaction, we computed the relative movements among
 chromosome compartments during the erythrocytic cycle. Despite the increase in
 nuclear volume, many interchromosomal compartment pairs came closer together
-in the transition from the ring to trophozoite stage (Supplementary
-Fig.~\ref*{suppfig:compMovement}a, red color). Subsequently, most
+in the transition from the ring to trophozoite stage (Appendix
+Fig.~\ref{suppfig:compMovement}a, red color). Subsequently, most
 interchromosomal compartments moved away from each other in the transition to
-the schizont stage (Supplementary Fig.~\ref*{suppfig:compMovement}b, blue
+the schizont stage (Appendix Fig.~\ref{suppfig:compMovement}b, blue
 color), resulting in more compact chromatin that favors formation of
 chromosome territories. These results are consistent with a previously
 proposed model, in which the {\em P. falciparum} nucleus exhibits a more open
 chromatin configuration at the trophozoite stage, enabling interchromosomal
 contacts and high levels of transcriptional activity \citep{ponts:nucleosome}.
 
-\subsection*{{\em Plasmodium} genome architecture cannot be explained by volume exclusion}
+\subsection{{\em Plasmodium} genome architecture cannot be explained by volume exclusion}
 
 We next assessed whether the primary architectural features in {\em P.
 falciparum} arise from a population of constrained but otherwise random
@@ -359,8 +374,8 @@ therefore repeated the Tjong {\em et al.} simulations using the same set of
 constraints and successfully recovered the strong correlation between the
 simulated map and the experimentally observed yeast contact map (raw
 correlation of 0.91; normalized correlation of 0.57; Fig.~\ref{fig:fig4}a,
-Methods, Supplementary Note 4, Supplementary
-Fig.~\ref*{suppfig:VEconvergence}). In contrast, our simulations for the ring,
+Methods, Appendix Note 4, Appendix
+Fig.~\ref{suppfig:VEconvergence}). In contrast, our simulations for the ring,
 trophozoite and schizont stages of {\em P. falciparum} yielded markedly lower
 correlations (normalized correlation of 0.34, 0.39 and 0.49, respectively) and
 strikingly different contact maps compared to the experimentally observed maps
@@ -372,16 +387,16 @@ explains the yeast genome architecture, is insufficient to explain the
 observed architecture of {\em P. falciparum} genome, highlighting the need for
 a genome-wide assay such as Hi-C to obtain accurate structural models.
 
-\subsection*{VRSM gene clusters form domain-like structures}
+\subsection{VRSM gene clusters form domain-like structures}
 
 Our results from the volume exclusion modeling and from visual inspection of
 the contact maps suggest that the internal VRSM gene clusters are associated
 with distinctive structural features. All eight of the internal VRSM clusters
 induce a striking cross-like shape, both in the contact count and 3D distance
-matrices (Fig.~\ref{fig:fig5}a-b, Supplementary
-Fig.~\ref*{suppfig:perChrFigs}). Quantification of this phenomenon revealed a
+matrices (Fig.~\ref{fig:fig5}a-b, Appendix
+Fig.~\ref{suppfig:perChrFigs}). Quantification of this phenomenon revealed a
 consistent contact pattern across all eight internal VRSM clusters
-(Supplementary Fig.~\ref*{suppfig:TADs}), suggesting that VRSM gene clusters
+(Appendix Fig.~\ref{suppfig:TADs}), suggesting that VRSM gene clusters
 adopt a compact, domain-like structure. Although these domain-like structures
 resemble topologically associated domains (TADs) described in mammals
 \citep{dixon:topological, nora:spatial}, the VSRM domains are much smaller
@@ -396,14 +411,14 @@ Another interesting pattern involving internal VRSM clusters emerged from
 further inspection of chromosome compartments.  Five of the eight internal
 VRSM clusters (two on chromosome 4, one on chromosome 7 and both clusters on
 chromosome 12) occur at compartment boundaries (third and fourth rows of
-Supplementary Fig.~\ref*{suppfig:perChrFigs}). This striking overlap  suggests
+Appendix Fig.~\ref{suppfig:perChrFigs}). This striking overlap  suggests
 that VRSM genes may contribute to or rely upon the boundaries of chromosomal
 compartments. Taken together with the domain-like structures around these VRSM
 clusters, these results confirm that genome architecture is likely to be
 involved in the strict regulation of virulence genes during the erythrocytic
 cycle.
 
-\subsection*{Expression is highly concordant with 3D localization for {\em Plasmodium} genes}
+\subsection{Expression is highly concordant with 3D localization for {\em Plasmodium} genes}
 
 Next, we investigated the relationship between the three-dimensional genome
 structure and gene expression using four published expression data sets
@@ -416,11 +431,11 @@ that are far apart (Fig.~\ref{fig:fig6}a,b), as previously observed in yeast
 \citep{homouz:3d}. To assess whether these observed trends are confounded by
 similarly expressed VRSM genes that strongly interact with each other and are
 placed together near telomeres by our 3D model, we repeated the above analyses
-by excluding all VRSM genes (Supplementary
-Fig.~\ref*{suppfig:expVSdistWithoutVRSM}). Even though the observed trends are
+by excluding all VRSM genes (Appendix
+Fig.~\ref{suppfig:expVSdistWithoutVRSM}). Even though the observed trends are
 weakened by exclusion of VRSM genes, the decrease in 3D distance and increase
 in contact count with increasing expression correlation remained significant
-(Supplementary Fig.~\ref*{suppfig:expVSdistWithoutVRSM}). It is also important
+(Appendix Fig.~\ref{suppfig:expVSdistWithoutVRSM}). It is also important
 to note that, for these analyses, we excluded intrachromosomal gene pairs to
 only focus on the relationship between 3D proximity and gene expression by
 eliminating the confounding effect caused by genes that lie nearby on a
@@ -436,13 +451,13 @@ which subtelomeric VRSM clusters are known to be tightly repressed
 \citep{chen:developmental}. If we remove the VRSM genes from the analysis, the
 repressive effect is still significant at the trophozoite stage, which is
 known to be the most active transcriptional stage of the erythrocytic cycle
-(Supplementary Fig.~\ref*{suppfig:distToCenter}a,b). Similar analysis showed
+(Appendix Fig.~\ref{suppfig:distToCenter}a,b). Similar analysis showed
 higher expression levels for genes located near the nuclear center, as well as
-for genes close to the centroid of the centromeres (Supplementary
-Fig.~\ref*{suppfig:distToCenter}c,d). Furthermore, we observed significant and
+for genes close to the centroid of the centromeres (Appendix
+Fig.~\ref{suppfig:distToCenter}c,d). Furthermore, we observed significant and
 consistent colocalization across all three stages for 11 of the 15 expression
-clusters identified in \cite{leroch:discovery} (Supplementary
-Table~\ref*{table:witten}). Strikingly, the trophozoite stage showed
+clusters identified in \cite{leroch:discovery} (Appendix
+Table~\ref{table:witten}). Strikingly, the trophozoite stage showed
 significant colocalization for clusters associated with genes that are
 repressed during this stage (clusters 1, 3, 4, and 13-15) as well as genes
 that exhibit high levels of expression (clusters 6, 9, 10, and 12), confirming
@@ -455,23 +470,23 @@ a set of orthogonal gene expression profiles that exhibit coherence with
 respect to the 3D structure (Methods). For all stages, the projection of gene
 expression patterns onto the first extracted profile exhibits a striking
 transcriptional gradient across the 3D structure, from the telomere cluster to
-the opposite side of the nucleus  (Fig.~\ref{fig:fig6}c, Supplementary
-Fig.~\ref*{suppfig:kCCAsecond}a,c,e). The coherence with 3D structure drops
-significantly in the second component of the kCCA (Supplementary
-Fig.~\ref*{suppfig:kCCAsecond}b,d,f), suggesting that gene expression is
+the opposite side of the nucleus  (Fig.~\ref{fig:fig6}c, Appendix
+Fig.~\ref{suppfig:kCCAsecond}a,c,e). The coherence with 3D structure drops
+significantly in the second component of the kCCA (Appendix
+Fig.~\ref{suppfig:kCCAsecond}b,d,f), suggesting that gene expression is
 strongly influenced by distance to the subtelomeric repressive center. To
 further interpret the kCCA results we employed gene set enrichment analysis
 \citep{subramanian:gene} on the ranked lists of projections onto the first
 kCCA component. The results showed, for all three stages, significant
 enrichment (q-value $<$ 0.01) of gene sets related to antigenic variation and
 translation (i.e. ribosome proteins) on the telomeric and non-telomeric side,
-respectively, of the extracted kCCA expression profile (Supplementary
-Tables~\ref*{table:RingsFirstPro},~\ref*{table:TrophsFirstPro},~\ref*{table:SchizontsFirstPro}).
+respectively, of the extracted kCCA expression profile (Appendix
+Tables~\ref{table:RingsFirstPro},~\ref{table:TrophsFirstPro},~\ref{table:SchizontsFirstPro}).
 Similar to the colocalization test results for expression clusters of
 \cite{leroch:discovery}, clusters of genes that are repressed (clusters 4, 13,
 and 14) and expressed (clusters 6 and 9-12) in the trophozoite stage showed
-consistent enrichment in the strongest kCCA profile (Supplementary
-Table~\ref*{table:kCCAforClusters}). In addition, genes exclusively expressed
+consistent enrichment in the strongest kCCA profile (Appendix
+Table~\ref{table:kCCAforClusters}). In addition, genes exclusively expressed
 in sporozoites (cluster 1) and gametocytes (clusters 3) were also strongly
 enriched, indicating that the repression of these genes during the asexual
 erythrocytic cell cycle may be related to their localization within the
@@ -479,11 +494,11 @@ nucleus. Finally, for GO terms related to parasite invasion (rhoptry, myosin
 complex, motor activity; q-value $<$ 0.1) and for the cluster of invasion
 genes (cluster 15), we observed an enrichment relative to the second kCCA
 component, suggesting that expression of invasion genes may also be regulated
-by the 3D genome structure (Supplementary
-Tables~\ref*{table:kCCAforClusters},~\ref*{table:secondPro}).
+by the 3D genome structure (Appendix
+Tables~\ref{table:kCCAforClusters},~\ref{table:secondPro}).
 
 
-\section*{Discussion}
+\section{Discussion}
 
 This study presents the first analysis of genome architecture during the cell
 cycle of a eukaryotic pathogen. Overall, our data demonstrate that the genome
@@ -538,10 +553,10 @@ erythrocytic cell cycle. In particular, we observed that intrachromosomal
 contacts, even at very large distances, are more prevalent than
 interchromosomal contacts. This observation is supported by our own Hi-C data
 in three stages as well as by our reanalysis of the Lemieux {\em et al.} data
-(Supplementary Fig.~\ref*{suppfig:intraVSinter}b-e). The difference between
+(Appendix Fig.~\ref{suppfig:intraVSinter}b-e). The difference between
 the two analyses can be traced to our improved method for discretizing the
 genomic distance axis, which avoids bins with few observations and, hence,
-high variance (Supplementary Fig.~\ref*{suppfig:intraVSinter}a versus b). Even
+high variance (Appendix Fig.~\ref{suppfig:intraVSinter}a versus b). Even
 though further experiments may be necessary to reconcile these differences,
 our results strongly suggest that {\em P. falciparum} chromosomes occupy
 distinct territories, similar to other eukaryotic genomes.
@@ -596,10 +611,135 @@ transcriptional and translational levels. However, the necessity to
 transcriptionally repress distinct groups of parasite-specific genes may have
 driven {\em P. falciparum} to adopt this exceptional genome organization.
 
-\section*{Methods}
-\subsection*{Experimental protocols}
+\section*{Figure Legends}
 
-\subsubsection*{{\em P.\ falciparum} strain and culture conditions}
+\begin{figure}[h]
+\centering
+\caption{{\bf Tethered conformation capture of the {\em Plasmodium falciparum}
+genome.}
+\textbf{a,} Experimental protocol. \textbf{b,} Contact probability as a
+function of genomic distance, with log-linear fits for the three erythrocytic
+stages, as well as an experimental control. \textbf{c,} Normalized contact
+count matrices at 10 kb resolution for chromosome 2 and chromosome 7 in the
+schizont stage. \textbf{d,} Contact p-values (negative log10 scale) for
+chromosome 2 and chromosome 7 in the schizont stage. In \textbf{(c)} and
+\textbf{(d)}, yellow boxes denote clusters of VRSM genes, and blue dashed
+lines indicate the centromere location.}
+\label{fig:fig1}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\caption{{\bf 3D modeling and validation with DNA FISH.}
+ \textbf{a,} 3D structures of all three stages. The nuclear radii used to
+ model ring, trophozoite and schizont stages were 350, 850, and 425 nm,
+ respectively. Centromeres and telomeres are indicated with light blue and
+ white spheres, respectively. Midpoints of VRSM gene clusters are shown with
+ green spheres. \textbf{b,} Validation of colocalization between a pair of
+ interchromosomal loci with VRSM genes (chr7: 550,000 - 560,000 that harbors
+ internal VRSM genes and chr8: 40,000 - 50,000 that harbors subtelomeric VRSM
+ genes) by DNA FISH (left) and by the three-dimensional model for the
+ corresponding stage (right). The location of the loci in the 3D model is
+ indicated with light blue spheres and pointed by black arrows. \textbf{c,}
+ Validation same as in \textbf{(b)} for a pair of interchromosomal loci that
+ harbor no VRSM genes (chr7: 810,000 - 820,000 and chr11: 820,000 - 830,000).
+ }
+ \label{fig:fig2}
+ \end{figure}
+
+
+ 
+ \begin{figure}[h]
+ \centering
+ \caption{{\bf Colocalization of highly transcribed rDNA units.} 
+  Virtual 4C plots generated at 25 kb resolution using as a bait the A-type
+  rDNA unit on chromosome 7 from crosslinked Hi-C libraries of \textbf{(a)}
+  ring, \textbf{(b)} trophozoite, \textbf{(c)} schizont stages and
+  \textbf{(d)} from the trophozoite control library. Vertical red line
+  indicates the midpoint of the A-type rDNA unit on chromosome 5. Normalized
+  contact counts from 50 kb up- and downstream of the 25 kb bin containing the
+  rDNA unit are used, omitting the rDNA-containing window itself to exclude
+  repetitive DNA. For each window $w$ on chromosome 5, the contact enrichment
+  is calculated by dividing the contact count between the bait and $w$ to the
+  average interchromosomal contact count for the bait locus.
+  }
+  \label{fig:fig3}
+  \end{figure}
+
+  \begin{figure}[h]
+  \centering
+  \caption{{\bf Volume exclusion modeling. }
+  Observed/expected contact frequency matrices illustrate, for each locus,
+  either the depletion (blue) or enrichment (red) of interaction frequencies
+  compared to what would be expected given their genomic distances.
+  \textbf{a,} Observed/expected contact frequency matrices derived from {\em
+  S. cerevisiae} chr 7 from volume exclusion modeling (left) and Hi-C data
+  (right). \textbf{b,} Observed/expected matrices from volume exclusion
+  modeling (left) and Hi-C data (right) for {\em P. falciparum} chr 7 during
+  the trophozoite stage.}
+  \label{fig:fig4}
+  \end{figure}
+
+
+  \begin{figure}[h]
+  \centering
+  \caption{{\bf Role of internal VRSM gene clusters in shaping genome
+  architecture.}
+   \textbf{a-d,} Heatmaps of scaled pairwise Euclidean distances derived from
+   the 3D model at 10 kb resolution for \textbf{(a, b)} two chromosomes that
+   harbor internal VRSM gene clusters and \textbf{(c, d)} two chromosomes that
+   do not. Yellow boxes indicate locations of VRSM clusters. }
+   \label{fig:fig5}
+   \end{figure}
+
+
+\begin{figure}[h]
+\centering
+\caption{{\bf Relationship between 3D architecture and gene expression.}
+\textbf{a,}Correlation between expression profiles of pairs of
+interchromosomal genes as a function of number of contacts linking the two
+genes. To generate this plot all interchromosomal gene pairs are first sorted
+in increasing order of their expression correlation and then binned into 20
+equal width quantiles ($5$th, $10$th, ..., $100$th). For each bin, the average
+expression correlation between gene pairs (x-axis) and the average normalized
+contact count linking the genes in each pair together with its standard error
+(y-axis) are computed and plotted. Interchromosomal gene pairs that have
+contact counts within the top 20\% for each stage have more highly correlated
+expression profiles than the remaining gene pairs [Wilcoxon rank-sum test,
+p-values 2.48e-206 (ring), 0 (trophozoite), and 0 (schizont)].
+\textbf{b,} Correlation between expression profiles of pairs of
+interchromosomal genes as a function of 3D distance between the genes. This
+plot is generated similar to \textbf{a} but with using 3D distances instead of
+contact counts (y-axis). In order to summarize results from multiple 3D
+structures per each stage, we plot the median value among 100 structures with
+a red line and shaded the region corresponding to the interval between 5th and
+95th percentile with gray. Interchromosomal gene pairs closer than 20\% of the
+nuclear diameter have more highly correlated expression profiles than genes
+that are far apart [Wilcoxon rank-sum test, p-values 7.17e-221 (ring), 0
+(trophozoite), and 1.57e-88 (schizont)].
+\textbf{c,} Gene expression as a function of distance to telomeres. To
+generate this plot all genes are first sorted by increasing distance to the
+centroid of telomeres (x-axis) and then binned similar to \textbf{a} into 20
+equal width quantiles. The average log expression
+value~\citep{bunnik:polysome}
+together with its standard error (y-axis) is plotted for genes in each bin. In
+order to summarize results from multiple 3D structures per each stage, we plot
+the median value among 100 structures with a red line and shaded the region
+corresponding to the interval between 5th and 95th percentile with gray. Genes
+that lie within 20\% of the nuclear diameter to the centroid of the telomeres
+showed significantly lower expression levels [Wilcoxon rank-sum test, p-values
+1.54e-12 (ring), 1.69e-32 (trophozoite), 3.37e-20 (schizont)].
+\textbf{d,} First kCCA expression profile component score, corresponding to
+the projection of the gene expression profile onto the extracted kCCA profile
+for the trophozoite stage.}
+\label{fig:fig6}
+\end{figure}
+
+
+\section{Methods}
+\subsection{Experimental protocols}
+
+\subsubsection{{\em P.\ falciparum} strain and culture conditions}
 {\em P.\ falciparum} strain 3D7 was maintained in human O+ erythrocytes in
 5\% haematocrit according to a previously described protocol \citep{trager:human}.
 Cultures were synchronized twice at ring stage with 5\% D-sorbitol treatments
@@ -609,7 +749,7 @@ then 18 hours (early trophozoite stage) and 36 hours (late schizont stage)
 thereafter. The developmental stage of the parasites was verified by microscopy
 using Giemsa-stained blood smears prior to harvesting.
 
-\subsubsection*{Cross-linking}
+\subsubsection{Cross-linking}
 Aspirated {\em P.\ falciparum} cultures were pooled into 50 ml centrifuge
 tubes and filled up to 35 ml with phosphate buffered saline (PBS) warmed
 to 37$^\circ$C. Cultures were treated with 3 ml 16\% formaldehyde
@@ -623,13 +763,13 @@ and incubated 10 min at 4$^\circ$C while rocking. PBS was used instead of saponi
 for the cross-linked parasites. Parasites were spun at 660 $\times$ g for 15 min
 at 4$^\circ$C. Pellets were washed multiple times until clean and stored at -80$^\circ$C.
 
-\subsubsection*{Tethered conformation capture procedure}
+\subsubsection{Tethered conformation capture procedure}
 We applied an adapted Hi-C method referred to as tethered conformation capture
 (TCC) \citep{kalhor:genome} to map the intra and interchromosomal contacts in
 {\em Plasmodium falciparum}. For a detailed description of the overall protocol
-see Supplementary Note 1.
+see Appendix Note 1.
 
-\subsubsection*{DNA-FISH}
+\subsubsection{DNA-FISH}
 For each 10 kb locus of interest, we determined the location for which on average
 the highest number of contact counts were observed and designed DNA probes targeting
 the 2 kb region surrounding this location. Probes were prepared using Fluorescein-High
@@ -637,13 +777,13 @@ Prime and Biotin-High Prime kits (Roche) according to manufacturer's instruction
 Template DNA was prepared by PCR (5 min at 95$^\circ$C, 35 cycles of 30 sec at
 98$^\circ$C followed by 150 sec at 62$^\circ$C, and 5 min at 62$^\circ$C) using
 the KAPA HiFi DNA Polymerase HotStart ReadyMix. Sequences of primers used for probe
-generation are shown in Supplementary Table~\ref*{table:FISHprimers}. For a detailed
-description of the DNA-FISH protocol see Supplementary Note 3. The percentage of
+generation are shown in Appendix Table~\ref{table:FISHprimers}. For a detailed
+description of the DNA-FISH protocol see Appendix Note 3. The percentage of
 colocalization was determined by visual inspection of $>$100 cells per condition.
 
-\subsection*{Computational methods}
+\subsection{Computational methods}
 
-\subsubsection*{Mapping and filtering of sequence data}
+\subsubsection{Mapping and filtering of sequence data}
 \label{met:mapping}
 We first trimmed each end of the paired-end reads from all samples to 40~bp.
 %as our read lengths varied between 47 to 101~bp.
@@ -678,11 +818,11 @@ of at most 2. We extracted the paired-end reads with both ends mapping to the
 of read-pairs with identical genomic coordinates, and retained only one copy of
 each. We also filtered out reads that map to intrachromosomal loci that are
 $\le$1~kb apart. We refer to the remaining reads as \emph{informative reads}. We
-computed chromosomal contact maps using only these informative reads. Supplementary
+computed chromosomal contact maps using only these informative reads. Appendix
 File 1 summarizes the results of applying this pipeline to our sequencing libraries.
 
 
-\subsubsection*{Calculating noise level and percentage of long range contacts}
+\subsubsection{Calculating noise level and percentage of long range contacts}
 \label{met:ICP}
 We calculated two measures that provide estimates of the noise level and efficiency
 of the assay. The first is the interchromosomal contact probability (ICP)
@@ -703,7 +843,7 @@ The bigger this percentage is, the more information the dataset provides about
 non-adjacent chromatin contacts for the amount of sequencing in hand.
 
 
-\subsubsection*{Aggregating data relative to 10~kb windows}
+\subsubsection{Aggregating data relative to 10~kb windows}
 \label{met:10kb}
 Digesting the DNA with a frequently cutting restriction enzyme yields a very large
 number of possible pairs of restriction fragments (i.e., locus pairs). In our case,
@@ -717,7 +857,7 @@ reduced the number of possible fragments from 28,784 to 2,337 and the number of
 possible locus pairs from $3.7 \times 10^8$ to 2,715,615 (228,539 intrachromosomal
 and 2,487,076 interchromosomal).
 
-\subsubsection*{Normalizing raw contact maps}
+\subsubsection{Normalizing raw contact maps}
 \label{met:normalization}
 For each possible pair of 10~kb loci, we refer to the total number of informative
 read pairs that link the two loci as the {\em contact count}, and we refer to the
@@ -732,7 +872,7 @@ bias vector with one entry per locus. The tensor product of the bias vector with
 itself generates a bias matrix $B$ that can be used to convert the raw contact map
 into a normalized contact map.
 
-\subsubsection*{Estimating power-law fits to intrachromosomal contact probabilities}
+\subsubsection{Estimating power-law fits to intrachromosomal contact probabilities}
 \label{met:power-law}
 It has been observed in the literature that for a pair of intrachromosomal loci,
 the relationship between genomic distance and the expected contact count can be
@@ -753,7 +893,7 @@ a given genomic distance range. Note that the control library  ``TROPH.-cont.''
 was not subjected to normalization.
 
 
-\subsubsection*{Assigning statistical significance to normalized contact maps}
+\subsubsection{Assigning statistical significance to normalized contact maps}
 \label{met:fithic}
 To obtain a set of high confidence contacts for each stage, we subjected the contact
 maps at 10 kb resolution to a statistical confidence estimation procedure
@@ -763,9 +903,9 @@ effect. We then accounted for biases using the normalization procedure described
 above. Finally, we calculated p-values for intra and interchromosomal contacts and
 corrected them jointly for multiple hypothesis testing to compute q-values, which
 are used to filter contacts at a desired false discovery rate. For a detailed
-description of the statistical significance estimation procedure see Supplementary Note 2.
+description of the statistical significance estimation procedure see Appendix Note 2.
 
-\subsubsection*{Identifying stage-specific contacts}
+\subsubsection{Identifying stage-specific contacts}
 \label{met:spageSpecific}
 We determined the contacts that are specific to only one stage or to two out of three stages
 as follows. First, we sorted the lists of contacts at 10~kb resolution according to increasing
@@ -780,7 +920,7 @@ analysis (GSEA), we extracted the lists of genes that are involved in stage-spec
 (common to ring and trophozoite, common to ring and schizont or common to trophozoite and schizont).
 
 
-\subsubsection*{Inferring the 3D structures}
+\subsubsection{Inferring the 3D structures}
 \label{met:inferring}
 Our method for inferring the 3D structures is based on the method of \cite{duan:three}.
 Each chromosome is modeled as a series of beads on a string, spaced approximately
@@ -801,8 +941,8 @@ $\delta^{ij}$ as two intrachromosomal loci with expected contact count
 $c_{ij}$ by polymer packing. The relationship between the expected contact
 frequencies and the genomic distances $s$ suggests that \textit{P.\
 falciparum}'s DNA behaves like a fractal globule polymer
-\citep{lieberman-aiden:comprehensive} (Supplementary Fig.
-\ref*{suppfig:power-law}). Any crumpled polymer exhibits a well-defined
+\citep{lieberman-aiden:comprehensive} (Appendix Fig.
+\ref{suppfig:power-law}). Any crumpled polymer exhibits a well-defined
 relationship between its genomic length $s$ and the physical distance $d$
 \citep{grosberg:role}:
 \begin{equation}
@@ -832,7 +972,6 @@ We set all distances larger than the nucleus diameter to this value.
 defined the following optimization problem to find a structure $\mathbf{X}
 \in R^{3 \times n}$, where $n$ is the number of beads:
 \begin{equation*}
-\renewcommand{\arraystretch}{2}
 \begin{array}{ccll}
 \underset{\mathbf{X}}{\text{minimize}} & &
 \underset{\delta_{ij} \in \mathcal{D}}{\sum} \frac{1}{\delta_{ij}^2}\big(d_{ij} - \delta_{ij}\big)^2 &\\
@@ -890,7 +1029,7 @@ $X$ and $Y$.
 In order to see whether the structures fall into discrete groups, we computed
 the RMSD between pairs of structures and performed hierarchical clustering on 
 the resulting $100\times100$ distance matrix for each stage 
-(Supplementary Fig.~\ref*{suppfig:CHindices}).
+(Appendix Fig.~\ref{suppfig:CHindices}).
 
 \paragraph{Choosing the parameter $\beta$:}
 As noted above, the parameter $\beta$ controls the scaling of the inferred 3D
@@ -924,10 +1063,10 @@ number of bins. To select $\beta$, we defined the scoring function
 \frac{1}{n_\text{bins}}\right)^2},
 \end{equation}
 which corresponds to the mean squared error between the estimated density and
-the expected density. The resulting density scores are shown in Supplementary
-Table~\ref*{table:density}, with the minimal value for each stage in boldface.
+the expected density. The resulting density scores are shown in Appendix
+Table~\ref{table:density}, with the minimal value for each stage in boldface.
 
-\subsubsection*{Eigenvalue decomposition and chromatin compartments}
+\subsubsection{Eigenvalue decomposition and chromatin compartments}
 \label{met:compartments}
 To identify chromatin compartments, for each stage, we
 carried out eigenvalue decomposition on the matrix of Euclidean
@@ -940,11 +1079,11 @@ decomposition (using the \emph{eig} function in MATLAB) to this
 correlation matrix. The sign of the first eigenvector defined a
 compartment assignment for each 10~kb locus at each stage. We also
 aggregated all three stages and calculated a set of aggregate compartments
-(Supplementary Fig.~\ref*{suppfig:perChrFigs}, fourth row of figures on each page)
+(Appendix Fig.~\ref{suppfig:perChrFigs}, fourth row of figures on each page)
 which divided each chromosome into three main compartments (i.e.,
 telomeric-centromeric-telomeric or left(L)-mid(M)-right(R)).
 
-\subsubsection*{Kernel canonical correlation analysis}
+\subsubsection{Kernel canonical correlation analysis}
 \label{met:kCCA}
 
 We used an approach based on kernel canonical correlation analysis (kCCA)
@@ -1018,7 +1157,7 @@ We computed the profiles for several values of $\sigma$ (0.01, 0.02, 0.05,
 (correlation $>0.99$ for all pairs of profiles). Therefore, we chose
 $\sigma = 0.01$ and $\delta = 0.02$ for the rest of the analysis.
 
-\subsubsection*{Gene set enrichment analysis}
+\subsubsection{Gene set enrichment analysis}
 \label{met:GSEA}
 To detect set of genes highly or poorly correlated kCCA profiles, we apply gene
 set enrichment analysis (GSEA) \citep{subramanian:gene}. Unlike a traditional
@@ -1032,7 +1171,7 @@ comparison gene sets that are involved in contacts that are specific to either
 one stage or two out of three stages.
 
 
-\subsubsection*{Volume exclusion model}
+\subsubsection{Volume exclusion model}
 \label{met:volume-exclusion}
 
 Following the methodology of \cite{tjong:physical}, we
