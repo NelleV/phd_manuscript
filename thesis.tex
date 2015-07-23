@@ -41,9 +41,52 @@
 \usepackage{grffile}
 \usepackage{changepage}
 \usepackage[toc,page]{appendix}
+\usepackage[table,svgnames]{xcolor}
+\usepackage{graphicx}
+\usepackage[parfill]{parskip}
+\usepackage{color}
+\usepackage{caption}
+
+\usepackage{overcite}
+
+\providecommand{\e}[1]{\ensuremath{10^{#1}}}
+
+%\newcommand{\remove}[1]{#1}
+\newcommand{\remove}[1]{}
+
+\newcommand{\gr}{\cellcolor[gray]{0.9}}
+
+%\defcitealias{duan:three}{Duan et al.}
+%\defcitealias{lieberman-aiden:comprehensive}{Lieberman-Aiden et al.}
+%\defcitealias{dixon:topological}{Dixon et al.}
+
+\renewcommand{\thefootnote}{\alph{footnote}} % otherwise footnotes look like refs
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\thesection}{\arabic{section}}
+
+\renewcommand{\listtablename}{Supplementary Tables}
+\renewcommand{\listfigurename}{Supplementary Figures}
+\renewcommand{\contentsname}{Supplementary Notes}
+
+\newcommand{\fixme}[1]{{\em FIXME: #1}}
+
+
+\usepackage{sectsty}
+\usepackage{tocloft}
+
+% Added by FERHAT
+\usepackage[caption=false]{subfig}
+%\usepackage{subfig}
+\usepackage{url}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{comment}
+\usepackage{float}
+\usepackage{natbib}
+
 \newtheorem{problem}{Problem}
 
-\usepackage[square, comma, sort&compress]{natbib} % Use the natbib reference package - read up on this to edit the reference style; if you want text (e.g. Smith et al., 2012) for the in-text references (instead of numbers), remove 'numbers' 
 \usepackage{graphicx}
 \hypersetup{urlcolor=blue, colorlinks=true} % Colors hyperlinks in blue - change to black if annoying
 \title{\ttitle} % Defines the thesis title - don't touch this
@@ -345,11 +388,11 @@
 
 \include{1_introduction/introduction}
 
-\include{2_chapter/chapter2}               
+\include{2_chapter/chapter2}
 
-\include{3_plasmodium/chapter3}               
+\include{3_plasmodium/chapter3}
 
-\include{4_centurion/chapter4}        
+\include{4_centurion/chapter4}
 
 \include{5_perspectives/perspectives}
 
@@ -368,7 +411,9 @@
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-\include{8_centurion_supplementaries/supp}
+\include{8_plasmodium_supplementaries/SI}
+
+\include{9_centurion_supplementaries/supp}
 
 \addtocontents{toc}{\vspace{2em}} % Add a gap in the Contents, for aesthetics
 
