@@ -17,42 +17,45 @@ Ferhat Ay, Bill Noble and Jean-Philippe Vert.
 % Résumé en francais
 
 \begin{abstract}{Résumé}
-Des récents développement dans les protocoles biologiques permettent désormais de
-mesurer les fréquences d'interaction entre toutes les paires de loci d'un
-génome, et ce, en une seule experience. Naturellement, le défi suivant est
-d'inférer des modèles tri-dimensionnels de la manière dont les chromosomes se
-replient dans le noyau de la cellule. Les inférences proposées jusqu'à présent
-reposent souvent sur des méthodes dites \textit{multidimensional scaling} (MDS),
+
+Des récents développement dans les protocoles biologiques permettent désormais
+de mesurer les fréquences d'interaction entre toutes les paires de loci d'un
+génome, et ce en une seule experience. Le défi suivant est donc d'inférer des
+modèles tri-dimensionnels du repliement des chromosomes dans
+le noyau de la cellule. Les inférences proposées jusqu'à présent reposent
+souvent sur des méthodes dites \textit{multidimensional scaling} (MDS),
 lesquelles optimizent une structure telle que les distances relatives entre
-éléments ressemblent au mieux à celles dérivées directement des fréquences
-d'interaction. Ces approches optimizent une fonction objective "heuristique",
-et repose sur de fortes hypothèses sur la biophysique de l'ADN pour dériver
-des distances euclidiennes à partir des fréquences d'interaction. Celles-ci
-peuvent donc mener à des modèles incorrectes de la structure de l'ADN.
+éléments soient les plus proches de celles dérivées directement des fréquences
+d'interaction. Ces approches optimizent une fonction objective heuristique,
+et reposent sur de fortes hypothèses sur la biophysique de l'ADN pour trouver
+la fonction de transfert entre fréquences d'interaction et distances
+euclidiennes. Ces hypothèse peuvent donc conduire à l'inférence de modèles
+incorrectes de la structure de l'ADN.
 
 Dans ce travail, nous proposons une nouvelle méthode pour inférer une
 structure 3D consensus du génome à partir de données Hi-C. Notre méthode
 repose sur un modèle statistique des fréquences d'interaction. Nous modélisons
 les fréquences d'interaction comme une distribution de Poisson dont
 l'intensité dépends de la distance physique entre paires de loci. Notre
-méthode peut automatiquement ajuster les paramètres de la fonction reliant
-fréquences d'interaction et distance physique, et infère un modèle expliquant
-au mieux les données.
+méthode peut automatiquement ajuster les paramètres de la fonction de
+transfert entre fréquences d'interaction et distances physiques, et infère un
+modèle expliquant au mieux les données.
 
 Nous comparons deux variantes de notre méthode (avec ou sans optimization des
-paramètre de la fonction de transfert) à quatre algorithmes utilisant MDS:
-(deux MDS métrique, dont les fonctions objectives diffèrent, une version non
-métrique de cet algorithme, et ChromSDE qui propose une version récente et
-convexe du MDS) sur des données simulées. Nous démontrons que notre modèle de
+paramètres de la fonction de transfert) à quatre algorithmes utilisant MDS sur
+des données simulées: deux MDS dit "métriques", dont les fonctions objectives
+diffèrent, une version non métrique de cet algorithme, et ChromSDE qui propose
+une version récente et convexe du MDS. Nous démontrons que notre modèle de
 Poisson reconstruit des modèles plus précis que toutes les méthodes MDS, en
-particulier lorsque la couverture est faible ou que les données Hi-C sont à
-haute résolution, soulignant ainsi l'importance du choix de la fonction
-objective à optimizen. Sur des données Hi-C publique de cellules embryonique
-de souris, nous montrons que les méthodes Poisson infèrent des structures plus
-stables, plus reproductibles et plus robustes lorsque le protocole biologique
-diffère et à différente résolution.
+particulier lorsque la couverture des données est faible ou que les données
+Hi-C sont à haute résolution, soulignant ainsi l'importance du choix de la
+fonction objective à optimizer. Sur des données Hi-C publiques de cellules
+embryoniquet de souris, nous démontrons par ailleurs que les méthodes Poisson
+infèrent des structures plus stables, plus reproductibles et plus robustes à
+la fois lorsque le protocole biologique diffère, mais aussi à différente
+résolution.
 
-Une implémentation Python de notre méthode est disponible à 
+Une implémentation Python de notre méthode est disponible à
 \href{http://cbio.ensmp.fr/pastis}{http://cbio.ensmp.fr/pastis}.
 \end{abstract}
 
@@ -637,14 +640,21 @@ between the other MDS-based methods and the PM methods.
 \label{fig:rmsd_alpha}
 \end{figure}
 
-Three of the methods tested, which we collectively refer to as \emph{metric} methods, require as input a count-to-distance or distance-to-count transfer function: MDS1, MDS2 and PM1. In reality, however, the DNA may not follow the ideal physical laws underlying the default transfer function discussed in Section~\ref{sec:evaluating_parameters}, and the structures inferred from these methods may diverge from the correct one because of miss-specification of the transfer function.
+Three of the methods tested, which we collectively refer to as \emph{metric}
+methods, require as input a count-to-distance or distance-to-count transfer
+function: MDS1, MDS2 and PM1. In reality, however, the DNA may not follow the
+ideal physical laws underlying the default transfer function discussed in
+Section~\ref{sec:evaluating_parameters}, and the structures inferred from
+these methods may diverge from the correct one because of miss-specification
+of the transfer function.
 
-To assess this phenomenon, and evaluate the robustness of the different methods (including NMDS and PM2, which automatically infer a transfer function), we now study
-the performance of the methods on datasets generated with varying
-$\alpha$ parameters. We therefore run the MDS1, MDS2, NMDS, PM1 and PM2 methods on the second
-ensemble of simulated datasets. We provide the default transfer function to
-all metric methods, thus inducing a miss-specification for all simulated
-datasets with $\alpha\neq -3$.
+To assess this phenomenon, and evaluate the robustness of the different
+methods (including NMDS and PM2, which automatically infer a transfer
+function), we now study the performance of the methods on datasets generated
+with varying $\alpha$ parameters. We therefore run the MDS1, MDS2, NMDS, PM1
+and PM2 methods on the second ensemble of simulated datasets. We provide the
+default transfer function to all metric methods, thus inducing a
+miss-specification for all simulated datasets with $\alpha\neq -3$.
 
 Figure~\ref{fig:rmsd_alpha} shows the RMSD of each method, averaged
 over the datasets with different $\beta$, as a function of $\alpha$.
@@ -677,15 +687,17 @@ from different datasets and across resolutions.
 
 \begin{table*}
 \begin{center}
+\footnotesize
 \begin{tabular}{ccccccccccccc}
 \hline
-Resolution &  Corr &
+{\tiny Resolution} &  Corr &
 \multicolumn{2}{c}{MDS1} &
 \multicolumn{2}{c}{MDS2} &
 \multicolumn{2}{c}{NMDS} &
 \multicolumn{2}{c}{PM1} &
 \multicolumn{2}{c}{PM2} \\
-&&& RMSD & Corr & RMSD & Corr & RMSD &Corr & RMSD & Corr & RMSD & Corr \\
+&& {\tiny RMSD} & Corr & {\tiny RMSD} & Corr & {\tiny RMSD} &Corr & {\tiny
+RMSD} & Corr & {\tiny RMSD} & Corr \\
 \hline
 1~Mb  & 0.981 & 13.13 & 0.945 & 5.54 & 0.964 &  5.80 & 0.965 & 7.28  & 0.931 & \textbf{4.92} & \textbf{0.976} \\
 500~kb & 0.959 & 10.00 & 0.942 & 5.68 & 0.959 & 5.67 & 0.959 & 7.14 & 0.913 & \textbf{4.66} & \textbf{0.968} \\
@@ -705,39 +717,6 @@ leads to a lower correlation between pairs of inferred structures.}
 
 \label{table:results_real_data}
 \end{table*}
-
-
-\begin{table}
-\begin{center}
-\begin{tabular}{clllll}
-\hline
-   & MDS1 & MDS2 & NMDS & PM1 & PM2 \\
-\hline
-{\em RMSD }        & 14.86 & 12.92 & 12.98 & 13.03 & \textbf{11.48} \\
-{\em Correlation } &  0.781 & 0.754 & 0.738 & 0.737 & \textbf{0.807} \\
-\hline
-\end{tabular}
-\end{center}
-\caption{\textbf{Stability across resolution.} The table lists the
-  average RMSD and Spearman correlation between pairs of structures of
-  different resolutions. In bold are the lowest average RMSD and
-  highest average Spearman correlation. These values were computed on
-  mouse ESC HindIII libraries \cite{dixon:topological})}
-\label{table:real_hic_stability}
-\end{table}
-
-\begin{figure*}
-\begin{center}
-\includegraphics[width=0.8\linewidth]{{varoquaux.78.fig3}.png}
-\end{center}
-\caption{\textbf{Predicted structures for chromosome 1 at different resolution}
-Contact counts matrices and predicted
-structures for the MDS2, NMDS, PM1 and PM2 methods at 1~Mb (\textbf{A}),
- 500~kb (\textbf{B}), 200~kb (\textbf{C}),
-100~kb (\textbf{D})}
-\label{fig:real_data}
-\end{figure*}
-
 \subsubsection{Stability to enzyme replicates}
 
 The Hi-C assay depends upon a restriction enzyme to cleave the DNA after
@@ -773,6 +752,37 @@ adjusted for multiple tests with a Bonferroni correction).
 
 
 \subsubsection{Stability to resolution}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{clllll}
+\hline
+   & MDS1 & MDS2 & NMDS & PM1 & PM2 \\
+\hline
+{\em RMSD }        & 14.86 & 12.92 & 12.98 & 13.03 & \textbf{11.48} \\
+{\em Correlation } &  0.781 & 0.754 & 0.738 & 0.737 & \textbf{0.807} \\
+\hline
+\end{tabular}
+\end{center}
+\caption{\textbf{Stability across resolution.} The table lists the
+  average RMSD and Spearman correlation between pairs of structures of
+  different resolutions. In bold are the lowest average RMSD and
+  highest average Spearman correlation. These values were computed on
+  mouse ESC HindIII libraries \cite{dixon:topological})}
+\label{table:real_hic_stability}
+\end{table}
+
+\begin{figure*}
+\begin{center}
+\includegraphics[width=0.9\linewidth]{{varoquaux.78.fig3}.png}
+\end{center}
+\caption{\textbf{Predicted structures for chromosome 1 at different resolution}
+Contact counts matrices and predicted
+structures for the MDS2, NMDS, PM1 and PM2 methods at 1~Mb (\textbf{A}),
+ 500~kb (\textbf{B}), 200~kb (\textbf{C}),
+100~kb (\textbf{D})}
+\label{fig:real_data}
+\end{figure*}
 
 \citet{zhang:spatial} show that the mapping from contact counts to
 physical distance differs from one resolution to another, underscoring

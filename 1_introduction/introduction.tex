@@ -8,60 +8,143 @@
 % the code below specifies where the figures are stored
 \graphicspath{{1_introduction/figures/}}
 
-% ----------------------------------------------------------------------
-%: ----------------------- introduction content ----------------------- 
-% ----------------------------------------------------------------------
+\section{Introduction}
 
-%: ----------------------- HELP: latex document organisation
-% the commands below help you to subdivide and organise your thesis
-%    \chapter{}       = level 1, top level
-%    \section{}       = level 2
-%    \subsection{}    = level 3
-%    \subsubsection{} = level 4
-% note that everything after the percentage sign is hidden from output
+In this chapter, we aim at providing some background on the main concepts
+present in this thesis.
 
-%\figuremacro{largepotato}{A common glucose polymers}{The figure shows starch granules in potato cells, taken from \href{http://molecularexpressions.com/micro/gallery/burgersnfries/burgersnfries4.html}{Molecular Expressions}.}
+\subsection{3C, 4C, 5C and Hi-C data}
 
-%: ----------------------- HELP: adding figures with macros
-% This template provides a very convenient way to add figures with minimal code.
-% \figuremacro{1}{2}{3}{4} calls up a series of commands formating your image.
-% 1 = name of the file without extension; PNG, JPEG is ok; GIF doesn't work
-% 2 = title of the figure AND the name of the label for cross-linking
-% 3 = caption text for the figure
+3C techniques and its derivatives have 5 experimental steps
+\citep{lieberman-aiden:comprehensive, kalhor:genome}.
 
-%: ----------------------- HELP: www links
-% You can also see above how, www links are placed
-% \href{http://www.something.net}{link text}
+\begin{itemize}
+\item \textbf{Cross-linking} : results in the cross-linking of DNA segments to
+proteins and to cross-linking of proteins with each other.
+\item \textbf{Restriction digest} A restriction enzyme is added in excess to
+the cross-linked DNA. The restriction enzyme will cut the DNA at specific
+nucleotide sequences, separating the non-cross-linked DNA from the
+cross-linked chromatin. Recognition sequences in DNA differ from each
+restriction enzyme, producing different lengths and sequences of strands.
+The selection of the restriction enzyme depends on the type of studies
+targeted in the experiment.
+\item \textbf{Intramolecular Ligation} The third step is an intramolecular
+ligation step. DNA fragments are binded together. There are two major types
+of ligation junctions: the first is the ligation of two neighboring DNA
+fragments, and the second is the junction that is formed when ligating one end
+of the fragment to the other end of the same fragment. The latter represents
+around 30\% of the junctions formed.
+\item \textbf{Reverse Cross-links} The fourth step consists of reversing the
+first step: the reversal of cross-links.
+\item \textbf{Quantitation} Polymerase chain reaction (PCR) is used to amplify
+the DNA copies and to assess the frequencies of the fragments of interest,
+which are then sequenced.
+\end{itemize}
 
-%\figuremacroW{largepotato}{Title}{Caption}{0.8}
-% variation of the above macro with a width setting
-% \figuremacroW{1}{2}{3}{4}
-% 1-3 as above
-% 4 = size relative to text width which is 1; use this to reduce figures
+\begin{figure}
+\begin{center}
+%\includegraphics[scale=0.4]{images/hic_protocol.png}
+\end{center}
+\caption{\textbf{Hi-C Protocol.} The procedure relies on cross linking,
+restriction enzymes digestions, intra molecular ligation, deproteinization and
+deep sequencing. Reads are then aligned to the reference genome, and binned at
+$10kb$, $40bk$ or $100kb$ depending on coverage.}
+\end{figure}
 
+The reads are then aligned to a reference genome, and binned at a fixed
+resolution depending on the coverage. Hence, we obtain a symmetric hollow
+matrix of integers, for which entries correspond to the number of reads that
+fall into a bin. We denote by $C$ the interaction frequency matrix, and
+$c_{ij}$ the interaction frequency between locus $i$ and locus $j$.
 
-%: ----------------------- HELP: tables
-% Directly coding tables in latex is tiresome. See below.
-% I would recommend using a converter macro that allows you to make the table in Excel and convert them into latex code which you can then paste into your doc.
-% This is the link: http://www.softpedia.com/get/Office-tools/Other-Office-Tools/Excel2Latex.shtml
-% It's a Excel template file containing a macro for the conversion.
+The 3D technologies are complex, and yield highly biased interaction
+frequencies \citep{imakaev:iterative, cournac:normalization,
+yaffe:probabilistic}. \citet{imakaev:iterative} proposes a simple iterative
+method, called ICE, to normalize the data. In short, they assume that the bias
+of each entry $c_{ij}$ of the matrix can be written as the product of two
+biases $\beta_i$ and $\beta_j$ corresponding to biases induced by loci. Hence,
+we can write $c_{ij} = \beta_i \beta_j p_{ij}$, where $p_{ij}$ is the
+probability of locus $i$ interacting with locus $j$. Thus, $\sum_i p_ij = 1$.
+This is a non convex optimization problem that can be solved exactly by an
+iterative process. To avoid degeneracies, we filter out the top 2\% sparse
+loci from our entry matrix before applying ICE. To give an intuition, this
+method projects each vector of interactions onto the $\ell_1$ unit ball. In
+practice, it yields an expected interaction frequency count: $k p_{ij}$, where
+$k$ is the mean interaction frequency.
 
-%\begin{table}[htdp]
-%\centering
-%\begin{tabular}{ccc} % ccc means 3 columns, all centered; alternatives are l, r
-%{\bf Gene} & {\bf GeneID} & {\bf Length} \\ 
-% & denotes the end of a cell/column, \\ changes to next table row
-%\hline % draws a line under the column headers
-%human latexin & 1234 & 14.9 kbps \\
-%mouse latexin & 2345 & 10.1 kbps \\
-%rat latexin   & 3456 & 9.6 kbps \\
-% Watch out. Every line must have 3 columns = 2x &. 
-% Otherwise you will get an error.
-%\end{tabular}
-%\caption[title of table]{\textbf{title of table} - Overview of latexin genes.}
-% You only need to write the title twice if you don't want it to appear in bold in the list of tables.
-%\label{latexin_genes} % label for cross-links with \ref{latexin_genes}
-%\end{table}
-% ----------------------------------------------------------------------
+From now on, $C$ will refer to the normalized interaction frequency matrix.
 
-Start from the beginning ...
+\subsection{State of the art of the inference of the 3D structure}
+
+Several techniques have been developed to infer three-dimensional models of
+the genome from interaction counts data. They fall into three categories: the
+first finds an average structure by optimizing an objective function as
+\citep{tanizawa:mapping, duan:three, ben-elazar:spatial}. The
+second samples local minima from a optimization problem leading to the study
+of the population of local minima \citep{bau:three-dimensional}. The last
+samples the posterior distribution \citep{rousseau:three}.
+
+\citet{tanizawa:mapping} model the 3D genome of the fission yeast (3
+chromosomes) by a string of $622$ beads, each bead $x_i$ being the center of a
+$20$kb section. The first step was to infer physical distances $\delta_{ij}$
+from frequency interactions. They studied eighteen pairs of genes using FISH
+measurements, and fitted the Hi-C data on the distances with a non linear
+regression curve. The second step was to compute the coordinates of the beads,
+such that the distances between the beads matches the inferred physical
+distances to the best, with additional biological motivated constraints.
+
+\citet{duan:three} converts the interaction frequencies into distances by
+examining the relationship between interaction frequencies and genomic
+distances. Then, a multidimensional scaling (MDS) is used to place each bead
+so that the wish distances are respected as well as possible.
+
+\citet{tanizawa:mapping} and \citet{duan:three} optimizes a problem of the
+form:
+\begin{equation*}
+\renewcommand{\arraystretch}{2}
+\begin{array}{ccll}
+\underset{x_1,\ldots, x_n}{\text{minimize}} & & 
+\underset{i<j\leq n}{\sum} \big(\|x_i - x_j\|_2 - \delta_{ij}\big)^2 &\\
+\text{subject to}
+& & \text{biological motivated non convex constraints.}
+\end{array}
+\end{equation*}
+
+\citet{tanizawa:mapping} published one solution, but did not mention the non
+convexity of the problem. Hence, we assume they seeked the best local minimum
+\citet{duan:three} ran the optimization process 30 times, and, observing the
+obtained solutions, found that they did not differ much. No formal study was
+done to compare the solutions.
+
+\citet{ben-elazar:spatial} formulated a non metric multidimensional scaling
+optimization problem. They first filtered the interaction count matrix so that
+remained only the most significant interactions. They then interpolated the
+missing values to obtain a smooth, symmetric, positive definite matrix.
+
+\citet{bau:three-dimensional} used IMP (Integrative Modeling Platform), also
+used in nuclear magnetic resonance (NMR) microscopy to construct a 3D model of
+the $\alpha$-globin module. Chromosomes are represented by beads, each beads
+linked by restraining oscillators. IMP seeks a solution at the equilibrium of
+those beads. Three types of restraints are used: the first  corresponds to
+harmonic oscillators, with strengths inversely proportional to the 5C
+score, computed from the interaction frequencies. The second ensures that two
+beads cannot be too close to each other. The third ensure that two consecutive
+beads cannot be separated too much. The last two springs have strength only
+when the constraints are not fulfilled. The optimization of this problem
+yields different configuration with similar IMP scores. A population of 50000
+structures was computed. The 10000 structures with the smaller objective
+function were then chosen as the population of local minima to be studied.
+
+\citet{rousseau:three} describes a formal probabilistic model of interaction
+frequencies and their relationship with physical distances by hypothesizing
+that interaction frequencies are inversely proportional to distances. They
+then use a Markov Chain Monte Carlo sampling procedure on an optimization
+problem that uses the same objective function as \citet{tanizawa:mapping} and
+\citet{duan:three} to produce an ensemble of 3D structures.
+
+Finally, \citet{tjong:physical} constructs a very simple model by
+modeling chromosomes as a flexible fiber, and using additional biologically
+motivated constraints, such as the positioning of centromeres and telomeres,
+they formulate an optimization problem. Generating $200000$ feasible
+structures, they show that Hi-C data can be fully explained by this very
+simple model.

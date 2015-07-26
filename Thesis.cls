@@ -402,15 +402,39 @@
 \begin{longtable}[c]{#1}#2\end{longtable}\par
     \cleardoublepage
 }
+\def\thinhrulefill{\leavevmode \leaders \hrule height .2ex \hfill \kern \z@}
+
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1.2ex \hfill \kern \z@}
+
+\newcommand\abstracts[1]{
+\btypeout{Abstract}
+\addtotoc{Abstract}
+\thispagestyle{plain}
+{\parindent \z@ \centering \reset@font
+ \thinhrulefill \quad
+ \scshape\bfseries
+ {\textit{Abstract}}}
+ \quad \thinhrulefill \par \nobreak
+{\normalsize #1}
+\vspace*{10\p@}
+\vfil\vfil\null
+}
+
+
 \newcommand\acknowledgements[1]{
 \btypeout{Acknowledgements}
 \addtotoc{Acknowledgements}
 \thispagestyle{plain}
-\begin{center}{\huge{\textit{Acknowledgements}} \par}\end{center}
+{\parindent \z@ \centering \reset@font
+ \thinhrulefill \quad
+ \scshape\bfseries
+ {\textit{Acknowledgements}}}
+ \quad \thinhrulefill \par \nobreak
 {\normalsize #1}
+\vspace*{10\p@}
 \vfil\vfil\null
-
 }
+
 \newcommand\dedicatory[1]{
 \btypeout{Dedicatory}
 \thispagestyle{plain}
