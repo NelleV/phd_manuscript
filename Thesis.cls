@@ -139,6 +139,7 @@
 \usepackage{rotating}
 \usepackage{listings}
 \usepackage{lstpatch}
+\usepackage[intoc]{nomencl}
 \lstset{captionpos=b,
         frame=tb,
         basicstyle=\scriptsize\ttfamily,
@@ -419,6 +420,22 @@
 \vspace*{10\p@}
 \vfil\vfil\null
 }
+
+
+\newcommand\resumes[1]{
+\btypeout{Resume}
+\addtotoc{Résumé}
+\thispagestyle{plain}
+{\parindent \z@ \centering \reset@font
+ \thinhrulefill \quad
+ \scshape\bfseries
+ {\textit{Résumé}}}
+ \quad \thinhrulefill \par \nobreak
+{\normalsize #1}
+\vspace*{10\p@}
+\vfil\vfil\null
+}
+
 
 
 \newcommand\acknowledgements[1]{

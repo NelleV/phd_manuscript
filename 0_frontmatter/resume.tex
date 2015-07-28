@@ -1,0 +1,79 @@
+\begin{resumes}
+
+La structure de l'ADN, des chromosomes et l'organisation du genome est un
+sujet qui a fasciné le monde de la biologie et continue a fasciné. La plupart
+de la recherche s'est concentré sur la structure uni dimensionnelle du génome,
+étudiant comment les gènes et les chromosomes sont organisés, et le lien entre
+l'organisation unidimentionnelle et la régulation des gènes, l'épissage, la
+méthylation, \dots Cependant, le génome est avant tout organisé dans un espace
+euclidéen tridimensionnelle, et cette structure 3D joue, elle aussi, un rôle
+important dans la fonction génomique de la cellule.
+
+La capture de la conformation des chromosomes (3C) et ses méthodes dérivées,
+associées avec le séquençage à haut débit (NGS) permet désormais la mesure en
+une seule expérience des intéractions physiques entre pair de loci sur tout le
+génome, permettant ainsi aux chercheurs de découvrir les secrets derrière
+l'organisation des génomes. Ces nouvelles technologies ouvrent la voie à des
+études systématiques et globales sur le repliement de l'ADN dans le noyau et
+ouvrent la porte pour mieux comprendre un certain nombre de processus
+biologique, comme la régulation des gènes, la replication et le réparage de
+l'ADN, les altérations du nombre de copies somatiques ainsi que les
+changements épigénétiques. Cependant, ces nouvelles méthodes 3C, comme
+toute nouvelle technologie, sont accompagnées de nombreux défis
+computationnelles et théoriques.
+
+Dans cette thèse, nous cherchons à relever un certain nombre de ces défis.
+
+Le premier chapitre est dédié au développement d'une méthode robuste et
+précise pour inférer un modèle tri-dimensionnelle à partir de données Hi-C.
+Les méthodes développées précédemment posent souvent ce problème d'inférence
+comme un problème d'optimization basé sur le {\em multidimensional scaling}
+(MDS), reposant sur une conversion {\em ad hoc} des fréquences d'interaction
+en distances euclidéennes. Les chromosomes sont modélisées comme des colliers
+de perles, lesquelles doivent être placées dans un espace euclideen de
+dimension 3 de tel sorte à respecter un certain nombre de contraintes, souvent
+non convexes, et à respecter au mieux les distances voulues. Ces approcher
+reposent sur des hypothèses douteuses pour transformer frequences
+d'interaction et distances voulues, remettant en cause le modèle final
+obtenue. Une autre limitation de ces méthodes est la formulation MDS, qui
+n'est motivé que par l'intuiton et non un modèle statistique. Notre méthode
+modèlise les fréquences d'interaction comme une distribution de Poisson dont
+l'intensité est une fonction de la distance euclideénne entre paire de loci.
+Nous formulons ainsi l'inférence de la structure 3D comme un problème de
+maximum de vraisemblance. Nous montrons que notre méthode infère des modèles
+plus robustes et plus stables selon les données et les résolutions.
+
+Le deuxième chapitre est consacré à l'étude de l'architecture du {\em P.
+falciparum}, un petit parasite responsable de la forme la plus virulente et
+mortelle de la malaria. Ce projet, dont le but était de répondre à une
+question biologique, avait pour but de comprendre comment l'architecture 3D du
+génome du {\em P. falciparum} est lié à l'expression et la régulation des
+gènes à différent moments du cycle cellulaire du parasite. En collaboration
+avec les équipes de Karine Le Roch et de Bill Noble, spécialisées
+respectivement dans l'étude du {\em P. falciparum}, et dans le développement
+de méthode computationnelle pour étudier, entre autre, la structure 3D du
+génome, nous avons construit des modèles de l'organisation du génome à trois
+moments du cycle cellulaire du parasite. Ceux-ci révèlent que le génome est
+replié dans le noyau dans une structure complexe, avec la co localisation de
+nombreux éléments génomiques (centromères, télomères, ADN ribosomal, famille
+de gènes, \dots). Cette architecture indique une forte association entre
+l'organisation spatiale du génome et l'expression des gènes.
+
+Le dernier chapitre réponds à une question très différente, mais aussi lié à
+l'étude des données 3C. Celles-ci, initiallement développée pour étudier la
+structure tri-dimensionnelle du génome, ont été récemment utilisé pour des
+applications très diverses: l'assemblage de génome {\em de novo}, la
+déconvolution d'échantillon méta génomique et l'annotation de génome. Nous
+décrivons dans ce chapitre une nouvelle méthode, Centurion, qui infère
+jointement la position de tous les centromères d'un organisme, en utilisant la
+propriété qu'ont les centromères à colocaliser dans le noyau. Cette méthode
+est donc une alternative aux méthodes de détection de centromères classiques,
+qui, malgré des années de recherche, n'ont pu identifier la position des
+centromères dans un certain nombre d'espèce de levure. Nous démontrons dans ce
+projet la robustesse et la précision de notre approche sur des jeux de données
+à haute comme à basse couverture. Nous prédisons par ailleurs la position des
+centromères dans 6 espèces qui n'avaient pour l'instant aucune annotation.
+
+\end{resumes}
+
+

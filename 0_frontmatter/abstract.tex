@@ -24,7 +24,51 @@ number alterations and epigenetic changes. Yet, 3C technologies, as any new
 biotechnology, now poses important computational and theoretical challenges
 for which mathematically well grounded methods need to be developped.
 
+In this thesis, we attempt to address some of the challenges faced while
+analysing such data.
 
+The first chapter is dedicated to developping a robust and accurate method to
+infer a 3D model of the genome from Hi-C data. Previous methods often
+formulated the inference as an optimization problem akin to {\em
+multidimensional scaling } (MDS) based on an {\em ad hoc} conversion of
+contact counts into euclidean {\em wish distances}. Chromosomes are
+modeled with a beads
+on a string model, and the methods attempt to place the beads in a 3D
+euclidean space to fullfill an number of, often non convex, constraints and
+such that the pairwise distance between each pairs of beads is as closely
+as possible to the corresponding {\em wish distance}. These
+approaches rely on dubious hypothesis to convert contact counts into {\em wish
+distances}, challenging the accuracy of the final 3D model. Another limitation
+is the MDS formulation which is only intuitively motivated, and not grounded
+on a clear statistical model. Our method models contact counts as a Poisson
+distribution where the intensity is proportional to the spatial distance
+between elements interacting. We then formulate the 3D structure inference as
+a maximum likelihood problem. We demonstrate that our method infers robust and
+stable models across resolution and datasets.
+
+The second chapter focuses on the genome architecture of the {\em P.
+falciparum}, a small parasite responsible for the deadliest and most virulent
+form of human malaria. This project was biologically driven and aimed at
+understanding whether and how the 3D structure of the genome related to gene
+expression and regulation at different time points in the complex life cycle
+of the parasite. In collaboration with Le Roch lab and Noble lab, we built 3D
+models of the genome at three time points which resulted in a complex genome
+architecture indicative of a strong association between the spatial genome and
+gene expression.
+
+The last chapter tackles a very different question, also based on 3C-based
+data. Initially developped to probe the 3D architecture of the chromosomes,
+Hi-C and related techniques have recently been re-purposed for diverse
+applications: \textit{de novo} genome assembly, deconvolution of metagenomic
+samples and genome annotations. We describe in this chapter a novel method,
+Centurion, that jointly infers the locations of all centromeres in a single
+genome from Hi-C data, using the centromeres' tendency to strongly colocalize
+in the nucleus.  Indeed, centromeres are essential for proper chromosome
+segregation, yet, despite extensive research, centromere locations are unknown
+for many yeast species. We demonstrate the robustness of our approach on
+datasets with low and high coverage on well annotated organisms. We then
+predict centromere coordinates for 6 yeast species that currently lack those
+annotations.
 
 \end{abstracts}
 %\end{abstractlongs}
