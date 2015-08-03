@@ -136,15 +136,46 @@ three main type, which are then extended to build more complex models (1) the
 \textit{equilibrium polymer}. These polymers are characterized by
 relationships such as the one between the size of a polymer subchain $L(s)$ as
 a function of its lengths $s$, between the size of the polymer $L(N)$ and the
-length of this polymer $N$, or between the contact probability between
-monomers $P(s)$ and the linear distance between monomers $s$.
+total length of this polymer $N$, or between the contact probability between
+monomers $P(s)$ and the linear distance between monomers $s$. DNA is thus a
+polymer, each pair of nucleic acid forming a monomer, and the distance $s$ the
+genomic distance between two loci.
 
 The \textit{random coil} corresponds to an unconstrained polymer, best
-described by a random walk. A random walk of length $N$ has an expected size
-of $N^{1/2}$, and so has any of its subchain: $L(s) \sim s^{1/2}$. The contact
-probability between two monomers is $P(s) \sim s^{-3/2}$.
+described by a random walk. A \textit{random coil} of length $N$ has an
+expected size of $N^{1/2}$, and so has any of its subchain: $L(s) \sim
+s^{1/2}$. The contact probability between two monomers is $P(s) \sim
+s^{-3/2}$. These relationships lead to a low density polymer, where contact
+between monomers is sparse.
 
+\fixme{Add the swollen coil, ie, the self avoiding random walk}
 
+If the polymer is constrained in a small volume, the polymer folds into an
+\textit{equilibrium globule} state. This polymer behaves as a random walk,
+until it bounces of the boundary of the constrained space, and starts another
+random walk inside the confined volume. The expected size of this polymer is
+$N^{1/3}$ (\fixme{WHY !!! Why not the volume defined by the constrained space
+???}) The size of a subchain of a polymer follows the relationship: $L(s) =
+s^{1/2}$ for $s < N^{2/3}$ and constant elsewise: it is the same as a random
+coil until it plateaus. The probability of contact between two monomers is
+$P(s) = s^{-3/2}$ for $s < N^{2/3}$ and constant elsewise: once again, it is
+the same relationship as the random coil, until it becomes constant.
+Interestingly, this polymer is uniformely distributed in the constrained
+space, and the density of the polymer is independent of the total length $N$
+and the volume $V$.
+
+Another interesting polymer behaviour is the \textit{fractal globule}: when
+the chain is sufficiently long and the constrained volume sufficiently small,
+the polymer forms knotted crumples of increasing size. The polymer is then
+constrained by the available volume, and other parts of the polymer, which
+creates topological constraints forcing the polymer to collapse into crumples.
+First proposed by \citet{grosberg:role}, and further analysed by
+\citet{mirny:fractal}, the polymer presents interesting properties: the size
+of any subchain follows the same law: $R(s) \sim s^{1/3}$, and the probability
+of contact between two monomers is inversely propuortional to the linear
+distance that separates them: $P(s) \sim s^{-1}$. In particular, the
+probability of contact doesn't exhibit the same plateau as the equilibrium
+polymer.
 
 \subsection{3D models of DNA folding}
 
