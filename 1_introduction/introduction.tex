@@ -25,18 +25,19 @@ mathematical concepts present in this thesis.
 Methods to investigate the 3D structure of the genome fall broadly into two
 categories: bio imaging techniques and biochemical protocols. In the first
 category, light microscopy allows single cell visualization of specific loci
-and enables live cell imaging, sometimes at very high resoluton
+and enables live cell imaging, sometimes at very high resolution
 \citep{cremer:chromosome-2010}. Yet, these techniques limit studies to a very
 small number of loci. On the other hand, biochemical protocols, such as
 chromosome conformation capture (3C) and its derivatives, enable to measure
 physical interaction between DNA fragments \cite{dekker:capturing}, but
 performing single cell experiments is troublesome, and tracking live cell
-impossible. In this thesis, we are mostly interested in analysing 3C and such
-datasets.
+impossible. To understand how DNA fold into a nucleus, one has to jungle
+between both technologies. In this thesis, we are mostly interested in
+analysing 3C and such datasets.
 
 \subsection{3C, 4C, 5C and Hi-C data}
 
- In recent years, the technique of chromosome conformation capture (3C)
+In recent years, the technique of chromosome conformation capture (3C)
 \citep{dekker:capturing}, which identifies physical contacts between different
 genomic loci and yields information about their relative spatial distance in
 the nucleus, has paved the way for the systematic analysis of the 3D structure
@@ -68,7 +69,6 @@ which are then sequenced.
 
 \begin{figure}
 \begin{center}
-
 \includegraphics[width=0.8\linewidth]{figures/hic_protocol.png}
 \end{center}
 \caption{\textbf{Hi-C Protocol.} The procedure relies on cross linking,
@@ -113,20 +113,30 @@ frequencies in reasonable computational time and with reasonable storage
 requirements. The overall strategy to analyze Hi-C data is converging among
 recent studies and summarized in \cite{lajoie:hitchhiker}. Our collaborators
 and we have built HiC-Pro, an an easy-to-use and complete pipeline to process
-Hi-C data from raw sequencing reads to the normalized contact maps.
+Hi-C data from raw sequencing reads to the normalized contact maps. Once these
+processing steps are done, one can finally proceed to the study of genome
+organization and DNA folding from Hi-C data in an attempt to unfold the
+mysteries of genome architecture.
 
 \section{The study of chromosome organization}
 
-The study of chromosome organization broadly falls into two categories:
-model-based studies and data-driven studies. The former methods consider the
-polymer nature of DNA to leverage the theoretical and computational work done
-statistical physics of polymers, to built, with as few assumptions as
-possible many chromosome conformations. Those chromosome conformations
-are then used to compare against experimental data, such as Hi-C contact
-counts matrices, in order to iteratively improve the models. These models
-offer mechanistical insights into the folding of DNA. The latter approaches
-use the experimental data to infer 3D models, by typically minizing a cost
-function ensuring the models are as consistent as possible with the data.
+The study of chromosome organization based on contact counts maps broadly
+falls into two categories: model-based studies and data-driven studies. The
+former methods consider the polymer nature of DNA to leverage the theoretical
+and computational work done statistical physics of polymers, to built, with as
+few assumptions as possible many chromosome conformations. Those chromosome
+conformations are then used to compare against experimental data, such as Hi-C
+contact counts matrices, in order to iteratively improve the models. These
+models offer mechanistical insights into the folding of DNA. The latter
+approaches use the experimental data to infer 3D models, by typically minizing
+a cost function ensuring the models are as consistent as possible with the
+data. These data driven models and analysis are the primary focus of this
+thesis.
+
+Though we here review some of the methods used to study and build models, this
+is a very incomplete view of a blooming field. \citet{rosa:computational}
+provide a more thorough, but yet incomplete, overview of computational models
+of genome architectures.
 
 \subsection{DNA as a polymer}
 
@@ -150,6 +160,20 @@ between monomers is sparse.
 
 \fixme{Add the swollen coil, ie, the self avoiding random walk}
 
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=0.8\linewidth]{figures/mirny_fractal.png}
+\includegraphics[width=0.8\linewidth]{figures/mirny_equilibrium.png}
+\end{center}
+\caption{\textbf{Fractal globule versus the equilibrium globule}}{This image
+from \citet{mirny:fractal} illustrates the difference between the fractal
+globul or crumpled globule and the equilibrium globule. In the first row, the
+fractal globule's subchain occupy a distinct territory in the nucleus, while
+the second row illustrates the equilibrium globule's property to occupy a wide
+space in the nucleus.}
+\end{figure}
+
 If the polymer is constrained in a small volume, the polymer folds into an
 \textit{equilibrium globule} state. This polymer behaves as a random walk,
 until it bounces of the boundary of the constrained space, and starts another
@@ -166,22 +190,27 @@ and the volume $V$.
 
 Another interesting polymer behaviour is the \textit{fractal globule}: when
 the chain is sufficiently long and the constrained volume sufficiently small,
-the polymer forms knotted crumples of increasing size. The polymer is then
+the polymer forms knotted crumples of increasing sizes. The polymer is then
 constrained by the available volume, and other parts of the polymer, which
 creates topological constraints forcing the polymer to collapse into crumples.
 First proposed by \citet{grosberg:role}, and further analysed by
 \citet{mirny:fractal}, the polymer presents interesting properties: the size
-of any subchain follows the same law: $R(s) \sim s^{1/3}$, and the probability
-of contact between two monomers is inversely propuortional to the linear
-distance that separates them: $P(s) \sim s^{-1}$. In particular, the
-probability of contact doesn't exhibit the same plateau as the equilibrium
-polymer.
+of any subchain follows the same law as the equilibrium globule, but without
+the plateau: $L(s) \sim s^{1/3}$, and the probability of contact between two
+monomers is inversely proportional to the linear distance that separates them:
+$P(s) \sim s^{-1}$.
 
-\subsection{3D models of DNA folding}
+Now that we have briefly summarized the different theoritical behaviour of
+polymers DNA can adopt, let us have a closer look at the relationships we
+observe in the contact counts maps. We can observe that organism fall into two
+categories: the first group, composed of small genomes such as \textit{S.
+cerevisae}, \textit{P. falciparum}, behaves as an \textit{equilibrium globule}
+coil, while the second group, composed of large genomes such as mammifer
+genomes and \textit{A. thaliana} \textit{D. drosophilae}, exhibit properties
+\textit{fractal globules}.
 
-We will review some techniques developped to study the folding of DNA, mostly
-data-driven models. \citet{rosa:computational} provide a more more complete
-overview of computational models of genome architectures.
+\subsection{The inference of DNA three-dimensional models}
+
 
 Several techniques have been developed to infer three-dimensional models of
 the genome from interaction counts data. They fall into three categories: the
@@ -249,12 +278,11 @@ then use a Markov Chain Monte Carlo sampling procedure on an optimization
 problem that uses the same objective function as \citet{tanizawa:mapping} and
 \citet{duan:three} to produce an ensemble of 3D structures.
 
-Finally, \citet{tjong:physical} constructs a very simple model by
-modeling chromosomes as a flexible fiber, and using additional biologically
-motivated constraints, such as the positioning of centromeres and telomeres,
-they formulate an optimization problem. Generating $200000$ feasible
-structures, they show that Hi-C data can be fully explained by this very
-simple model.
+\citet{tjong:physical} constructs a very simple model by modeling chromosomes
+as a flexible fiber, and using additional biologically motivated constraints,
+such as the positioning of centromeres and telomeres, they formulate an
+optimization problem. Generating $200000$ feasible structures, they show that
+Hi-C data can be fully explained by this very simple model.
 
 \begin{table}[ht!]
 \caption{\bf A comparison of 3D inference methods}
@@ -287,14 +315,77 @@ Alber & & & &\\
 \section{Long range interactions}
 
 
-Contact counts maps have recently been re-purposed for diverse applications,
-far outside the study of the conformation of chromosomes: \textit{de novo}
+Thought mostly and initially used to study DNA folding, contact counts maps
+have recently been re-purposed for diverse applications: \textit{de novo}
 genome assembly \citep{burton:chromosome, kaplan:high-throughput},
 deconvolution of metagenomic samples \citep{burton:species-level,
 beitel:strain}, and genome annotation \citep{marie-nelly:filling,
-varoquaux:accurate}. Indeed, these maps contain long range contiguity
-information that can be used in a wide range of applications.
-In this section, we review the applications and methods used.
+varoquaux:accurate}. The others (genome
+annotations) leverage properties of some organism's genome tendency to cluster
+and colocalize to annotate and identify genomic elements.
+
+\subsection{\textit{De novo} genome assembly, haplotype resolution and
+metagenomic sample deconvolution}
+
+\textit{De novo} genome assembly is the task of assembling many short DNA
+reads into a whole genome. These short DNA reads can be assembled into short
+contigs but the process of joining short contigs into larger scaffolds is
+often made difficult due to the presence of repetitive sequences. Despite
+improvements in sequencing technology and thus the sequencing of longer reads,
+filling the gaps caused by these repetitive sequences in complex genome
+remains difficult. \citet{burton:chromosome} and
+\citet{kaplan:high-throughput} proposes to use the massive amount of DNA
+sequences produced by Hi-C to first assemble short contigs, and rely on
+contact counts informations between contigs to attempt to place them one
+relatively to the other. Indeed, the more two contigs interact, the closer in
+terms of genomic distances they should be (with the proper normalization in
+contig lengths, GC-content, mappability and so on). The contact count matrix
+of the ordered contig is simply a permutation of rows and columns of the
+contact count matrix of the unordered set of contigs. Assembling the genome
+can thus be seen as reordering rows and columns to obtain a suitable Hi-C
+contact count matrix, smooth and with a strong diagonal.
+\citet{burton:chromosome} proposes to first cluster contigs into groups that
+belong to the same chromosomes, then create a graph where each node is a
+contig, and vertex represents interactions of weight contact counts. They then
+apply a minimum spanning tree algorithm to identify a path in the graph
+corresponding to adjacent contigs. \citet{kaplan:high-throughput} and
+\citet{marie-nelly:high-quality} both formulate the task as finding a
+permutation of rows and columns to maximize the likelihood. As finding a
+permutation matrix is a NP-hard problem, they use heuristic to simplify the
+optimization problem.
+
+Mammifer genomes contain two copies of each chromosome, which themselves hold
+specific single nucleotide polymorphisme (SNP). It is sometimes interesting to
+identify whether SNPs or mutations are held on the same copy of the
+chromosome. The task of identifying which SNP belongs to which chromosome is
+known as resolving the haplotype. FIXME proposes a very similar idea as
+before, which is that reads containing SNPs on the same homologous chromosomes
+interact more than SNPs on the other homologous chromosome. It is thus
+possible to use contact count information between reads in order to determine
+to which homologous chromosomes SNPs belong and resolve the haplotype.
+
+Microbiomes contain an ensemble of very small organisms in different
+abundances. Traditionnal technics to identify which organisms is in a
+metagenomic sample rely on deep sequencing to produce millions of short DNA
+reads. These reads are then either aligned on a reference genome or used as
+inpute of a supervised learning algorithm (Kevin) to identify the organisms
+and the abundance in which they lie in the metagenomic sample. Both of these
+methods need a priori knowledge of the community's composition. Recently,
+\citet{burton:species-level} and \citet{marie-nelly:XXX} use shotgun
+sequencing and Hi-C contact counts to determine which contigs belong to which
+organisms. Once again, the idea is very similar as before: contigs from the
+same organism interact amongst each other the most. Thus, a clustering
+algorithm that takes as input a similarity matrix (the contact counts) groups
+contigs from the same organism together. Once the organism's contigs are
+identify, one can use technics as described before to scaffold contigs
+together, and therefore in a single experiment do \textit{de novo} sequencing
+of metagenomic samples.
+
+These applications are based on a very simple and elegant idea that contact
+counts map hold information on the contiguity of chromosomes which can be
+leverage for various tasks.
+
+\subsection{Genome annotations and centromeres identification}
 
 
 \section{Contributions}
