@@ -29,11 +29,11 @@ and enables live cell imaging, sometimes at very high resolution
 \citep{cremer:chromosome-2010}. Yet, these techniques limit studies to a very
 small number of loci. On the other hand, biochemical protocols, such as
 chromosome conformation capture (3C) and its derivatives, enable to measure
-physical interaction between DNA fragments \cite{dekker:capturing}, but
+physical interaction between DNA fragments \citep{dekker:capturing}, but
 performing single cell experiments is troublesome, and tracking live cell
 impossible. To understand how DNA fold into a nucleus, one has to jungle
 between both technologies. In this thesis, we are mostly interested in
-analysing 3C and such datasets.
+analysing 3C-based datasets.
 
 \subsection{3C, 4C, 5C and Hi-C data}
 
@@ -81,9 +81,9 @@ $10kb$, $40bk$ or $100kb$ depending on coverage.}
 After paired-end sequencing, each pair of reads can be associated to one
 \citep{lieberman-aiden:comprehensive} or several \citep{ay:identifying} DNA
 interactions. We can then create a symmetric hollow matrix of integers, for
-which entries correspond to the number of reads that fall into a bin. We
-denote by $C$ the interaction frequency matrix, and $c_{ij}$ the interaction
-frequency between locus $i$ and locus $j$.
+which entries correspond to the number of paired reads that fall into a bin.
+We denote by $C$ the interaction frequency matrix, and $c_{ij}$ the
+interaction frequency between locus $i$ and locus $j$.
 
 These protocols are complex, and yield highly biased interaction frequencies
 \citep{imakaev:iterative, cournac:normalization, yaffe:probabilistic}.
@@ -123,8 +123,8 @@ mysteries of genome architecture.
 The study of chromosome organization based on contact counts maps broadly
 falls into two categories: model-based studies and data-driven studies. The
 former methods consider the polymer nature of DNA to leverage the theoretical
-and computational work done statistical physics of polymers, to built, with as
-few assumptions as possible many chromosome conformations. Those chromosome
+and computational work done in statistical physics of polymers to built with
+as few assumptions as possible many chromosome conformations. Those chromosome
 conformations are then used to compare against experimental data, such as Hi-C
 contact counts matrices, in order to iteratively improve the models. These
 models offer mechanistical insights into the folding of DNA. The latter
@@ -135,20 +135,20 @@ thesis.
 
 Though we here review some of the methods used to study and build models, this
 is a very incomplete view of a blooming field. \citet{rosa:computational}
-provide a more thorough, but yet incomplete, overview of computational models
+provide a more thorough (but again incomplete) overview of computational models
 of genome architectures.
 
 \subsection{DNA as a polymer}
 
-Polymer physics divide homopolymers, polymers with identical polymer into
-three main type, which are then extended to build more complex models (1) the
+Polymer physics divide homopolymers (polymers with identical monomers) into
+three main types, which are then extended to build more complex models (1) the
 \textit{random coil}, (2) the \textit{swollen coil}, (3) the
 \textit{equilibrium polymer}. These polymers are characterized by
 relationships such as the one between the size of a polymer subchain $L(s)$ as
 a function of its lengths $s$, between the size of the polymer $L(N)$ and the
 total length of this polymer $N$, or between the contact probability between
-monomers $P(s)$ and the linear distance between monomers $s$. DNA is thus a
-polymer, each pair of nucleic acid forming a monomer, and the distance $s$ the
+monomers $P(s)$ and the linear distance between monomers $s$. DNA being a
+polymer, each pair of nucleic acid forms a monomer, and the distance $s$ is the
 genomic distance between two loci.
 
 The \textit{random coil} corresponds to an unconstrained polymer, best
@@ -167,8 +167,9 @@ between monomers is sparse.
 \includegraphics[width=0.8\linewidth]{figures/mirny_equilibrium.png}
 \end{center}
 \caption{\textbf{Fractal globule versus the equilibrium globule}}{This image
-from \citet{mirny:fractal} illustrates the difference between the fractal
-globul or crumpled globule and the equilibrium globule. In the first row, the
+from \citet{mirny:fractal} illustrates the difference between the
+\textit{fractal globule} or crumpled globule and the
+\textit{equilibrium globule}. In the first row, the
 fractal globule's subchain occupy a distinct territory in the nucleus, while
 the second row illustrates the equilibrium globule's property to occupy a wide
 space in the nucleus.}
@@ -207,7 +208,7 @@ categories: the first group, composed of small genomes such as \textit{S.
 cerevisae}, \textit{P. falciparum}, behaves as an \textit{equilibrium globule}
 coil, while the second group, composed of large genomes such as mammifer
 genomes and \textit{A. thaliana} \textit{D. drosophilae}, exhibit properties
-\textit{fractal globules}.
+of \textit{fractal globules}.
 
 \subsection{The inference of DNA three-dimensional models}
 
@@ -239,7 +240,7 @@ form:
 \begin{equation*}
 \renewcommand{\arraystretch}{2}
 \begin{array}{ccll}
-\underset{x_1,\ldots, x_n}{\text{minimize}} & & 
+\underset{x_1,\ldots, x_n}{\text{minimize}} & &
 \underset{i<j\leq n}{\sum} \big(\|x_i - x_j\|_2 - \delta_{ij}\big)^2 &\\
 \text{subject to}
 & & \text{biological motivated non convex constraints.}
@@ -320,9 +321,7 @@ have recently been re-purposed for diverse applications: \textit{de novo}
 genome assembly \citep{burton:chromosome, kaplan:high-throughput},
 deconvolution of metagenomic samples \citep{burton:species-level,
 beitel:strain}, and genome annotation \citep{marie-nelly:filling,
-varoquaux:accurate}. The others (genome
-annotations) leverage properties of some organism's genome tendency to cluster
-and colocalize to annotate and identify genomic elements.
+varoquaux:accurate}.
 
 \subsection{\textit{De novo} genome assembly, haplotype resolution and
 metagenomic sample deconvolution}
@@ -350,11 +349,11 @@ contig, and vertex represents interactions of weight contact counts. They then
 apply a minimum spanning tree algorithm to identify a path in the graph
 corresponding to adjacent contigs. \citet{kaplan:high-throughput} and
 \citet{marie-nelly:high-quality} both formulate the task as finding a
-permutation of rows and columns to maximize the likelihood. As finding a
+permutation of rows and columns to maximize a likelihood. As finding a
 permutation matrix is a NP-hard problem, they use heuristic to simplify the
 optimization problem.
 
-Mammifer genomes contain two copies of each chromosome, which themselves hold
+Mammifer genomes contain two copies of each chromosomes, which themselves hold
 specific single nucleotide polymorphisme (SNP). It is sometimes interesting to
 identify whether SNPs or mutations are held on the same copy of the
 chromosome. The task of identifying which SNP belongs to which chromosome is
@@ -368,8 +367,8 @@ Microbiomes contain an ensemble of very small organisms in different
 abundances. Traditionnal technics to identify which organisms is in a
 metagenomic sample rely on deep sequencing to produce millions of short DNA
 reads. These reads are then either aligned on a reference genome or used as
-inpute of a supervised learning algorithm (Kevin) to identify the organisms
-and the abundance in which they lie in the metagenomic sample. Both of these
+input of a supervised learning algorithm (Kevin) to identify which organisms
+are in the sample, and in which abundance. Both of these
 methods need a priori knowledge of the community's composition. Recently,
 \citet{burton:species-level} and \citet{marie-nelly:XXX} use shotgun
 sequencing and Hi-C contact counts to determine which contigs belong to which
@@ -377,16 +376,26 @@ organisms. Once again, the idea is very similar as before: contigs from the
 same organism interact amongst each other the most. Thus, a clustering
 algorithm that takes as input a similarity matrix (the contact counts) groups
 contigs from the same organism together. Once the organism's contigs are
-identify, one can use technics as described before to scaffold contigs
+identified, one can use technics as described before to scaffold contigs
 together, and therefore in a single experiment do \textit{de novo} sequencing
-of metagenomic samples.
+of many organisms, and find the composition and abundance of a metagenomic
+sample.
 
-These applications are based on a very simple and elegant idea that contact
-counts map hold information on the contiguity of chromosomes which can be
-leverage for various tasks.
+All these applications are based on a very simple and elegant idea that
+contact counts map hold information on the contiguity of chromosomes which can
+be leverage for various tasks.
 
 \subsection{Genome annotations and centromeres identification}
 
+The last unusual application of Hi-C data is the annotation of genomes, and
+more specifically the detection of highly colocolized elements that are
+elsewise difficult to annotate. In particular, centromeres have proven
+difficult to precisely identify in many species, including highly studied and
+used yeasts species. Centromeres, essential for proper chromosome segregation,
+have the property of clustering in 3D, and thus have very specific signal
+patterns in Hi-C data. \citet{marie-nelly:filling} proposed to annotate
+centromeric regions by detecting these very specific patterns in the contact
+maps of yeast species.
 
 \section{Contributions}
 
