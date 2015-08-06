@@ -12,9 +12,7 @@
 
 \end{abstract}
 
-\begin{abstract}{Abstract}
-
-We aim in this chapter at providing some background on biological and
+\begin{abstract}{AbspropertyWe aim in this chapter at providing some background on biological and
 mathematical concepts present in this thesis.
 
 \end{abstract}
@@ -170,7 +168,7 @@ between monomers is sparse.
 from \citet{mirny:fractal} illustrates the difference between the
 \textit{fractal globule} or crumpled globule and the
 \textit{equilibrium globule}. In the first row, the
-fractal globule's subchain occupy a distinct territory in the nucleus, while
+fractal globule's subchain occupes a distinct territory in the nucleus, while
 the second row illustrates the equilibrium globule's property to occupy a wide
 space in the nucleus.}
 \end{figure}
@@ -339,16 +337,16 @@ contact counts informations between contigs to attempt to place them one
 relatively to the other. Indeed, the more two contigs interact, the closer in
 terms of genomic distances they should be (with the proper normalization in
 contig lengths, GC-content, mappability and so on). The contact count matrix
-of the ordered contig is simply a permutation of rows and columns of the
-contact count matrix of the unordered set of contigs. Assembling the genome
-can thus be seen as reordering rows and columns to obtain a suitable Hi-C
-contact count matrix, smooth and with a strong diagonal.
-\citet{burton:chromosome} proposes to first cluster contigs into groups that
-belong to the same chromosomes, then create a graph where each node is a
-contig, and vertex represents interactions of weight contact counts. They then
-apply a minimum spanning tree algorithm to identify a path in the graph
-corresponding to adjacent contigs. \citet{kaplan:high-throughput} and
-\citet{marie-nelly:high-quality} both formulate the task as finding a
+of the ordered contigs (the "normal" contact count map) is simply a
+permutation of rows and columns of the contact count matrix of the unordered
+set of contigs. Assembling the genome can thus be seen as reordering rows and
+columns to obtain a suitable Hi-C contact count matrix, smooth and with a
+strong diagonal. \citet{burton:chromosome} proposes to first cluster contigs
+into groups that belong to the same chromosomes, then create a graph where
+each node is a contig, and vertex represents interactions of weight contact
+counts. They then apply a minimum spanning tree algorithm to identify a path
+in the graph corresponding to adjacent contigs. \citet{kaplan:high-throughput}
+and \citet{marie-nelly:high-quality} both formulate the task as finding a
 permutation of rows and columns to maximize a likelihood. As finding a
 permutation matrix is a NP-hard problem, they use heuristic to simplify the
 optimization problem.
@@ -357,7 +355,8 @@ Mammifer genomes contain two copies of each chromosomes, which themselves hold
 specific single nucleotide polymorphisme (SNP). It is sometimes interesting to
 identify whether SNPs or mutations are held on the same copy of the
 chromosome. The task of identifying which SNP belongs to which chromosome is
-known as resolving the haplotype. FIXME proposes a very similar idea as
+known as resolving the haplotype. \citet{selvaraj:whole-genome}
+proposes a very similar idea as
 before, which is that reads containing SNPs on the same homologous chromosomes
 interact more than SNPs on the other homologous chromosome. It is thus
 possible to use contact count information between reads in order to determine
@@ -370,7 +369,7 @@ reads. These reads are then either aligned on a reference genome or used as
 input of a supervised learning algorithm (Kevin) to identify which organisms
 are in the sample, and in which abundance. Both of these
 methods need a priori knowledge of the community's composition. Recently,
-\citet{burton:species-level} and \citet{marie-nelly:XXX} use shotgun
+\citet{burton:species-level} and \citet{marbouty:metagenomic} use shotgun
 sequencing and Hi-C contact counts to determine which contigs belong to which
 organisms. Once again, the idea is very similar as before: contigs from the
 same organism interact amongst each other the most. Thus, a clustering
@@ -379,7 +378,7 @@ contigs from the same organism together. Once the organism's contigs are
 identified, one can use technics as described before to scaffold contigs
 together, and therefore in a single experiment do \textit{de novo} sequencing
 of many organisms, and find the composition and abundance of a metagenomic
-sample.
+samples.
 
 All these applications are based on a very simple and elegant idea that
 contact counts map hold information on the contiguity of chromosomes which can
@@ -397,5 +396,51 @@ patterns in Hi-C data. \citet{marie-nelly:filling} proposed to annotate
 centromeric regions by detecting these very specific patterns in the contact
 maps of yeast species.
 
-\section{Contributions}
+\section{Contributions of the thesis}
 
+This thesis brings several contributions to the fields of analyzing Hi-C data.
+We now review them, following the organization of the manuscript (and not in
+chronological order of publication).
+
+\begin{itemize}
+
+\item Chapter \ref{chap:statistical} presents a novel, stable and robust
+statistical method for inferring a consensus 3D model of the genome. We model
+contact counts as a Poisson distribution where the 3D structure is a latent
+variable, and formulate the inference problem as maximizing the likelihood. We
+show both on generated and real Hi-C data that our method is more accurate,
+stable and robust than previous methods. \footnote{Our method \textit{Pastis}
+is available as a free and opensource software at
+\url{http://cbio.ensmp.fr/pastis}}
+
+\item Chapter \ref{chap:plasmodium} studies the 3D architecture of the
+parasite {\em P. falciparum} during its erythrocytic cycle and its links with
+gene expression. We assayed the genome architecture of the parasite at three
+time points to obtain high resolution contact maps which we used to construct
+consensus 3D models. The resulting models showed that {\em P. falciparum}'s
+genome is folded in a complex architecture, that cannot be explained by a
+simple volume exclusion model due to the strong co-clustering of many genomic
+elements in the nucleus. We observe a strong link between chromatin structure
+and gene expression, in particular reduced expression of genes located in
+spatial proximity to the repressive subtelomeric center and colocalization of
+distinct groups of parasite-specific genes with coordinated expression
+profiles. Overall, our results show that the 3D structure of the parasite is
+strongly correlated with gene expression during the erythrocytic cycle. This
+work has been done in collaboration with Noble lab and Le Roch lab. My
+contribution were (1) the 3D modeling of the genome using MDS-like approaches,
+(2) the comparison to the volume exclusion modeling and (3) finding the link
+between gene expression profiles and the 3D models using kernel CCA.
+
+\item Chapter \ref{chap:centurion} presents work done while I was visiting
+Noble lab, in collaboration with Dunham lab and Shendure lab. We proposed a
+novel method to jointly identify yeasts centromeres from Hi-C data, using the
+property centromeres have to strongly colocolize in the nucleus and thus to
+create a specific pattern in the contact counts maps. Our method,
+\textit{Centurion}, outperforms a previous published method by performing a
+joint optimization and using a better strategy to initialize the optimization.
+We show that \textit{Centurion} is very accurate and stable both on high and
+low coverage datasets. \footnote{Our method \textit{Centurion} is available as
+a free and opensource software at \url{http://cbio.ensmp.fr/centurion}}
+
+
+\end{itemize}
