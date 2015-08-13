@@ -5,8 +5,8 @@
 
 \begin{work}
 This chapter has been published in a slightly modified form in
-\citep{ay:identifying}, as joint work with Ferhat Ay, Thanh H. Vu, Michael J.
-Zeitz, Jan E. Carette, Jean-Philippe Vert, Andrew R. Hoffman, William S. Noble.
+\citet{ay:identifying}, as joint work with Ferhat Ay, Thanh H. Vu, Michael J.
+Zeitz, Jan E. Carette, Jean-Philippe Vert, Andrew R. Hoffman and William S. Noble.
 \end{work}
 
 \begin{abstract}{Abstract}
@@ -63,15 +63,15 @@ three-dimensional modeling.
 
 A variety of microscopic imaging techniques have long been used to study
 chromatin architecture and nuclear organization
-\cite{langer-safer:immunological, manders:four-dimensional,
+\citep{langer-safer:immunological, manders:four-dimensional,
 cremer:multicolor}. Recent advances triggered by the invention of chromatin
 conformation capture (3C) enable ascertainment of genome architecture on a
 genome-wide scale for virtually any genome, including human
-\cite{lieberman-aiden:comprehensive, dixon:topological, jin:high-resolution},
-mouse \cite{zhang:spatial, dixon:topological}, budding yeast
-\cite{duan:three}, bacteria \cite{umbarger:three-dimensional}, fruit fly
-\cite{sexton:three-dimensional} and a malarial parasite
-\cite{ay:three-dimensional}. These studies have revealed that the
+\citep{lieberman-aiden:comprehensive, dixon:topological, jin:high-resolution},
+mouse \citep{zhang:spatial, dixon:topological}, budding yeast
+\citep{duan:three}, bacteria \citep{umbarger:three-dimensional}, fruit fly
+\citep{sexton:three-dimensional} and a malarial parasite
+\citep{ay:three-dimensional}. These studies have revealed that the
 three-dimensional form of the genome {\em in vivo} is highly related to genome
 function through processes such as gene expression and replication timing.
 Therefore, understanding how chromosomes fold and fit within nuclei and how
@@ -81,44 +81,44 @@ organisms.
 
 
 Hi-C was the first molecular assay to measure genome architecture on a genome-wide
-scale \cite{lieberman-aiden:comprehensive}, and the assay continues to
-be widely used \cite{jin:high-resolution, naumova:organization, ay:three-dimensional}.
+scale \citep{lieberman-aiden:comprehensive}, and the assay continues to
+be widely used \citep{jin:high-resolution, naumova:organization, ay:three-dimensional}.
 Hi-C involves seven steps: (1) crosslinking cells with
 formaldehyde, (2) digesting the DNA with a six-cutter restriction enzyme, (3)
 filling overhangs with biotinylated residues, (4) ligating the fragments, (5)
 creating a sequence library using streptavidin pull-down, (6) high-throughput
 paired-end sequencing, and (7) mapping paired ends independently to the genome
-to infer contacts. A subsequently described assay by Duan et al.~\cite{duan:three} is more
+to infer contacts. A subsequently described assay by \citet{duan:three} is more
 complex, involving a pair of restriction enzymes (REs) applied in three separate
 steps (RE1, RE2, circularization, then RE1 again), as well as the introduction
 of EcoP151 restriction sites to produce paired tags of 25--27bp. More recently,
 the tethered conformation capture (TCC) assay enhances the signal-to-noise
 ratio by carrying out a Hi-C-like protocol using DNA that is tethered to a
-solid substrate \cite{kalhor:genome}.
+solid substrate \citep{kalhor:genome}.
 
 One limitation of current genome architecture assays is their
 inability to identify simultaneous interactions among multiple
 loci. Chromosomes are composed of complex higher order chromatin
 structures that bring many distal loci into close proximity.  In
 particular, evidence suggests that eukaryotic transcription occurs in
-factories containing many genes \cite{cook:organization}.
+factories containing many genes \citep{cook:organization}.
 Recently, multiple-gene
 interaction complexes associated with promoters were found to contain
-an average of nearly nine genes \cite{li:extensive}. However, currently
+an average of nearly nine genes \citep{li:extensive}. However, currently
 available experimental data cannot ascertain to what extent these
 multiple gene interactions occur simultaneously or are confined to
 different sub-populations of nuclei. This distinction is analogous to
 the distinction between ``party hubs'' and ``date hubs'' in
 protein-protein interaction networks, in which a hub protein interacts
 either simultaneously or in a serial fashion with a series of partner
-proteins~\cite{han:evidence}. In the context of genome architecture assays,
+proteins~\citep{han:evidence}. In the context of genome architecture assays,
 distinguishing between ``party loci'' and ``date loci'' will be a
 crucial first step in elucidating the role of combinatorial regulation
 of gene expression.
 
 {
-A molecular colony technique recently developed by Gavrilov et
-al.\ \cite{gavrilov:quantitative} investigated multicomponent interactions
+A molecular colony technique recently developed by \citet{gavrilov:quantitative}
+investigated multicomponent interactions
 among remote enhancers and active $\beta$-globin genes in
 mouse erythroid cells. This assay, however, is PCR-based and requires a
 primer design step, which prevents it from providing a genome-wide
@@ -126,7 +126,7 @@ picture of potential multicomponent contacts. An earlier genome-wide
 assay by Sexton et al., which is adapted from the traditional Hi-C protocol and
 is similar to the assay we present here, acknowledged the existence
 of multi-locus contacts that can be identified from paired-end reads
-in their data \cite{sexton:three-dimensional}.
+in their data \citep{sexton:three-dimensional}.
 However, due to a number of differences in that
 protocol compared to TM3C (e.g., size selection for larger fragments,
 shorter read lengths and no in-gel ligation step), identifying a
@@ -198,7 +198,7 @@ contacts prefer to link open chromatin regions to each other and regions with
 higher numbers of DHSs to each other.
 %Furthermore, we show that our triple contacts are enriched among loci that
 %contain enhancers and/or promoters as annotated in the six Tier 1 ENCODE cell
-%lines~\cite{hoffman:integrative}.
+%lines~\citep{hoffman:integrative}.
 Finally, we use the contact maps gathered from TM3C to infer a local 3D
 structure of the \emph{IGF2-H19} region at 40~kb resolution and a whole genome
 3D model at 1~Mb resolution for the near-haploid KBM7 genome. Our 3D models
@@ -206,7 +206,7 @@ place \emph{H19} and \emph{IGF2} genes far away from each other, consistent
 with their opposite transcriptional status, and place gene-rich small
 chromosomes (chrs.\ 16, 17, 19--22) and large chromosomes (chrs.\ 1--5) near
 each other, confirming previous observations of gene-density-correlated
-arrangements of higher-order chromatin in human cells~\cite{bolzer:three}.
+arrangements of higher-order chromatin in human cells~\citep{bolzer:three}.
 
 %%%% Results start %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -220,8 +220,8 @@ REs, we select a set of enzymes such that sticky or blunt ends left by one
 enzyme are incompatible with the ends left by any other, thereby preventing
 ligation between fragments generated by different enzymes. We then encapsulate
 and ligate the digested DNA within agarose beads
-(Step 2 of Figure~\ref{fig:outline}), which replaces the tethering step of Kalhor
-et al. \cite{kalhor:genome}. We then size-select DNA fragments of around 250~bp
+(Step 2 of Figure~\ref{fig:outline}), which replaces the tethering step of
+\citet{kalhor:genome}. We then size-select DNA fragments of around 250~bp
 and subject the selected fragments to high throughput paired-end sequencing
 (Steps 3, 4 of Figure~\ref{fig:outline}). Our assay differs from the original
 Hi-C assay in three primary ways: (i) TM3C can use multiple REs simultaneously,
@@ -234,7 +234,7 @@ two libraries, one generated with four 4-cutters and the other with only one,
 suggests that the noise-to-signal ratio is much higher for the multiple 4-cutters case.
 Our second modification, elimination of the biotinylation step, greatly reduces
 the complexity of the overall protocol and has already been applied successfully by
-Sexton et al. \cite{sexton:three-dimensional}. This simplification, however,
+\citet{sexton:three-dimensional}. This simplification, however,
 comes with the drawback of sequencing many uninformative, unligated sonication
 products both for the TM3C and the Sexton et al.\ protocols. Because detection of
 such uninformative read pairs is computationally trivial, this simplification,
@@ -242,7 +242,7 @@ fortunately, does not contribute an additional noise factor. The third
 modification we implement, in-gel ligation, is similar to but simpler
 than the tethering achieved
 using protein biotinylation in the tethered conformation capture (TCC)
-assay \cite{kalhor:genome}. Our initial experimental data which omitted
+assay \citep{kalhor:genome}. Our initial experimental data which omitted
 the in-gel ligation demonstrated that without this step the resulting
 signal-to-noise ratio for the case of four 4-cutters is very low
 (95\% of the contacts are interchromosomal). Addition of in-gel ligation step
@@ -254,7 +254,7 @@ results from our one 4-cutter library for both KBM7 and NHEK cell lines.
 
 We use TM3C to investigate the chromatin architecture of the near haploid cell
 line KBM7 (25, XY, +8, Ph+) extracted from a heterogeneous chronic leukemia
-cell line~\cite{kotecki:isolation}, and NHEK, a normal diploid human keratinocyte primary cell
+cell line~\citep{kotecki:isolation}, and NHEK, a normal diploid human keratinocyte primary cell
 line (Lonza Walkersville Inc.). We construct libraries using only one four-base cutter restriction enzyme
 (TM3C-1) for both KBM7 and NHEK. We also create two libraries from KBM7
 cells using four different four-base cutters, one from crosslinked cells (KBM7-TM3C-4)
@@ -362,7 +362,7 @@ when all contact types are pooled (Figure~\ref{fig:validation}b). Second, we
 observe that this scaling relationship is consistent for different contact
 types (Figure~\ref{fig:validation}c),
 and the scaling is log-linear for the genomic distance range of 0.5--7~Mb, consistent with
-observations from Hi-C data \cite{lieberman-aiden:comprehensive}. Third, we
+observations from Hi-C data \citep{lieberman-aiden:comprehensive}. Third, we
 confirm visually and quantitatively that the interchromosomal contact maps
 we obtain from each contact type are consistent with each other
 (Supplementary Fig.~\ref{suppfig:compareThreeTypes}, pairwise matrix correlations
@@ -373,7 +373,7 @@ small chromosomes (16--22 except 18) (Figure~\ref{fig:validation}d--f, Supplemen
 Fourth, we confirm that our contact profiles capture known karyotypic abnormalities
 of KBM7 cells, such as diploidy of chromosome 8 (+8), partial diploidy of chromosome 15,
 and t(9;22)(q34;q11)) translocation between chromosomes 9 and 22 that leads to
-Philadelphia chromosome formation~\cite{kotecki:isolation,burckstummer:reversible}
+Philadelphia chromosome formation~\citep{kotecki:isolation,burckstummer:reversible}
 (Figure~\ref{fig:validation}d, e, Supplementary Fig.~\ref{suppfig:KBM7ploidyTrack}).
 Normal diploid human keratinocyte (NHEK) cells exhibit no karyotypic abnormalities
 except higher average contact counts between chromosomes 17, 19 and 22
@@ -394,21 +394,21 @@ we combine all three types (F-F, P-F, P-P) into an aggregated contact map for ea
   \centering
   \subfloat[KBM7]{\label{fig:KBM7eigChr17}\includegraphics[width=0.4\textwidth]{figs/KBM7-100bp-TMC-1-chr17.pdf}}
   \hspace{0.05\textwidth}
-  \subfloat[GM06990~\cite{lieberman-aiden:comprehensive}]
+  \subfloat[GM06990~\citep{lieberman-aiden:comprehensive}]
   {\label{fig:GM3eigChr17}\includegraphics[width=0.4\textwidth]{figs/Lieberman_human_GM-12-chr17.pdf}}
   \vspace{0.02\textheight}
   \\[-\lineskip]
   \subfloat[KBM7]{\label{fig:KBM7tdChr6}\includegraphics[width=0.4\textwidth]{figs/KBM7-100bp-TMC-1-chr6-topDomains.pdf}}
   \hspace{0.05\textwidth}
-  \subfloat[IMR90~\cite{dixon:topological}]{\label{fig:IMR90tdChr6}\includegraphics[width=0.4\textwidth]{figs/hIMR90-chr6-topDomains.pdf}}
+  \subfloat[IMR90~\citep{dixon:topological}]{\label{fig:IMR90tdChr6}\includegraphics[width=0.4\textwidth]{figs/hIMR90-chr6-topDomains.pdf}}
 \caption{
 \textbf{Figure 3 - Comparison of TM3C data with existing genome architecture datasets}
 Eigenvalue decomposition to identify open/closed chromatin compartments of
 chromosome 17 {\bf(a)} from the KBM7 cell line assayed by TM3C and {\bf(b)}
-from GM06990 cell line assayed by Hi-C~\cite{lieberman-aiden:comprehensive}.
+from GM06990 cell line assayed by Hi-C~\citep{lieberman-aiden:comprehensive}.
 Topological domain calls and contact count heatmaps of a 6 Mb region of chromosome 6
 {\bf(c)} for the KBM7 cell line assayed by TM3C and {\bf(d)} for the
-IMR90 cell line assayed by Hi-C~\cite{dixon:topological}.
+IMR90 cell line assayed by Hi-C~\citep{dixon:topological}.
 }
 \label{fig:cellLineComparison}
 \end{figure}
@@ -419,7 +419,7 @@ polymer models of chromatin folding and karyotypic properties of assayed cell li
 we assess whether TM3C contact maps exhibit the expected compartment-scale and domain-scale
 organization. For this purpose we perform eigenvalue decomposition on our
 contact maps and compare our compartment calls to those of previous Hi-C data sets
-on other human cell lines~\cite{lieberman-aiden:comprehensive,dixon:topological}.
+on other human cell lines~\citep{lieberman-aiden:comprehensive,dixon:topological}.
 The resulting compartment calls exhibit a nearly perfect overlap for chromosome 17
 between KBM7 and GM06990 (Figures~\ref{fig:cellLineComparison}a--b)
 and a high level
@@ -429,7 +429,7 @@ ranged between 70--82\%.
 
 Similarly, we perform topological domain decomposition at 40~kb resolution on
 KBM7 contact maps and compare our calls to those of two human cell lines
-published by Dixon et al.~\cite{dixon:topological} (Methods).
+published by \citet{dixon:topological} (Methods).
 Figures~\ref{fig:cellLineComparison}c--d demonstrate the significant overlap of
 topological domain calls from KBM7 and IMR90 contact maps on a 12~Mb region of
 chromosome 6. Overall, 73\% of IMR90 and 72.8\% of ESC domain boundaries overlap
@@ -469,7 +469,7 @@ the large scale organizational features of other human cell lines.
 % {\bf(c)} Observed over expected percentages of triple contacts that link enhancers
 % to promoters and promoters to other promoters at 40~kb resolution (Methods).
 % We use ENCODE genome segmentations in six human cell lines to extract regions
-% annotated as ``enhancers'' and ``promoters'' (Methods)~\cite{hoffman:integrative}.
+% annotated as ``enhancers'' and ``promoters'' (Methods)~\citep{hoffman:integrative}.
 % For K562 annotations 19.02\% and 5.65\% of all triples contain one enhancer-promoter
 % (one E-P) and multiple enhancer-promoter (multi E-P) contacts, respectively.
 }
@@ -506,7 +506,7 @@ numbers of DHSs (for triples observed 23.7\% compared to expected 12.4\%, Method
 %Last, we test the hypothesis that triple contacts preferentially link regulatory
 %elements such as enhancers and promoters to each other. Due to the lack of ChIP-seq
 %data to generate these annotations for the KBM7 cell line, we use six other human
-%cell lines that have been annotated by ENCODE (Methods)~\cite{hoffman:integrative}.
+%cell lines that have been annotated by ENCODE (Methods)~\citep{hoffman:integrative}.
 %We find that our triples are enriched for both single and multiple enhancer-promoter contacts as well as
 %promoter-promoter contacts (Figure~\ref{fig:triplesNEW}c). It is important to note that performing this analysis
 %at 40~kb resolution we exclude all proximal contacts, which presumably are
@@ -555,11 +555,11 @@ assay correspond to possible combinatorial regulatory interactions in
 KBM7 cells. Specifically, we focus on triples (contacts involving three loci)
 involving the \emph{IGF2-H19} locus, which is a classic example of imprinting that
 leads to allele-specific gene expression and regulation in both mouse and
-human~\cite{bartolomei:parental, ling:ctcf, vu:loss, murrell:interaction}.
+human~\citep{bartolomei:parental, ling:ctcf, vu:loss, murrell:interaction}.
 Our previous work in human cells
 has shown that a region that is located just upstream of the \emph{H19} promoter
 which is differentially methylated between maternal and paternal copies is involved
-in formation of allele-specific long-range chromatin loops~\cite{vu:loss}.
+in formation of allele-specific long-range chromatin loops~\citep{vu:loss}.
 Methylation status of this imprinting control
 region (ICR) determines whether \emph{IGF2} is transcribed (paternal allele)
 or not (maternal allele). Because KBM7 cells are haploid for chromosome 11, we
@@ -595,7 +595,7 @@ Detailed analysis of the distal loci that are contact partners of ICR
 in these six triples reveal that most of these loci
 (6 out of 8, Supplementary Figs.~\ref{suppfig:triple1methyl}--\ref{suppfig:triple3methyl})
 lie in regions consisting mainly of unmethylated CpGs in K562 cells and
-mainly methylated CpGs in at least one other cell line assayed by ENCODE~\cite{encode:integrated}.
+mainly methylated CpGs in at least one other cell line assayed by ENCODE~\citep{encode:integrated}.
 These contacts suggest existence of complex chromatin loops that
 bring together the differentially methylated ICR in 3D
 with loci that show cell type-specific methylation and specifically
@@ -603,10 +603,10 @@ unmethylation in K562 cells. These results together with our preliminary
 methylation analysis of the ICR suggest a 3D organization which
 silences \emph{IGF2} by restricting enhancer access to its promoter
 similar to \emph{Igf2} silencing of the maternal copy of mouse
-chromosome 7~\cite{qiu:complex}. In order to test our hypothesis
+chromosome 7~\citep{qiu:complex}. In order to test our hypothesis
 that the single copy of chromosome 11 in KBM7 corresponds to the
 maternal allele, we check the expression status of \emph{H19} and
-\emph{IGF2} genes from a recently published data set~\cite{burckstummer:reversible}.
+\emph{IGF2} genes from a recently published data set~\citep{burckstummer:reversible}.
 Supplementary Fig.~\ref{suppfig:IGF2expr} shows that \emph{H19}
 is expressed but \emph{IGF2} is not as we expected. This expression
 data confirms the prediction from TM3C data for the parent-of-origin
@@ -615,7 +615,7 @@ of the 2~Mb region centered on the ICR (Figure~\ref{fig:3D}a) demonstrate
 that the two genes, expressed \emph{H19} and non-expressed \emph{IGF2},
 are placed in distal chromatin domains, consistent
 with the proposed gene regulation model in the maternal copy of the
-homologous region in mouse~\cite{murrell:interaction}. However, the
+homologous region in mouse~\citep{murrell:interaction}. However, the
 depth of our data is not sufficient to do a finer scale 3D modeling
 that can distinguish between allele specific loops established
 by several differentially methylated regions and CTCF binding sites.
@@ -638,7 +638,7 @@ by several differentially methylated regions and CTCF binding sites.
  {\bf(a)} Three-dimensional structure of the 2~Mb region of chromosome 11 (chr11:1,000,000-3,000,000)
  which is centered around \emph{IGF2-H19} imprinting control region. This structure
  is inferred from normalized contact counts of KBM7-TM3C-1 data at 40~kb resolution
- using the Poisson model from Varoquaux et al.~\cite{varoquaux:statistical}.
+ using the Poisson model from \citet{varoquaux:statistical}.
  {\bf(b)} Three-dimensional structure of the KBM7 genome, which is haploid for all
 chromosomes other than diploid chromosome 8 (8A, 8B) and partially diploid
 chromosome 15 (15A, 15B) (see Methods for details of the 3D inference). Different
@@ -654,7 +654,7 @@ colors represent different chromosomes, and white balls represent chromosome end
 
 Finally, to visualize the genome architecture of near-haploid KBM7 cells, we generated
 a set of 3D structures using an optimization framework that alternates between inferring
-the 3D configuration of beads that best summarize TM3C contacts~\cite{varoquaux:statistical}
+the 3D configuration of beads that best summarize TM3C contacts~\citep{varoquaux:statistical}
 and re-estimating the distribution of contact counts between diploid chromosomes.
 Since this optimization is non-convex, we ran the optimization 1000 times and
 selected the 100 structures with the highest log likelihoods (Methods).
@@ -663,7 +663,7 @@ plots the structure with highest likelihood inferred at 1~Mb resolution. Visual 
 Figure~\ref{fig:3D}b suggests that individual chromosomes preserve their
 territories in 3D (see also Additional File 3). In order to better visualize which chromosomes are closer
 to each other, we plot subsets of different chromosomes in Figures~\ref{fig:3D}c--e.
-Consistent with previous models~\cite{lieberman-aiden:comprehensive} and our
+Consistent with previous models~\citep{lieberman-aiden:comprehensive} and our
 contact count heatmaps, we observe strong colocalization among the small gene-rich
 chromosomes (16, 17, 19, 20, 21 and 22). However, chromosome 18, which is small but
 gene-poor, does not colocalize with gene-rich small chromosomes in 3D
@@ -683,10 +683,10 @@ generated using chromatin conformation capture assays, the field of regulatory
 genomics has recently witnessed increased interest in the functional role of higher order DNA structure.
 Organizational principles of eukaryotic nuclei that are uncovered by these
 genome wide assays range from large scale patterns such as open/closed chromatin
-compartments~\cite{lieberman-aiden:comprehensive} and topological
-domains~\cite{dixon:topological} to more local patterns such as
+compartments~\citep{lieberman-aiden:comprehensive} and topological
+domains~\citep{dixon:topological} to more local patterns such as
 silencing or activating of individual genes by altering the 3D proximity of enhancers
-to gene promoters~\cite{ferraiuolo:three-dimensional, li:extensive}.
+to gene promoters~\citep{ferraiuolo:three-dimensional, li:extensive}.
 However, one important question that remains to be answered is how the
 simultaneous proximity of more than two loci in the nucleus impacts gene
 regulation. Current conformation capture assays cannot address this
@@ -728,7 +728,7 @@ demonstrate the utility of TM3C, we applied it to two human cell lines.
 We specifically chose one of these cell lines as the near-haploid KBM7
 which has been used in settings where having multiple copies of a
 chromosome is problematic, such as loss-of-function genetic
-screens~\cite{carette:haploid,burckstummer:reversible}. We first established that TM3C
+screens~\citep{carette:haploid,burckstummer:reversible}. We first established that TM3C
 contact maps are consistent with karyotypic features of KBM7 and
 that KBM7 cells share common large scale organization with other
 mammalian cell lines previously assayed by Hi-C. Focusing on
@@ -740,7 +740,7 @@ involved intrachromosomal loops bringing together regions that
 are more than megabases away in genomic distance as well as regions
 from different chromosomes. Together with results from previous
 FISH experiments that reveal \emph{IGF2} is located outside of
-its chromosome territory in the majority of nuclei~\cite{mahy:gene},
+its chromosome territory in the majority of nuclei~\citep{mahy:gene},
 our findings suggest that complex regulation of \emph{IGF2} and
 \emph{H19} may involve interactions with multiple distal regions
 simultaneously.
@@ -750,14 +750,14 @@ organization of a human cell line without averaging data from
 multiple copies of a chromosome or resolving the haplotype.
 To date 3D modeling efforts on the human genome have been limited to
 haploid chromosomes such as the X chromosome in male
-cells~\cite{nagano:single-cell}, one chromosome or one portion of a
-chromosome at a time~\cite{nagano:single-cell, bau:three-dimensional}
+cells~\citep{nagano:single-cell}, one chromosome or one portion of a
+chromosome at a time~\citep{nagano:single-cell, bau:three-dimensional}
 or have assumed artificially that only one copy of each chromosome
-exists per cell~\cite{zhang:inference}.
+exists per cell~\citep{zhang:inference}.
 In this work the near-haploid karyotype of KBM7 allowed us to
 overcome these limitations
 to infer whole-genome 3D models. By extending an algorithm that we developed
-previously for haploid genomes~\cite{varoquaux:statistical} to handle the diploid
+previously for haploid genomes~\citep{varoquaux:statistical} to handle the diploid
 portions of KBM7 cells, we generated 3D models for this leukemia
 cell line. Due to the lack of independent data available on KBM7 cells, we were unable
 to verify our 3D models further or correlate them with features such
@@ -767,7 +767,7 @@ suggest chromosomes with similar sizes tend to be closer to each
 other in 3D. It is also important to note that, similar to many previous approaches,
 our 3D models are consensus structures that summarize the genome architecture of a
 cell population. Capturing the heterogeneity of genome architecture across cells may be
-possible in the future, especially in conjunction with single-cell techniques~\cite{nagano:single-cell}.
+possible in the future, especially in conjunction with single-cell techniques~\citep{nagano:single-cell}.
 
 Overall, we showed that TM3C provides a framework to identify multi-locus
 contacts genome-wide in conjunction with commonly used next generation sequencing
@@ -901,7 +901,7 @@ For each possible pair of 1~Mb loci, we refer to the total number of read
 pairs that link the two loci as the {\em contact count}, and we refer to the
 two-dimensional matrix containing these contact counts as the {\em raw contact
 map}. To normalize the $3113 \times 3113$ raw contact maps, we extended the
-iterative correction procedure, ICE~\cite{imakaev:iterative}, for a nearly
+iterative correction procedure, ICE~\citep{imakaev:iterative}, for a nearly
 haploid genome. First, we corrected for the bias caused by the partial
 diploidy of the genome. For that, we constructed a ``deduplicated'' contact
 counts matrix, where contact counts associated with diploid loci are divided
@@ -927,25 +927,25 @@ loci interact twice as much as haploid loci.
 
 \subsection*{Eigenvalue decomposition}
 We carried out eigenvalue decomposition on the normalized contact maps of KBM7
-and NHEK TM3C datasets as described in \cite{lieberman-aiden:comprehensive}.
+and NHEK TM3C datasets as described in \citet{lieberman-aiden:comprehensive}.
 For each chromosome we used the intrachromosomal contact matrices at 1 Mb
 resolution. We calculated the Pearson correlation between each pair of rows
 of the contact matrix and apply eigenvalue decomposition
 (using the eig function in MATLAB) to the correlation matrix.
 The sign of either the first or the second eigenvector defines chromosome
-compartments for each chromosome. Similar to \cite{lieberman-aiden:comprehensive},
+compartments for each chromosome. Similar to \citet{lieberman-aiden:comprehensive},
 we used the second eigenvector in cases where the first eigenvector values are
 either all positive or all negative. To map signs of eigenvectors to open/closed
 compartment labels we used GC content as a marker. For each chromosome the sign
 with higher GC content is selected as open chromatin. We then compared the
 percentage of 1~Mb bins that are assigned the same compartment label by TM3C data
 versus previously published Hi-C data in four human cell lines
-(H1-hESC, IMR90~\cite{dixon:topological};  K562, GM06990~\cite{lieberman-aiden:comprehensive}).
+(H1-hESC, IMR90~\citep{dixon:topological};  K562, GM06990~\citep{lieberman-aiden:comprehensive}).
 
 
 \subsection*{Topological domain analysis}
 We identified topological domains using a previously described hidden Markov
-model-based software tool~\cite{dixon:topological}. To facilitate direct
+model-based software tool~\citep{dixon:topological}. To facilitate direct
 comparison with the previously published topological domains in human cell
 lines, we carried out the domain calling for these published datasets using
 the human GRCh36/hg19 assembly. We applied the topological domain calling on
@@ -954,7 +954,7 @@ To measure the consistency between the topological domains inferred from
 TM3C and those from published Hi-C data, we calculated the overlap of domain
 boundaries obtained between these two assays. We deemed two boundaries, one
 from each assay, as overlapping if they overlap by at least 1~bp or are
-adjacent to each other, as described in~\cite{dixon:topological}.
+adjacent to each other, as described in~\citet{dixon:topological}.
 
 \subsection*{Contacts among regions with the same compartment label}
 We used compartment labels assigned by the eigenvalue decomposition as described
@@ -993,8 +993,8 @@ we computed the percentage of intrachromosomal doubles and triples that
 link loci within the same topological domain.
 To estimate the significance of the observed percentages, we randomly
 shuffled topological domains by preserving the distribution of
-the domain lengths for each chromosome arm as described in Ay et
-al.\ \cite{ay:statistical}. We reported the mean and the standard deviation
+the domain lengths for each chromosome arm as described in
+ \citet{ay:statistical}. We reported the mean and the standard deviation
 for the percentage of within domain doubles and triples across 100
 randomized shufflings.
 
@@ -1056,7 +1056,7 @@ c_{\Phi(i)\Phi(j)}$ is a decreasing function of the Euclidean distance
 $d_{ij}(\textbf{X})$ between beads $i$ and $j$. Our and others' previous
 work suggested that the relationship between $\mu_{ij}c_{\Phi(i)\Phi(j)}$ and $d_{ij}$
 is approximately of the form $d_{ij}(\mathbf{X})^\alpha$, with $\alpha = -3$
-\cite{lieberman-aiden:comprehensive,fudenberg:higher-order,varoquaux:statistical}.
+\citep{lieberman-aiden:comprehensive,fudenberg:higher-order,varoquaux:statistical}.
 We can then express the likelihood of the model as:
 \begin{equation}
 \ell(\mathbf{X}, \mu) = \prod_{i, j} \frac{(d_{ij}^{\alpha})^{\mu_{ij}
@@ -1089,7 +1089,7 @@ the same copy of a diploid chromosomes.
 To optimize this non-convex function, we iterated between two steps: (1) infer
 the 3D structure $\mathbf{X}$; (2) re-estimate the distribution of contact counts $\mu_{ij}$ between
 diploid chromosomes. The first step is solved using an interior point method,
-as described in \cite{varoquaux:statistical}.
+as described in \citet{varoquaux:statistical}.
 For the second step, the optimization problem can be performed with respect to
 each pair of loci $k$ and $l$ independently. Thus we perform a grid search
 on $\{\mu_{ij} | \Phi(i) = k, \Phi(j) = l\}$, with a step size of 0.01.
