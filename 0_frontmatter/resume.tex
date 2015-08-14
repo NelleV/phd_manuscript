@@ -26,22 +26,29 @@ Dans cette thèse, nous cherchons à relever un certain nombre de ces défis.
 
 Le premier chapitre est dédié au développement d'une méthode robuste et
 précise pour inférer un modèle tri-dimensionnelle à partir de données Hi-C.
-Les méthodes développées précédemment posent souvent ce problème d'inférence
-comme un problème d'optimization basé sur le {\em multidimensional scaling}
-(MDS), reposant sur une conversion {\em ad hoc} des fréquences d'interaction
-en distances euclidéennes. Les chromosomes sont modélisées comme des colliers
-de perles, lesquelles doivent être placées dans un espace euclideen de
-dimension 3 de tel sorte à respecter un certain nombre de contraintes, souvent
-non convexes, et à respecter au mieux les distances voulues. Ces approcher
-reposent sur des hypothèses douteuses pour transformer frequences
-d'interaction et distances voulues, remettant en cause le modèle final
-obtenue. Une autre limitation de ces méthodes est la formulation MDS, qui
-n'est motivé que par l'intuiton et non un modèle statistique. Notre méthode
-modèlise les fréquences d'interaction comme une distribution de Poisson dont
-l'intensité est une fonction de la distance euclideénne entre paire de loci.
-Nous formulons ainsi l'inférence de la structure 3D comme un problème de
-maximum de vraisemblance. Nous montrons que notre méthode infère des modèles
-plus robustes et plus stables selon les données et les résolutions.
+Les méthodes développées précédemment formulent souvent ce problème
+d'inférence comme un problème d'optimization basé sur le {\em positionnement
+multidimensionel} (en anglais {\em multidimensional scaling}) (MDS),
+reposant sur une
+dérivation {\em ad hoc} des fréquences d'interaction en distances
+euclidéennes. Les chromosomes sont modélisées comme des colliers de perles,
+lesquelles doivent être placées dans un espace euclidéen de dimension 3 de tel
+sorte à respecter un certain nombre de contraintes (souvent non convexes) et
+de manière à positionner les perles telles que les distances entre elles
+soient les plus proches des distances dérivées des fréquences d'interaction.
+Ces approches reposent sur des hypothèses douteuses pour transformer
+fréquences d'interaction en distances euclidéenne, soulevant ainsi un doute
+sur la validité du modèle final obtenu.
+Une autre limitation de ces méthodes est la
+formulation du problème d'inférence sous forme MDS, justifiée non pas par un
+modèle statistique, mais par uniquement par l'intuition.
+Pour pallier à ces problème, notre méthode modèlise les fréquences
+d'interaction comme une
+distribution de Poisson dont l'intensité est une fonction de la distance
+euclideénne entre paire de loci: nous formulons ainsi l'inférence de la
+structure 3D comme un problème de maximum de vraisemblance. Nous montrons que
+notre méthode infère des modèles plus robustes et plus stables selon les
+données et les résolutions.
 
 Le deuxième chapitre est consacré à l'étude de l'architecture du {\em P.
 falciparum}, un petit parasite responsable de la forme la plus virulente et
@@ -49,19 +56,20 @@ mortelle de la malaria. Ce projet, dont le but était de répondre à une
 question biologique, avait pour but de comprendre comment l'architecture 3D du
 génome du {\em P. falciparum} est lié à l'expression et la régulation des
 gènes à différent moments du cycle cellulaire du parasite. En collaboration
-avec les équipes de Karine Le Roch et de Bill Noble, spécialisées
+avec les équipes de Karine Le Roch et de William Noble, spécialisées
 respectivement dans l'étude du {\em P. falciparum}, et dans le développement
 de méthode computationnelle pour étudier, entre autre, la structure 3D du
 génome, nous avons construit des modèles de l'organisation du génome à trois
 moments du cycle cellulaire du parasite. Ceux-ci révèlent que le génome est
-replié dans le noyau dans une structure complexe, avec la co localisation de
-nombreux éléments génomiques (centromères, télomères, ADN ribosomal, famille
-de gènes, \dots). Cette architecture indique une forte association entre
+replié dans le noyau dans une structure complexe, où de nombreux 
+nombreux éléments génomiques colocalizent: centromères, télomères, ADN
+ribosomal, famille
+de gènes, \dots Cette architecture indique une forte association entre
 l'organisation spatiale du génome et l'expression des gènes.
 
 Le dernier chapitre réponds à une question très différente, mais aussi lié à
 l'étude des données 3C. Celles-ci, initiallement développée pour étudier la
-structure tri-dimensionnelle du génome, ont été récemment utilisé pour des
+structure tri-dimensionnelle du génome, ont été récemment utilisées pour des
 applications très diverses: l'assemblage de génome {\em de novo}, la
 déconvolution d'échantillon méta génomique et l'annotation de génome. Nous
 décrivons dans ce chapitre une nouvelle méthode, Centurion, qui infère
@@ -69,7 +77,7 @@ jointement la position de tous les centromères d'un organisme, en utilisant la
 propriété qu'ont les centromères à colocaliser dans le noyau. Cette méthode
 est donc une alternative aux méthodes de détection de centromères classiques,
 qui, malgré des années de recherche, n'ont pu identifier la position des
-centromères dans un certain nombre d'espèce de levure. Nous démontrons dans ce
+centromères dans un certain nombre d'espèces de levure. Nous démontrons dans ce
 projet la robustesse et la précision de notre approche sur des jeux de données
 à haute comme à basse couverture. Nous prédisons par ailleurs la position des
 centromères dans 6 espèces qui n'avaient pour l'instant aucune annotation.
@@ -78,10 +86,11 @@ J'ai par ailleurs au cours de ma thèse travaillé sur un certain nombre de
 projets pour lesquels ma contribution a été mineure et que je ne décrirai pas
 dans ce manuscript, mais dont les papiers peuvent être trouvés en appendice.
 Le premier projet consiste au développement d'un nouvel outil permettant le
-pre processing des données Hi-C, allant des reads au cartes de fréquences
-d'interaction. Ma contribution a été l'implémentation en python d'une version
+pre processing des données Hi-C afin de construire et de normaliser les cartes de fréquences
+d'interaction des reads au cartes de fréquences à partir des données brutes de
+séquençage. Ma contribution a été l'implémentation en python d'une version
 optimisée à la fois en ram et en temps de calcul de la normalisation. Cette
-implémentation en Python, bien que très simple et non parallelisée, est à
+implémentation, bien que très simple et non parallelisée, est à
 notre connaissance la plus performante existant à l'heure actuelle. Le
 deuxième papier est une revue de l'épigénétique du {\em P. falciparum} suite à
 notre premier publication sur le sujet. Le troisième papier étends la méthode
