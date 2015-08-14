@@ -182,10 +182,44 @@ regulating gene expression.
 euchromatin}
 
 \subsection{Post-translational modification of histone proteins}
+
+\begin{figure}
+\includegraphics[width=\linewidth]{figures/fig2.png}
+\label{fig:3D}
+\caption{
+Large-scale depletion of the transcriptionally permissive histone variant
+H2A.Z and activating histone marks in the telomeric cluster
+visualized on the 3D \textit{P. falciparum} genome. ChIP-seq data from Bartfai et al.
+\citet{bartfai:h2az} for four histone variants or marks were downloaded from
+GEO (accession number: GSE23787) and mapped to the \textit{P. falciparum} genome
+(PlasmoDB v9.0) using the short read alignment mode of
+BWA (v0.5.9) \citep{li:fast} with default parameter settings.
+Reads were post-processed,
+and only the reads that map uniquely with a quality score
+above 30 and with at most two mismatches were retained for further analysis.
+Retained reads were subjected to PCR duplicate elimination
+and then were aggregated for each non-overlapping 5~kb bin across the \textit{P.
+falciparum} genome. The number of reads for each 5~kb bin was
+normalized using the overall sequencing depth of the corresponding ChIP-seq
+library. Plotted are the log2 ratios of sequence-depth
+normalized number of reads from the ChIP-seq library versus the corresponding
+input library (red: depletion, blue: enrichment) for A: H2A at
+40 hours post invasion (hpi), B: H2A.Z at 10 hpi, C: H2A.Z at 30 hpi, D: H2A.Z
+at 40 hpi, E: H3K9ac at 40 hpi, and F: H3K4me3 at 40 hpi. 3D
+models for the ring, trophozoite and schizont stages were generated in
+\citet{ay:three-dimensional} and were colored with ChIP-seq enrichment/depletion
+from 10, 20, and 40 hpi, respectively. Light blue and white spheres indicate
+centromeres and telomeres, respectively. The black dashed circle
+denotes the telomeric cluster for each stage. See Supporting information or
+http://noble.gs.washington.edu/proj/plasmo-epigenetics for the
+rotating 3D figure of each available ChIP-seq library.
+}
+\end{figure}
+
 Histone proteins consist of a globular core structure and an N-terminal tail
 that protrudes from this core domain. Many amino acid residues in the core
 domain and in particular in the N-terminal tail can be chemically modified,
-with various effects on chromatin organization (Fig. 2). In general, the
+with various effects on chromatin organization (Fig.~\ref{fig:3d}). In general, the
 addition of an acetyl group neutralizes the positive charge of histone
 proteins and thereby disrupts the stability of the DNA-histone interaction.
 This destabilization results in a more open chromatin structure and promotes a
@@ -200,41 +234,52 @@ In \textit{P. falciparum}, mass spectrometry experiments have identified at
 least 50 different histone post-translational modifications (PTMs), including
 methylation, acetylation, phosphorylation, ubiquitylation, and sumoylation
 \citep{lasonder:insights, miao:malaria, treeck:phosphoproteomes,
-trelle:global}
-[36-39]. Subsequent chromatin immunoprecipitation (ChIP) studies have given us
-insight into the genome-wide distribution of these histone marks in the
-asexual cycle (Table 1). In contrast to multicellular eukaryotes, a large
-proportion of the genome in \textit{P. falciparum} is constitutively acetylated
-\citep{miao:malaria, lopez-rubio:genome-wide}
-[37,40]. An abundance of activating marks has also been observed for other
-unicellular organisms, such as Saccharomyces cerevisiae and Tetrahymena
-thermophila [41]. Inhibition of histone acetyltransferase and deacetylase
-activity influences the expression levels of the majority of genes and
-interferes with parasite growth [42-44], indicative of the importance of
-acetylation for regulating transcription levels. Activating marks H3K9ac and
-H3K4me3 are mainly located in intergenic regions [45-47]. Highly transcribed
-genes carry more H3K9ac marks in their promoter [45], and this marking extends
-into the 5’ coding region [47].
+trelle:global}. Subsequent chromatin immunoprecipitation (ChIP) studies have
+given us insight into the genome-wide distribution of these histone marks in
+the asexual cycle (Table 1). In contrast to multicellular eukaryotes, a large
+proportion of the genome in \textit{P. falciparum} is constitutively
+acetylated \citep{miao:malaria, lopez-rubio:genome-wide}. An abundance of
+activating marks has also been observed for other unicellular organisms, such
+as \textit{Saccharomyces cerevisiae} and \textit{Tetrahymena thermophila}
+\citep{garcia:organismal}. Inhibition of
+histone acetyltransferase and deacetylase activity influences the expression
+levels of the majority of genes and interferes with parasite growth
+\citep{cui:histone, cui:cytotoxic, chaal:histone},
+indicative of the importance of acetylation for regulating transcription
+levels. Activating marks H3K9ac and H3K4me3 are mainly located in intergenic
+regions \citep{bartfai:h2az, jiang:pfsetvs, salcedo-amaya:dynamic}.
+Highly transcribed genes carry more H3K9ac marks in their
+promoter \citep{bartfai:h2az}, 
+and this marking extends into the 5’ coding region
+\citep{salcedo-amaya:dynamic}.
 
 \subsection{Repressive histone marks are scarce and localized to specific
 regions}
+
 Typical repressive marks, in particular H3K9me3, are almost exclusively found
 in repressive clusters containing genes belonging to the virulence families,
-such as var, rifin, stevor, and pfmc-2tm [40,46,48,49]. Interestingly, H3K9me3
+such as var, rifin, stevor, and pfmc-2tm \citep{lopez-rubio:genome-wide,
+jiang:pfsetvs, chookajorn:epigenetic, lopez-rubio:5}. Interestingly, H3K9me3
 is also present at several additional loci, including the gene encoding the
-gametocyte-specific transcription factor PfAP2-G [40] that is tightly
+gametocyte-specific transcription factor PfAP2-G
+\citep{lopez-rubio:genome-wide} that is tightly
 repressed during the asexual cycle. Transcription start sites of silent var
-genes are also enriched for H3K36me3 [46], while this modification is found at
-equal levels inside coding regions of active and repressed var genes [46,50].
+genes are also enriched for H3K36me3 \citep{jiang:pfsetvs},
+while this modification is found at
+equal levels inside coding regions of active and repressed var genes
+\citep{jiang:pfsetvs, ukaegbu:recruitment}.
 H3K36me3 is present at lower levels in the rest of the genome and is enriched
-at the 3’ end of coding regions of active \textit{P. falciparum} genes [46], in
+at the 3’ end of coding regions of active \textit{P. falciparum} genes, in
 agreement with its role in transcriptional elongation in other eukaryotes. The
 repressive mark H4K20me3 is also mainly present in var gene clusters, although
-its enrichment is not as strong as for H3K9me3 and H3K36me3 [46]. On the other
-hand, the single active var gene, out of ~60 family members, is enriched in
-active histone marks, such as H3K9ac, H3K4me3, and H4 acetylations [46,49].
+its enrichment is not as strong as for H3K9me3 and H3K36me3
+\citep{jiang:pfsetvs}. On the other
+hand, the single active var gene, out of \~60 family members, is enriched in
+active histone marks, such as H3K9ac, H3K4me3, and H4 acetylations
+\citep{jiang:pfsetvs, lopez-rubio:5}.
 Finally, the repressive mark H3K27me3 has not been detected in the parasite
-[39], similar to yeast. The \textit{P. falciparum} genome organization thus seems
+\citep{trelle:global}, similar to yeast. 
+The \textit{P. falciparum} genome organization thus seems
 unusual in that a large fraction of its chromatin is continuously in a
 transcriptionally permissive state, while the formation of heterochromatin
 seems to be limited to virulence and specific sexual genes.
@@ -248,12 +293,15 @@ coding regions relative to other eukaryotes}
 Nucleosome occupancy plays an important role in regulating gene expression by
 allowing or restricting access of the transcription machinery to the DNA.
 Nucleosomes are not placed uniformly along the genome, but show a distinct
-distribution around coding regions [51-55]. In yeast and higher eukaryotes,
+distribution around coding regions \citep{brogaard:map,
+buenrostro:quantitative, jansen:nucleosome, lee:high-resolution,
+mavrich:nucleosome}. In yeast and higher eukaryotes,
 the promoter is characterized by a nucleosome-depleted region, bordered on
 either side by strongly positioned -1 and +1 nucleosomes, respectively, both
-of which are enriched for the variant histone H2A.Z [56-58]. The +1 nucleosome
+of which are enriched for the variant histone H2A.Z
+\citep{raisner:histone, guillemette:variant, tolstorukov:comparative}. The +1 nucleosome
 is located at a fixed distance relative to the transcription start site (TSS),
-although this distance varies between organisms [55]. The +2, +3 and
+although this distance varies between organisms \citep{lee:high-resolution}. The +2, +3 and
 subsequent nucleosomes form an array of nucleosomes with increasingly more
 fuzzy positioning towards the 3’ end of the gene. Finally, the transcription
 stop site is again demarcated by a strongly positioned nucleosome, followed by
@@ -261,22 +309,29 @@ another nucleosome-depleted region.
 
 Nucleosome organization in \textit{P. falciparum} is similar to other eukaryotes in
 several respects. First, the promoter region is depleted of nucleosomes
+\citep{bunnik:DNA-encoded, ponts:nucleosome, westenberger:genome-wide}
 [59-61], the level of which correlates with transcriptional activity. Second,
 highly expressed genes have a more open chromatin organization at their core
-promoter than silent genes [59,60]. However, the \textit{P. falciparum} nucleosome
+promoter than silent genes \citep{bunnik:DNA-encoded, ponts:nucleosome}.
+However, the \textit{P. falciparum} nucleosome
 landscape also exhibits a number of unusual features. Notably, the TSS is not
 marked by a strongly positioned +1 nucleosome; instead, the strongest
 nucleosomes are the first and last nucleosomes within the coding region
-[59,60]. Furthermore, telomeric repeats and subtelomeric regions that contain
+\citep{bunnik:DNA-encoded, ponts:nucleosome}. Furthermore,
+telomeric repeats and subtelomeric regions that contain
 the virulence gene families (var, rifin, etc) have higher nucleosome occupancy
-levels than the bulk of the genome [59,61,62]. Intergenic regions, on the
-other hand, contain lower nucleosome levels than coding regions [59,61-63],
+levels than the bulk of the genome \citep{bunnik:DNA-encoded,
+ponts:nucleosome, segal:genomic}. Intergenic regions, on the
+other hand, contain lower nucleosome levels than coding regions
+\citep{bunnik:DNA-encoded, ponts:nucleosome, segal:genomic, ponts:nucleosome2},
 which is likely to be related to their extremely high AT-content (90-95\%).
 AT-rich DNA is inherently inflexible, hampering the winding of DNA around the
-histone core [64,65]. Finally, intergenic regions in \textit{P. falciparum} are
+histone core \citep{tillo:GC, segal:poly}. 
+Finally, intergenic regions in \textit{P. falciparum} are
 exclusively occupied by nucleosomes composed of histone variants H2A.Z and
-H2B.Z [66,67], which are thought to have adopted a specialized function in P.
-falciparum to allow nucleosome assembly in these highly AT-rich regions. These
+H2B.Z \citep{hoeijmakers:h2az, petter:h2az}, 
+which are thought to have adopted a specialized function in \textit{P.
+falciparum} to allow nucleosome assembly in these highly AT-rich regions. These
 histone variants are thus not restricted to promoter flanking nucleosomes but
 have a much broader distribution.
 
