@@ -204,9 +204,10 @@ falciparum} genome. The number of reads for each 5~kb bin was
 normalized using the overall sequencing depth of the corresponding ChIP-seq
 library. Plotted are the log2 ratios of sequence-depth
 normalized number of reads from the ChIP-seq library versus the corresponding
-input library (red: depletion, blue: enrichment) for A: H2A at
-40 hours post invasion (hpi), B: H2A.Z at 10 hpi, C: H2A.Z at 30 hpi, D: H2A.Z
-at 40 hpi, E: H3K9ac at 40 hpi, and F: H3K4me3 at 40 hpi. 3D
+input library (red: depletion, blue: enrichment) for \textbf{A:} H2A at
+40 hours post invasion (hpi), \textbf{B:} H2A.Z at 10 hpi, \textbf{C:} H2A.Z
+at 30 hpi, \textbf{D:} H2A.Z
+at 40 hpi, \textbf{E:} H3K9ac at 40 hpi, and \textbf{F:} H3K4me3 at 40 hpi. 3D
 models for the ring, trophozoite and schizont stages were generated in
 \citet{ay:three-dimensional} and were colored with ChIP-seq enrichment/depletion
 from 10, 20, and 40 hpi, respectively. Light blue and white spheres indicate
@@ -220,7 +221,7 @@ rotating 3D figure of each available ChIP-seq library.
 Histone proteins consist of a globular core structure and an N-terminal tail
 that protrudes from this core domain. Many amino acid residues in the core
 domain and in particular in the N-terminal tail can be chemically modified,
-with various effects on chromatin organization (Fig.~\ref{fig:3d}). In general, the
+with various effects on chromatin organization (Fig.~\ref{fig:3D}). In general, the
 addition of an acetyl group neutralizes the positive charge of histone
 proteins and thereby disrupts the stability of the DNA-histone interaction.
 This destabilization results in a more open chromatin structure and promotes a
@@ -310,8 +311,8 @@ another nucleosome-depleted region.
 
 Nucleosome organization in \textit{P. falciparum} is similar to other eukaryotes in
 several respects. First, the promoter region is depleted of nucleosomes
-\citep{bunnik:DNA-encoded, ponts:nucleosome, westenberger:genome-wide}
-[59-61], the level of which correlates with transcriptional activity. Second,
+\citep{bunnik:DNA-encoded, ponts:nucleosome, westenberger:genome-wide},
+the level of which correlates with transcriptional activity. Second,
 highly expressed genes have a more open chromatin organization at their core
 promoter than silent genes \citep{bunnik:DNA-encoded, ponts:nucleosome}.
 However, the \textit{P. falciparum} nucleosome
@@ -374,8 +375,7 @@ chromatin-packaged DNA, key structural landmarks include the nuclear envelope,
 nuclear pores and nucleoli. For decades, various microscopic imaging
 techniques have been the “go-to” tools for understanding nuclear organization
 and chromatin architecture in many different organisms
-\citep{cremer:chromosome, misteli:beyond, takizawa:meaning}
-[69-71]. In \textit{P.
+\citep{cremer:chromosome, misteli:beyond, takizawa:meaning}. In \textit{P.
 falciparum}, FISH applications have been instrumental in demonstrating
 important characteristics of genome organization in the parasite. In
 particular, silent var genes were shown to colocalize with each other near the
@@ -429,7 +429,7 @@ elements in close 3D proximity. Long-range chromatin loops that play
 regulatory roles in gene expression include Hox cluster silencing
 \citep{ferraiuolo:three-dimensional, rousseau:hox},
 control of SHH gene by an enhancer that is located 1~Mb away in human
-\citep{li:extensive} [86] and
+\citep{li:extensive} and
 a validated set of cell type-specific enhancers in mouse \citep{shen:map}.
 
 \subsection{Profiling of \textit{P. falciparum} genome architecture during the asexual
@@ -490,14 +490,39 @@ falciparum}}
 
 \subsection{Nuclear organization and gene regulation}
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=\linewidth]{figures/fig3.png}
+\end{center}
+\label{fig:fig3}
+\caption{\textbf{Visualization of ChIP-seq data from Jiang et al. [46] on the
+3D {\em P.
+ falciparum} genome at the ring stage}.
+ ChIP-seq data from Jiang et al. for 5 histone marks were downloaded from SRA
+ (accession number: SRP022761) and processed as described in the caption of
+ Figure~\ref{fig:3D}. Due to lack of input libraries from this publication, the input
+ libraries from Bartfai et al. at different time points were pooled into one
+ aggregated input library which is then used for normalization of each Jiang
+ et al. ChIP-seq library. Similar to Figure~\ref{fig:3D}, log2 ratios of ChIP-seq versus
+ input were plotted for \textbf{A:} H3K9me3, \textbf{B:} H3K36me3, \textbf{C:}
+ H4K20me3, and \textbf{D:} H3K4me3
+ at 18 hpi. The 3D model for the ring stage from \citep{ay:three-dimensional} was used to
+ visualize enrichment/depletion of each histone mark. See
+ http://noble.gs.washington.edu/proj/plasmo-epigenetics for the rotating 3D
+ figure of each available ChIP-seq library.
+}
+\end{figure}
+
 The epigenetic makeup of the \textit{P. falciparum} genome, as outlined above, points
 towards a binary nuclear organization, with the majority of the genome present
 in the form of euchromatin, while a limited number of genes are organized into
 strongly repressed heterochromatin. This heterochromatin is localized at the
-nuclear periphery and is characterized by high nucleosome density (Fig. 2A),
+nuclear periphery and is characterized by high nucleosome density
+(Fig.~\ref{fig:3D}A),
 the presence of repressive histone marks H3K9me3, H3K36me3 and H4K20me3 (Fig.
-3A-C), and the absence of the transcription-associated histone variant H2A.Z
-(Fig. 2B-D) and histone marks H3K9ac (Fig. 2E) and H3K4me3 (Fig. 2F and 3D).
+~\ref{fig:fig3}A-C), and the absence of the transcription-associated histone variant H2A.Z
+(Fig.~\ref{fig:3D}B-D) and histone marks H3K9ac (Fig.~\ref{fig:3D}E) and H3K4me3
+(Fig.~\ref{fig:3D}F and 3D).
 It was recently demonstrated that heterochromatin protein 1 (HP1) and \textit{P.
 falciparum} histone deacetylase 2 (PfHda2) are both essential for maintaining
 heterochromatic regions \citep{brancucci:heterochromatin, coleman:plasmodium}.
@@ -508,7 +533,7 @@ differentiating into gametocytes was observed, indicating that the gametocyte
 transcription factor locus pfap2-g is also under strict epigenetic control.
 The remaining euchromatic fraction of the genome has several notable features,
 including perinuclear compartments containing the active var gene or active
-rDNA genes (Fig. 4A). In addition, clustering of silent genes that are
+rDNA genes (Fig.~\ref{fig:fig4}A). In addition, clustering of silent genes that are
 specific to other stages of the parasite’s life cycle
 \citep{ay:three-dimensional}, suggests the
 presence of small heterochromatic islands, as observed at the trophozoite
@@ -517,12 +542,48 @@ stage by advanced transmission and scanning electron microscopy
 
 \subsection{Remodeling of the nuclear organization during the asexual cycle}
 
+\begin{figure}
+\begin{center}
+\includegraphics[width=\linewidth]{figures/fig4.png}
+\end{center}
+\label{fig:fig4}
+\caption{\textbf{Model for \textit{P. falciparum} epigenetic gene regulation.}
+ \textbf{A:} Nuclear organization and gene regulation in \textit{P. falciparum}. Centromeric
+ (dark blue) and telomeric (red) clusters are localized at the nuclear
+ periphery. Subtelomeric virulence genes (blue) are anchored to the nuclear
+ perimeter and cluster with internally located var genes in repressive
+ center(s), characterized by repressive histone marks H3K9me3 and H3K36me3.
+ The single active var gene (green) is located in a perinuclear compartment
+ away from the repressive center(s). In addition, active rDNA genes (orange)
+ also cluster at the nuclear periphery. The remaining genome (purple) is
+ largely present in an open, euchromatic state with a number of notable
+ features. (i) Nucleosome levels are high in genic and lower in intergenic
+ regions, while gene expression correlates with nucleosome density at the
+ transcription start site. (ii) Intergenic regions are bound by nucleosomes
+ containing histone variants H2A.Z and H2B.Z. (iii) Intergenic regions contain
+ H3K4me3, the level of which does not influence transcriptional activity. (iv)
+ H3K9ac is mainly found in intergenic regions and extends into 5’ ends of
+ coding regions, with highly expressed genes showing higher levels of H3K9ac.
+ (v) Active genes are marked with H3K36me3 towards their 3’ end. \textbf{B:}
+ Remodeling
+ of the nuclear organization during the asexual cycle. Extensive remodeling of
+ the nucleus takes place as the parasite progresses through the ring,
+ trophozoite and schizont stages. In the transition from the relatively inert
+ ring stage to the transcriptionally active trophozoite stage, the size of the
+ nucleus and the number of nuclear pores increase, accompanied by a decrease
+ in genome-wide nucleosome levels, resulting in an open chromatin structure
+ that allows high transcription rates. In the schizont stage, the nucleus
+ divides and recompacts, histones are re-assembled and transcription is
+ shut-down, to facilitate egress of the parasites’ daughter cells and
+ re-invasion of new red blood cells.}
+\end{figure}
+
 Microarray and RNA-seq studies have shown that 70-80\% of all genes are
 expressed in the asexual replication cycle, in particular during the
 trophozoite stage \citep{bunnik:polysome, leroch:discovery, otto:new}.
 During the 48-hour cycle, the nucleus and
 chromatin are dramatically remodeled to facilitate this high transcriptional
-activity (Fig. 4B and Table 2). First, the nucleus expands in size
+activity (Fig.~\ref{fig:fig4}B and Table 2). First, the nucleus expands in size
 \citep{weiner:3d}, which
 can also be readily observed in microscopy images of Giemsa stained parasites
 \citep{ay:three-dimensional}. Second, the number of nuclear pores increases 
@@ -561,7 +622,7 @@ heterochromatin protein 1 \citep{ukaegbu:recruitment, dahan:pfsec13},
 all of which are strongly associated with
 the repressed var genes. In addition, the Hi-C-derived three-dimensional
 models of the \textit{P. falciparum} genome showed strong clustering of centromeres and
-telomeres \citep{ay:three-dimensional} (Fig. 4A), a
+telomeres \citep{ay:three-dimensional} (Fig.~\ref{fig:fig4}A), a
 chromosome configuration that has been observed in
 other organisms \citep{duan:three-dimensional, tanizawa:mapping,
 umbarger:three-dimensional}. These models suggested the organization of
@@ -629,7 +690,7 @@ binding kinetics and preferences of nucleosomes. In addition, \textit{P.
 vivax}
 expresses a large proportion of its gene family encoding for variant surface
 proteins (vir) during the blood stage \citep{bozdech:transcriptome,
-fernandez-becerra:variant} [102,103]. The absence of clonal
+fernandez-becerra:variant}. The absence of clonal
 expression as seen for the var family in \textit{P. falciparum} may relieve the
 requirements for strictly repressive heterochromatin in \textit{P. vivax}. Determining
 the nucleosome landscape, the location of histone modifications and the
@@ -1108,74 +1169,3 @@ Conflicting reports (dispersed [74] vs weak clustering of only active loci
 [30])
 Conflicting reports (dispersed [74] vs weak clustering of only active loci
 [30])
-
-
-FIGURE LEGENDS
-Figure 1: Overview of the P. falciparum life cycle.
- 
- Figure 2: Visualization of ChIP-seq data from Bartfai et al. [45] on the 3D
- P. falciparum genome at different stages.
- ChIP-seq data from Bartfai et al. for 4 histone variants or marks were
- downloaded from GEO (accession number: GSE23787), mapped to the P. falciparum
- genome (PlasmoDB v9.0) using the short read alignment mode of BWA (v0.5.9)
- [117] with default parameter settings. Reads were post-processed and only the
- reads that map uniquely with a quality score above 30 and with at most two
- mismatches were retained for further analysis. Retained reads were subjected
- to PCR duplicate elimination and then were aggregated for each
- non-overlapping 5 kb bin across the P. falciparum genome. The number of reads
- for each 5 kb bin was normalized using the overall sequencing depth of the
- corresponding ChIP-seq library. Plotted are the log2 ratios of sequence-depth
- normalized number of reads from the ChIP-seq library versus the corresponding
- input library (red: depletion, blue: enrichment) for A: H2A at 40 hours post
- invasion (hpi), B: H2A.Z at 10 hpi, C: H2A.Z at 30 hpi, D: H2A.Z at 40 hpi,
- E: H3K9ac at 40 hpi, and F: H3K4me3 at 40 hpi. 3D models for the ring,
- trophozoite and schizont stages were generated in Ay et al. [30] and were
- colored with ChIP-seq enrichment/depletion from 10, 20 and 40 hpi,
- respectively. Light blue and white spheres indicate centromeres and
- telomeres, respectively. The black dashed circle denotes the telomeric
- cluster for each stage. See
- http://noble.gs.washington.edu/proj/plasmo-epigenetics for the rotating 3D
- figure of each available ChIP-seq library.
- Figure 3: Visualization of ChIP-seq data from Jiang et al. [46] on the 3D P.
- falciparum genome at the ring stage.
- ChIP-seq data from Jiang et al. for 5 histone marks were downloaded from SRA
- (accession number: SRP022761) and processed as described in the caption of
- Figure 2. Due to lack of input libraries from this publication, the input
- libraries from Bartfai et al. at different time points were pooled into one
- aggregated input library which is then used for normalization of each Jiang
- et al. ChIP-seq library. Similar to Figure 2, log2 ratios of ChIP-seq versus
- input were plotted for A: H3K9me3, B: H3K36me3, C: H4K20me3, and D: H3K4me3
- at 18 hpi. The 3D model for the ring stage from Ay et al. [30] was used to
- visualize enrichment/depletion of each histone mark. See
- http://noble.gs.washington.edu/proj/plasmo-epigenetics for the rotating 3D
- figure of each available ChIP-seq library.
- Figure 4: Model for P. falciparum epigenetic gene regulation.
- A: Nuclear organization and gene regulation in P. falciparum. Centromeric
- (dark blue) and telomeric (red) clusters are localized at the nuclear
- periphery. Subtelomeric virulence genes (blue) are anchored to the nuclear
- perimeter and cluster with internally located var genes in repressive
- center(s), characterized by repressive histone marks H3K9me3 and H3K36me3.
- The single active var gene (green) is located in a perinuclear compartment
- away from the repressive center(s). In addition, active rDNA genes (orange)
- also cluster at the nuclear periphery. The remaining genome (purple) is
- largely present in an open, euchromatic state with a number of notable
- features. (i) Nucleosome levels are high in genic and lower in intergenic
- regions, while gene expression correlates with nucleosome density at the
- transcription start site. (ii) Intergenic regions are bound by nucleosomes
- containing histone variants H2A.Z and H2B.Z. (iii) Intergenic regions contain
- H3K4me3, the level of which does not influence transcriptional activity. (iv)
- H3K9ac is mainly found in intergenic regions and extends into 5’ ends of
- coding regions, with highly expressed genes showing higher levels of H3K9ac.
- (v) Active genes are marked with H3K36me3 towards their 3’ end. B: Remodeling
- of the nuclear organization during the asexual cycle. Extensive remodeling of
- the nucleus takes place as the parasite progresses through the ring,
- trophozoite and schizont stages. In the transition from the relatively inert
- ring stage to the transcriptionally active trophozoite stage, the size of the
- nucleus and the number of nuclear pores increase, accompanied by a decrease
- in genome-wide nucleosome levels, resulting in an open chromatin structure
- that allows high transcription rates. In the schizont stage, the nucleus
- divides and recompacts, histones are re-assembled and transcription is
- shut-down, to facilitate egress of the parasites’ daughter cells and
- re-invasion of new red blood cells.
-
-
