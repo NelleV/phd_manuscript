@@ -24,13 +24,14 @@ de mesurer les fréquences d'interaction entre toutes les paires de loci d'un
 génome, et ce en une seule experience. Le défi suivant est donc d'inférer des
 modèles tri-dimensionnels du repliement des chromosomes dans
 le noyau de la cellule. Les inférences proposées jusqu'à présent reposent
-souvent sur des méthodes dites \textit{multidimensional scaling} (MDS),
+souvent sur des méthodes dites de {\em positionnement multidimensionelle} (en
+anglais \textit{multidimensional scaling.} (MDS),
 lesquelles optimizent une structure telle que les distances relatives entre
 éléments soient les plus proches de celles dérivées directement des fréquences
 d'interaction. Ces approches optimizent une fonction objective heuristique,
-et reposent sur de fortes hypothèses sur la biophysique de l'ADN pour trouver
+et reposent sur des hypothèses contestables sur la biophysique de l'ADN pour trouver
 la fonction de transfert entre fréquences d'interaction et distances
-euclidiennes. Ces hypothèse peuvent donc conduire à l'inférence de modèles
+euclidiennes, pouvant ainsi conduire à l'inférence de modèles
 incorrectes de la structure de l'ADN.
 
 Dans ce travail, nous proposons une nouvelle méthode pour inférer une
@@ -43,7 +44,7 @@ transfert entre fréquences d'interaction et distances physiques, et infère un
 modèle expliquant au mieux les données.
 
 Nous comparons deux variantes de notre méthode (avec ou sans optimization des
-paramètres de la fonction de transfert) à quatre algorithmes utilisant MDS sur
+paramètres de la fonction de transfert) à quatre algorithmes basés sur MDS sur
 des données simulées: deux MDS dit "métriques", dont les fonctions objectives
 diffèrent, une version non métrique de cet algorithme, et ChromSDE qui propose
 une version récente et convexe du MDS. Nous démontrons que notre modèle de

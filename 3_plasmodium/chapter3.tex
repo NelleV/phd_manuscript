@@ -7,7 +7,7 @@ the erythrocytic cycle reveals a strong connection between genome
 architecture and gene expression} % top level followed by section, subsection
 \label{chap:plasmodium}
 
-\graphicspath{{3_plasmodium/figures/}}
+\graphicspath{{3_plasmodium/}}
 
 \begin{work}
 
@@ -21,7 +21,7 @@ Le Roch.
 \begin{abstract}{Résumé}
 
 Dans ce projet, nous nous intéressons à l'architecture du parasite {\em
-Plasmodium falciparum }, responsable de la forme la plus virulente et mortelle
+Plasmodium falciparum}, responsable de la forme la plus virulente et mortelle
 du paludisme chez l'homme. Le développement de ce parasite est contrôlé par
 des changements précis et coordonnés dans l'expression de ses gènes au cours
 son cycle cellulaire. Les mécanismes régulant ces changements sont à l'heure
@@ -144,6 +144,25 @@ strongly interconnected.
 
 \subsection{Assaying genome architecture of {\em P. falciparum} at three stages using Hi-C}
 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig1.pdf}
+\caption{{\bf Tethered conformation capture of the {\em Plasmodium falciparum}
+genome.}
+\textbf{a,} Experimental protocol. \textbf{b,} Contact probability as a
+function of genomic distance, with log-linear fits for the three erythrocytic
+stages, as well as an experimental control. \textbf{c,} Normalized contact
+count matrices at 10 kb resolution for chromosome 2 and chromosome 7 in the
+schizont stage. \textbf{d,} Contact p-values (negative log10 scale) for
+chromosome 2 and chromosome 7 in the schizont stage. In \textbf{(c)} and
+\textbf{(d)}, yellow boxes denote clusters of VRSM genes, and blue dashed
+lines indicate the centromere location.}
+\label{fig:fig1}
+\end{figure}
+
+
+
 To study the genome architecture of {\em P. falciparum}, we harvested
 parasites at three stages of the infected red blood cell cycle: after invasion
 of red blood cells at the ring stage (0h), during high transcriptional
@@ -197,6 +216,29 @@ additional folding structure (Fig.~\ref{fig:fig1}c-d, Appendix
 Fig.~\ref{suppfig:perChrFigs}).
 
 \subsection{Three-dimensional modeling recapitulates known organizational principles of {\em Plasmodium} genome}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/fig2.png}
+\caption{{\bf 3D modeling and validation with DNA FISH.}
+ \textbf{a,} 3D structures of all three stages. The nuclear radii used to
+ model ring, trophozoite and schizont stages were 350, 850, and 425 nm,
+ respectively. Centromeres and telomeres are indicated with light blue and
+ white spheres, respectively. Midpoints of VRSM gene clusters are shown with
+ green spheres. \textbf{b,} Validation of colocalization between a pair of
+ interchromosomal loci with VRSM genes (chr7: 550,000 - 560,000 that harbors
+ internal VRSM genes and chr8: 40,000 - 50,000 that harbors subtelomeric VRSM
+ genes) by DNA FISH (left) and by the three-dimensional model for the
+ corresponding stage (right). The location of the loci in the 3D model is
+ indicated with light blue spheres and pointed by black arrows. \textbf{c,}
+ Validation same as in \textbf{(b)} for a pair of interchromosomal loci that
+ harbor no VRSM genes (chr7: 810,000 - 820,000 and chr11: 820,000 - 830,000).
+ }
+ \label{fig:fig2}
+ \end{figure}
+
+
+
 
 To better characterize the genome architecture, we generated for each stage
 100 consensus 3D structures, each of which summarizes the population average
@@ -300,6 +342,28 @@ majority of single cell FISH images.
 
 \subsection{Highly transcribed rDNA units colocalize in 3D during the ring stage}
 
+ 
+ \begin{figure}[h]
+ \centering
+\includegraphics[width=\linewidth]{figures/fig3.pdf}
+
+ \caption{{\bf Colocalization of highly transcribed rDNA units.} 
+  Virtual 4C plots generated at 25 kb resolution using as a bait the A-type
+  rDNA unit on chromosome 7 from crosslinked Hi-C libraries of \textbf{(a)}
+  ring, \textbf{(b)} trophozoite, \textbf{(c)} schizont stages and
+  \textbf{(d)} from the trophozoite control library. Vertical red line
+  indicates the midpoint of the A-type rDNA unit on chromosome 5. Normalized
+  contact counts from 50 kb up- and downstream of the 25 kb bin containing the
+  rDNA unit are used, omitting the rDNA-containing window itself to exclude
+  repetitive DNA. For each window $w$ on chromosome 5, the contact enrichment
+  is calculated by dividing the contact count between the bait and $w$ to the
+  average interchromosomal contact count for the bait locus.
+  }
+  \label{fig:fig3}
+  \end{figure}
+
+
+
 Similar to VRSM genes, the rDNA genes are strictly regulated during the
 parasite life cycle. In {\em P. falciparum}, these genes are dispersed on
 different chromosomes in five rDNA units containing the 18S, 5.8S and 28S
@@ -402,6 +466,24 @@ contacts and high levels of transcriptional activity \citep{ponts:nucleosome}.
 
 \subsection{{\em Plasmodium} genome architecture cannot be explained by volume exclusion}
 
+
+  \begin{figure}[h]
+  \centering
+\includegraphics[width=\linewidth]{figures/fig4.pdf}
+  \caption{{\bf Volume exclusion modeling. }
+  Observed/expected contact frequency matrices illustrate, for each locus,
+  either the depletion (blue) or enrichment (red) of interaction frequencies
+  compared to what would be expected given their genomic distances.
+  \textbf{a,} Observed/expected contact frequency matrices derived from {\em
+  S. cerevisiae} chr 7 from volume exclusion modeling (left) and Hi-C data
+  (right). \textbf{b,} Observed/expected matrices from volume exclusion
+  modeling (left) and Hi-C data (right) for {\em P. falciparum} chr 7 during
+  the trophozoite stage.}
+  \label{fig:fig4}
+  \end{figure}
+
+
+
 We next assessed whether the primary architectural features in {\em P.
 falciparum} arise from a population of constrained but otherwise random
 configurations of chromatin following a simple volume exclusion (VE) model, as
@@ -424,6 +506,20 @@ observed architecture of {\em P. falciparum} genome, highlighting the need for
 a genome-wide assay such as Hi-C to obtain accurate structural models.
 
 \subsection{VRSM gene clusters form domain-like structures}
+
+  \begin{figure}[h]
+\includegraphics[width=\linewidth]{figures/fig5.pdf}
+  \centering
+  \caption{{\bf Role of internal VRSM gene clusters in shaping genome
+  architecture.}
+   \textbf{a-d,} Heatmaps of scaled pairwise Euclidean distances derived from
+   the 3D model at 10 kb resolution for \textbf{(a, b)} two chromosomes that
+   harbor internal VRSM gene clusters and \textbf{(c, d)} two chromosomes that
+   do not. Yellow boxes indicate locations of VRSM clusters. }
+   \label{fig:fig5}
+   \end{figure}
+
+
 
 Our results from the volume exclusion modeling and from visual inspection of
 the contact maps suggest that the internal VRSM gene clusters are associated
@@ -455,6 +551,52 @@ involved in the strict regulation of virulence genes during the erythrocytic
 cycle.
 
 \subsection{Expression is highly concordant with 3D localization for {\em Plasmodium} genes}
+
+
+\begin{figure}[h]
+\includegraphics[width=\linewidth]{figures/fig6.pdf}
+\centering
+\caption{{\bf Relationship between 3D architecture and gene expression.}
+\textbf{a,}Correlation between expression profiles of pairs of
+interchromosomal genes as a function of number of contacts linking the two
+genes. To generate this plot all interchromosomal gene pairs are first sorted
+in increasing order of their expression correlation and then binned into 20
+equal width quantiles ($5$th, $10$th, ..., $100$th). For each bin, the average
+expression correlation between gene pairs (x-axis) and the average normalized
+contact count linking the genes in each pair together with its standard error
+(y-axis) are computed and plotted. Interchromosomal gene pairs that have
+contact counts within the top 20\% for each stage have more highly correlated
+expression profiles than the remaining gene pairs [Wilcoxon rank-sum test,
+p-values 2.48e-206 (ring), 0 (trophozoite), and 0 (schizont)].
+\textbf{b,} Correlation between expression profiles of pairs of
+interchromosomal genes as a function of 3D distance between the genes. This
+plot is generated similar to \textbf{a} but with using 3D distances instead of
+contact counts (y-axis). In order to summarize results from multiple 3D
+structures per each stage, we plot the median value among 100 structures with
+a red line and shaded the region corresponding to the interval between 5th and
+95th percentile with gray. Interchromosomal gene pairs closer than 20\% of the
+nuclear diameter have more highly correlated expression profiles than genes
+that are far apart [Wilcoxon rank-sum test, p-values 7.17e-221 (ring), 0
+(trophozoite), and 1.57e-88 (schizont)].
+\textbf{c,} Gene expression as a function of distance to telomeres. To
+generate this plot all genes are first sorted by increasing distance to the
+centroid of telomeres (x-axis) and then binned similar to \textbf{a} into 20
+equal width quantiles. The average log expression
+value~\citep{bunnik:polysome}
+together with its standard error (y-axis) is plotted for genes in each bin. In
+order to summarize results from multiple 3D structures per each stage, we plot
+the median value among 100 structures with a red line and shaded the region
+corresponding to the interval between 5th and 95th percentile with gray. Genes
+that lie within 20\% of the nuclear diameter to the centroid of the telomeres
+showed significantly lower expression levels [Wilcoxon rank-sum test, p-values
+1.54e-12 (ring), 1.69e-32 (trophozoite), 3.37e-20 (schizont)].
+\textbf{d,} First kCCA expression profile component score, corresponding to
+the projection of the gene expression profile onto the extracted kCCA profile
+for the trophozoite stage.}
+\label{fig:fig6}
+\end{figure}
+
+
 
 Next, we investigated the relationship between the three-dimensional genome
 structure and gene expression using four published expression data sets
@@ -646,130 +788,6 @@ falciparum} is likely to be regulated by multiple layers of control at both
 transcriptional and translational levels. However, the necessity to
 transcriptionally repress distinct groups of parasite-specific genes may have
 driven {\em P. falciparum} to adopt this exceptional genome organization.
-
-\section*{Figure Legends}
-
-\begin{figure}[h]
-\centering
-\caption{{\bf Tethered conformation capture of the {\em Plasmodium falciparum}
-genome.}
-\textbf{a,} Experimental protocol. \textbf{b,} Contact probability as a
-function of genomic distance, with log-linear fits for the three erythrocytic
-stages, as well as an experimental control. \textbf{c,} Normalized contact
-count matrices at 10 kb resolution for chromosome 2 and chromosome 7 in the
-schizont stage. \textbf{d,} Contact p-values (negative log10 scale) for
-chromosome 2 and chromosome 7 in the schizont stage. In \textbf{(c)} and
-\textbf{(d)}, yellow boxes denote clusters of VRSM genes, and blue dashed
-lines indicate the centromere location.}
-\label{fig:fig1}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\caption{{\bf 3D modeling and validation with DNA FISH.}
- \textbf{a,} 3D structures of all three stages. The nuclear radii used to
- model ring, trophozoite and schizont stages were 350, 850, and 425 nm,
- respectively. Centromeres and telomeres are indicated with light blue and
- white spheres, respectively. Midpoints of VRSM gene clusters are shown with
- green spheres. \textbf{b,} Validation of colocalization between a pair of
- interchromosomal loci with VRSM genes (chr7: 550,000 - 560,000 that harbors
- internal VRSM genes and chr8: 40,000 - 50,000 that harbors subtelomeric VRSM
- genes) by DNA FISH (left) and by the three-dimensional model for the
- corresponding stage (right). The location of the loci in the 3D model is
- indicated with light blue spheres and pointed by black arrows. \textbf{c,}
- Validation same as in \textbf{(b)} for a pair of interchromosomal loci that
- harbor no VRSM genes (chr7: 810,000 - 820,000 and chr11: 820,000 - 830,000).
- }
- \label{fig:fig2}
- \end{figure}
-
-
- 
- \begin{figure}[h]
- \centering
- \caption{{\bf Colocalization of highly transcribed rDNA units.} 
-  Virtual 4C plots generated at 25 kb resolution using as a bait the A-type
-  rDNA unit on chromosome 7 from crosslinked Hi-C libraries of \textbf{(a)}
-  ring, \textbf{(b)} trophozoite, \textbf{(c)} schizont stages and
-  \textbf{(d)} from the trophozoite control library. Vertical red line
-  indicates the midpoint of the A-type rDNA unit on chromosome 5. Normalized
-  contact counts from 50 kb up- and downstream of the 25 kb bin containing the
-  rDNA unit are used, omitting the rDNA-containing window itself to exclude
-  repetitive DNA. For each window $w$ on chromosome 5, the contact enrichment
-  is calculated by dividing the contact count between the bait and $w$ to the
-  average interchromosomal contact count for the bait locus.
-  }
-  \label{fig:fig3}
-  \end{figure}
-
-  \begin{figure}[h]
-  \centering
-  \caption{{\bf Volume exclusion modeling. }
-  Observed/expected contact frequency matrices illustrate, for each locus,
-  either the depletion (blue) or enrichment (red) of interaction frequencies
-  compared to what would be expected given their genomic distances.
-  \textbf{a,} Observed/expected contact frequency matrices derived from {\em
-  S. cerevisiae} chr 7 from volume exclusion modeling (left) and Hi-C data
-  (right). \textbf{b,} Observed/expected matrices from volume exclusion
-  modeling (left) and Hi-C data (right) for {\em P. falciparum} chr 7 during
-  the trophozoite stage.}
-  \label{fig:fig4}
-  \end{figure}
-
-
-  \begin{figure}[h]
-  \centering
-  \caption{{\bf Role of internal VRSM gene clusters in shaping genome
-  architecture.}
-   \textbf{a-d,} Heatmaps of scaled pairwise Euclidean distances derived from
-   the 3D model at 10 kb resolution for \textbf{(a, b)} two chromosomes that
-   harbor internal VRSM gene clusters and \textbf{(c, d)} two chromosomes that
-   do not. Yellow boxes indicate locations of VRSM clusters. }
-   \label{fig:fig5}
-   \end{figure}
-
-
-\begin{figure}[h]
-\centering
-\caption{{\bf Relationship between 3D architecture and gene expression.}
-\textbf{a,}Correlation between expression profiles of pairs of
-interchromosomal genes as a function of number of contacts linking the two
-genes. To generate this plot all interchromosomal gene pairs are first sorted
-in increasing order of their expression correlation and then binned into 20
-equal width quantiles ($5$th, $10$th, ..., $100$th). For each bin, the average
-expression correlation between gene pairs (x-axis) and the average normalized
-contact count linking the genes in each pair together with its standard error
-(y-axis) are computed and plotted. Interchromosomal gene pairs that have
-contact counts within the top 20\% for each stage have more highly correlated
-expression profiles than the remaining gene pairs [Wilcoxon rank-sum test,
-p-values 2.48e-206 (ring), 0 (trophozoite), and 0 (schizont)].
-\textbf{b,} Correlation between expression profiles of pairs of
-interchromosomal genes as a function of 3D distance between the genes. This
-plot is generated similar to \textbf{a} but with using 3D distances instead of
-contact counts (y-axis). In order to summarize results from multiple 3D
-structures per each stage, we plot the median value among 100 structures with
-a red line and shaded the region corresponding to the interval between 5th and
-95th percentile with gray. Interchromosomal gene pairs closer than 20\% of the
-nuclear diameter have more highly correlated expression profiles than genes
-that are far apart [Wilcoxon rank-sum test, p-values 7.17e-221 (ring), 0
-(trophozoite), and 1.57e-88 (schizont)].
-\textbf{c,} Gene expression as a function of distance to telomeres. To
-generate this plot all genes are first sorted by increasing distance to the
-centroid of telomeres (x-axis) and then binned similar to \textbf{a} into 20
-equal width quantiles. The average log expression
-value~\citep{bunnik:polysome}
-together with its standard error (y-axis) is plotted for genes in each bin. In
-order to summarize results from multiple 3D structures per each stage, we plot
-the median value among 100 structures with a red line and shaded the region
-corresponding to the interval between 5th and 95th percentile with gray. Genes
-that lie within 20\% of the nuclear diameter to the centroid of the telomeres
-showed significantly lower expression levels [Wilcoxon rank-sum test, p-values
-1.54e-12 (ring), 1.69e-32 (trophozoite), 3.37e-20 (schizont)].
-\textbf{d,} First kCCA expression profile component score, corresponding to
-the projection of the gene expression profile onto the extracted kCCA profile
-for the trophozoite stage.}
-\label{fig:fig6}
-\end{figure}
 
 
 \section{Methods}
