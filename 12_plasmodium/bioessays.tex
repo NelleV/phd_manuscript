@@ -1085,86 +1085,88 @@ Burrows-Wheeler transform. Bioinformatics 26: 589-95.
 
 TABLES
 
-Table 1: Overview of most-studied histone modifications and variants in P.
-falciparum and comparison of their genome-wide distribution or function in
-other eukaryotes.
-Histone PTM/variant
-Other eukaryotes
-P. falciparum
-H3K4me3
-Promoters of active genes [105-108]
-Widely distributed in intergenic regions [45,47]
-H3K9ac
-Promoters of active genes [107,109]
-Widely distributed in intergenic regions
-[45,47]
-H3K9me3
-Silent genes [107,108]
-Repressed var genes [40,48,49]
-H3K27me3
-Promoters of silent/poised genes [107,108,110], absent in yeast [111]
-Not detected [39]
-H3K36me3
-Enriched in pericentromeric heterochromatin [112];
-Transcribed regions of active genes [107,108]
-TSS of repressed var genes [46];
-3’ end coding region active genes [46]
-H4K20me3
-Silencing of telomeres, transposons and long terminal repeats [108,110];
-inactive promoters [107]
-Repressed var genes [46] and broad distribution across additional loci [40]
-H2A.Z
-Enriched in nucleosomes bordering active promoter (reviewed in [113,114])
-Widely distributed in intergenic regions [66,67]
-H2B.Z
+\begin{table}
+\begin{center}
+\begin{tabular}{lll}
+\hline
+\emph{Histone PTM/variant} & \emph{Other eukaryotes} & \emph{P. falciparum} \\
+\hline
+H3K4me3 & Promoters of active genes \citep{bernstein:genomic, kim:high-resolution, wang:combinatorial, barski:high-resolution} [105-108] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic} [45,47] \\
+H3K9ac & Promoters of active genes \citep{wang:combinatorial, nishida:histone} [107,109] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic}[45,47] \\
+H3K4me3 & Promoters of active genes \citep{bernstein:genomic, kim:high-resolution, wang:combinatorial, barski:high-resolutino} [105-108] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic}[45,47]\\
+H3K9ac & Promoters of active genes \citep{wang:combinatorial, nishida:histone} [107,109] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic}[45,47] \\
+H3K9me3 & Silent genes \citep{wang:combinatorial, barski:high-resolution} [107,108] &
+ Repressed var genes \citep{lopez-rubio:genome-wide, chookajorn:epigenetic, lopez-rubio:5} [40,48,49] \\
+H3K27me3 & Promoters of silent/poised genes \citep{wang:combinatorial, barski:high-resolution, mikkelsen:genome-wide} [107,108,110],
+ absent in yeast \citep{lachner:trilogies} [111] & Not detected \citep{trelle:global} [39] \\
+H3K36me3 &
+Enriched in pericentromeric heterochromatin \citep{chantalat:histone} [112];
+Transcribed regions of active genes \citep{wang:combinatorial, barski:high-resolution} [107,108] &
+TSS of repressed var genes \citep{jiang:pfsetvs} [46];
+3’ end coding region active genes \citep{jiang:pfsetvs} [46] \\
+H4K20me3 &
+Silencing of telomeres, transposons and long terminal repeats \citep{barski:high-resolution, lachner:trilogies} [108,110];
+inactive promoters \citep{wang:combinatorial} [107] &
+Repressed var genes \citep{jiang:pfsetvs} [46] and broad distribution across additional loci \citep{lopez-rubio:genome-wide} [40] \\
+H2A.Z &
+Enriched in nucleosomes bordering active promoter (reviewed in \citep{zlatanova:h2az, talbert:histone} [113,114])
+& Widely distributed in intergenic regions \citep{hoeijmakers:h2az, petter:h2az}[66,67] \\
+H2B.Z &
 Lineage-specific variants with specialized functions, for example enriched at
-TSS in Trypanosoma brucei [68]
-Widely distributed in intergenic regions [66,67]
+TSS in \textit{Trypanosoma brucei} \citep{siegel:four} [68] &
+Widely distributed in intergenic regions \citep{hoeijmakers:h2az, petter:h2az}[66,67] \\
+\end{tabular}
+\end{center}
+\caption{Overview of most-studied histone modifications and variants in
+\textit{P. falciparum} and comparison of their genome-wide distribution or
+function in other eukaryotes.}
+\label{table:histone_mod}
+\end{table}
 
-
-Table 2: Summary of organizational features of P. falciparum nucleus and
-genome at three distinct stages during asexual parasite replication in human
-red blood cells (asexual cycle).
-Feature
-Ring
-Trophozoite
-Schizont
-Nuclear size
-Small (~700 nm diameter) [75,115]
-Large (~1,700 nm diameter) [75,115]
-Small (~850 nm diameter) [75,115]
-Nuclear pores
-Few (3-7), clustered together [75]
-Many (12-58), uniformly distributed [75]
-Few per daughter nucleus (2-6), clustered together [75]
-Nucleosome occupancy
-High [59,63]
-Low [59,63]
-High [59,63]
-Chromatin compaction
-Compact [30,59,63,75]
-Open [30,59,63,75]
-Compact [30,59,63,75]
-Chromosome territories
-Conflicting reports (absent [33] vs present [30])
-Partially lost [30]
-Present [30]
-Centromere locations
-Conflicting reports (colocalized [30] vs dispersed [33,116])
-Colocalized [30,116]
-Colocalized [30,116]
-Telomere locations
-Colocalized near periphery [30,72]
-Colocalized near periphery [30,72]
-Colocalized near periphery [30,72]
-Virulence gene locations
-Colocalized [33] near periphery [30,40,72]
-Colocalized near periphery [30,40,72]
-Colocalized near periphery [30,40,72]
-rDNA gene locations
-Conflicting reports (all loci clustered [74] vs strong clustering of only
+\begin{table}
+\begin{tabular}{llll}
+\textit{Feature} & \textit{Ring} & \textit{Trophozoite} & \textit{Schizont} \\
+Nuclear size & Small (~700 nm diameter) [75,115]
+& Large (~1,700 nm diameter) [75,115]
+& Small (~850 nm diameter) [75,115]
+\\ Nuclear pores
+& Few (3-7), clustered together [75]
+& Many (12-58), uniformly distributed [75]
+& Few per daughter nucleus (2-6), clustered together [75]
+\\ Nucleosome occupancy
+& High [59,63]
+& Low [59,63]
+& High [59,63]
+\\ Chromatin compaction
+& Compact [30,59,63,75]
+&  Open [30,59,63,75]
+& Compact [30,59,63,75]
+\\ Chromosome territories
+& Conflicting reports (absent [33] vs present [30])
+& Partially lost [30]
+& Present [30]
+\\ Centromere locations
+& Conflicting reports (colocalized [30] vs dispersed [33,116])
+& Colocalized [30,116]
+& Colocalized [30,116]
+\\ Telomere locations
+& Colocalized near periphery [30,72]
+& Colocalized near periphery [30,72]
+& Colocalized near periphery [30,72]
+\\ Virulence gene locations
+& Colocalized [33] near periphery [30,40,72]
+& Colocalized near periphery [30,40,72]
+& Colocalized near periphery [30,40,72]
+\\ rDNA gene locations
+& Conflicting reports (all loci clustered [74] vs strong clustering of only
 active loci [30,33])
-Conflicting reports (dispersed [74] vs weak clustering of only active loci
+& Conflicting reports (dispersed [74] vs weak clustering of only active loci
 [30])
-Conflicting reports (dispersed [74] vs weak clustering of only active loci
-[30])
+& Conflicting reports (dispersed [74] vs weak clustering of only active loci
+[30]) \\
+\end{tabular}
+\caption{Summary of organizational features of \textit{P. falciparum} nucleus and
+genome at three distinct stages during asexual parasite replication in human
+red blood cells (asexual cycle).}
+\label{table:features}
+\end{table}
