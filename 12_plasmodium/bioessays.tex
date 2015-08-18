@@ -184,7 +184,7 @@ euchromatin}
 
 \subsection{Post-translational modification of histone proteins}
 
-\begin{figure}
+\begin{FPfigure}
 \includegraphics[width=\linewidth]{figures/fig2.png}
 \caption{
 Large-scale depletion of the transcriptionally permissive histone variant
@@ -215,7 +215,7 @@ denotes the telomeric cluster for each stage. See Supporting information or
 http://noble.gs.washington.edu/proj/plasmo-epigenetics for the
 rotating 3D figure of each available ChIP-seq library.}
 \label{fig:structure}
-\end{figure}
+\end{FPfigure}
 
 Histone proteins consist of a globular core structure and an N-terminal tail
 that protrudes from this core domain. Many amino acid residues in the core
@@ -230,6 +230,67 @@ and DNA. Rather, methylations mostly function by recruiting other effector
 molecules to the locus, resulting in further modifications of the chromatin.
 
 \subsection{Activating histone marks are abundant and broadly distributed}
+\afterpage{
+\thispagestyle{empty}
+\vspace{-1em}
+\begin{table}
+\renewcommand{\arraystretch}{1.5}
+\begin{center}
+\begin{tabular}{lp{0.35\linewidth}p{0.35\linewidth}}
+\hline
+\emph{Histone PTM/variant} & \emph{Other eukaryotes} & \emph{P. falciparum} \\
+\hline
+H3K4me3 & Promoters of active genes {\small \citep{bernstein:genomic,
+kim:high-resolution, wang:combinatorial, barski:high-resolution}} & Widely
+distributed in intergenic regions {\small \citep{bartfai:h2az,
+salcedo-amaya:dynamic}} \\
+H3K9ac & Promoters of active genes {\small \citep{wang:combinatorial,
+nishida:histone}} & Widely distributed in intergenic regions {\small
+\citep{bartfai:h2az, salcedo-amaya:dynamic}} \\
+H3K4me3 & Promoters of active genes {\small \citep{bernstein:genomic,
+kim:high-resolution, wang:combinatorial, barski:high-resolution}} & Widely
+distributed in intergenic regions {\small \citep{bartfai:h2az,
+salcedo-amaya:dynamic}}\\
+H3K9ac & Promoters of active genes {\small \citep{wang:combinatorial,
+nishida:histone}} & Widely distributed in intergenic regions {\small
+\citep{bartfai:h2az, salcedo-amaya:dynamic}} \\
+H3K9me3 & Silent genes {\small \citep{wang:combinatorial,
+barski:high-resolution}} &
+ Repressed var genes {\small \citep{lopez-rubio:genome-wide,
+ chookajorn:epigenetic, lopez-rubio:5}} \\
+H3K27me3 & Promoters of silent/poised genes {\small \citep{wang:combinatorial,
+barski:high-resolution, mikkelsen:genome-wide}},
+ absent in yeast {\small \citep{lachner:trilogies}} & Not detected {\small
+ \citep{trelle:global}} \\
+H3K36me3 &
+Enriched in pericentromeric heterochromatin {\small \citep{chantalat:histone}};
+Transcribed regions of active genes {\small \citep{wang:combinatorial,
+barski:high-resolution}} &
+TSS of repressed var genes {\small \citep{jiang:pfsetvs}};
+3’ end coding region active genes {\small \citep{jiang:pfsetvs}} \\
+H4K20me3 &
+Silencing of telomeres, transposons and long terminal repeats {\small
+\citep{barski:high-resolution, lachner:trilogies}};
+inactive promoters {\small \citep{wang:combinatorial}} &
+Repressed var genes {\small \citep{jiang:pfsetvs}} and broad distribution
+across additional loci {\small \citep{lopez-rubio:genome-wide}} \\
+H2A.Z &
+Enriched in nucleosomes bordering active promoter (reviewed in
+{\small \citep{zlatanova:h2az, talbert:histone}})
+& Widely distributed in intergenic regions {\small \citep{hoeijmakers:h2az,
+petter:h2az}} \\
+H2B.Z &
+Lineage-specific variants with specialized functions, for example enriched at
+TSS in \textit{Trypanosoma brucei} {\small \citep{siegel:four}} &
+Widely distributed in intergenic regions {\small \citep{hoeijmakers:h2az,
+petter:h2az}} \\
+\end{tabular}
+\end{center}
+\caption{Overview of most-studied histone modifications and variants in
+\textit{P. falciparum} and comparison of their genome-wide distribution or
+function in other eukaryotes.}
+\label{table:histone_mod}
+\end{table}}
 
 In \textit{P. falciparum}, mass spectrometry experiments have identified at
 least 50 different histone post-translational modifications (PTMs), including
@@ -237,7 +298,7 @@ methylation, acetylation, phosphorylation, ubiquitylation, and sumoylation
 \citep{lasonder:insights, miao:malaria, treeck:phosphoproteomes,
 trelle:global}. Subsequent chromatin immunoprecipitation (ChIP) studies have
 given us insight into the genome-wide distribution of these histone marks in
-the asexual cycle (Table 1). In contrast to multicellular eukaryotes, a large
+the asexual cycle (Table~\ref{table:histone_mod}). In contrast to multicellular eukaryotes, a large
 proportion of the genome in \textit{P. falciparum} is constitutively
 acetylated \citep{miao:malaria, lopez-rubio:genome-wide}. An abundance of
 activating marks has also been observed for other unicellular organisms, such
@@ -434,6 +495,57 @@ a validated set of cell type-specific enhancers in mouse \citep{shen:map}.
 \subsection{Profiling of \textit{P. falciparum} genome architecture during the asexual
 cycle}
 
+\begin{table}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{p{0.15\linewidth}p{0.28\linewidth}p{0.28\linewidth}p{0.28\linewidth}}
+\hline
+\textit{Feature} & \textit{Ring} & \textit{Trophozoite} & \textit{Schizont} \\
+\hline
+Nuclear size & Small ($\sim$700~nm diameter) {\small \citep{weiner:3d, bannister:making}}
+& Large ($\sim$700~nm diameter) {\small \citep{weiner:3d, bannister:making}}
+& Small ($\sim$850~nm diameter) {\small \citep{weiner:3d, bannister:making}}
+\\ Nuclear pores
+& Few (3-7), clustered together {\small \citep{weiner:3d}}
+& Many (12-58), uniformly distributed {\small \citep{weiner:3d}}
+& Few per daughter nucleus (2-6), clustered together {\small \citep{weiner:3d}}
+\\ Nucleosome occupancy
+& High {\small \citep{bunnik:DNA-encoded, ponts:nucleosome}}
+& Low {\small \citep{bunnik:DNA-encoded, ponts:nucleosome}}
+& High {\small \citep{bunnik:DNA-encoded, ponts:nucleosome}}
+\\ Chromatin compaction
+& Compact {\small \citep{ay:three-dimensional, bunnik:DNA-encoded, ponts:nucleosome, weiner:3d}}
+&  Open {\small \citep{ay:three-dimensional, bunnik:DNA-encoded, ponts:nucleosome, weiner:3d}}
+& Compact {\small \citep{ay:three-dimensional, bunnik:DNA-encoded, ponts:nucleosome, weiner:3d}}
+\\ Chromosome territories
+& Conflicting reports (absent {\small \citep{lemieux:genome-wide}} vs present {\small \citep{ay:three-dimensional}})
+& Partially lost {\small \citep{ay:three-dimensional}}
+& Present {\small \citep{ay:three-dimensional}}
+\\ Centromere locations
+& Conflicting reports (colocalized {\small \citep{ay:three-dimensional}} vs dispersed {\small \citep{lemieux:genome-wide, hoeijmakers:plasmodium}})
+& Colocalized {\small \citep{ay:three-dimensional, hoeijmakers:plasmodium}}
+& Colocalized {\small \citep{ay:three-dimensional, hoeijmakers:plasmodium}}
+\\ Telomere locations
+& Colocalized near periphery {\small \citep{ay:three-dimensional, freitas-junior:frequent}}
+& Colocalized near periphery {\small \citep{ay:three-dimensional, freitas-junior:frequent}}
+& Colocalized near periphery {\small \citep{ay:three-dimensional, freitas-junior:frequent}}
+\\ Virulence gene locations
+& Colocalized {\small \citep{lemieux:genome-wide}} near periphery {\small \citep{ay:three-dimensional, lopez-rubio:genome-wide, freitas-junior:frequent}}
+& Colocalized near periphery {\small \citep{ay:three-dimensional, lopez-rubio:genome-wide, freitas-junior:frequent}}
+& Colocalized near periphery {\small \citep{ay:three-dimensional, lopez-rubio:genome-wide, freitas-junior:frequent}}
+\\ rDNA gene locations
+& Conflicting reports (all loci clustered {\small \citep{mancio-silva:clustering}} vs strong clustering of only
+active loci {\small \citep{ay:three-dimensional, lemieux:genome-wide}})
+& Conflicting reports (dispersed {\small \citep{mancio-silva:clustering}} vs weak clustering of only active loci
+{\small \citep{ay:three-dimensional}})
+& Conflicting reports (dispersed {\small \citep{mancio-silva:clustering}} vs weak clustering of only active loci
+{\small \citep{ay:three-dimensional}}) \\
+\end{tabular}
+\caption{Summary of organizational features of \textit{P. falciparum} nucleus and
+genome at three distinct stages during asexual parasite replication in human
+red blood cells (asexual cycle).}
+\label{table:features}
+\end{table}
+
 As is the case for many other next generation sequencing-based assays,
 application of these genome architecture assays has been challenging for the
 AT-rich genome of \textit{P. falciparum}. However, within the last year, two groups
@@ -443,7 +555,7 @@ and the other modeling the 3D
 structure of \textit{P. falciparum}-3D7 at three key stages during its asexual
 replication cycle within human red blood cells \citep{ay:three-dimensional}.
 These studies revealed
-key characteristics of \textit{P. falciparum} genome structure (Table 2), including
+key characteristics of \textit{P. falciparum} genome structure (Table~\ref{table:features}), including
 colocalization of centromeres, colocalization of telomeres near the nuclear
 periphery, colocalization of both internal and subtelomeric virulence gene
 clusters near the telomeres, colocalization of rDNA loci that are active in
@@ -582,7 +694,7 @@ expressed in the asexual replication cycle, in particular during the
 trophozoite stage \citep{bunnik:polysome, leroch:discovery, otto:new}.
 During the 48-hour cycle, the nucleus and
 chromatin are dramatically remodeled to facilitate this high transcriptional
-activity (Fig.~\ref{fig:final}B and Table 2). First, the nucleus expands in size
+activity (Fig.~\ref{fig:final}B and Table~\ref{table:features}). First, the nucleus expands in size
 \citep{weiner:3d}, which
 can also be readily observed in microscopy images of Giemsa stained parasites
 \citep{ay:three-dimensional}. Second, the number of nuclear pores increases 
@@ -732,441 +844,3 @@ expression \citep{suvorova:transcript, kramer:rna, bunnik:polysome, leroch:globa
 Increased insight into these regulatory processes
 would significantly advance our understanding of parasite biology and could
 mark a major breakthrough in our fight against malaria.
-
-
-Acknowledgements
-
-The authors have declared no conflict of interest.
-This study was financially supported by a Computing Research Association
-CIFellows award (NSF award CIF 1136996 to FA), the Human Frontier Science
-Program (grant LT000507/2011-L to EMB), the National Institutes of Health
-(grants R01 AI85077-04 to KLR and R01 AI106775-02 to WSN/KLR), the European
-Research Council (grant SMAC-ERC-280032 to JPV), the European Commission
-(grant HEALTH-F5-2012-305626 to JPV/NV) and the French National Research
-Agency (grant ANR-11-BINF-0001 to JPV/NV).
-
-References
-1 Greenwood BM, Fidock DA, Kyle DE, Kappe SH, et al. 2008. Malaria: progress,
-perils, and prospects for eradication. The Journal of clinical investigation
-118: 1266-76.
-2 Baker DA. 2010. Malaria gametocytogenesis. Mol Biochem Parasitol 172: 57-65.
-3 Baruch DI, Pasloske BL, Singh HB, Bi X, et al. 1995. Cloning the P.
-falciparum gene encoding PfEMP1, a malarial variant antigen and adherence
-receptor on the surface of parasitized human erythrocytes. Cell 82: 77-87.
-4 Smith JD, Chitnis CE, Craig AG, Roberts DJ, et al. 1995. Switches in
-expression of Plasmodium falciparum var genes correlate with changes in
-antigenic and cytoadherent phenotypes of infected erythrocytes. Cell 82:
-101-10.
-5 Su XZ, Heatwole VM, Wertheimer SP, Guinet F, et al. 1995. The large diverse
-gene family var encodes proteins involved in cytoadherence and antigenic
-variation of Plasmodium falciparum-infected erythrocytes. Cell 82: 89-100.
-6 Bull PC, Lowe BS, Kortok M, Molyneux CS, et al. 1998. Parasite antigens on
-the infected red cell surface are targets for naturally acquired immunity to
-malaria. Nat Med 4: 358-60.
-7 Roberts DJ, Craig AG, Berendt AR, Pinches R, et al. 1992. Rapid switching to
-multiple antigenic and adhesive phenotypes in malaria. Nature 357: 689-92.
-8 Cui L, Miao J. 2010. Chromatin-mediated epigenetic regulation in the malaria
-parasite Plasmodium falciparum. Eukaryot Cell 9: 1138-49.
-9 Duffy MF, Selvarajah SA, Josling GA, Petter M. 2012. The role of chromatin
-in Plasmodium gene expression. Cell Microbiol 14: 819-28.
-10  Hoeijmakers WA, Stunnenberg HG, Bartfai R. 2012. Placing the Plasmodium
-falciparum epigenome on the map. Trends Parasitol 28: 486-95.
-11  Horrocks P, Wong E, Russell K, Emes RD. 2009. Control of gene expression
-in Plasmodium falciparum - ten years on. Mol Biochem Parasitol 164: 9-25.
-12  Deitsch K, Duraisingh M, Dzikowski R, Gunasekera A, et al. 2007.
-Mechanisms of gene regulation in Plasmodium. The American journal of tropical
-medicine and hygiene 77: 201-8.
-13  Voss TS, Bozdech Z, Bartfai R. 2014. Epigenetic memory takes center stage
-in the survival strategy of malaria parasites. Curr Opin Microbiol 20: 88-95.
-14  Consortium EP. 2012. An integrated encyclopedia of DNA elements in the
-human genome. Nature 489: 57-74.
-15  Balaji S, Babu MM, Iyer LM, Aravind L. 2005. Discovery of the principal
-specific transcription factors of Apicomplexa and their implication for the
-evolution of the AP2-integrase DNA binding domains. Nucleic Acids Res 33:
-3994-4006.
-16  Coulson RM, Hall N, Ouzounis CA. 2004. Comparative genomics of
-transcriptional control in the human malaria parasite Plasmodium falciparum.
-Genome Res 14: 1548-54.
-17  Campbell TL, De Silva EK, Olszewski KL, Elemento O, et al. 2010.
-Identification and genome-wide prediction of DNA binding specificities for the
-ApiAP2 family of regulators from the malaria parasite. PLoS Pathog 6:
-e1001165.
-18  Kafsack BF, Rovira-Graells N, Clark TG, Bancells C, et al. 2014. A
-transcriptional switch underlies commitment to sexual development in malaria
-parasites. Nature 507: 248-52.
-19  Sinha A, Hughes KR, Modrzynska KK, Otto TD, et al. 2014. A cascade of
-DNA-binding proteins for sexual commitment and development in Plasmodium.
-Nature 507: 253-7.
-20  Chung DW, Ponts N, Cervantes S, Le Roch KG. 2009. Post-translational
-modifications in Plasmodium: more than you think! Mol Biochem Parasitol 168:
-123-34.
-21  Le Roch KG, Chung DW, Ponts N. 2012. Genomics and integrated systems
-biology in Plasmodium falciparum: a path to malaria control and eradication.
-Parasite Immunol 34: 50-60.
-22  Suvorova ES, White MW. 2014. Transcript maturation in apicomplexan
-parasites. Curr Opin Microbiol 20C: 82-7.
-23  Kramer S. 2014. RNA in development: how ribonucleoprotein granules
-regulate the life cycles of pathogenic protozoa. Wiley interdisciplinary
-reviews RNA 5: 263-84.
-24  Bunnik EM, Chung DW, Hamilton M, Ponts N, et al. 2013. Polysome profiling
-reveals translational control of gene expression in the human malaria parasite
-Plasmodium falciparum. Genome Biol 14: R128.
-25  Ponts N, Fu L, Harris EY, Zhang J, et al. 2013. Genome-wide mapping of DNA
-methylation in the human malaria parasite Plasmodium falciparum. Cell host \&
-microbe 14: 696-706.
-26  Jenuwein T, Allis CD. 2001. Translating the histone code. Science 293:
-1074-80.
-27  Zentner GE, Henikoff S. 2013. Regulation of nucleosome dynamics by histone
-modifications. Nat Struct Mol Biol 20: 259-66.
-28  Nora EP, Dekker J, Heard E. 2013. Segmental folding of chromosomes: a
-basis for structural and regulatory chromosomal neighborhoods? Bioessays 35:
-818-28.
-29  Belmont AS. 2014. Large-scale chromatin organization: the good, the
-surprising, and the still perplexing. Curr Opin Cell Biol 26: 69-78.
-30  Ay F, Bunnik EM, Varoquaux N, Bol SM, et al. 2014. Three-dimensional
-modeling of the P. falciparum genome during the erythrocytic cycle reveals a
-strong connection between genome architecture and gene expression. Genome Res
-24: 974-88.
-31  Dixon JR, Selvaraj S, Yue F, Kim A, et al. 2012. Topological domains in
-mammalian genomes identified by analysis of chromatin interactions. Nature
-485: 376-80.
-32  Duan Z, Andronescu M, Schutz K, McIlwain S, et al. 2010. A
-three-dimensional model of the yeast genome. Nature 465: 363-7.
-33  Lemieux JE, Kyes SA, Otto TD, Feller AI, et al. 2013. Genome-wide
-profiling of chromosome interactions in Plasmodium falciparum characterizes
-nuclear architecture and reconfigurations associated with antigenic variation.
-Mol Microbiol.
-34  Lieberman-Aiden E, van Berkum NL, Williams L, Imakaev M, et al. 2009.
-Comprehensive mapping of long-range interactions reveals folding principles of
-the human genome. Science 326: 289-93.
-35  Sexton T, Yaffe E, Kenigsberg E, Bantignies F, et al. 2012.
-Three-dimensional folding and functional organization principles of the
-Drosophila genome. Cell 148: 458-72.
-36  Lasonder E, Treeck M, Alam M, Tobin AB. 2012. Insights into the Plasmodium
-falciparum schizont phospho-proteome. Microbes and infection / Institut
-Pasteur 14: 811-9.
-37  Miao J, Fan Q, Cui L, Li J. 2006. The malaria parasite Plasmodium
-falciparum histones: organization, expression, and acetylation. Gene 369:
-53-65.
-38  Treeck M, Sanders JL, Elias JE, Boothroyd JC. 2011. The phosphoproteomes
-of Plasmodium falciparum and Toxoplasma gondii reveal unusual adaptations
-within and beyond the parasites' boundaries. Cell host \& microbe 10: 410-9.
-39  Trelle MB, Salcedo-Amaya AM, Cohen AM, Stunnenberg HG, et al. 2009. Global
-histone analysis by mass spectrometry reveals a high content of acetylated
-lysine residues in the malaria parasite Plasmodium falciparum. J Proteome Res
-8: 3439-50.
-40  Lopez-Rubio JJ, Mancio-Silva L, Scherf A. 2009. Genome-wide analysis of
-heterochromatin associates clonally variant gene regulation with perinuclear
-repressive centers in malaria parasites. Cell host \& microbe 5: 179-90.
-41  Garcia BA, Hake SB, Diaz RL, Kauer M, et al. 2007. Organismal differences
-in post-translational modifications in histones H3 and H4. J Biol Chem 282:
-7641-55.
-42  Cui L, Miao J, Furuya T, Fan Q, et al. 2008. Histone acetyltransferase
-inhibitor anacardic acid causes changes in global gene expression during in
-vitro Plasmodium falciparum development. Eukaryot Cell 7: 1200-10.
-43  Cui L, Miao J, Cui L. 2007. Cytotoxic effect of curcumin on malaria
-parasite Plasmodium falciparum: inhibition of histone acetylation and
-generation of reactive oxygen species. Antimicrobial agents and chemotherapy
-51: 488-94.
-44  Chaal BK, Gupta AP, Wastuwidyaningtyas BD, Luah YH, et al. 2010. Histone
-deacetylases play a major role in the transcriptional regulation of the
-Plasmodium falciparum life cycle. PLoS Pathog 6: e1000737.
-45  Bartfai R, Hoeijmakers WA, Salcedo-Amaya AM, Smits AH, et al. 2010. H2A.Z
-demarcates intergenic regions of the plasmodium falciparum epigenome that are
-dynamically marked by H3K9ac and H3K4me3. PLoS Path 6: e1001223.
-46  Jiang L, Mu J, Zhang Q, Ni T, et al. 2013. PfSETvs methylation of histone
-H3K36 represses virulence genes in Plasmodium falciparum. Nature 499: 223-7.
-47  Salcedo-Amaya AM, van Driel MA, Alako BT, Trelle MB, et al. 2009. Dynamic
-histone H3 epigenome marking during the intraerythrocytic cycle of Plasmodium
-falciparum. Proc Natl Acad Sci U S A 106: 9655-60.
-48  Chookajorn T, Dzikowski R, Frank M, Li F, et al. 2007. Epigenetic memory
-at malaria virulence genes. Proc Natl Acad Sci U S A 104: 899-902.
-49  Lopez-Rubio JJ, Gontijo AM, Nunes MC, Issar N, et al. 2007. 5' flanking
-region of var genes nucleate histone modification patterns linked to
-phenotypic inheritance of virulence traits in malaria parasites. Mol Microbiol
-66: 1296-305.
-50  Ukaegbu UE, Kishore SP, Kwiatkowski DL, Pandarinath C, et al. 2014.
-Recruitment of PfSET2 by RNA polymerase II to variant antigen encoding loci
-contributes to antigenic variation in P. falciparum. PLoS Pathog 10: e1003854.
-51  Brogaard K, Xi L, Wang JP, Widom J. 2012. A map of nucleosome positions in
-yeast at base-pair resolution. Nature 486: 496-501.
-52  Buenrostro JD, Araya CL, Chircus LM, Layton CJ, et al. 2014. Quantitative
-analysis of RNA-protein interactions on a massively parallel array reveals
-biophysical and evolutionary landscapes. Nat Biotechnol 32: 562-8.
-53  Jansen A, Verstrepen KJ. 2011. Nucleosome positioning in Saccharomyces
-cerevisiae. Microbiol Mol Biol Rev 75: 301-20.
-54  Lee W, Tillo D, Bray N, Morse RH, et al. 2007. A high-resolution atlas of
-nucleosome occupancy in yeast. Nat Genet 39: 1235-44.
-55  Mavrich TN, Jiang C, Ioshikhes IP, Li X, et al. 2008. Nucleosome
-organization in the Drosophila genome. Nature 453: 358-62.
-56  Raisner RM, Hartley PD, Meneghini MD, Bao MZ, et al. 2005. Histone variant
-H2A.Z marks the 5' ends of both active and inactive genes in euchromatin. Cell
-123: 233-48.
-57  Guillemette B, Bataille AR, Gevry N, Adam M, et al. 2005. Variant histone
-H2A.Z is globally localized to the promoters of inactive yeast genes and
-regulates nucleosome positioning. PLoS Biol 3: e384.
-58  Tolstorukov MY, Kharchenko PV, Goldman JA, Kingston RE, et al. 2009.
-Comparative analysis of H2A.Z nucleosome organization in the human and yeast
-genomes. Genome Res 19: 967-77.
-59  Bunnik EM, Polishko A, Prudhomme J, Ponts N, et al. 2014. DNA-encoded
-nucleosome occupancy is associated with transcription levels in the human
-malaria parasite Plasmodium falciparum. BMC Genomics 15: 347.
-60  Ponts N, Harris EY, Lonardi S, Le Roch KG. 2011. Nucleosome occupancy at
-transcription start sites in the human malaria parasite: a hard-wired
-evolution of virulence? Infection, genetics and evolution : journal of
-molecular epidemiology and evolutionary genetics in infectious diseases 11:
-716-24.
-61  Westenberger SJ, Cui L, Dharia N, Winzeler E. 2009. Genome-wide nucleosome
-mapping of Plasmodium falciparum reveals histone-rich coding and histone-poor
-intergenic regions and chromatin remodeling of core and subtelomeric genes.
-BMC Genomics 10: 610.
-62  Segal E, Fondufe-Mittendorf Y, Chen L, Thastrom A, et al. 2006. A genomic
-code for nucleosome positioning. Nature 442: 772-8.
-63  Ponts N, Harris EY, Prudhomme J, Wick I, et al. 2010. Nucleosome landscape
-and control of transcription in the human malaria parasite. Genome Res 20:
-228-38.
-64  Tillo D, Hughes TR. 2009. G+C content dominates intrinsic nucleosome
-occupancy. BMC Bioinformatics 10: 442.
-65  Segal E, Widom J. 2009. Poly(dA:dT) tracts: major determinants of
-nucleosome organization. Curr Opin Struct Biol 19: 65-71.
-66  Hoeijmakers WA, Salcedo-Amaya AM, Smits AH, Francoijs KJ, et al. 2013.
-H2A.Z/H2B.Z double-variant nucleosomes inhabit the AT-rich promoter regions of
-the Plasmodium falciparum genome. Mol Microbiol 87: 1061-73.
-67  Petter M, Selvarajah SA, Lee CC, Chin WH, et al. 2013. H2A.Z and H2B.Z
-double-variant nucleosomes define intergenic regions and dynamically occupy
-var gene promoters in the malaria parasite Plasmodium falciparum. Mol
-Microbiol 87: 1167-82.
-68  Siegel TN, Hekstra DR, Kemp LE, Figueiredo LM, et al. 2009. Four histone
-variants mark the boundaries of polycistronic transcription units in
-Trypanosoma brucei. Genes Dev 23: 1063-76.
-69  Cremer T, Kreth G, Koester H, Fink RH, et al. 2000. Chromosome
-territories, interchromatin domain compartment, and nuclear matrix: an
-integrated view of the functional nuclear architecture. Crit Rev Eukaryot Gene
-Expr 10: 179-212.
-70  Misteli T. 2007. Beyond the sequence: cellular organization of genome
-function. Cell 128: 787-800.
-71  Takizawa T, Meaburn KJ, Misteli T. 2008. The meaning of gene positioning.
-Cell 135: 9-13.
-72  Freitas-Junior LH, Bottius E, Pirrit LA, Deitsch KW, et al. 2000. Frequent
-ectopic recombination of virulence factor genes in telomeric chromosome
-clusters of P. falciparum. Nature 407: 1018-22.
-73  Ralph SA, Scheidig-Benatar C, Scherf A. 2005. Antigenic variation in
-Plasmodium falciparum is associated with movement of var loci between
-subnuclear locations. Proc Natl Acad Sci U S A 102: 5414-9.
-74  Mancio-Silva L, Zhang Q, Scheidig-Benatar C, Scherf A. 2010. Clustering of
-dispersed ribosomal DNA and its role in gene regulation and chromosome-end
-associations in malaria parasites. Proc Natl Acad Sci 107: 15117-22.
-75  Weiner A, Dahan-Pasternak N, Shimoni E, Shinder V, et al. 2011. 3D nuclear
-architecture reveals coupled cell cycle dynamics of chromatin and nuclear
-pores in the malaria parasite Plasmodium falciparum. Cell Microbiol 13:
-967-77.
-76  Fullwood MJ, Liu MH, Pan YF, Liu J, et al. 2009. An
-oestrogen-receptor-alpha-bound human chromatin interactome. Nature 462: 58-64.
-77  Guelen L, Pagie L, Brasset E, Meuleman W, et al. 2008. Domain organization
-of human chromosomes revealed by mapping of nuclear lamina interactions.
-Nature 453: 948-51.
-78  van Koningsbruggen S, Gierlinski M, Schofield P, Martin D, et al. 2010.
-High-resolution whole-genome sequencing reveals that specific chromatin
-domains from most human chromosomes associate with nucleoli. Molecular biology
-of the cell 21: 3735-48.
-79  Vogel MJ, Peric-Hupkes D, van Steensel B. 2007. Detection of in vivo
-protein-DNA interactions using DamID in mammalian cells. Nature protocols 2:
-1467-78.
-80  Zhao Z, Tavoosidana G, Sjolinder M, Gondor A, et al. 2006. Circular
-chromosome conformation capture (4C) uncovers extensive networks of
-epigenetically regulated intra- and interchromosomal interactions. Nat Genet
-38: 1341-7.
-81  van Steensel B, Dekker J. 2010. Genomics tools for unraveling chromosome
-architecture. Nat Biotechnol 28: 1089-95.
-82  Nora EP, Lajoie BR, Schulz EG, Giorgetti L, et al. 2012. Spatial
-partitioning of the regulatory landscape of the X-inactivation centre. Nature
-485: 381-5.
-83  Sofueva S, Yaffe E, Chan WC, Georgopoulou D, et al. 2013. Cohesin-mediated
-interactions organize chromosomal domain architecture. The EMBO journal 32:
-3119-29.
-84  Ferraiuolo MA, Rousseau M, Miyamoto C, Shenker S, et al. 2010. The
-three-dimensional architecture of Hox cluster silencing. Nucleic Acids Res 38:
-7472-84.
-85  Rousseau M, Crutchley JL, Miura H, Suderman M, et al. 2014. Hox in motion:
-tracking HoxA cluster conformation during differentiation. Nucleic Acids Res
-42: 1524-40.
-86  Li G, Ruan X, Auerbach RK, Sandhu KS, et al. 2012. Extensive
-promoter-centered chromatin interactions provide a topological basis for
-transcription regulation. Cell 148: 84-98.
-87  Shen Y, Yue F, McCleary DF, Ye Z, et al. 2012. A map of the cis-regulatory
-sequences in the mouse genome. Nature 488: 116-20.
-88  Tanizawa H, Iwasaki O, Tanaka A, Capizzi JR, et al. 2010. Mapping of
-long-range associations throughout the fission yeast genome reveals global
-genome organization linked to transcriptional regulation. Nucleic Acids Res
-38: 8164-77.
-89  Magklara A, Yen A, Colquitt BM, Clowney EJ, et al. 2011. An epigenetic
-signature for monoallelic olfactory receptor expression. Cell 145: 555-70.
-90  Lyons DB, Allen WE, Goh T, Tsai L, et al. 2013. An epigenetic trap
-stabilizes singular olfactory receptor expression. Cell 154: 325-36.
-91  Brancucci NM, Bertschi NL, Zhu L, Niederwieser I, et al. 2014.
-Heterochromatin protein 1 secures survival and transmission of malaria
-parasites. Cell host \& microbe 16: 165-76.
-92  Coleman BI, Skillman KM, Jiang RH, Childs LM, et al. 2014. A Plasmodium
-falciparum histone deacetylase regulates antigenic variation and gametocyte
-conversion. Cell host \& microbe 16: 177-86.
-93  Le Roch KG, Zhou Y, Blair PL, Grainger M, et al. 2003. Discovery of gene
-function by expression profiling of the malaria parasite life cycle. Science
-301: 1503-8.
-94  Otto TD, Wilinski D, Assefa S, Keane TM, et al. 2010. New insights into
-the blood-stage transcriptome of Plasmodium falciparum using RNA-Seq. Mol
-Microbiol 76: 12-24.
-95  Voss TS, Healer J, Marty AJ, Duffy MF, et al. 2006. A var gene promoter
-controls allelic exclusion of virulence genes in Plasmodium falciparum
-malaria. Nature 439: 1004-8.
-96  Dahan-Pasternak N, Nasereddin A, Kolevzon N, Pe'er M, et al. 2013. PfSec13
-is an unusual chromatin-associated nucleoporin of Plasmodium falciparum that
-is essential for parasite proliferation in human erythrocytes. J Cell Sci 126:
-3055-69.
-97  Umbarger MA, Toro E, Wright MA, Porreca GJ, et al. 2011. The
-three-dimensional architecture of a bacterial genome and its alteration by
-genetic perturbation. Mol Cell 44: 252-64.
-98  Gomez-Diaz E, Corces VG. 2014. Architectural proteins: regulators of 3D
-genome organization in cell fate. Trends Cell Biol.
-99  Ghorbal M, Gorman M, Macpherson CR, Martins RM, et al. 2014. Genome
-editing in the human malaria parasite Plasmodium falciparum using the
-CRISPR-Cas9 system. Nat Biotechnol 32: 819-21.
-100 Zhang C, Xiao B, Jiang Y, Zhao Y, et al. 2014. Efficient Editing of
-Malaria Parasite Genome Using the CRISPR/Cas9 System. mBio 5.
-101 Wagner JC, Platt RJ, Goldfless SJ, Zhang F, et al. 2014. Efficient
-CRISPR-Cas9-mediated genome editing in Plasmodium falciparum. Nat Methods.
-102 Bozdech Z, Mok S, Hu G, Imwong M, et al. 2008. The transcriptome of
-Plasmodium vivax reveals divergence and diversity of transcriptional
-regulation in malaria parasites. Proc Natl Acad Sci U S A 105: 16290-5.
-103 Fernandez-Becerra C, Pein O, de Oliveira TR, Yamamoto MM, et al. 2005.
-Variant proteins of Plasmodium vivax are not clonally expressed in natural
-infections. Mol Microbiol 58: 648-58.
-104 Le Roch KG, Johnson JR, Florens L, Zhou Y, et al. 2004. Global analysis of
-transcript and protein levels across the Plasmodium falciparum life cycle.
-Genome Res 14: 2308-18.
-105 Bernstein BE, Kamal M, Lindblad-Toh K, Bekiranov S, et al. 2005. Genomic
-maps and comparative analysis of histone modifications in human and mouse.
-Cell 120: 169-81.
-106 Kim TH, Barrera LO, Zheng M, Qu C, et al. 2005. A high-resolution map of
-active promoters in the human genome. Nature 436: 876-80.
-107 Wang Z, Zang C, Rosenfeld JA, Schones DE, et al. 2008. Combinatorial
-patterns of histone acetylations and methylations in the human genome. Nat
-Genet 40: 897-903.
-108 Barski A, Cuddapah S, Cui K, Roh TY, et al. 2007. High-resolution
-profiling of histone methylations in the human genome. Cell 129: 823-37.
-109 Nishida H, Suzuki T, Kondo S, Miura H, et al. 2006. Histone H3 acetylated
-at lysine 9 in promoter is associated with low nucleosome density in the
-vicinity of transcription start site in human cell. Chromosome research : an
-international journal on the molecular, supramolecular and evolutionary
-aspects of chromosome biology 14: 203-11.
-110 Mikkelsen TS, Ku M, Jaffe DB, Issac B, et al. 2007. Genome-wide maps of
-chromatin state in pluripotent and lineage-committed cells. Nature 448:
-553-60.
-111 Lachner M, Sengupta R, Schotta G, Jenuwein T. 2004. Trilogies of histone
-lysine methylation as epigenetic landmarks of the eukaryotic genome. Cold
-Spring Harb Symp Quant Biol 69: 209-18.
-112 Chantalat S, Depaux A, Hery P, Barral S, et al. 2011. Histone H3
-trimethylation at lysine 36 is associated with constitutive and facultative
-heterochromatin. Genome Res 21: 1426-37.
-113 Zlatanova J, Thakar A. 2008. H2A.Z: view from the top. Structure 16:
-166-79.
-114 Talbert PB, Henikoff S. 2010. Histone variants--ancient wrap artists of
-the epigenome. Nat Rev Mol Cell Biol 11: 264-75.
-115 Bannister LH, Margos G, Hopkins JM. 2005. Making a home for Plasmodium
-post-genomics: ultrastructural organization of the blood stages. In Sherman
-IW, ed; Molecular Approaches to Malaria. Washington DC: ASM Press. p 24-49.
-116 Hoeijmakers WA, Flueck C, Francoijs KJ, Smits AH, et al. 2012. Plasmodium
-falciparum centromeres display a unique epigenetic makeup and cluster prior to
-and during schizogony. Cell Microbiol 14: 1391-401.
-117 Li H, Durbin R. 2010. Fast and accurate long-read alignment with
-Burrows-Wheeler transform. Bioinformatics 26: 589-95.
-
-
-
-
-TABLES
-
-\begin{table}
-\begin{center}
-\begin{tabular}{lll}
-\hline
-\emph{Histone PTM/variant} & \emph{Other eukaryotes} & \emph{P. falciparum} \\
-\hline
-H3K4me3 & Promoters of active genes \citep{bernstein:genomic, kim:high-resolution, wang:combinatorial, barski:high-resolution} [105-108] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic} [45,47] \\
-H3K9ac & Promoters of active genes \citep{wang:combinatorial, nishida:histone} [107,109] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic}[45,47] \\
-H3K4me3 & Promoters of active genes \citep{bernstein:genomic, kim:high-resolution, wang:combinatorial, barski:high-resolutino} [105-108] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic}[45,47]\\
-H3K9ac & Promoters of active genes \citep{wang:combinatorial, nishida:histone} [107,109] & Widely distributed in intergenic regions \citep{bartfai:h2az, salcedo-amaya:dynamic}[45,47] \\
-H3K9me3 & Silent genes \citep{wang:combinatorial, barski:high-resolution} [107,108] &
- Repressed var genes \citep{lopez-rubio:genome-wide, chookajorn:epigenetic, lopez-rubio:5} [40,48,49] \\
-H3K27me3 & Promoters of silent/poised genes \citep{wang:combinatorial, barski:high-resolution, mikkelsen:genome-wide} [107,108,110],
- absent in yeast \citep{lachner:trilogies} [111] & Not detected \citep{trelle:global} [39] \\
-H3K36me3 &
-Enriched in pericentromeric heterochromatin \citep{chantalat:histone} [112];
-Transcribed regions of active genes \citep{wang:combinatorial, barski:high-resolution} [107,108] &
-TSS of repressed var genes \citep{jiang:pfsetvs} [46];
-3’ end coding region active genes \citep{jiang:pfsetvs} [46] \\
-H4K20me3 &
-Silencing of telomeres, transposons and long terminal repeats \citep{barski:high-resolution, lachner:trilogies} [108,110];
-inactive promoters \citep{wang:combinatorial} [107] &
-Repressed var genes \citep{jiang:pfsetvs} [46] and broad distribution across additional loci \citep{lopez-rubio:genome-wide} [40] \\
-H2A.Z &
-Enriched in nucleosomes bordering active promoter (reviewed in \citep{zlatanova:h2az, talbert:histone} [113,114])
-& Widely distributed in intergenic regions \citep{hoeijmakers:h2az, petter:h2az}[66,67] \\
-H2B.Z &
-Lineage-specific variants with specialized functions, for example enriched at
-TSS in \textit{Trypanosoma brucei} \citep{siegel:four} [68] &
-Widely distributed in intergenic regions \citep{hoeijmakers:h2az, petter:h2az}[66,67] \\
-\end{tabular}
-\end{center}
-\caption{Overview of most-studied histone modifications and variants in
-\textit{P. falciparum} and comparison of their genome-wide distribution or
-function in other eukaryotes.}
-\label{table:histone_mod}
-\end{table}
-
-\begin{table}
-\begin{tabular}{llll}
-\textit{Feature} & \textit{Ring} & \textit{Trophozoite} & \textit{Schizont} \\
-Nuclear size & Small (~700 nm diameter) [75,115]
-& Large (~1,700 nm diameter) [75,115]
-& Small (~850 nm diameter) [75,115]
-\\ Nuclear pores
-& Few (3-7), clustered together [75]
-& Many (12-58), uniformly distributed [75]
-& Few per daughter nucleus (2-6), clustered together [75]
-\\ Nucleosome occupancy
-& High [59,63]
-& Low [59,63]
-& High [59,63]
-\\ Chromatin compaction
-& Compact [30,59,63,75]
-&  Open [30,59,63,75]
-& Compact [30,59,63,75]
-\\ Chromosome territories
-& Conflicting reports (absent [33] vs present [30])
-& Partially lost [30]
-& Present [30]
-\\ Centromere locations
-& Conflicting reports (colocalized [30] vs dispersed [33,116])
-& Colocalized [30,116]
-& Colocalized [30,116]
-\\ Telomere locations
-& Colocalized near periphery [30,72]
-& Colocalized near periphery [30,72]
-& Colocalized near periphery [30,72]
-\\ Virulence gene locations
-& Colocalized [33] near periphery [30,40,72]
-& Colocalized near periphery [30,40,72]
-& Colocalized near periphery [30,40,72]
-\\ rDNA gene locations
-& Conflicting reports (all loci clustered [74] vs strong clustering of only
-active loci [30,33])
-& Conflicting reports (dispersed [74] vs weak clustering of only active loci
-[30])
-& Conflicting reports (dispersed [74] vs weak clustering of only active loci
-[30]) \\
-\end{tabular}
-\caption{Summary of organizational features of \textit{P. falciparum} nucleus and
-genome at three distinct stages during asexual parasite replication in human
-red blood cells (asexual cycle).}
-\label{table:features}
-\end{table}
