@@ -59,7 +59,7 @@ three-dimensional modeling.
 
 \end{abstract}
 
-\section*{Background}
+\section{Background}
 
 A variety of microscopic imaging techniques have long been used to study
 chromatin architecture and nuclear organization
@@ -210,9 +210,9 @@ arrangements of higher-order chromatin in human cells~\citep{bolzer:three}.
 
 %%%% Results start %%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Results}
+\section{Results}
 
-\subsection*{Tethered multiple chromatin conformation capture (TM3C)}
+\subsection{Tethered multiple chromatin conformation capture (TM3C)}
 To identify simultaneous chromatin contacts among two or more loci,
 we digest crosslinked chromatin with one or more 4-cutter restriction
 enzymes (REs) (Step 1 of Figure~\ref{fig:outline}). When using multiple
@@ -262,7 +262,7 @@ and one from non-crosslinked cells (KBM7-MCcont-4) as a control (Table~1). In wh
 we report results from application of TM3C to these two human cell lines mainly
 focusing on KBM7.
 
-\subsection*{TM3C reveals multi-locus chromatin contacts}
+\subsection{TM3C reveals multi-locus chromatin contacts}
 
 \begin{figure}
   \centering
@@ -352,7 +352,7 @@ genomic distance threshold of 1~kb eliminates all sonication products, resulting
 in uniform distribution for the remaining contacts from TM3C.
 
 
-\subsection*{Two-phase mapping rescues contacts informative of genome architecture}
+\subsection{Two-phase mapping rescues contacts informative of genome architecture}
 Following identification of all three types of contacts (F-F, P-F, and
 P-P), we evaluate the quality
 of the resulting contact sets for each library in four ways. First, we confirm that the contact
@@ -387,7 +387,7 @@ traditionally discarded from Hi-C analysis, are consistent with traditionally
 retained contacts. Therefore, for all remaining analyses with pairwise contacts
 we combine all three types (F-F, P-F, P-P) into an aggregated contact map for each library.
 
-\subsection*{TM3C data confirms chromatin compartments and topological domains}
+\subsection{TM3C data confirms chromatin compartments and topological domains}
 {
 
 \begin{figure}
@@ -443,7 +443,7 @@ results to Hi-C and that KBM7, which has a distinct karyotype, preserves
 the large scale organizational features of other human cell lines.
 
 {
-\subsection*{Genome-wide characterization of triple contacts}
+\subsection{Genome-wide characterization of triple contacts}
 
 \begin{figure}
   \centering
@@ -524,7 +524,7 @@ numbers of DHSs (for triples observed 23.7\% compared to expected 12.4\%, Method
 %combinatorial regulation events occurring within an individual cell.
 }
 
-\subsection*{Verification of triples involving \emph{IGF2-H19} locus}
+\subsection{Verification of triples involving \emph{IGF2-H19} locus}
 
 \begin{figure}
   \centering
@@ -621,7 +621,7 @@ that can distinguish between allele specific loops established
 by several differentially methylated regions and CTCF binding sites.
 
 
-\subsection*{Three-dimensional modeling of KBM7 genome recapitulates known organizational principles of human cells}
+\subsection{Three-dimensional modeling of KBM7 genome recapitulates known organizational principles of human cells}
 
 \begin{figure}
   \centering
@@ -677,7 +677,7 @@ that the two sets of chromosomes are far from each other in our 3D models
 %%%%% Results End %%%%%
 %%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Discussion}
+\section{Discussion}
 Catalyzed by the availability of genome-wide chromatin architecture data
 generated using chromatin conformation capture assays, the field of regulatory
 genomics has recently witnessed increased interest in the functional role of higher order DNA structure.
@@ -779,7 +779,7 @@ understanding better the combinatorial regulation of gene expression
 and complex chromatin loops that involve more than
 two loci simultaneously.
 
-\section*{Conclusion}
+\section{Conclusion}
 
 TM3C is a simple protocol for ascertaining genome architecture and can
 be used to identify simultaneous contacts among three or four
@@ -787,8 +787,8 @@ loci. Application of TM3C to a near-haploid human cell line revealed
 large-scale features of chromosomal organization and multi-way
 chromatin contacts that preferentially link regions of open chromatin.
 
-\section*{Materials and methods}
-\subsection*{TM3C library generation}
+\section{Materials and methods}
+\subsection{TM3C library generation}
 Approximately six million NHEK and ten million KBM7 cells were fixed in 1.5\% formaldehyde at
 room temperature for 10 minutes. The fixed cells were washed with TN buffer (10 mM Tris, 40
 mM NaCl, pH 7.5) and collected by centrifugation at 600 g for 3 minutes. To
@@ -829,7 +829,7 @@ both a NanoDrop spectrophotometer (Thermo Scientific) and a Qubit 2.0
 Fluorometer. The Qubit quantification represents the more accurate DNA
 concentration.
 
-\subsection*{First phase mapping of sequence data}
+\subsection{First phase mapping of sequence data}
 We mapped the paired-end reads to the human reference genome (hg19) using the
 short read alignment mode of BWA (v0.5.9) with default parameter settings. Each
 end of the paired reads was mapped individually. We post-processed the
@@ -844,7 +844,7 @@ contacts that we denote as \textbf{F-F} (fully-mapped - fully-mapped). The
 reads that did not map to any location in this phase of mapping are named
 \emph{non-mapped} and are analyzed further.
 
-\subsection*{Second phase mapping of non-mapped reads}
+\subsection{Second phase mapping of non-mapped reads}
 Re-mapping the reads that are deemed \emph{non-mapped} in the initial mapping
 is necessary to avoid discarding a significant number of informative reads for
 an assay such as TM3C that uses a frequently cutting restriction enzyme (or
@@ -895,7 +895,7 @@ contacts and one triple is produced.
 If both ends have two mapped fragments, then six pairwise contacts, four triples
 (of type P-P) and one quadruple (i.e., contact among four loci) are produced.
 
-\subsection*{Normalization of contact maps}
+\subsection{Normalization of contact maps}
 
 For each possible pair of 1~Mb loci, we refer to the total number of read
 pairs that link the two loci as the {\em contact count}, and we refer to the
@@ -925,7 +925,7 @@ homologous chromosomes associated with the same loci. This procedure
 yields a ($3113 \times 3113$) contact counts matrix for which diploid
 loci interact twice as much as haploid loci.
 
-\subsection*{Eigenvalue decomposition}
+\subsection{Eigenvalue decomposition}
 We carried out eigenvalue decomposition on the normalized contact maps of KBM7
 and NHEK TM3C datasets as described in \citet{lieberman-aiden:comprehensive}.
 For each chromosome we used the intrachromosomal contact matrices at 1 Mb
@@ -943,7 +943,7 @@ versus previously published Hi-C data in four human cell lines
 (H1-hESC, IMR90~\citep{dixon:topological};  K562, GM06990~\citep{lieberman-aiden:comprehensive}).
 
 
-\subsection*{Topological domain analysis}
+\subsection{Topological domain analysis}
 We identified topological domains using a previously described hidden Markov
 model-based software tool~\citep{dixon:topological}. To facilitate direct
 comparison with the previously published topological domains in human cell
@@ -956,7 +956,7 @@ boundaries obtained between these two assays. We deemed two boundaries, one
 from each assay, as overlapping if they overlap by at least 1~bp or are
 adjacent to each other, as described in~\citet{dixon:topological}.
 
-\subsection*{Contacts among regions with the same compartment label}
+\subsection{Contacts among regions with the same compartment label}
 We used compartment labels assigned by the eigenvalue decomposition as described
 above and computed the number of read pairs that define double and triple contacts
 between two or among three regions all with the same compartment label
@@ -974,7 +974,7 @@ of observed double and triple contacts to expected percentages within each of th
 three groups. A ratio $>$1 represents an enrichment for the observed
 contacts for that compartment label group.
 
-\subsection*{Contacts among regions with similar numbers of DHSs}
+\subsection{Contacts among regions with similar numbers of DHSs}
 We performed an analysis similar to the compartment label analysis described above
 using joint (UW--Duke) DNase hypersensitivity peak calls for the six Tier 1 cell lines
 (GM12878, H1-hESC, HeLa-S3, HepG2, HUVEC, K562)
@@ -987,7 +987,7 @@ and labeled the top 50\% as ``high'' and bottom 50\% as ``low'' DNase
 sensitivity. We then calculated and reported the expected over observed
 percentage of doubles and triples as described for compartment labels.
 
-\subsection*{Contacts within the same topological domain}
+\subsection{Contacts within the same topological domain}
 After carrying out the topological domain calling using our KBM7-TM3C-1 data,
 we computed the percentage of intrachromosomal doubles and triples that
 link loci within the same topological domain.
@@ -1033,7 +1033,7 @@ randomized shufflings.
 %computed from shuffled triples.
 
 
-\subsection*{Inference of the 3D structure}
+\subsection{Inference of the 3D structure}
 
 We modeled each chromosome as a series of beads on a string, spaced
 approximately 1~Mb apart. We denote by $\textbf{X} = (x_1,\ldots,x_n) \in
@@ -1103,35 +1103,15 @@ likelihoods.
 \bigskip % END OF METHODS
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{List of abbreviations used}
+\section{List of abbreviations used}
 3C: chromatin conformation capture, TM3C:  tethered multiple 3C, TCC: tethered
 3C, ICR: imprinting control region, PCR: polymerase chain reaction,
 RE: restriction enzyme, Ph+: Philadelphia chromosome positive,
 CpG: Cytosine---phosphate---Guanine, DHS: DNase hypersensitive site,
 TSS: transcription start site.
 
-\section*{Competing interests}
-The authors declare that they have no competing interests.
 
-\section*{Authors' contributions}
-A.R.H., T.H.V. and W.S.N. conceived the project. T.H.V. developed the assay and
-carried out the experiments. F.A. analyzed the data under the supervision of W.S.N.
-N.V. inferred 3D structures under the supervision of J.V.  F.A.,  W.S.N., N. V. and
-T.H.V. wrote the manuscript. All authors discussed and edited the manuscript.
-
-
-\section*{Acknowledgements}
-%  \ifthenelse{\boolean{publ}}{\small}{}
-We are grateful to Zhi-jun Duan for helpful comments.
-This work was financially supported by the National Institutes of Health
-(grant R01 GM09031 to ARH and U41 HG007000 to WSN), a Computing Research Association CIFellows
-award (NSF award CIF 1136996 to FA), the European Research Council
-(grant SMAC-ERC-280032 to JPV/NV), the European Commission
-(grant HEALTH-F5-2012-305626 to JPV/NV) and the French National
-Research Agency (grant ANR-11-BINF-0001 to JPV/NV).
-\lineskip=0pt
-
-\section*{Tables}
+\section{Tables}
  \subsection*{Table 1 - Summary of datasets generated in this paper.}
  \label{table:libs}
 \par \mbox{}
@@ -1205,7 +1185,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 }
 }
 
-\section*{Supplementary Figures}
+\section{Supplementary Figures}
 %\addcontentsline{toc}{section}{Supplementary Figures}
 
 %\begin{enumerate}
@@ -1434,7 +1414,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 % to make sure table captions are not centered
 
 \captionsetup{singlelinecheck=off}
-\section*{Supplementary Tables}
+\section{Supplementary Tables}
 \begin{table}[ht!]
 \caption{{\bf Sequences of primers used for PCR verification.}}
 {These primers are designed to test 10 triple contacts listed in Main Figure~5
@@ -1500,7 +1480,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 \end{table}
 \clearpage
 
-\section*{Description of additional data files}
+\section{Description of additional data files}
 \vspace{20pt}
 
   {
