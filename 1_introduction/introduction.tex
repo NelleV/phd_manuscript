@@ -170,10 +170,11 @@ described by a random walk. A \textit{random coil} of length $N$ has an
 expected size of $N^{1/2}$, and so has any of its subchain: $L(s) \sim
 s^{1/2}$. The contact probability between two monomers is $P(s) \sim
 s^{-3/2}$. These relationships lead to a low density polymer, where contact
-between monomers is sparse.
-
-\fixme{Add the swollen coil, ie, the self avoiding random walk}
-
+between monomers is sparse. The modeling of the \textit{random coil} does not
+exclude the volume occupied by monomers: when taking in account that monomers
+can not occupy the same chain, one obtains a new polymer model known as the
+\textit{swollen coil}, best described as a self avoiding random walk. This
+type of polymer occupies a larger space: $L(N) \sim N^{\frac{3}{5}}$.
 
 \begin{figure}
 \begin{center}
@@ -214,6 +215,12 @@ of any subchain follows the same law as the equilibrium globule, but without
 the plateau: $L(s) \sim s^{1/3}$, and the probability of contact between two
 monomers is inversely proportional to the linear distance that separates them:
 $P(s) \sim s^{-1}$.
+
+
+\begin{figure}
+\caption{Relationship between contact counts and genomic distances}
+\label{fig:hic_relationships}
+\end{figure}
 
 Now that we have briefly summarized the different theoritical behaviour of
 polymers DNA can adopt, let us have a closer look at the relationships we
@@ -322,8 +329,10 @@ Nature methods & & Cons & & N\\
 \citet{wong:predictive} & & & &\\
 \citet{gehlen:chromosome} & & & &\\
 Alber & & & &\\
+Trieu & & & & \\
 \end{tabular}
 \end{center}
+\caption{FIXME}
 \end{table}
 
 
