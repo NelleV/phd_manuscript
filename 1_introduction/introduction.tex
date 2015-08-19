@@ -274,6 +274,11 @@ convexity of the problem. Hence, we assume they seeked the best local minimum
 obtained solutions, found that they did not differ much. No formal study was
 done to compare the solutions.
 
+\citet{lesne:3d} proposes a very similar approach, where the structure is
+first approximated using classic MDS (thus very fast), and then refined with
+an optimization scheme such as the one proposed by \citet{duan:three}
+\textbf{FIXME}.
+
 \citet{ben-elazar:spatial} formulated a non metric multidimensional scaling
 optimization problem. They first filtered the interaction count matrix so that
 remained only the most significant interactions. They then interpolated the
@@ -306,8 +311,19 @@ such as the positioning of centromeres and telomeres, they formulate an
 optimization problem. Generating $200000$ feasible structures, they show that
 Hi-C data can be fully explained by this very simple model.
 
+\citet{nagano:single-cell} and \citet{paulsen:manifold} both proposes methods
+to infer 3D structures from single-cell Hi-C data. The first is a constraint
+based modelisation: the structure is modeled as a flexible fiber as in
+\citet{tjong:physical}, but beads are constraint to be in contact when an
+interaction is observed in the single-cell contact map.
+\citet{paulsen:manifold} formulates a \textit{manifold based optimization},
+where a low rank psd matrix (and thus a distance matrix) is optimized to be as
+close as possible to the sparse contact count matrix. It is then easy to infer
+a 3D structure form the low rank psd matrix \textbf{FIXME}.
+
 \begin{table}[ht!]
-\caption{\bf A comparison of 3D inference methods}
+\caption{\bf A comparison of 3D inference methods}{FIXME uncomplete}
+
 \begin{center}
 \begin{tabular}{lrcrr}
 \hline
@@ -328,11 +344,11 @@ Nature methods & & Cons & & N\\
 \citet{tokuda:dynamical} & & & &\\
 \citet{wong:predictive} & & & &\\
 \citet{gehlen:chromosome} & & & &\\
+\citep{lesne:3d} & & & & \\
 Alber & & & &\\
 Trieu & & & & \\
 \end{tabular}
 \end{center}
-\caption{FIXME}
 \end{table}
 
 

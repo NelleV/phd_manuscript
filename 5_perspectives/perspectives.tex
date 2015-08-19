@@ -1,10 +1,91 @@
 % this file is called up by thesis.tex
 % content in this file will be fed into the main document
 
-\chapter{Perspectives} % top level followed by section, subsection
+\chapter{Discussion} % top level followed by section, subsection
+
+In this thesis, I have presented contributions to the analysis of Hi-C data,
+in particular \textit{3D structure inference} methods.
+
+\textbf{Biological contributions}\ - During the course of my thesis, I
+studied, in collaboration with Le Roch lab and Noble lab, the
+three-dimensional structure of the human malaria parasite \textit{P.
+falciparum}, which led to a better understanding of links between the genome
+architecture and gene expression and regulation.
+
+\textbf{Methodological contributions}\ - I also contributed several methods,
+first in the domain of \textit{3D structure inference}, with a statistical
+method to infer a consensus model of the genome architecture, second in the
+use of Hi-C for \textit{genome annotation}, with an approach to detect
+centromeric regions for organisms whose genome fold in a Rabl configuration
+(with centromeres colocalizing).
+
+\textbf{Software contributions}\ - In addition to the methodological
+contributions and the biological contributions, I have also focused on the
+implementations of several methods studied or developped during the course of
+this thesis. I believe that high quality implementations are critical for the
+analysis of the huge quantity of data available in biology, while challenging.
+I have not only contributed to \textit{scikit-learn} (with the inclusion of
+the isotonic regression, the metric and non-metric MDS, \dots), but also
+released three packages: \textit{iced}, \textit{pastis} and
+\textit{centurion}, which are all free and open-source softwares.
+
+\section*{Research perspectives}
+
+The field of genome 3D structure is a young yet fast moving field. When I
+first started to work on 3D structure inference methods, only a handfull of
+papers using Hi-C where published. Nowadays, more than a paper per week on
+this subject is published. Yet, as the field is still young, well grounded
+methods and publicly available software are still lacking. I here describe
+some research perspectives.
 
 
-I would like to find a job ... with a good salary ...
+\textbf{Quality control and normalization of Hi-C data}\ -
+
+Between the first publication on Hi-C \citep{lieberman-aiden:comprehensive}
+and recent work such as \citet{rao:3d, jin:high-resolution}, the resolution of
+the Hi-C contact maps have increased from 1~Mb to 5~kb or even 1~kb. Not only
+has the number of reads greatly increase, but also the protocol evolved to
+assess interactions with less noise and false positive. Yet, there is still no
+satistifying quality control protocol or quality measures to identify what is
+a "good" dataset. In particular, the choice of the resolution of the contact
+maps is still not justified by any well-grounded method and is left to the
+judgement of the researcher. Same goes for the normalization: four published
+methods attempt to remove biases, yet there is no clear measure on how well
+these perform. Developping quality control measurement seems a natural first
+step to help scientist set up and compare reliable protocols to assess the 3D
+structure of the genome.
+
+\textbf{Inference of the 3D structure of polyploid structures}\ - So far, most
+methods either only dealt with haploid 3D structures or ignored the diploidy
+or polyploidy of genomes when building 3D models. To our knowledge, only two
+methods incorporated the polyploidy of genomes: \textbf{FIXME} and
+\citet{ay:identifying}. Neither have been validated on simulated data, and
+one might wonder, considering the complexity of solving such deconvolution
+problems, how accurate and reliable these are. Now that single-allele Hi-C
+datasets become available \citep{deng:bipartite}, this challenge can be more
+thoroughly investigated.
+
+\textbf{Inference of a population of structures using single-cell data}\ -
+\citet{nagano:single-cell} published a protocol to assess physical
+interactions in single cellt, laying the foundations to study the variability
+of structures amongst a population of cell. So far, only two methods exploit
+this type of data for 3D structure reconstruction: \citet{nagano:single-cell}
+proposes a constraint-based approach to infer structures, while
+\citet{paulsen:manifold} proposes to infer low-rank psd matrices as close as
+possible to sparse contact count maps, and apply manifold learning technics to
+find a euclidean embedding of the data \textbf{FIXME - nead to read the
+article}. Both methods suffer from several drawbacks: in particular, neither
+attempt to leverage several single cell datasets or population contact maps to
+alleviate the sparsity of single-cell contact maps.
+
+\textbf{\textit{De novo} sequencing using Hi-C data}\ - Several methods have
+been proposed to re-target Hi-C for \textit{de novo} scaffolding
+\citep{burton:chromosome, kaplan:high-throughput, marie-nelly:high-quality},
+none of which leverage the recent work on convex relaxation for permutation
+problems \citet{fogel:convex}, which proposes to solve exactly the challenge
+faced in \textit{de novo} sequencing using Hi-C data: finding a permutation
+matrix to reorder rows and columns such that strongly interacting elements are
+close one another.
 
 % ---------------------------------------------------------------------------
 % ----------------------- end of thesis sub-document ------------------------
