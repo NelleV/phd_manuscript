@@ -1,4 +1,4 @@
-FIG = figures/fig1.png figures/fig2.png figures/fig3.png figures/fig3.png
+FIG = figures/fig1.png figures/fig2.png figures/fig3.png figures/fig4.png
 
 all: prepare $(FIG)
 
