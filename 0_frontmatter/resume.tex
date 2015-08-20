@@ -1,19 +1,19 @@
 \begin{resumes}
 
-La structure de l'ADN, des chromosomes et l'organisation du genome sont des
+La structure de l'ADN, des chromosomes et l'organisation du génome sont des
 sujets fascinants du monde de la biologie. La plupart de la recherche s'est
-concentré sur la structure uni dimensionnelle du génome, étudiant comment les
+concentrée sur la structure unidimensionnelle du génome, étudiant comment les
 gènes et les chromosomes sont organisés, et le lien entre l'organisation
 unidimensionnelle et la régulation des gènes, l'épissage, la méthylation,
-\dots \ Cependant, le génome est avant tout organisé dans un espace euclidéen
-tridimensionnelle, et cette structure 3D, bien que moins étudiée, joue, elle
+\dots \ Cependant, le génome est avant tout organisé dans un espace euclidien
+tridimensionnel, et cette structure 3D, bien que moins étudiée, joue, elle
 aussi, un rôle important dans la fonction génomique de la cellule.
 
 La capture de la conformation des chromosomes (3C) et les méthodes qui en sont
-dérivées, associées avec le séquençage à haut débit (NGS) mesurent désormais
-en une seule expérience des interactions physiques entre pair de
+dérivées, associées au le séquençage à haut débit (NGS) mesurent désormais
+en une seule expérience des interactions physiques entre paire de
 loci sur tout le génome, permettant ainsi aux chercheurs de découvrir les
-secrets derrière l'organisation des génomes. Ces nouvelles technologies
+secrets de l'organisation des génomes. Ces nouvelles technologies
 ouvrent la voie à des études systématiques et globales sur le repliement de
 l'ADN dans le noyau ainsi qu'à une meilleure étude et compréhension de
 beaucoup de processus biologiques, comme la régulation des gènes, la replication
@@ -25,34 +25,34 @@ computationnelles et théoriques.
 Dans cette thèse, nous cherchons à relever un certain nombre de ces défis.
 
 Le premier chapitre est dédié au développement d'une méthode robuste et
-précise pour inférer un modèle tri-dimensionnelle à partir de données Hi-C.
+précise pour inférer un modèle tridimensionnel à partir de données Hi-C.
 Les méthodes développées précédemment formulent souvent ce problème
-d'inférence comme un problème d'optimization basé sur le {\em positionnement
-multidimensionel} (en anglais {\em multidimensional scaling}) (MDS), reposant
+d'inférence comme un problème d'optimisation basé sur le {\em positionnement
+multidimensionnel} (en anglais {\em multidimensional scaling}) (MDS), reposant
 sur une dérivation {\em ad hoc} des fréquences d'interaction en distances
-euclidéennes. Les chromosomes sont modélisées comme des colliers de perles,
-lesquelles doivent être placées dans un espace euclidéen de dimension 3 de tel
+euclidiennes. Les chromosomes sont modélisés comme des colliers de perles,
+lesquels doivent être placés dans un espace euclidien de dimension 3 de telle
 sorte à non seulement respecter un certain nombre de contraintes (souvent non
-convexes) mais aussi de manière à positionner les perles telles que les
+convexes) mais aussi de manière à positionner les perles de façon à ce que les
 distances entre elles soient les plus proches des distances dérivées des
 fréquences d'interaction. Ces approches reposent sur des hypothèses
-contestables
-pour transformer fréquences d'interaction en distances euclidéenne, soulevant
-ainsi un doute sur la validité du modèle final obtenu. Une autre limitation de
-ces méthodes est la formulation du problème d'inférence sous forme MDS,
-justifiée non pas par un modèle statistique, mais par uniquement par
-l'intuition. Pour pallier à ces problème, notre méthode modèlise les
-fréquences d'interaction comme une distribution de Poisson dont l'intensité
-est une fonction de la distance euclideénne entre paire de loci: nous
-formulons ainsi l'inférence de la structure 3D comme un problème de maximum de
-vraisemblance. Nous montrons que notre méthode infère des modèles plus
-robustes et plus stables selon les données et les résolutions de celles-ci.
+contestables pour transformer fréquences d'interaction en distances
+euclidiennes, soulevant ainsi un doute sur la validité du modèle final obtenu.
+Une autre limitation de ces méthodes est la formulation du problème
+d'inférence sous forme MDS, justifiée non pas par un modèle statistique, mais
+uniquement par l'intuition. Pour pallier ces problèmes, notre méthode
+modélise les fréquences d'interaction comme une distribution de Poisson dont
+l'intensité est une fonction de la distance euclidienne entre paires de loci :
+nous formulons ainsi l'inférence de la structure 3D comme un problème de
+maximum de vraisemblance. Nous montrons que notre méthode infère des modèles
+plus robustes et plus stables selon les données et les résolutions de
+celles-ci.
 
 Le deuxième chapitre est consacré à l'étude de l'architecture du {\em P.
 falciparum}, un petit parasite responsable de la forme la plus virulente et
 mortelle de la malaria. Ce projet, dont l'objectif était avant tout de répondre à une
 question biologique, cherchait à comprendre comment l'architecture 3D du
-génome du {\em P. falciparum} est lié à l'expression et la régulation des
+génome du {\em P. falciparum} est liée à l'expression et la régulation des
 gènes à différent moments du cycle cellulaire du parasite. En collaboration
 avec les équipes de Karine Le Roch et de William Noble, spécialisées
 respectivement dans l'étude du {\em P. falciparum}, et dans le développement
@@ -60,18 +60,18 @@ de méthode computationnelle pour étudier, entre autre, la structure 3D du
 génome, nous avons construit des modèles de l'organisation du génome à trois
 moments du cycle cellulaire du parasite. Ceux-ci révèlent que le génome est
 replié dans le noyau dans une structure complexe, où de nombreux 
-nombreux éléments génomiques colocalizent: centromères, télomères, ADN
+nombreux éléments génomiques colocalisent: centromères, télomères, ADN
 ribosomal, famille
 de gènes, \dots \ Cette architecture indique une forte association entre
 l'organisation spatiale du génome et l'expression des gènes.
 
-Le dernier chapitre réponds à une question très différente, mais aussi lié à
-l'étude des données 3C. Celles-ci, initiallement développée pour étudier la
-structure tri-dimensionnelle du génome, ont été récemment utilisées pour des
-applications très diverses: l'assemblage de génome {\em de novo}, la
-déconvolution d'échantillon méta génomique et l'annotation de génome. Nous
+Le dernier chapitre répond à une question très différente, mais aussi lié à
+l'étude des données 3C. Celles-ci, initialement développées pour étudier la
+structure tridimensionnelle du génome, ont été récemment utilisées pour des
+applications très diverses: l'assemblage de génomes {\em de novo}, la
+déconvolution d'échantillons métagénomiques et l'annotation de génomes. Nous
 décrivons dans ce chapitre une nouvelle méthode, Centurion, qui infère
-jointement la position de tous les centromères d'un organisme, en utilisant la
+conjointement la position de tous les centromères d'un organisme, en utilisant la
 propriété qu'ont les centromères à colocaliser dans le noyau. Cette méthode
 est donc une alternative aux méthodes de détection de centromères classiques,
 qui, malgré des années de recherche et un enjeu économique certain,
@@ -88,15 +88,15 @@ Le premier projet consiste au développement d'un nouvel outil permettant le
 pre processing des données Hi-C afin de construire et de normaliser les cartes de fréquences
 d'interaction à partir des données brutes de
 séquençage. Ma contribution a été l'implémentation en python d'une version
-optimisée à la fois en ram et en temps de calcul de la normalisation. Cette
-implémentation, bien que très simple et non parallelisée, est à
-notre connaissance la plus performante existant à l'heure actuelle. Le
-deuxième papier est une revue de l'épigénétique du {\em P. falciparum} suite à
-notre premier publication sur le sujet. Le troisième papier étends la méthode
-Hi-C afin de détecter, en plus des pairs d'interactions, des interactions
+optimisée à la fois en mémoire et en temps de calcul de la normalisation. Cette
+implémentation, bien que très simple et non parallélisée, est à
+notre connaissance la plus performante existant à l'heure actuelle. La
+deuxième publication est une revue de l'épigénétique du {\em P. falciparum} suite à
+notre premier publication sur le sujet. Le troisième papier étend la méthode
+Hi-C afin de détecter, en plus des paires d'interactions, des interactions
 entre trois et quatre éléments. Ma contribution à ce dernier projet a été le
 développement d'une méthode permettant l'inférence de la structure 3D de
-génomes polyploides.
+génomes polyploïdes.
 
 \end{resumes}
 

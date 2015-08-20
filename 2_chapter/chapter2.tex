@@ -19,43 +19,43 @@ Ferhat Ay, William S. Noble and Jean-Philippe Vert.
 
 \begin{abstract}{Résumé}
 
-Des récents développement dans les protocoles biologiques permettent désormais
+De récents développements dans les protocoles biologiques permettent désormais
 de mesurer les fréquences d'interaction entre toutes les paires de loci d'un
 génome, et ce en une seule experience. Le défi suivant est donc d'inférer des
 modèles tri-dimensionnels du repliement des chromosomes dans
 le noyau de la cellule. Les inférences proposées jusqu'à présent reposent
-souvent sur des méthodes dites de {\em positionnement multidimensionelle} (en
-anglais \textit{multidimensional scaling.} (MDS),
-lesquelles optimizent une structure telle que les distances relatives entre
+souvent sur des méthodes dites de {\em positionnement multidimensionnelle} (en
+anglais \textit{multidimensional scaling}) (MDS),
+lesquelles optimisent une structure telle que les distances relatives entre
 éléments soient les plus proches de celles dérivées directement des fréquences
-d'interaction. Ces approches optimizent une fonction objective heuristique,
+d'interaction. Ces approches optimisent une fonction objective heuristique,
 et reposent sur des hypothèses contestables sur la biophysique de l'ADN pour trouver
 la fonction de transfert entre fréquences d'interaction et distances
 euclidiennes, pouvant ainsi conduire à l'inférence de modèles
-incorrectes de la structure de l'ADN.
+incorrects de la structure de l'ADN.
 
 Dans ce travail, nous proposons une nouvelle méthode pour inférer une
 structure 3D consensus du génome à partir de données Hi-C. Notre méthode
 repose sur un modèle statistique des fréquences d'interaction. Nous modélisons
 les fréquences d'interaction comme une distribution de Poisson dont
-l'intensité dépends de la distance physique entre paires de loci. Notre
+l'intensité dépend de la distance physique entre paires de loci. Notre
 méthode peut automatiquement ajuster les paramètres de la fonction de
 transfert entre fréquences d'interaction et distances physiques, et infère un
 modèle expliquant au mieux les données.
 
-Nous comparons deux variantes de notre méthode (avec ou sans optimization des
+Nous comparons deux variantes de notre méthode (avec ou sans optimisation des
 paramètres de la fonction de transfert) à quatre algorithmes basés sur MDS sur
-des données simulées: deux MDS dit "métriques", dont les fonctions objectives
+des données simulées : deux MDS dit "métriques", dont les fonctions objectives
 diffèrent, une version non métrique de cet algorithme, et ChromSDE qui propose
 une version récente et convexe du MDS. Nous démontrons que notre modèle de
 Poisson reconstruit des modèles plus précis que toutes les méthodes MDS, en
 particulier lorsque la couverture des données est faible ou que les données
 Hi-C sont à haute résolution, soulignant ainsi l'importance du choix de la
-fonction objective à optimizer. Sur des données Hi-C publiques de cellules
-embryoniquet de souris, nous démontrons par ailleurs que les méthodes Poisson
+fonction objective à optimiser. Sur des données Hi-C publiques de cellules
+embryoniques de souris, nous démontrons par ailleurs que les méthodes Poisson
 infèrent des structures plus stables, plus reproductibles et plus robustes à
-la fois lorsque le protocole biologique diffère, mais aussi à différente
-résolution.
+la fois lorsque le protocole biologique diffère, mais aussi à différentes
+résolutions.
 
 Une implémentation Python de notre méthode est disponible à
 \href{http://cbio.ensmp.fr/pastis}{http://cbio.ensmp.fr/pastis}.
