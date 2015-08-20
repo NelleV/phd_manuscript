@@ -75,7 +75,11 @@ FIG = suppFigs/powerLaw/res-raw10kb.pdf \
       suppFigs/kCCA/TROPH-kcca-genes-2.png \
       suppFigs/kCCA/SCHIZONTS-kcca-genes-1.png \
       suppFigs/kCCA/SCHIZONTS-kcca-genes-2.png \
-      suppFigs/kCCA/legend.png
+      suppFigs/kCCA/legend.png \
+      suppFigs/3Dclustering/RINGS.pdf \
+      suppFigs/3Dclustering/TROPHOZOITES.pdf \
+      suppFigs/3Dclustering/SCHIZONTS.pdf
+
 
 all: prepare $(FIG)
 
@@ -100,6 +104,7 @@ prepare:
 	mkdir -p suppFigs/kCCA
 	mkdir -p suppFigs/TADs
 	mkdir -p suppFigs/expVSdists
+	mkdir -p suppFigs/3Dclustering
 
 suppFigs/%:
 	mkdir -p suppFigs

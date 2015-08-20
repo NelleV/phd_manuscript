@@ -85,13 +85,14 @@ Files and datasets that are too large to include in this supplement are made ava
 
 \begin{table}[ht!]
 \caption{{\bf GSEA results for genes involved in stage-specific contacts.}}
-{\normalsize For each stage, GSEA is applied to the set of genes that participate
-in contacts that are specific to that stage (Methods). For the \emph{Type} column CC
-denotes ``Cellular Component'', MF denotes ``Molecular Function'' and BP denotes
-``Biological Process''. Enrichments with q-value $< 0.1$ are shown. }
+{\normalsize For each stage, GSEA is applied to the set of genes that
+participate in contacts that are specific to that stage (Methods). For the
+\emph{Type} column CC denotes ``Cellular Component'', MF denotes ``Molecular
+Function'' and BP denotes ``Biological Process''. Enrichments with q-value $<
+0.1$ are shown. }
 \vspace{10pt}
 \begin{center}
-\begin{tabular}{lllcc}
+\begin{tabular}{llp{0.4\linewidth}cc}
 \hline
 \emph{Stage} & \emph{GO term }&  \emph{Description} & \emph{Type} & \emph{q-value}  \\
 \hline
@@ -191,9 +192,9 @@ Clusters 1--15 correspond to expression clusters described in Le Roch et al. \ci
 & & & & & & & & & & & & \\
 Centromeres & & \gr 0.003 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 \\
 Telomeres & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 \\
-VRSM (all) & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 \\
-VRSM (internal) & & 0.388 & 0.215 & 0.070 & & 0.152 & \gr 0.023 & 0.079 & & 0.246 & 0.077 & \gr 0.025 \\
-VRSM (sub-telomeric) & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 \\
+VRSM {\small (all)} & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 \\
+VRSM {\small (internal)} & & 0.388 & 0.215 & 0.070 & & 0.152 & \gr 0.023 & 0.079 & & 0.246 & 0.077 & \gr 0.025 \\
+VRSM {\small (sub-telomeric)} & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 & & \gr 0.000 & \gr 0.000 & \gr 0.000 \\
 rDNA genes & & 1.000 & 0.277 & 0.463 & & 0.124 & \gr 0.037 & 0.060 & & 1.000 & 1.000 & 0.442 \\
 Cluster 1 & & 0.103 & \gr 0.011 & 0.115 & & \gr 0.018 & 0.133 & 0.133 & & 0.135 & \gr 0.007 & \gr 0.013 \\
 Cluster 2 & & 0.449 & 0.069 & \gr 0.014 & & 0.219 & 0.054 & \gr 0.015 & & 0.947 & 0.809 & 0.117 \\
@@ -228,12 +229,12 @@ Cluster 15 & & \gr 0.046 & \gr 0.014 & 0.103 & & \gr 0.016 & 0.058 & \gr 0.002 &
 \begin{tabular}{lllll}
 \hline
 \emph{Chr.}  & \emph{Annotation} & \emph{Locus (kb)} & \emph{Forward primer} & \emph{Reverse primer} \\\hline
-7 & VRSM & 550 - 560  & $5'$-GATGGTAGAAGATAATAGGG -$3'$ & $5'$-GACAAGTATAAGAACCAACC-$3'$ \\
-8 & VRSM & 40 - 50 & $5'$-CGAAAGATAGTAGTGATGGT-$3'$ & $5'$-CACTTATGCATTTCCATCCA-$3'$ \\\hline
-7 & Non-VRSM & 810 - 820  & $5'$-GCTTCCTTAATTGGACATTC-$3'$ & $5'$-GAATTCGTTGGAGATTCTGT-$3'$ \\
-11 & Non-VRSM & 820 - 830  & $5'$-CACTGAACAAGTAGTGTAATCA-$3'$ & $5'$-GTTTCATCTTCAGAAGTAAGAG-$3'$ \\\hline
-2 & Non-VRSM & 440 - 450 & $5'$-GTTCCTACAGGTTTAGATCT-$3'$ & $5'$-CATGAGGACATATTCACTTG-$3'$ \\
-4 & Non-VRSM & 1,160 - 1,170 & $5'$-AAGTACAGGTGTAGGTAAAG-$3'$ & $5'$-CGTAGCTTTAACCTGTTGTA-$3'$ \\\hline
+7 & VRSM & 550 - 560  & {\scriptsize $5'$-GATGGTAGAAGATAATAGGG -$3'$} & {\scriptsize $5'$-GACAAGTATAAGAACCAACC-$3'$} \\
+8 & VRSM & 40 - 50 & {\scriptsize $5'$-CGAAAGATAGTAGTGATGGT-$3'$} & {\scriptsize $5'$-CACTTATGCATTTCCATCCA-$3'$} \\\hline
+7 & Non-VRSM & 810 - 820  & {\scriptsize $5'$-GCTTCCTTAATTGGACATTC-$3'$} & {\scriptsize $5'$-GAATTCGTTGGAGATTCTGT-$3'$} \\
+11 & Non-VRSM & 820 - 830  & {\scriptsize $5'$-CACTGAACAAGTAGTGTAATCA-$3'$} & {\scriptsize $5'$-GTTTCATCTTCAGAAGTAAGAG-$3'$} \\\hline
+2 & Non-VRSM & 440 - 450 & {\scriptsize $5'$-GTTCCTACAGGTTTAGATCT-$3'$} & {\scriptsize $5'$-CATGAGGACATATTCACTTG-$3'$} \\
+4 & Non-VRSM & 1,160 - 1,170 & {\scriptsize $5'$-AAGTACAGGTGTAGGTAAAG-$3'$} & {\scriptsize $5'$-CGTAGCTTTAACCTGTTGTA-$3'$} \\\hline
 \end{tabular}
 \end{center}
 }
@@ -289,7 +290,7 @@ MF denotes ``Molecular Function'' and BP denotes ``Biological Process''.
 Enrichments with q-value $< 0.1$ are shown. }
 \vspace{10pt}
 \begin{center}
-\begin{tabular}{llcccc}
+\begin{tabular}{lp{0.4\linewidth}cccc}
 \hline
 \emph{GO term }&  \emph{Description} & \emph{Type} & \emph{Enrichment} & \emph{q-value}  \\
 \hline
@@ -354,7 +355,7 @@ MF denotes ``Molecular Function'' and BP denotes ``Biological Process''.
 Enrichments with q-value $< 0.1$ are shown.}
 \vspace{10pt}
 \begin{center}
-\begin{tabular}{llccc}
+\begin{tabular}{lp{0.4\linewidth}ccc}
 \hline
 \emph{GO term }&  \emph{Description} & \emph{Type} & \emph{Enrichment} & \emph{q-value}  \\
 \hline
@@ -409,7 +410,7 @@ MF denotes ``Molecular Function'' and BP denotes ``Biological Process''.
 Enrichments with q-value $< 0.1$ are shown.}
 \vspace{10pt}
 \begin{center}
-\begin{tabular}{llccc}
+\begin{tabular}{lp{0.4\linewidth}ccc}
 \hline
 \emph{GO term }&  \emph{Description} & \emph{Type} & \emph{Enrichment} &  \emph{q-value}  \\
 \hline
@@ -532,7 +533,7 @@ Enrichments with q-value $< 0.1$ are shown.
 }
 \vspace{10pt}
 \begin{center}
-\begin{tabular}{lllccc}
+\begin{tabular}{llp{0.4\linewidth}ccc}
 \hline
 \emph{Stage} & \emph{GO term }&  \emph{Description} & \emph{Type} & \emph{Enrichment} & \emph{q-value}  \\
 \hline
@@ -793,9 +794,9 @@ nuclear diameter from one structure to another.
 FIXME
 \begin{figure}
   \begin{center}
-  %\subfloat[Ring]{\includegraphics[width=0.85\textwidth]{suppFigs/3Dclustering/RINGS.pdf}} \hspace{0.15\textwidth}
-  %\subfloat[Trophozoite]{\includegraphics[width=0.85\textwidth]{suppFigs/3Dclustering/TROPHOZOITES.pdf}}\hspace{0.15\textwidth}
-  %\subfloat[Schizont]{\includegraphics[width=0.85\textwidth]{suppFigs/3Dclustering/SCHIZONTS.pdf}}
+  \subfloat[Ring]{\includegraphics[width=0.85\textwidth]{suppFigs/3Dclustering/RINGS.pdf}} \hspace{0.15\textwidth}
+  \subfloat[Trophozoite]{\includegraphics[width=0.85\textwidth]{suppFigs/3Dclustering/TROPHOZOITES.pdf}}\hspace{0.15\textwidth}
+  \subfloat[Schizont]{\includegraphics[width=0.85\textwidth]{suppFigs/3Dclustering/SCHIZONTS.pdf}}
    \end{center}
 \caption{{\bf Clustering of the 100 structures using pairwise RMSD values.}}
 { To assess whether the 100 structures generated from different random initializations fall into 
