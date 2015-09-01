@@ -1,4 +1,4 @@
-FIG = figures/Fig1.pdf figures/Fig2.pdf figures/Fig3.pdf figures/Fig4.pdf figures/Fig5.pdf
+FIG = figures/Fig1.pdf figures/Fig2.pdf figures/Fig3.pdf figures/Fig4.pdf figures/Fig5.pdf figures/suppfig1.png figures/suppfig2.png
 
 all: prepare hicpro.tex $(FIG)
 
