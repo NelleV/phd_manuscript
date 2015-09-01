@@ -273,10 +273,12 @@ convexity of the problem. Hence, we assume they seeked the best local minimum
 obtained solutions, found that they did not differ much. No formal study was
 done to compare the solutions.
 
-\citet{lesne:3d} proposes a very similar approach, where the structure is
-first approximated using classic MDS (thus very fast), and then refined with
-an optimization scheme such as the one proposed by \citet{duan:three}
-\textbf{FIXME}.
+\citet{lesne:3d} proposes a classical MDS algorithm \textit{ShRec3D} as follows:
+(1.) construct a graph whose vertices are the loci assessed in the Hi-C
+experiment, and the weights of vertices inversely proportional to the contact
+counts (2.) compute a matrix of shortest path between pairs of loci which we
+denote by the ``distance`` matrix (3.) apply a classical MDS on this distance
+matrix. This yields a fast algorithm for inferring a consensus algorithm.
 
 \citet{ben-elazar:spatial} formulated a non metric multidimensional scaling
 optimization problem. They first filtered the interaction count matrix so that
@@ -297,18 +299,26 @@ yields different configuration with similar IMP scores. A population of 50000
 structures was computed. The 10000 structures with the smaller objective
 function were then chosen as the population of local minima to be studied.
 
-\citet{rousseau:three} describes a formal probabilistic model of interaction
-frequencies and their relationship with physical distances by hypothesizing
-that interaction frequencies are inversely proportional to distances. They
-then use a Markov Chain Monte Carlo sampling procedure on an optimization
-problem that uses the same objective function as \citet{tanizawa:mapping} and
-\citet{duan:three} to produce an ensemble of 3D structures.
+\citet{rousseau:three} and \citet{hu:bayesian} both describe a formal
+probabilistic model of interaction frequencies and their relationship with
+physical distances. They then use a Markov Chain Monte Carlo sampling
+procedure to produce an ensemble of 3D structures consistant with the contact
+count data.
 
-\citet{tjong:physical} constructs a very simple model by modeling chromosomes
+\citet{tjong:physical} constructs a very simple model of the budding yeast
+{\em S. cerevisiae} by modeling chromosomes
 as a flexible fiber, and using additional biologically motivated constraints,
 such as the positioning of centromeres and telomeres, they formulate an
 optimization problem. Generating $200000$ feasible structures, they show that
 Hi-C data can be fully explained by this very simple model.
+
+\citet{wong:how} models the budding yeasts chromosomes a semi-flexible fiber
+constrained in a nucleus, and applies 4 sequences specific forces on this
+fiber to obtain certain properties: (1) centromeres are attached to a single
+point of the nucleus by a segment; (2) telomeres are subjected to an outward
+force, that pushes them towards the nuclear membrane; (3) rDNA is thicken; (4)
+apply a random brownian movement. This models recovers many of the known
+hallmarks of the 3D architecture of {\em S. cerevisiae}.
 
 \citet{nagano:single-cell} and \citet{paulsen:manifold} both proposes methods
 to infer 3D structures from single-cell Hi-C data. The first is a constraint
@@ -317,35 +327,37 @@ based modelisation: the structure is modeled as a flexible fiber as in
 interaction is observed in the single-cell contact map.
 \citet{paulsen:manifold} formulates a \textit{manifold based optimization},
 where a low rank psd matrix (and thus a distance matrix) is optimized to be as
-close as possible to the sparse contact count matrix. It is then easy to infer
-a 3D structure form the low rank psd matrix \textbf{FIXME}.
+close as possible to the sparse contact count matrix. Applying classical MDS
+on this low rank psd matrix then yields a 3D model of the genome.
 
 \begin{table}[ht!]
-\caption{\bf A comparison of 3D inference methods}{FIXME uncomplete}
-
+\caption{\bf A comparison of 3D inference methods}
 \begin{center}
-\begin{tabular}{lrcrr}
+\small
+\begin{tabular}{rlccccc}
 \hline
-\emph{Publication} & \emph{Name} & \emph{Cons or Pop} & \emph{MDS-based} & Available \\
+\multirow{2}{*}{\emph{Publication}} & \multirow{2}{*}{\emph{Name}} &
+\multirow{2}{*}{\emph{Consensus}} & \multirow{2}{*}{\emph{Population}}
+&\multirow{2}{*}{\emph{MDS-based}} & \emph{Statistical} &
+\multirow{2}{*}{\emph{Available}} \\
+& & & & & \emph{model} & \\
 \hline
-\citet{duan:three} & - & Cons & & Y \\
-\citet{tanizawa:mapping} & & Cons & & N \\
-\citet{ay:three-dimensional} & & Cons & & N\\
-Nature methods & & Cons & & N\\
-\citet{ben-elazar:spatial} & & Y & & N \\
-\citet{varoquaux:statistical} & Y & N & & Y\\
-\citet{bau:three-dimensional} & & & &\\
-\citet{umbarger:three-dimensional} & & & &\\
-\citet{zhang:inference} & chromSDE & & &\\
-\citet{rousseau:three} & & & &\\
-\citet{hu:bayesian} & & & &\\
-\citet{kalhor:genome} & & & &\\
-\citet{tokuda:dynamical} & & & &\\
-\citet{wong:predictive} & & & &\\
-\citet{gehlen:chromosome} & & & &\\
-\citep{lesne:3d} & & & & \\
-Alber & & & &\\
-Trieu & & & & \\
+\citet{duan:three} &  & x & & x & & x \\
+\citet{tanizawa:mapping} & & x & & x & & \\
+\citet{ay:three-dimensional} & & x & & x & & \\
+\citet{ben-elazar:spatial} & & x & & x & & x \\
+\citet{varoquaux:statistical} & Pastis & x & & & x & x\\
+\citet{bau:three-dimensional} & & & x & & & \\
+\citet{umbarger:three-dimensional} & & x & & & &\\
+\citet{zhang:inference} & chromSDE & x & & x & & x\\
+\citet{rousseau:three} & & & x & & x & x\\
+\citet{hu:bayesian} & Bach & x & x & & x & x\\
+\citet{kalhor:genome} & & & x & & &\\
+%\citet{tokuda:dynamical} & & & & & &\\
+\citet{wong:predictive} & & & x & & & \\
+%\citet{gehlen:chromosome} & & & & & &\\
+\citet{lesne:3d} & ShRec3D & x & & x & & x \\
+\citet{trieu:large} & & x & & & & \\
 \end{tabular}
 \end{center}
 \end{table}
