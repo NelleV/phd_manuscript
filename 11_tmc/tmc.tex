@@ -1118,6 +1118,7 @@ TSS: transcription start site.
 \par\mbox{
 %{\footnotesize
 %\begin{tabular}{lccccccc}
+\small
 \begin{tabular}{l|c|cccc|c}
 \multirow{3}{*}{\textbf{Cell Type}}  & \multirow{3}{*}{\textbf{Tethering}} & \multicolumn{4}{|c|}{\textbf{Restriction Enzymes (REs)}}  & \multirow{3}{*}{\textbf{Identifier}} \\
 &   & \textbf{AluI} & \textbf{MboI/DpnII}  & \textbf{MspI} & \textbf{NlaIII} & \\
@@ -1136,6 +1137,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
  \label{table:contacts}
 \par \mbox{}
 \par\mbox{
+\small
 %{\footnotesize
 %\begin{tabular}{lccccccc}
 \begin{tabular}{l|c|c|c|c}
@@ -1143,14 +1145,14 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 %\multirow{2}{*}{NHEK-TM3C-1} & \multirow{2}{*}{89,383,720} & 2,775,647 & 20,565 & 71 \\
 %& & & & \\
 & & & & \\
-\multirow{5}{*}{KBM7-TM3C-1} & \multirow{5}{*}{95,000,000} & 14,830,477 & 211,249 & 1,676  \\
+\multirow{5}{*}{\footnotesize KBM7-TM3C-1} & \multirow{5}{*}{95,000,000} & 14,830,477 & 211,249 & 1,676  \\
 & & (15.61\%) & (0.22\%) & (0.002\%) \\
 & & inter: 8,036,033 & inter: 92,959 &inter: 672\\
 & & intra: 6,794,444 & intra: 28,930 &intra: 38\\
 & & & mixed: 89,360 & mixed: 966\\\hline\hline
 %
 & & & & \\
-\multirow{5}{*}{KBM7-TM3C-4} & \multirow{5}{*}{72,800,218} & 13,858,985 & 816,625 & 25,158  \\
+\multirow{5}{*}{\footnotesize KBM7-TM3C-4} & \multirow{5}{*}{72,800,218} & 13,858,985 & 816,625 & 25,158  \\
 & & (19.04\%) & (1.12\%) & (0.034\%) \\
 & & inter: 11,544,137 & inter: 594,052 &inter: 15,889 \\
 & & intra: 2,314,848 & intra: 22,787 &intra: 85\\
@@ -1159,12 +1161,14 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 %}
 }
 
+\clearpage 
  \subsection*{Table 3 - Summary of intrachromosomal read orientations for different contact types (KBM7-TM3C-1).}
  \label{table:orientation}
 \par \mbox{}
 \par\mbox{
+\small 
 \begin{tabular}{l|c|cccc}
-\textbf{Contact Type} & \textbf{Genomic Dist.} & \multicolumn{4}{|c}{\textbf{Read Orientations (end1/end2)}}  \\\hline\hline
+\textbf{Contact Type} & \textbf{\footnotesize Genomic Dist.} & \multicolumn{4}{|c}{\textbf{Read Orientations (end1/end2)}}  \\\hline\hline
 %
 \multirow{5}{*}{Doubles (F-F)} & & \textbf{\texttt{~+/+~}} & \textbf{\texttt{~+/-~}} & \textbf{\texttt{~-/+~}} & \textbf{\texttt{~-/-~}}  \\\cline{3-6}
 & \multirow{2}{*}{All} & \multirow{2}{*}{1.8\%} & \multirow{2}{*}{ 48.2\%} & \multirow{2}{*}{ 48.2\%} & \multirow{2}{*}{ 1.8\%} \\
@@ -1200,7 +1204,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 \begin{center}
 \includegraphics[width=0.6\textwidth]{suppfigs/cutSiteComparison.pdf}
 \end{center}
-\caption{Number of restriction enzyme cut sites across the human genome.}
+\caption{\bf Number of restriction enzyme cut sites across the human genome.}
 {Histograms of the number of cut sites within 40~kb windows across the human
     genome for each digestion system. HindIII, the most commonly used RE
     for creating Hi-C libraries, recognizes a 6~bp cut site, whereas AluI,
@@ -1230,7 +1234,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
   \subfloat[All]{
   \includegraphics[width=0.45\textwidth]{\detokenize{suppfigs/interchrHeatmaps/heatmaps-beforeNormalization/together/KBM7-100bp-TMC-1.pdf}}}
 \end{center}
-\caption{Chromosome contact maps of different contacts types for KBM7-TM3C-1.}
+\caption{\bf Chromosome contact maps of different contacts types for KBM7-TM3C-1.}
 {Pairwise raw contact counts are averaged over all pairs of mappable
     1~Mb windows between the two chromosomes. Contacts that are of type
     (a) fully mapped/fully mapped (both ends mapped completely),
@@ -1247,7 +1251,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 \begin{center}
 \includegraphics[width=0.8\textwidth]{figs/KBM7anomalies/KBM7-diploidRegions-cropped.pdf}
 \end{center}
-\caption{Ploidy track for select chromosomes from KBM7 TM3C data.}
+\caption{\bf Ploidy track for select chromosomes from KBM7 TM3C data.}
 {Plot of total contact count from each 1 Mb region to all other regions
  (both intra and interchromosomal) in the genome for a haploid (chr. 4),
  a diploid (chr. 8) and a partially diploid (chr. 15) chromosome. The diploid
@@ -1260,7 +1264,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 \begin{center}
 \includegraphics[width=0.9\textwidth]{suppfigs/tenTriples.png}
 \end{center}
-\caption{PCR verification of triples 1--10 listed in Main Figure~5.}
+\caption{\bf PCR verification of triples 1--10 listed in Main Figure~5.}
 {Lanes are: 100~bp ladder, triples 1 to 10. For each experiment all
     three primers (e.g., 1a+1b+1c) designed for that triple are used
     simultaneously. Expected product sizes for each triple are listed
@@ -1280,7 +1284,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
   \hspace{0.02\textwidth}
   \subfloat[Triple 6 only]{\includegraphics[width=0.2\textwidth]{\detokenize{suppfigs/triple6onlyGel.png}}}
   \end{center}
-\caption{Additional PCR experiments for triples 5 and 6.}
+\caption{\bf Additional PCR experiments for triples 5 and 6.}
     {(a) Triple 5 PCR gel. Lanes are: 100~bp ladder, 5a+5b+5c primers and only 5a+5c primers.
     (b) Triple 6 PCR gel. Lanes are: 100~bp ladder and 6a+6b+6c primers. 
     Expected product sizes for each case are listed in Supplementary 
@@ -1299,7 +1303,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
   \subfloat[Triple~1--end~3]{
   \includegraphics[width=1\textwidth]{suppfigs/triple1-end3.pdf}}
 \end{center}
-\caption{Methylation status of the distal contact partners of \emph{IGF2-H19} ICR for triple 1.}
+\caption{\bf Methylation status of the distal contact partners of \emph{IGF2-H19} ICR for triple 1.}
 {UCSC genome browser snapshots of the tracks that display the methylation
     status of CpG dinucleotides in six ENCODE cell types for the two loci
     that are distal contact partners of ICR in triple 1. Methylation scores
@@ -1321,7 +1325,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
   \subfloat[Triple~2--end~3]{
   \includegraphics[width=1\textwidth]{suppfigs/triple2-end3.pdf}}
 \end{center}
-\caption{Methylation status of the distal contact partners of \emph{IGF2-H19} ICR for triple 2.}
+\caption{\bf Methylation status of the distal contact partners of \emph{IGF2-H19} ICR for triple 2.}
 {Similar snapshots as Supplementary Fig.~\ref{suppfig:triple1methyl} above for 20~kb
     region centered on (a) triple 2--end 2 located on chromosome 11, and
     (b) triple 2--end 3 located on chromosome 8.
@@ -1339,7 +1343,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
   \subfloat[Triple~4--end~3]{
   \includegraphics[width=1\textwidth]{suppfigs/triple4-end3.pdf}}
 \end{center}
-\caption{Methylation status of the distal contact partners of \emph{IGF2-H19} ICR for triples 3 and 4.}
+\caption{\bf Methylation status of the distal contact partners of \emph{IGF2-H19} ICR for triples 3 and 4.}
 {Similar snapshots as Supplementary Fig.~\ref{suppfig:triple1methyl} above for (a) 20~kb
     region centered on triple 3--end 1 located on chromosome 11, and
     (b) 40~kb region centered on triple 4--end 3 located on chromosome 4.
@@ -1353,7 +1357,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
  \begin{center}
   \includegraphics[width=1.0\textwidth]{suppfigs/IGF2expScreenshot.pdf}
  \end{center}
-\caption{Gene expression measured by RNA-seq for the \emph{IGF2-H19} locus.}
+\caption{\bf Gene expression measured by RNA-seq for the \emph{IGF2-H19} locus.}
 {Snapshot of 200~kb region taken from the KBM7 genome browser (B\"{u}rckst\"{u}mmer et
     al.) that includes the \emph{IGF2} and
     \emph{H19} genes. RNA-seq measurements show that \emph{H19} is expressed,
@@ -1371,7 +1375,7 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
   \subfloat[Chromosomes
   16--22]{\label{fig:3Dp2}\includegraphics[width=0.3\textwidth]{\detokenize{figs/Nelle-3D/partial_2.png}}}
   \end{center}
-\caption{Gene-poor chromosome 18 does not colocalize strongly with other small chromosomes that are gene-rich.}
+\caption{\bf Gene-poor chromosome 18 does not colocalize strongly with other small chromosomes that are gene-rich.}
 {}
 \label{suppfig:chr18in3D}
 \end{figure}
@@ -1434,45 +1438,45 @@ KBM7 (gDNA) & No & $\checkmark$ & $\checkmark$ & $\checkmark$  & $\checkmark$  &
 \multirow{2}{*}{Label} & \multirow{2}{*}{Chr.} & {Dist. to } & \multirow{2}{*}{Primer sequence} & \multirow{2}{*}{Strand} & {Expected} \\
 & & junction & &  & sizes (bp) \\\hline
 %1
-1a & 11 &  +44  & $5'$-GTGACTGTGAACATTTTAACATGCATGTTTAACGC-$3'$ & forward & \multirow{3}{*}{86, 90} \\
-1b & 11 &  -42  & $5'$-TGCTGCACCCACATTAGCAGATTATCTCA-$3'$ & reverse & \\
-1c & 17 &  -46  & $5'$-AGGGTGATTTTCTTACTGTTTGTAAATAGTGCC-$3'$ & reverse &  \\\hline
+1a & 11 &  +44  & {\scriptsize $5'$-GTGACTGTGAACATTTTAACATGCATGTTTAACGC-$3'$} & forward & \multirow{3}{*}{86, 90} \\
+1b & 11 &  -42  & {\scriptsize $5'$-TGCTGCACCCACATTAGCAGATTATCTCA-$3'$} & reverse & \\
+1c & 17 &  -46  & {\scriptsize $5'$-AGGGTGATTTTCTTACTGTTTGTAAATAGTGCC-$3'$} & reverse &  \\\hline
 %2
-2a & 8 &  +121  & $5'$-AGGTGGTAGTCAGAGAATCAGTAAAG-$3'$ & forward & \multirow{3}{*}{142, 212} \\
-2b & 11 &  +51  & $5'$-TATAAGCCAAGGAGAGAGGCCTTGGAG-$3'$ & forward & \\
-2c & 11 &  -91  & $5'$-ACCCTTTCTCTTTTCCCCATTGGTGGTG-$3'$ & reverse &  \\\hline
+2a & 8 &  +121  & {\scriptsize $5'$-AGGTGGTAGTCAGAGAATCAGTAAAG-$3'$} & forward & \multirow{3}{*}{142, 212} \\
+2b & 11 &  +51  & {\scriptsize $5'$-TATAAGCCAAGGAGAGAGGCCTTGGAG-$3'$} & forward & \\
+2c & 11 &  -91  & {\scriptsize $5'$-ACCCTTTCTCTTTTCCCCATTGGTGGTG-$3'$} & reverse &  \\\hline
 %3
-3a & 11 &  -73  & $5'$-TGTGAGCTGGTGCCAAGGACAGAGGCATCA-$3'$ & reverse & \multirow{3}{*}{112, 124} \\
-3b & 11 &  -39  & $5'$-CTCTTCCTTTTGGGGTGAAGACTGTCACCTTCTG-$3'$ & reverse &  \\
-3c & 11 &  +51  & $5'$-ATTCAGAGGCATGACAGTCTCAAGTTCTTGGGA-$3'$ & forward & \\\hline
+3a & 11 &  -73  & {\scriptsize $5'$-TGTGAGCTGGTGCCAAGGACAGAGGCATCA-$3'$} & reverse & \multirow{3}{*}{112, 124} \\
+3b & 11 &  -39  & {\scriptsize $5'$-CTCTTCCTTTTGGGGTGAAGACTGTCACCTTCTG-$3'$} & reverse &  \\
+3c & 11 &  +51  & {\scriptsize $5'$-ATTCAGAGGCATGACAGTCTCAAGTTCTTGGGA-$3'$} & forward & \\\hline
 %4
-4a & 11 &  -61  & $5'$-TTGGCCACGGGCTCTGGAGGCCAGTGCCT-$3'$ & reverse & \multirow{3}{*}{135, 140} \\
-4b & 4 &  +74  & $5'$-GTAGGGAGGGAGAAACGGTAATGCTGGTCA-$3'$ & forward & \\
-4c & 11 &  +79  & $5'$-GGAGGCTCAGGTGAGCCCAGGTCTCCCTCTC-$3'$ & forward &  \\\hline
+4a & 11 &  -61  & {\scriptsize $5'$-TTGGCCACGGGCTCTGGAGGCCAGTGCCT-$3'$} & reverse & \multirow{3}{*}{135, 140} \\
+4b & 4 &  +74  & {\scriptsize $5'$-GTAGGGAGGGAGAAACGGTAATGCTGGTCA-$3'$} & forward & \\
+4c & 11 &  +79  & {\scriptsize $5'$-GGAGGCTCAGGTGAGCCCAGGTCTCCCTCTC-$3'$} & forward &  \\\hline
 %5
-5a & 11 &  -131  & $5'$-CACCATCCTCCCTCCTGAGAGCTCATTCACTCC-$3'$ & reverse & \multirow{3}{*}{179, 206} \\
-5b & 11 &  +48  & $5'$-GCAGCAGTGGCGCTCCCAGCTCTTTAGCA-$3'$ & forward & \\
-5c & 11 &  +75  & $5'$-TCGTAGGAGACTTTCACGGAGTGCCTGGTCTCC-$3'$ & forward &  \\\hline
+5a & 11 &  -131  & {\scriptsize $5'$-CACCATCCTCCCTCCTGAGAGCTCATTCACTCC-$3'$} & reverse & \multirow{3}{*}{179, 206} \\
+5b & 11 &  +48  & {\scriptsize $5'$-GCAGCAGTGGCGCTCCCAGCTCTTTAGCA-$3'$} & forward & \\
+5c & 11 &  +75  & {\scriptsize $5'$-TCGTAGGAGACTTTCACGGAGTGCCTGGTCTCC-$3'$} & forward &  \\\hline
 %6
-6a & 2 &  +61  & $5'$-GCTTATTCTCCATCGGTTTCTAAAGTTGTTCAT-$3'$ & forward & \multirow{3}{*}{96, 123} \\
-6b & 11 &  -62  & $5'$-ATTTCATCTCTGACCCAACCAATCAGCACTCCCTA-$3'$ & reverse & \\
-6c & 4 &  +35  & $5'$-ATTGTTTCCCAGTTCTGGAGTCCAGAAGTCCAA-$3'$ & forward &  \\\hline
+6a & 2 &  +61  & {\scriptsize $5'$-GCTTATTCTCCATCGGTTTCTAAAGTTGTTCAT-$3'$} & forward & \multirow{3}{*}{96, 123} \\
+6b & 11 &  -62  & {\scriptsize $5'$-ATTTCATCTCTGACCCAACCAATCAGCACTCCCTA-$3'$} & reverse & \\
+6c & 4 &  +35  & {\scriptsize $5'$-ATTGTTTCCCAGTTCTGGAGTCCAGAAGTCCAA-$3'$} & forward &  \\\hline
 %7
-7a & 11 &  +73  & $5'$-TGCTTGCTCCTCCGGATGTCCCCTGTGTTTT-$3'$ & forward & \multirow{3}{*}{130, 145} \\
-7b & 5 &  +88  & $5'$-CCCAAAGTCATTGATATGGTTTGGCTGCATGTC-$3'$ & forward & \\
-7c & 5 &  -57  & $5'$-TGCTGATGAATATCTTGGCATCTAGGGGTCAAA-$3'$ & reverse &  \\\hline
+7a & 11 &  +73  & {\scriptsize $5'$-TGCTTGCTCCTCCGGATGTCCCCTGTGTTTT-$3'$} & forward & \multirow{3}{*}{130, 145} \\
+7b & 5 &  +88  &  {\scriptsize $5'$-CCCAAAGTCATTGATATGGTTTGGCTGCATGTC-$3'$} & forward & \\
+7c & 5 &  -57  & {\scriptsize $5'$-TGCTGATGAATATCTTGGCATCTAGGGGTCAAA-$3'$} & reverse &  \\\hline
 %8
-8a & 5 &  +47  & $5'$-CAGAAGTTAGGAGAGTCTTGAGTGTGCCTGTTT-$3'$ & forward & \multirow{3}{*}{154, 171} \\
-8b & 11 &  +74  & $5'$-TGTGGGCAAATTCACCTCTCCACGTGCCAACTA-$3'$ & forward & \\
-8c & 15 &  -97  & $5'$-AAAAATATGTTTCCCAGAAACTAGAGACTGGAG-$3'$ & reverse &  \\\hline
+8a & 5 &  +47  & {\scriptsize $5'$-CAGAAGTTAGGAGAGTCTTGAGTGTGCCTGTTT-$3'$} & forward & \multirow{3}{*}{154, 171} \\
+8b & 11 &  +74  & {\scriptsize $5'$-TGTGGGCAAATTCACCTCTCCACGTGCCAACTA-$3'$} & forward & \\
+8c & 15 &  -97  & {\scriptsize $5'$-AAAAATATGTTTCCCAGAAACTAGAGACTGGAG-$3'$} & reverse &  \\\hline
 %9
-9a & 7 &  +61  & $5'$-TGCCCATAGAAACAATTTACTCCAAGGGTCAAT-$3'$ & forward & \multirow{3}{*}{98, 110} \\
-9b & 11 &  +49  & $5'$-ACACCCGAGCCATCGAACATCCTAACCCCATCA-$3'$ & forward & \\
-9c & 5 &  -37  & $5'$-AGCACATGCTAATGCTATCATGAAGTCATACAC-$3'$ & reverse &  \\\hline
+9a & 7 &  +61  & {\scriptsize $5'$-TGCCCATAGAAACAATTTACTCCAAGGGTCAAT-$3'$} & forward & \multirow{3}{*}{98, 110} \\
+9b & 11 &  +49  & {\scriptsize $5'$-ACACCCGAGCCATCGAACATCCTAACCCCATCA-$3'$} & forward & \\
+9c & 5 &  -37  & {\scriptsize $5'$-AGCACATGCTAATGCTATCATGAAGTCATACAC-$3'$} & reverse &  \\\hline
 %10
-10a & 8 &  +55  & $5'$-CCTCTTGTATTTGCTTTTTCCTCTTATCTCTCT-$3'$ & forward & \multirow{3}{*}{113, 119} \\
-10b & 11 &  +49  & $5'$-ACACCCGAGCCATCGAACATCCTAACCCCATCA-$3'$ & forward & \\
-10c & 12 &  -64  & $5'$-TCCCTCTCTCTTTTGTTTTTTGTACTTTATTTG-$3'$ & reverse &  \\\hline
+10a & 8 &  +55  & {\scriptsize $5'$-CCTCTTGTATTTGCTTTTTCCTCTTATCTCTCT-$3'$} & forward & \multirow{3}{*}{113, 119} \\
+10b & 11 &  +49  & {\scriptsize $5'$-ACACCCGAGCCATCGAACATCCTAACCCCATCA-$3'$} & forward & \\
+10c & 12 &  -64  & {\scriptsize $5'$-TCCCTCTCTCTTTTGTTTTTTGTACTTTATTTG-$3'$} & reverse &  \\\hline
 \end{tabular}
 \end{center}
 }
