@@ -1,4 +1,5 @@
-\chapter{Supplementary information for Centurion}
+\chapter[Supplementaries for \citet{varoquaux:accurate}]{Supplementary information for
+\citet{varoquaux:accurate}}
 
 \graphicspath{{9_centurion_supplementaries/}}
 
@@ -42,6 +43,7 @@ at different resolutions (10~kb, 20~kb, 40~kb)}}
 \caption{\textbf{Centromere calls for \textit{S. cerevisiae}, ground truth and
 errors}}
 \vspace{10pt}
+\small
 \begin{center}
 \begin{tabular}{c | c  r  r  r  r r r}
 \textbf{Chromosome}  & \textbf{Ground truth} & \multicolumn{2}{c}{\textbf{10~kb}} & \multicolumn{2}{c}{\textbf{20~kb}} & \multicolumn{2}{c}{\textbf{40~kb}} \\
@@ -70,9 +72,13 @@ XVI & \num[group-separator={\,}]{556070} - \num[group-separator={\,}]{556070} & 
 
 
 
+\clearpage
+
+
 \begin{table}[ht!]
 \caption{\textbf{Centromere calls for \textit{P. falciparum} (ring stage),
 ground truth and errors}}
+\small
 \vspace{10pt}
 \begin{center}
 \begin{tabular}{c | c  r  r  r  r r r}
@@ -98,10 +104,12 @@ XIV & \num[group-separator={\,}]{1070909} - \num[group-separator={\,}]{1075369} 
 \label{supptable:rings_results}
 \end{table}
 
+\clearpage
 
 \begin{table}[ht!]
 \caption{\textbf{Centromere calls for \textit{P. falciparum} (trophozoite stage),
 ground truth and errors}}
+\small
 \vspace{10pt}
 \begin{center}
 \begin{tabular}{c | c  r  r  r  r r r}
@@ -127,11 +135,13 @@ XIV & \num[group-separator={\,}]{1070909} - \num[group-separator={\,}]{1075369} 
 \label{supptable:trophs_results}
 \end{table}
 
+\clearpage
 
 \begin{table}[ht!]
 \caption{\textbf{Centromere calls for \textit{P. falciparum} (schizont stage),
 ground truth and errors}}
 \vspace{10pt}
+\small
 \begin{center}
 \begin{tabular}{c | c  r  r  r  r r r}
 \textbf{Chromosome}  & \textbf{Ground truth} & \multicolumn{2}{c}{\textbf{10~kb}} & \multicolumn{2}{c}{\textbf{20~kb}} & \multicolumn{2}{c}{\textbf{40~kb}} \\
@@ -156,6 +166,7 @@ XIV & \num[group-separator={\,}]{1070909} - \num[group-separator={\,}]{1075369} 
 \label{supptable:schizonts_results}
 \end{table}
 
+\clearpage
 
 \begin{table}[ht!]
 \caption{\textbf{Centromere calls for \textit{A. thaliana},
@@ -221,9 +232,17 @@ counts, (4) the percentage of non-zero \textit{trans} contact counts
 }
 \vspace{10pt}
 \begin{center}
-\begin{tabular}{l | c | r | r | r | r}
-\multirow{3}{*}{\small{\textbf{Organism}}} & \footnotesize{\textbf{Number}} &\multicolumn{1}{c| }{\footnotesize{\textbf{Average}}}  &\multirow{3}{*}{\footnotesize{\textbf{sparsity}}} & \footnotesize{\textbf{Average \textit{trans}}} &\multirow{3}{*}{\footnotesize{\textbf{\textit{trans} sparsity}}} \\
-& \footnotesize{\textbf{of}} & \multicolumn{1}{c|}{\footnotesize{\textbf{contact counts}}} & & \multicolumn{1}{c|}{\footnotesize{\textbf{contact counts}}} & \\& \footnotesize{\textbf{chrom}} & \multicolumn{1}{c|}{\footnotesize{\textbf{per bin}}} & & \multicolumn{1}{c|}{\footnotesize{\textbf{per bin}}} & \\\hline 
+\begin{tabular}{p{0.3\linewidth} | c | r | r | r | r}
+\hline
+\multirow{3}{*}{\small{\textbf{Organism}}} & \scriptsize{\textbf{Number}}
+&\multicolumn{1}{c| }{\scriptsize{\textbf{Average}}}
+&\multirow{3}{*}{\scriptsize{\textbf{sparsity}}} & \scriptsize{\textbf{Average
+\textit{trans}}} &\multirow{2}{*}{\scriptsize{\textbf{\textit{trans}}}} \\
+& \scriptsize{\textbf{of}} & \multicolumn{1}{c|}{\scriptsize{\textbf{contact
+counts}}} & & \multicolumn{1}{c|}{\scriptsize{\textbf{contact counts}}} & \\&
+\scriptsize{\textbf{chrom}} & \multicolumn{1}{c|}{\scriptsize{\textbf{per
+bin}}} & & \multicolumn{1}{c|}{\scriptsize{\textbf{per bin}}} &
+\scriptsize{\bf sparsity}\\\hline 
 \footnotesize{\textit{Acinetobacter sp. ADP1}} & \footnotesize{1} & 91.11 & 99.44 & - & - \\
 \footnotesize{\textit{Vibrio fischeri ES114}} & \footnotesize{2} & 87.14 & 99.53 & 57.23 & 100.00 \\
 \footnotesize{\textit{Methanococcus maripaludis}} & \footnotesize{2} & 82.29 & 96.47 & 0.00 & 0.00 \\
@@ -253,9 +272,17 @@ percentage of non-zero \textit{trans} contact counts
 }
 \vspace{10pt}
 \begin{center}
-\begin{tabular}{l | c | r | r | r | r}
-\multirow{3}{*}{\small{\textbf{Organism}}} & \footnotesize{\textbf{Number}} &\multicolumn{1}{c| }{\footnotesize{\textbf{Average}}}  &\multirow{3}{*}{\footnotesize{\textbf{sparsity}}} & \footnotesize{\textbf{Average \textit{trans}}} &\multirow{3}{*}{\footnotesize{\textbf{\textit{trans} sparsity}}} \\
-& \footnotesize{\textbf{of}} & \multicolumn{1}{c|}{\footnotesize{\textbf{contact counts}}} & & \multicolumn{1}{c|}{\footnotesize{\textbf{contact counts}}} & \\& \footnotesize{\textbf{chrom}} & \multicolumn{1}{c|}{\footnotesize{\textbf{per bin}}} & & \multicolumn{1}{c|}{\footnotesize{\textbf{per bin}}} & \\\hline 
+\begin{tabular}{p{0.3\linewidth} | c | r | r | r | r}
+\multirow{3}{*}{\small{\textbf{Organism}}} & \footnotesize{\textbf{Number}}
+&\multicolumn{1}{c| }{\footnotesize{\textbf{Average}}}
+&\multirow{3}{*}{\footnotesize{\textbf{sparsity}}} &
+\footnotesize{\textbf{Average \textit{trans}}} &\multirow{2}{*}{\footnotesize{\textbf{\textit{trans}}}} \\
+& \footnotesize{\textbf{of}} &
+\multicolumn{1}{c|}{\footnotesize{\textbf{contact counts}}} & &
+\multicolumn{1}{c|}{\footnotesize{\textbf{contact counts}}} & \\&
+\footnotesize{\textbf{chrom}} & \multicolumn{1}{c|}{\footnotesize{\textbf{per
+bin}}} & & \multicolumn{1}{c|}{\footnotesize{\textbf{per bin}}} &
+\footnotesize{\bf sparsity} \\\hline 
 \footnotesize{\textit{Kluyveromyces lactis}} & \footnotesize{6} & 3.20 & 74.45 & 1.85 & 72.64 \\
 \footnotesize{\textit{Lachancea kluyveri}} & \footnotesize{8} & 2.83 & 67.70 & 1.49 & 65.44 \\
 \footnotesize{\textit{Lachancea waltii}} & \footnotesize{8} & 2.38 & 60.39 & 1.22 & 57.89 \\
