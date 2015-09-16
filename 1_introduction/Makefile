@@ -1,4 +1,7 @@
-FIG = figures/hic_protocol.png figures/mirny_fractal.png figures/mirny_equilibrium.png
+FIG = figures/hic_protocol.png \
+      figures/mirny_fractal.png \
+      figures/mirny_equilibrium.png \
+      figures/fig_phd.pdf
 
 all: $(FIG)
 
