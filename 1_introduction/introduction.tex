@@ -222,7 +222,7 @@ $P(s) \sim s^{-1}$.
 \end{center}
 \caption{{\bf Relationship between contact counts and genomic distances}}{
 Average contact counts as a function of genomic distance for \textit{S.
-cerevisiae} \citep{duan:three-dimensional},
+cerevisiae} \citep{duan:three},
 \textit{D. melanogaster} \citep{sexton:three-dimensional} and chr~1 of the
 KBM7 human cell line \citep{rao:3d}. \textit{S. cerevisiae}'s genome behaves
 as a \textit{equilibrium globule},
@@ -345,35 +345,39 @@ close as possible to the sparse contact count matrix. Applying classical MDS
 on this low rank psd matrix then yields a 3D model of the genome.
 
 \begin{table}[ht!]
-\caption{\bf A comparison of 3D inference methods}
 \begin{center}
 \small
 \begin{tabular}{rlccccc}
 \hline
-\multirow{2}{*}{\emph{Publication}} & \multirow{2}{*}{\emph{Name}} &
-\multirow{2}{*}{\emph{Consensus}} & \multirow{2}{*}{\emph{Population}}
-&\multirow{2}{*}{\emph{MDS-based}} & \emph{Statistical} &
-\multirow{2}{*}{\emph{Available}} \\
-& & & & & \emph{model} & \\
+\multirow{2}{*}{\emph{\footnotesize Publication}} & \multirow{2}{*}{\emph{\footnotesize Name}} &
+\multirow{2}{*}{\emph{\footnotesize Consensus}} & \multirow{2}{*}{\emph{\footnotesize Population}}
+&\multirow{2}{*}{\emph{\footnotesize MDS-based}} & \emph{\footnotesize Statistical} &
+\multirow{2}{*}{\emph{\footnotesize Availability}} \\
+& & & & & \emph{\footnotesize model} & \\
 \hline
-\citet{duan:three} &  & x & & x & & x \\
-\citet{tanizawa:mapping} & & x & & x & & \\
-\citet{ay:three-dimensional} & & x & & x & & \\
-\citet{ben-elazar:spatial} & & x & & x & & x \\
-\citet{varoquaux:statistical} & Pastis & x & & & x & x\\
-\citet{bau:three-dimensional} & & & x & & & \\
-\citet{umbarger:three-dimensional} & & x & & & &\\
-\citet{zhang:inference} & chromSDE & x & & x & & x\\
-\citet{rousseau:three} & & & x & & x & x\\
-\citet{hu:bayesian} & Bach & x & x & & x & x\\
-\citet{kalhor:genome} & & & x & & &\\
+\footnotesize{\citet{duan:three}} &  & x & & x & & x \\
+\footnotesize{\citet{tanizawa:mapping}} & & x & & x & & \\
+\footnotesize{\citet{ay:three-dimensional}} & & x & & x & & \\
+\footnotesize{\citet{ben-elazar:spatial}} & & x & & x & & x \\
+\footnotesize{\citet{varoquaux:statistical}} & Pastis & x & & & x & x\\
+\footnotesize{\citet{bau:three-dimensional}} & & & x & & & \\
+\footnotesize{\citet{umbarger:three-dimensional}} & & x & & & &\\
+\footnotesize{\citet{zhang:inference}} & chromSDE & x & & x & & x\\
+\footnotesize{\citet{rousseau:three}} & & & x & & x & x\\
+\footnotesize{\citet{hu:bayesian}} & Bach & x & x & & x & x\\
+\footnotesize{\citet{kalhor:genome}} & & & x & & &\\
 %\citet{tokuda:dynamical} & & & & & &\\
-\citet{wong:predictive} & & & x & & & \\
+\footnotesize{\citet{wong:predictive}} & & & x & & & \\
 %\citet{gehlen:chromosome} & & & & & &\\
-\citet{lesne:3d} & ShRec3D & x & & x & & x \\
-\citet{trieu:large} & & x & & & & \\
+\footnotesize{\citet{lesne:3d}} & ShRec3D & x & & x & & x \\
+\footnotesize{\citet{trieu:large}} & & x & & & & \\
 \end{tabular}
 \end{center}
+\caption{\bf A comparison of 3D inference methods}{In this table, we summarize
+properties of published methods to infer the 3D structure of the genome: (1)
+is it a consensus or a population based inference ? (2) Is it an MDS based
+method ? (3) or relies on a statistical modeling; (4) is the software
+available or not.}
 \end{table}
 
 
