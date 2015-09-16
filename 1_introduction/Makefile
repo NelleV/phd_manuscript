@@ -5,6 +5,6 @@ FIG = figures/hic_protocol.png \
 
 all: $(FIG)
 
-figures/%.png:
+figures/%:
 	mkdir -p figures
 	wget http://cbio.ensmp.fr/~nvaroquaux/phd_manuscript/1_introduction/$@ -O $@
