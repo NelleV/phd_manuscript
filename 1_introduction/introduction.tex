@@ -139,8 +139,9 @@ The study of chromosome organization based on contact counts maps broadly
 falls into two categories: model-based studies and data-driven studies. The
 former methods consider the polymer nature of DNA to leverage the theoretical
 and computational work done in statistical physics of polymers to built with
-as few assumptions as possible many chromosome conformations. Those chromosome
-conformations are then used to compare against experimental data, such as Hi-C
+as few assumptions as possible many chromosome conformations. The properties
+of those chromosome
+conformations are then compared against experimental data, such as Hi-C
 contact counts matrices, in order to iteratively improve the models. These
 models offer mechanistical insights into the folding of DNA. The latter
 approaches use the experimental data to infer 3D models, by typically minizing
@@ -417,7 +418,7 @@ terms of genomic distances they should be (with the proper normalization in
 contig lengths, GC-content, mappability and so on). The contact count matrix
 of the ordered contigs (the "normal" contact count map) is simply a
 permutation of rows and columns of the contact count matrix of the unordered
-set of contigs. Assembling the genome can thus be seen as reordering rows and
+set of contigs. Assembling the genome consists of reordering rows and
 columns to obtain a suitable Hi-C contact count matrix, smooth and with a
 strong diagonal. \citet{burton:chromosome} proposes to first cluster contigs
 into groups that belong to the same chromosomes, then create a graph where
