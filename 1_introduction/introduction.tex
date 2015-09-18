@@ -72,8 +72,7 @@ targeted in the experiment.
 ligation step. DNA fragments are binded together. There are two major types
 of ligation junctions: the first is the ligation of two neighboring DNA
 fragments, and the second is the junction that is formed when ligating one end
-of the fragment to the other end of the same fragment. The latter represents
-around 30\% of the junctions formed.
+of the fragment to the other end of the same fragment.
 \item \textbf{Reverse Cross-links} The fourth step consists of reversing the
 first step: the reversal of cross-links.
 \item \textbf{Quantitation} Polymerase chain reaction (PCR) is used to amplify
@@ -94,10 +93,11 @@ $10kb$, $40bk$ or $100kb$ depending on coverage.}
 
 After paired-end sequencing, each pair of reads can be associated to one
 \citep{lieberman-aiden:comprehensive} or several \citep{ay:identifying} DNA
-interactions. We can then create a symmetric hollow matrix of integers, for
-which entries correspond to the number of paired reads that fall into a bin.
-We denote by $C$ the interaction frequency matrix, and $c_{ij}$ the
-interaction frequency between locus $i$ and locus $j$.
+interactions. We can then create a symmetric matrix of integers, for which
+rows and columns corresponds to a specific genomic window, and entries
+correspond to the number of paired reads that fall into a bin. We denote by
+$C$ the interaction frequency matrix, and $c_{ij}$ the interaction frequency
+between locus $i$ and locus $j$.
 
 These protocols are complex, and yield highly biased interaction frequencies
 \citep{imakaev:iterative, cournac:normalization, yaffe:probabilistic}.
@@ -106,13 +106,14 @@ normalize the data. In short, the authors assume that the bias of each entry
 $c_{ij}$ of the matrix can be written as the product of two biases $\beta_i$
 and $\beta_j$ corresponding to biases induced by loci. Hence, we can write
 $c_{ij} = \beta_i \beta_j p_{ij}$, where $p_{ij}$ is the probability of locus
-$i$ interacting with locus $j$. Thus, $\sum_i p_{ij} = 1$. This is a non convex
-optimization problem that can be solved exactly by an iterative process. To
-avoid degeneracies, we filter out the top 2\% sparse loci from our entry
-matrix before applying ICE. To give an intuition, this method projects each
-vector of interactions onto the $\ell_1$ unit ball. In practice, it yields an
-expected interaction frequency count: $k p_{ij}$, where $k$ is the mean
-interaction frequency.
+$i$ interacting with locus $j$. Thus, $\sum_i p_{ij} = 1$. This is a non
+convex optimization problem that can be solved exactly by an iterative
+process. To avoid degeneracies, we filter out the top 2\% sparse loci from our
+entry matrix before applying ICE (this value needs to be adapted to each
+dataset). To give an intuition, this method projects each vector of
+interactions onto the $\ell_1$ unit ball. In practice, it yields an expected
+interaction frequency count: $k p_{ij}$, where $k$ is the mean interaction
+frequency.
 
 Thought still quite recent, chromosome conformation capture and its genome
 wide derivatives are now widely used to discover how DNA folds in a bunch of
@@ -155,7 +156,7 @@ of genome architectures.
 \subsection{DNA as a polymer}
 
 Polymer physics divide homopolymers (polymers with identical monomers) into
-three main types, which are then extended to build more complex models (1) the
+three main types, which are then extended to build more complex models: (1) the
 \textit{random coil}, (2) the \textit{swollen coil}, (3) the
 \textit{equilibrium polymer}. These polymers are characterized by
 relationships such as the one between the size of a polymer subchain $L(s)$ as
@@ -206,7 +207,7 @@ and the volume $V$.
 Another interesting polymer behaviour is the \textit{fractal globule}: when
 the chain is sufficiently long and the constrained volume sufficiently small,
 the polymer forms knotted crumples of increasing sizes. The polymer is then
-constrained by the available volume, and other parts of the polymer, which
+constrained by the available volume and the volume it itself occupies, which
 creates topological constraints forcing the polymer to collapse into crumples.
 First proposed by \citet{grosberg:role}, and further analysed by
 \citet{mirny:fractal}, the polymer presents interesting properties: the size
@@ -236,8 +237,10 @@ average contact counts decreases more quickly with the genomic distance than
 \end{figure}
 
 Now that we have briefly summarized the different theoritical behaviour of
-polymers DNA can adopt, let us have a closer look at the relationships we
-observe in the contact counts maps. We can observe that organism fall into two
+polymers, let us have a closer look at the relationships we
+observe in practice, using DNA contact counts maps obtained through Hi-C.
+From figure~\ref{fig:hic_relationships},
+we can observe that organisms fall into two
 categories: the first group, composed of small genomes such as \textit{S.
 cerevisae}, \textit{P. falciparum}, behaves as an \textit{equilibrium globule}
 coil, while the second group, composed of large genomes such as mammifer
@@ -287,19 +290,22 @@ convexity of the problem. Hence, we assume they seeked the best local minimum
 obtained solutions, found that they did not differ much. No formal study was
 done to compare the solutions.
 
-\citet{lesne:3d} proposes a classical MDS algorithm \textit{ShRec3D} as follows:
-(1.) construct a graph whose vertices are the loci assessed in the Hi-C
+\citet{lesne:3d} proposes a method based on the classical MDS algorithm
+\textit{ShRec3D}:
+(1) construct a graph whose vertices are the loci assessed in the Hi-C
 experiment, and the weights of vertices inversely proportional to the contact
-counts (2.) compute a matrix of shortest path between pairs of loci which we
-denote by the ``distance`` matrix (3.) apply a classical MDS on this distance
+counts; (2) compute a matrix of shortest path between pairs of loci which we
+denote by the ``distance`` matrix; (3) apply a classical MDS on this distance
 matrix. This yields a fast algorithm for inferring a consensus algorithm.
 
-\citet{ben-elazar:spatial} formulated a non metric multidimensional scaling
-optimization problem. They first filtered the interaction count matrix so that
-remained only the most significant interactions. They then interpolated the
+\citet{ben-elazar:spatial} formulates a non metric multidimensional scaling
+optimization problem. They first filter the interaction count matrix so that
+remains only the most significant interactions. They then interpolate the
 missing values to obtain a smooth, symmetric, positive definite matrix.
+Finally, they apply a non-metric multidimensional scaling on this psd
+matrix.
 
-\citet{bau:three-dimensional} used IMP (Integrative Modeling Platform), also
+\citet{bau:three-dimensional} uses IMP (Integrative Modeling Platform), also
 used in nuclear magnetic resonance (NMR) microscopy to construct a 3D model of
 the $\alpha$-globin module. Chromosomes are represented by beads, each beads
 linked by restraining oscillators. IMP seeks a solution at the equilibrium of
@@ -331,13 +337,13 @@ constrained in a nucleus, and applies 4 sequences specific forces on this
 fiber to obtain certain properties: (1) centromeres are attached to a single
 point of the nucleus by a segment; (2) telomeres are subjected to an outward
 force, that pushes them towards the nuclear membrane; (3) rDNA is thicken; (4)
-apply a random brownian movement. This models recovers many of the known
+apply a random brownian movement. This model recovers many of the known
 hallmarks of the 3D architecture of {\em S. cerevisiae}.
 
-\citet{nagano:single-cell} and \citet{paulsen:manifold} both proposes methods
+\citet{nagano:single-cell} and \citet{paulsen:manifold} both propose methods
 to infer 3D structures from single-cell Hi-C data. The first is a constraint
 based modelisation: the structure is modeled as a flexible fiber as in
-\citet{tjong:physical}, but beads are constraint to be in contact when an
+\citet{tjong:physical}, but beads are constrained to be in contact when an
 interaction is observed in the single-cell contact map.
 \citet{paulsen:manifold} formulates a \textit{manifold based optimization},
 where a low rank psd matrix (and thus a distance matrix) is optimized to be as
@@ -371,13 +377,15 @@ on this low rank psd matrix then yields a 3D model of the genome.
 %\citet{gehlen:chromosome} & & & & & &\\
 \footnotesize{\citet{lesne:3d}} & ShRec3D & x & & x & & x \\
 \footnotesize{\citet{trieu:large}} & & x & & & & \\
+\footnotesize{\citet{nagano:single-cell}} & & x & & & & \\
+\footnotesize{\citet{paulsen:manifold}} & & x & & x & & x \\
 \end{tabular}
 \end{center}
 \caption{\bf A comparison of 3D inference methods}{In this table, we summarize
 properties of published methods to infer the 3D structure of the genome: (1)
 is it a consensus or a population based inference ? (2) Is it an MDS based
 method ? (3) or relies on a statistical modeling; (4) is the software
-available or not.}
+available or not (to the best of our knowledge).}
 \end{table}
 
 
@@ -418,7 +426,7 @@ counts. They then apply a minimum spanning tree algorithm to identify a path
 in the graph corresponding to adjacent contigs. \citet{kaplan:high-throughput}
 and \citet{marie-nelly:high-quality} both formulate the task as finding a
 permutation of rows and columns to maximize a likelihood. As finding a
-permutation matrix is a NP-hard problem, they use heuristic to simplify the
+permutation matrix is a NP-hard problem, they use heuristics to simplify the
 optimization problem.
 
 Mammifer genomes contain two copies of each chromosomes, which themselves hold
@@ -428,7 +436,8 @@ chromosome. The task of identifying which SNP belongs to which chromosome is
 known as resolving the haplotype. \citet{selvaraj:whole-genome}
 proposes a very similar idea as
 before, which is that reads containing SNPs on the same homologous chromosomes
-interact more than SNPs on the other homologous chromosome. It is thus
+interact more than reads with SNPs on the other homologous chromosome.
+It is thus
 possible to use contact count information between reads in order to determine
 to which homologous chromosomes SNPs belong and resolve the haplotype.
 
@@ -436,7 +445,7 @@ Microbiomes contain an ensemble of very small organisms in different
 abundances. Traditionnal technics to identify which organisms is in a
 metagenomic sample rely on deep sequencing to produce millions of short DNA
 reads. These reads are then either aligned on a reference genome or used as
-input of a supervised learning algorithm (Kevin) to identify which organisms
+input of a supervised learning algorithm to identify which organisms
 are in the sample, and in which abundance. Both of these
 methods need a priori knowledge of the community's composition. Recently,
 \citet{burton:species-level} and \citet{marbouty:metagenomic} use shotgun

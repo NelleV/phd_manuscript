@@ -24,9 +24,11 @@ contributions and the biological contributions, I have also focused on the
 implementations of several methods studied or developped during the course of
 this thesis. I believe that high quality implementations are critical for the
 analysis of the huge quantity of data available in biology, while challenging.
-I have not only contributed to \textit{scikit-learn} (with the inclusion of
+I have not only contributed to \textit{scikit-learn}, a machine learning
+toolkit written in Python (with the inclusion of
 the isotonic regression, the metric and non-metric MDS, \dots), but also
-released three packages: \textit{iced}, \textit{pastis} and
+released three packages, specific to analysis of Hi-C data:
+\textit{iced}, \textit{pastis} and
 \textit{centurion}, which are all free and open-source softwares.
 
 \section*{Research perspectives}
@@ -75,16 +77,18 @@ possible to sparse contact count maps, and apply manifold learning technics to
 find a euclidean embedding of the data. Both methods suffer from several
 drawbacks: in particular, neither attempt to leverage several single cell
 datasets or population contact maps to alleviate the sparsity of single-cell
-contact maps.
+contact maps. Performing a joint optimization may improve the accuracy and
+robustness of inferring structures from single-cell data.
 
 \textbf{\textit{De novo} sequencing using Hi-C data}\ - Several methods have
 been proposed to re-target Hi-C for \textit{de novo} scaffolding
 \citep{burton:chromosome, kaplan:high-throughput, marie-nelly:high-quality},
 none of which leverage the recent work on convex relaxation for permutation
-problems \citet{fogel:convex}, which proposes to solve exactly the challenge
+problems. Yet \citet{fogel:convex} proposes to solve exactly the challenge
 faced in \textit{de novo} sequencing using Hi-C data: finding a permutation
 matrix to reorder rows and columns such that strongly interacting elements are
-close one another.
+close one another. Instead of relying on heuristics, one may attempt to use
+these recent convex relaxation approaches.
 
 This list of research perspectives is of course a very incomplete list of
 possible extensions to this thesis, and I believe that in a short period of
