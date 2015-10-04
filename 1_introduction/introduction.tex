@@ -60,24 +60,27 @@ of DNA. 3C techniques and its derivatives are based on 5 experimental steps
 
 \begin{itemize}
 \item \textbf{Cross-linking} : results in the cross-linking of DNA segments to
-proteins and to cross-linking of proteins with each other.
+proteins and to cross-linking of proteins with each other
+(Figure~\ref{fig:protocol}-A).
 \item \textbf{Restriction digest} A restriction enzyme is added in excess to
-the cross-linked DNA. The restriction enzyme will cut the DNA at specific
+the cross-linked DNA (Figure~\ref{fig:protocol}-B). The restriction enzyme
+will cut the DNA at specific
 nucleotide sequences, separating the non-cross-linked DNA from the
 cross-linked chromatin. Recognition sequences in DNA differ from each
 restriction enzyme, producing different lengths and sequences of strands.
 The selection of the restriction enzyme depends on the type of studies
 targeted in the experiment.
 \item \textbf{Intramolecular Ligation} The third step is an intramolecular
-ligation step. DNA fragments are binded together. There are two major types
+ligation step. DNA fragments are joined together 
+(Figure~\ref{fig:protocol}-C). There are two major types
 of ligation junctions: the first is the ligation of two neighboring DNA
 fragments, and the second is the junction that is formed when ligating one end
 of the fragment to the other end of the same fragment.
 \item \textbf{Reverse Cross-links} The fourth step consists of reversing the
-first step: the reversal of cross-links.
+first step: the reversal of cross-links (Figure~\ref{fig:protocol}-D).
 \item \textbf{Quantitation} Polymerase chain reaction (PCR) is used to amplify
 the DNA copies and to assess the frequencies of the fragments of interest,
-which are then sequenced.
+which are then sequenced (Figure~\ref{fig:protocol}-E).
 \end{itemize}
 
 \begin{figure}
@@ -88,6 +91,7 @@ which are then sequenced.
 restriction enzymes digestions, intra molecular ligation, deproteinization and
 deep sequencing. Reads are then aligned to the reference genome, and binned at
 $10kb$, $40bk$ or $100kb$ depending on coverage.}
+\label{fig:protocol}
 \end{figure}
 
 
@@ -115,7 +119,7 @@ interactions onto the $\ell_1$ unit ball. In practice, it yields an expected
 interaction frequency count: $k p_{ij}$, where $k$ is the mean interaction
 frequency.
 
-Thought still quite recent, chromosome conformation capture and its genome
+Though still quite recent, chromosome conformation capture and its genome
 wide derivatives are now widely used to discover how DNA folds in a bunch of
 different organisms \citep{duan:three, sexton:three-dimensional,
 tanizawa:mapping, ay:three-dimensional}. The challenge is now to increase the
@@ -127,7 +131,8 @@ thus requires optimized bioinformatics workflows able to extract the contact
 frequencies in reasonable computational time and with reasonable storage
 requirements. The overall strategy to analyze Hi-C data is converging among
 recent studies and summarized in \cite{lajoie:hitchhiker}. Our collaborators
-and we have built HiC-Pro, an an easy-to-use and complete pipeline to process
+and we have built HiC-Pro (see Appendix~\ref{chap:hicpro},
+an easy-to-use and complete pipeline to process
 Hi-C data from raw sequencing reads to the normalized contact maps. Once these
 processing steps are done, one can finally proceed to the study of genome
 organization and DNA folding from Hi-C data in an attempt to unfold the
@@ -135,14 +140,13 @@ mysteries of genome architecture.
 
 \section{The study of chromosome organization}
 
-The study of chromosome organization based on contact counts maps broadly
+The study of chromosome organization based on contact count maps broadly
 falls into two categories: model-based studies and data-driven studies. The
 former methods consider the polymer nature of DNA to leverage the theoretical
-and computational work done in statistical physics of polymers to built with
-as few assumptions as possible many chromosome conformations. The properties
-of those chromosome
-conformations are then compared against experimental data, such as Hi-C
-contact counts matrices, in order to iteratively improve the models. These
+and computational work done in statistical physics of polymers to build with
+as few assumptions as possible many chromosome conformations. Those chromosome
+conformations are then used to compare against experimental data, such as Hi-C
+contact count matrices, in order to iteratively improve the models. These
 models offer mechanistical insights into the folding of DNA. The latter
 approaches use the experimental data to infer 3D models, by typically minizing
 a cost function ensuring the models are as consistent as possible with the
@@ -443,7 +447,7 @@ possible to use contact count information between reads in order to determine
 to which homologous chromosomes SNPs belong and resolve the haplotype.
 
 Microbiomes contain an ensemble of very small organisms in different
-abundances. Traditionnal technics to identify which organisms is in a
+abundances. Traditional techniques to identify which organisms are in a
 metagenomic sample rely on deep sequencing to produce millions of short DNA
 reads. These reads are then either aligned on a reference genome or used as
 input of a supervised learning algorithm to identify which organisms
@@ -455,7 +459,7 @@ organisms. Once again, the idea is very similar as before: contigs from the
 same organism interact amongst each other the most. Thus, a clustering
 algorithm that takes as input a similarity matrix (the contact counts) groups
 contigs from the same organism together. Once the organism's contigs are
-identified, one can use technics as described before to scaffold contigs
+identified, one can use techniques as described before to scaffold contigs
 together, and therefore in a single experiment do \textit{de novo} sequencing
 of many organisms, and find the composition and abundance of a metagenomic
 samples.
@@ -467,7 +471,7 @@ be leverage for various tasks.
 \subsection{Genome annotations and centromeres identification}
 
 The last unusual application of Hi-C data is the annotation of genomes, and
-more specifically the detection of highly colocolized elements that are
+more specifically the detection of highly co-localized elements that are
 elsewise difficult to annotate. In particular, centromeres have proven
 difficult to precisely identify in many species, including highly studied and
 used yeasts species. Centromeres, essential for proper chromosome segregation,
@@ -512,13 +516,29 @@ contribution were (1) the 3D modeling of the genome using MDS-like approaches,
 between gene expression profiles and the 3D models using kernel CCA.
 
 \item Chapter \ref{chap:centurion} presents work done while I was visiting
-Noble lab, in collaboration with Dunham lab and Shendure lab. We proposed a
+Noble lab, in collaboration with the Dunham lab and the Shendure lab. We proposed a
 novel method to jointly identify yeasts centromeres from Hi-C data, using the
-property centromeres have to strongly colocolize in the nucleus and thus to
-create a specific pattern in the contact counts maps. Our method,
+property centromeres have to strongly colocalize in the nucleus and thus to
+create a specific pattern in the contact count maps. Our method,
 \textit{Centurion}, outperforms a previous published method by performing a
 joint optimization and using a better strategy to initialize the optimization.
 We show that \textit{Centurion} is very accurate and stable both on high and
 low coverage datasets. \footnote{Our method \textit{Centurion} is available as
 a free and opensource software at \url{http://cbio.ensmp.fr/centurion}}
+
+\item Appendix~\ref{chap:hicpro} details a complete pipeline to preprocess
+Hi-C data from reads to normalized contact counts. My contribution to this
+pipeline is a fast and memory efficient python implementation of the
+normalization. Despite its simplicity, it is to our knowledge the fastest
+implementation existing so far.
+
+\item Appendix~\ref{chap:tmc} presents an extension of  the Hi-C protocol to
+detect interactions between triplets and quadruplets of loci in addition to
+the usual pairwise interactions. My contribution to this last paper is the
+development of a method to infer the 3D structure of polyploid method which we
+applied to the KBM7 nearly haploid human cell line.
+
+\item Appendix~\ref{chap:falciparum_epigenetics} reviews the multiple
+dimensions of epigenetic gene regulation of the {\em P. falciparum}.
+
 \end{itemize}
