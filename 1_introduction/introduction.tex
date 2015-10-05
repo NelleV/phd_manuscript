@@ -25,7 +25,7 @@ l'ADN et aux méthodes d'inférence de l'architecture 3D du génome.
 
 The spatial and temporal genome architecture is thought to play an important
 role in many genomic functions, but is yet poorly understood. Recently, the
-development of the Hi-C protocol, which allows in a single experiments to
+development of the Hi-C protocol, which allows in a single experiment to
 assess genome wide physical interactions between pairs of loci, has paved the
 way for a systematic analysis of the 3D structure of DNA. We aim in this
 chapter at providing some background on chromosome conformation capture, the
@@ -90,7 +90,7 @@ which are then sequenced (Figure~\ref{fig:protocol}-E).
 \caption{\textbf{Hi-C Protocol.} The procedure relies on cross linking,
 restriction enzymes digestions, intra molecular ligation, deproteinization and
 deep sequencing. Reads are then aligned to the reference genome, and binned at
-$10kb$, $40bk$ or $100kb$ depending on coverage.}
+$10kb$, $40kb$ or $100kb$ depending on coverage.}
 \label{fig:protocol}
 \end{figure}
 
@@ -98,8 +98,9 @@ $10kb$, $40bk$ or $100kb$ depending on coverage.}
 After paired-end sequencing, each pair of reads can be associated to one
 \citep{lieberman-aiden:comprehensive} or several \citep{ay:identifying} DNA
 interactions. We can then create a symmetric matrix of integers, for which
-rows and columns corresponds to a specific genomic window, and entries
-correspond to the number of paired reads that fall into a bin. We denote by
+rows and columns corresponds to a specific genomic window and entries
+correspond to the number of times locus $i$ and $j$ were observed to contact
+on another. We denote by
 $C$ the interaction frequency matrix, and $c_{ij}$ the interaction frequency
 between locus $i$ and locus $j$.
 
@@ -116,8 +117,8 @@ process. To avoid degeneracies, we filter out the top 2\% sparse loci from our
 entry matrix before applying ICE (this value needs to be adapted to each
 dataset). To give an intuition, this method projects each vector of
 interactions onto the $\ell_1$ unit ball. In practice, it yields an expected
-interaction frequency count: $k p_{ij}$, where $k$ is the mean interaction
-frequency.
+interaction frequency count: $k p_{ij}$, where $k$ is the average interaction
+frequency other all pairs of loci.
 
 Though still quite recent, chromosome conformation capture and its genome
 wide derivatives are now widely used to discover how DNA folds in a bunch of
@@ -269,7 +270,7 @@ $20$kb section. The first step was to infer physical distances $\delta_{ij}$
 from frequency interactions. They studied eighteen pairs of genes using FISH
 measurements, and fitted the Hi-C data on the distances with a non linear
 regression curve. The second step was to compute the coordinates of the beads,
-such that the distances between the beads matches the inferred physical
+such that the distances between the beads match the inferred physical
 distances to the best, with additional biological motivated constraints.
 
 \citet{duan:three} converts the interaction frequencies into distances by
@@ -317,7 +318,7 @@ linked by restraining oscillators. IMP seeks a solution at the equilibrium of
 those beads. Three types of restraints are used: the first  corresponds to
 harmonic oscillators, with strengths inversely proportional to the 5C
 score, computed from the interaction frequencies. The second ensures that two
-beads cannot be too close to each other. The third ensure that two consecutive
+beads cannot be too close to each other. The third ensures that two consecutive
 beads cannot be separated too much. The last two springs have strength only
 when the constraints are not fulfilled. The optimization of this problem
 yields different configuration with similar IMP scores. A population of 50000
@@ -414,7 +415,7 @@ often made difficult due to the presence of repetitive sequences. Despite
 improvements in sequencing technology and thus the sequencing of longer reads,
 filling the gaps caused by these repetitive sequences in complex genome
 remains difficult. \citet{burton:chromosome} and
-\citet{kaplan:high-throughput} proposes to use the massive amount of DNA
+\citet{kaplan:high-throughput} propose to use the massive amount of DNA
 sequences produced by Hi-C to first assemble short contigs, and rely on
 contact counts informations between contigs to attempt to place them one
 relatively to the other. Indeed, the more two contigs interact, the closer in
@@ -510,13 +511,14 @@ spatial proximity to the repressive subtelomeric center and colocalization of
 distinct groups of parasite-specific genes with coordinated expression
 profiles. Overall, our results show that the 3D structure of the parasite is
 strongly correlated with gene expression during the erythrocytic cycle. This
-work has been done in collaboration with Noble lab and Le Roch lab. My
+work has been done in collaboration with the Noble lab and the Le Roch lab. My
 contribution were (1) the 3D modeling of the genome using MDS-like approaches,
 (2) the comparison to the volume exclusion modeling and (3) finding the link
 between gene expression profiles and the 3D models using kernel CCA.
+Supplementaries are detailed in Appendix~\ref{chap:plasmodium_supp}.
 
 \item Chapter \ref{chap:centurion} presents work done while I was visiting
-Noble lab, in collaboration with the Dunham lab and the Shendure lab. We proposed a
+the Noble lab, in collaboration with the Dunham lab and the Shendure lab. We proposed a
 novel method to jointly identify yeasts centromeres from Hi-C data, using the
 property centromeres have to strongly colocalize in the nucleus and thus to
 create a specific pattern in the contact count maps. Our method,
@@ -525,6 +527,7 @@ joint optimization and using a better strategy to initialize the optimization.
 We show that \textit{Centurion} is very accurate and stable both on high and
 low coverage datasets. \footnote{Our method \textit{Centurion} is available as
 a free and opensource software at \url{http://cbio.ensmp.fr/centurion}}
+Supplementaries are detailed in Appendix~\ref{chap:centurion_supp}.
 
 \item Appendix~\ref{chap:hicpro} details a complete pipeline to preprocess
 Hi-C data from reads to normalized contact counts. My contribution to this
