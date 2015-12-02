@@ -122,7 +122,7 @@ frequency other all pairs of loci.
 
 Though still quite recent, chromosome conformation capture and its genome
 wide derivatives are now widely used to discover how DNA folds in a bunch of
-different organisms \citep{duan:three, sexton:three-dimensional,
+different organisms \citep{duan:three-dimensional, sexton:three-dimensional,
 tanizawa:mapping, ay:three-dimensional}. The challenge is now to increase the
 Hi-C resolution, using very large data sets with deeper sequencing
 \citep{rao:3d, jin:high-resolution}. As any genome-wide sequencing data, Hi-C
@@ -229,7 +229,7 @@ $P(s) \sim s^{-1}$.
 \end{center}
 \caption{{\bf Relationship between contact counts and genomic distances}}{
 Average contact counts as a function of genomic distance for \textit{S.
-cerevisiae} \citep{duan:three},
+cerevisiae} \citep{duan:three-dimensional},
 \textit{D. melanogaster} \citep{sexton:three-dimensional} and chr~1 of the
 KBM7 human cell line \citep{rao:3d}. \textit{S. cerevisiae}'s genome behaves
 as a \textit{equilibrium globule},
@@ -259,7 +259,7 @@ of \textit{fractal globules}.
 Several techniques have been developed to infer three-dimensional models of
 the genome from interaction counts data. They fall into three categories: the
 first finds an average structure by optimizing an objective function as
-\citep{tanizawa:mapping, duan:three, ben-elazar:spatial}. The
+\citep{tanizawa:mapping, duan:three-dimensional, ben-elazar:spatial}. The
 second samples local minima from a optimization problem leading to the study
 of the population of local minima \citep{bau:three-dimensional}. The last
 samples the posterior distribution \citep{rousseau:three}.
@@ -273,12 +273,12 @@ regression curve. The second step was to compute the coordinates of the beads,
 such that the distances between the beads match the inferred physical
 distances to the best, with additional biological motivated constraints.
 
-\citet{duan:three} converts the interaction frequencies into distances by
+\citet{duan:three-dimensional} convert the interaction frequencies into distances by
 examining the relationship between interaction frequencies and genomic
 distances. Then, a multidimensional scaling (MDS) is used to place each bead
 so that the wish distances are respected as well as possible.
 
-\citet{tanizawa:mapping} and \citet{duan:three} optimizes a problem of the
+\citet{tanizawa:mapping} and \citet{duan:three-dimensional} optimize a problem of the
 form:
 \begin{equation*}
 \renewcommand{\arraystretch}{2}
@@ -292,11 +292,11 @@ form:
 
 \citet{tanizawa:mapping} published one solution, but did not mention the non
 convexity of the problem. Hence, we assume they seeked the best local minimum
-\citet{duan:three} ran the optimization process 30 times, and, observing the
+\citet{duan:three-dimensional} ran the optimization process 30 times, and, observing the
 obtained solutions, found that they did not differ much. No formal study was
 done to compare the solutions.
 
-\citet{lesne:3d} proposes a method based on the classical MDS algorithm
+\citet{lesne:3d} propose a method based on the classical MDS algorithm
 \textit{ShRec3D}:
 (1) construct a graph whose vertices are the loci assessed in the Hi-C
 experiment, and the weights of vertices inversely proportional to the contact
@@ -304,14 +304,14 @@ counts; (2) compute a matrix of shortest path between pairs of loci which we
 denote by the ``distance`` matrix; (3) apply a classical MDS on this distance
 matrix. This yields a fast algorithm for inferring a consensus algorithm.
 
-\citet{ben-elazar:spatial} formulates a non metric multidimensional scaling
+\citet{ben-elazar:spatial} formulate a non metric multidimensional scaling
 optimization problem. They first filter the interaction count matrix so that
 remains only the most significant interactions. They then interpolate the
 missing values to obtain a smooth, symmetric, positive definite matrix.
 Finally, they apply a non-metric multidimensional scaling on this psd
 matrix.
 
-\citet{bau:three-dimensional} uses IMP (Integrative Modeling Platform), also
+\citet{bau:three-dimensional} use IMP (Integrative Modeling Platform), also
 used in nuclear magnetic resonance (NMR) microscopy to construct a 3D model of
 the $\alpha$-globin module. Chromosomes are represented by beads, each beads
 linked by restraining oscillators. IMP seeks a solution at the equilibrium of
@@ -331,14 +331,14 @@ physical distances. They then use a Markov Chain Monte Carlo sampling
 procedure to produce an ensemble of 3D structures consistant with the contact
 count data.
 
-\citet{tjong:physical} constructs a very simple model of the budding yeast
+\citet{tjong:physical} construct a very simple model of the budding yeast
 {\em S. cerevisiae} by modeling chromosomes
 as a flexible fiber, and using additional biologically motivated constraints,
 such as the positioning of centromeres and telomeres, they formulate an
 optimization problem. Generating $200000$ feasible structures, they show that
 Hi-C data can be fully explained by this very simple model.
 
-\citet{wong:how} models the budding yeasts chromosomes a semi-flexible fiber
+\citet{wong:how} model the budding yeast chromosomes a semi-flexible fiber
 constrained in a nucleus, and applies 4 sequences specific forces on this
 fiber to obtain certain properties: (1) centromeres are attached to a single
 point of the nucleus by a segment; (2) telomeres are subjected to an outward
@@ -351,7 +351,7 @@ to infer 3D structures from single-cell Hi-C data. The first is a constraint
 based modelisation: the structure is modeled as a flexible fiber as in
 \citet{tjong:physical}, but beads are constrained to be in contact when an
 interaction is observed in the single-cell contact map.
-\citet{paulsen:manifold} formulates a \textit{manifold based optimization},
+\citet{paulsen:manifold} formulate a \textit{manifold based optimization},
 where a low rank psd matrix (and thus a distance matrix) is optimized to be as
 close as possible to the sparse contact count matrix. Applying classical MDS
 on this low rank psd matrix then yields a 3D model of the genome.
@@ -367,7 +367,7 @@ on this low rank psd matrix then yields a 3D model of the genome.
 \multirow{2}{*}{\emph{\footnotesize Availability}} \\
 & & & & & \emph{\footnotesize model} & \\
 \hline
-\footnotesize{\citet{duan:three}} &  & x & & x & & x \\
+\footnotesize{\citet{duan:three-dimensional}} &  & x & & x & & x \\
 \footnotesize{\citet{tanizawa:mapping}} & & x & & x & & \\
 \footnotesize{\citet{ay:three-dimensional}} & & x & & x & & \\
 \footnotesize{\citet{ben-elazar:spatial}} & & x & & x & & x \\
@@ -389,8 +389,8 @@ on this low rank psd matrix then yields a 3D model of the genome.
 \end{center}
 \caption{\bf A comparison of 3D inference methods}{In this table, we summarize
 properties of published methods to infer the 3D structure of the genome: (1)
-is it a consensus or a population based inference ? (2) Is it an MDS based
-method ? (3) or relies on a statistical modeling; (4) is the software
+is it a consensus or a population based inference? (2) Is it an MDS based
+method? (3) or relies on a statistical modeling; (4) is the software
 available or not (to the best of our knowledge).}
 \end{table}
 

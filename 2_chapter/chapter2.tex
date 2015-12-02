@@ -131,7 +131,7 @@ general approaches have been proposed for that purpose: (i)
 representative of the data and (ii) \emph{ensemble methods} that
 yield a population of structures.
 
-Consensus approaches \citep{duan:three,
+Consensus approaches \citep{duan:three-dimensional,
   tanizawa:mapping, bau:three-dimensional} model each
 chromosome by a chain of beads, convert the contact map frequencies
 into pairwise distances (which we refer as \emph{wish
@@ -292,7 +292,7 @@ stress}:
 \end{equation}
 
 In two previous studies that use metric MDS,
-\citet{duan:three} and \citet{tanizawa:mapping} infer the 3D structure of DNA
+\citet{duan:three-dimensional} and \citet{tanizawa:mapping} infer the 3D structure of DNA
 from Hi-C data by solving Equation \ref{eq:mds1}, limiting $\Dcal$ to pairs of
 indices with statistically significant contact counts (FDR 0.01\%). Both methods use
 additional constraints such as
@@ -444,7 +444,7 @@ the MDS.
 
 All optimization problems (MDS1, MDS2, NMDS, PM1 and PM2) were solved using IPOPT, an interior point filter
 algorithm \citep{wachter:on} and the isotonic regression implementation from
-the Python toolbox Scikit-Learn for NMDS \citep{pedegrosa:scikit}.
+the Python toolbox Scikit-Learn for NMDS \citep{pedregosa:scikit}.
 
 
 \subsection{Default contact-to-distance transfer function}
@@ -490,7 +490,7 @@ conducted experiments on both simulated datasets and publicly
 available genome-wide Hi-C datasets.
 
 For the simulation, we generated 170 data sets using the yeast genome
-architecture proposed by \citet{duan:three}. Because the repetitive
+architecture proposed by \citet{duan:three-dimensional}. Because the repetitive
 rDNA on yeast chromosome XII cannot be observed in practice, we
 discard all contacts involving these loci, and we do not infer the
 position of the corresponding rDNA. We generate these 170 datasets
@@ -830,7 +830,7 @@ by MCMC we use the model for direct maximum likelihood estimation of a
 consensus structure. Although the consensus structure might not be a
 definitive structure {\em in vivo}, it provides us with a rich model for
 further analysis, conserving hallmarks of genome organization such as the
-water lily form of the budding yeast \citep{duan:three} or topological domains
+water lily form of the budding yeast \citep{duan:three-dimensional} or topological domains
 \citep{kalhor:genome}.
 
 The Poisson model underlying our approach remains very basic and could be

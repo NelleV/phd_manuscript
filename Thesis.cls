@@ -183,7 +183,7 @@
 %	defined as \examname above so you cite it as \examname
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Inferring of the three-dimensional structure of the genome.} % Your thesis title - this is used in the title and abstract
+\thesistitle{Inferring of the three-dimensional structure of the genome} % Your thesis title - this is used in the title and abstract
 %-------------------------------------------------  
 \supervisorOne{Dr. Jean-Philippe \textsc{Vert}} % You supervisor's name - this is used in the title page
 %-------------------------------------------------   
