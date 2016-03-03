@@ -211,9 +211,6 @@ lesne:3d}}
 
 \item Let $\mathbf{X} \in R^{n \times 3}$ be the coordinates of each bead.
 \item Let $\mathbf{C} \in R^{n \times n}$ be the raw contact count matrix.
-\item Let $\mathbf{\tilde{C}} \in R^{n \times n}$ be the normalized contact count
-matrix
-\item Let $b$ the bias vector associated with the normalization.
 \item Let $\Theta$ the count-to-distance transfer function.
 \end{itemize}
 
@@ -287,8 +284,8 @@ d_{ij} = \gamma c_{ij} ^{-1/3},
 \renewcommand{\arraystretch}{2}
 \begin{array}{ccll}
 \underset{{\bf x}_1,\ldots,{\bf x}_n}{\text{minimize}} & &
-\sigma(\mathbf{X},  \tilde{C}) = \underset{i, j | c_{ij} \neq 0}{\sum} w_{ij}(\|x_i - x_j\|_2 -
-\Theta(\tilde{c}_{ij}))^2\,
+\sigma(\mathbf{X},  C) = \underset{i, j | c_{ij} \neq 0}{\sum} w_{ij}(\|x_i - x_j\|_2 -
+\Theta(c_{ij}))^2\,
 \\
 \end{array}
 \end{equation*}
@@ -298,7 +295,7 @@ d_{ij} = \gamma c_{ij} ^{-1/3},
 \begin{multicols}{2}
 \begin{itemize}[label={$\bullet$}]
 \item $\mathbf{X}$ : 3D coordinates
-\item $\mathbf{\tilde{C}}$ : normalized contact counts.
+\item $\mathbf{C}$ : normalized contact counts.
 \item $w_{ij}$ are weights (set to $\frac{1}{\Theta(c^N_{ij})^2}$ in
 \textit{pastis-}\textbf{MDS2}) 
 \item $\Theta(c) = \beta c^\alpha$: count-to-distance function
@@ -329,44 +326,13 @@ model.
 \end{itemize}
 \end{frame}
 
-\begin{frame}
-\frametitle{Normalization: Hi-C data suffers from technical and biological
-biases}
-
-\textbf{\color{Blue} Biases}: GC-content, mappability, ...
-
-\vspace{1em}
-
-\textbf{\color{Blue} ICE Hypotheses}
-
-\begin{itemize}[label={$\bullet$}]
-
-\item The bias of $c_{ij}$ can be written as the product of two biases $b_i$,
-$b_j$ that are locus specific: $c_{ij} = b_i b_j \tilde{c}_{ij}$
-\item \textit{Equal visibility assumption:}
-$\quad \sum_{j=1}^N \tilde{c}_{kj} = \sum_{j=1}^N \tilde{c}_{lj} \quad \forall
-k, l$
-\end{itemize}
-
-\vspace{1em}
-\textbf{\color{Blue} Find the bias vector $b$ such that:}
-
-\begin{equation*}
-\begin{array}{lll}
- & c_{ij} = b_i b_j \tilde{c}_{ij} & \\
-  \text{s. t.} & \sum_{i} \tilde{c}_{ij} = K& \\ 
-  \end{array}
-  \end{equation*}
-
-  {\tiny \citep{imakaev:iterative}}
-\end{frame}
 
 % 5. The model
 
 \begin{frame}
 \frametitle{A Poisson model for inferring the 3D structure of the genome}
 {\color{Blue} \textbf{The idea}} \\
-Let's assume that $c_{ij} \sim Poisson(\beta b_i b_j d_{ij}^\alpha)$, where
+Let's assume that $c_{ij} \sim Poisson(\beta d_{ij}^\alpha)$, where
 $c_{ij}$ is the
 interaction count, $d_{ij}$ the pairwise Euclidean distance, and $\beta$ and
 $\alpha$
@@ -376,7 +342,7 @@ unknown parameters.
 {\color{Blue} \textbf{Likelihood}}
 \begin{equation*}
 \ell(\mathbf{X}, \alpha, \beta) = \underset{i<j\leq n}{\prod} \frac{(\beta
-b_i b_j d_{ij} ^\alpha)^{c_{ij}}}{c_{ij}!} exp(- \beta b_i b_j d_{j}^\alpha)
+d_{ij} ^\alpha)^{c_{ij}}}{c_{ij}!} exp(- \beta d_{j}^\alpha)
 \end{equation*}
 \vskip 1em
 {\color{Blue} \textbf{Optimization problem}}
@@ -570,7 +536,6 @@ between bead $i$ and $j$.
 \begin{multicols}{2}
 \begin{itemize}[label={$\bullet$}]
 \item $\mathbf{X}$ : 3D coordinates
-\item $\mathbf{\tilde{C}}$ : normalized contact counts.
 \item $\Theta(c) = \beta c^\alpha$: count-to-distance function
 \end{itemize}
 \end{multicols}
@@ -585,14 +550,25 @@ between bead $i$ and $j$.
 principles of {\em Plasmodium} genome}
 
 \begin{center}
-\includegraphics[scale=0.22]{figures/3D_var_genes.png}
+\includegraphics[width=0.95\linewidth]{figures/3D_var_genes.png}
 \end{center}
+
+\begin{columns}
+\begin{column}{0.15\textwidth}
+\bf \small Ring
+\end{column}
+\begin{column}{0.25\linewidth}
+\bf \small Trophozoite
+\end{column}
+\begin{column}{0.3\linewidth}
+\bf \small Schizont
+\end{column}
+\end{columns}
 \end{frame}
 
 % 4. Validation
 \begin{frame}
-\frametitle{Fluorescent in situ hybridization experiments validates the 3D
-models}
+\frametitle{Colocalization of loci is validated with FISH}
 \begin{figure}
 \includegraphics[scale=0.2]{figures/3D_FISH_1.jpg}
 \end{figure}
@@ -691,37 +667,6 @@ profiles and 3D structure}
 \includegraphics[width=0.6\linewidth]{figures/test.png}
 \end{center}
 \end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{GSEA shows strong enrichments of GO terms in telomeric and
-non-telomeric regions}
-
-\begin{table}
-\footnotesize
-\vspace{10pt}
-\begin{center}
-\begin{tabular}{lp{0.4\linewidth}ccc}
-\hline
-\emph{GO term }&  \emph{Description} & \emph{Type} & \emph{Enrichment} &
-\emph{q-value}  \\
-\hline
-GO:0005840 & ribosome & CC & n-t & 0.000\\
-GO:0005622 & intracellular & CC & n-t & 0.000\\
-GO:0022627 & cytosolic small ribosomal subunit & CC & n-t & 0.000\\
-GO:0005789 & endoplasmic reticulum membrane & CC & n-t & 0.000\\
-GO:0005783 & endoplasmic reticulum & CC & n-t & 0.000\\
-GO:0022625 & cytosolic large ribosomal subunit & CC & n-t & 0.000\\
-GO:0015935 & small ribosomal subunit & CC & n-t & 0.000\\
-GO:0020002 & host cell plasma membrane & CC & t & 0.000\\
-GO:0020030 & infected host cell surface knob & CC & t & 0.000\\
-GO:0020036 & Maurer's cleft & CC & t & 0.000\\
-GO:0016021 & integral to membrane & CC & t & 0.000\\
-GO:0015934 & large ribosomal subunit & CC & n-t & 0.001\\
-\dots & \dots & \dots & \dots & \dots \\
-\end{tabular}
-\end{center}
-\end{table}
 \end{frame}
 
 % 7.1 results
@@ -986,7 +931,7 @@ inference}
 \end{itemize}
 \item \textbf{\em Software contributions}: 
 \begin{itemize}[label={$\bullet$}]
-\item scikit-learn, a machine-learning toolkit written in Python,
+\item scikit-learn, a machine-learning toolkit written in Python
 \item PASTIS
 \item Centurion
 \item iced, included in HiC-pro
@@ -999,7 +944,7 @@ inference}
 \begin{itemize}[label={$\bullet$}]
 \item Normalization and Quality Control
 \item Inference of 3D models for polyploid genomes
-\item Inference of a population of structures using single-cell data 
+\item Inference of a population of structures using single-cell data
 \end{itemize}
 \end{frame}
 
@@ -1063,5 +1008,38 @@ Josh \textsc{Burton} \\
 
 \end{frame}
 
+\begin{frame}[noframenumbering]
+\frametitle{GSEA shows strong enrichments of GO terms in telomeric and
+non-telomeric regions}
+
+\begin{table}
+\footnotesize
+\vspace{10pt}
+\begin{center}
+\begin{tabular}{lp{0.4\linewidth}ccc}
+\hline
+\emph{GO term }&  \emph{Description} & \emph{Type} & \emph{Enrichment} &
+\emph{q-value}  \\
+\hline
+GO:0005840 & ribosome & CC & n-t & 0.000\\
+GO:0005622 & intracellular & CC & n-t & 0.000\\
+GO:0022627 & cytosolic small ribosomal subunit & CC & n-t & 0.000\\
+GO:0005789 & endoplasmic reticulum membrane & CC & n-t & 0.000\\
+GO:0005783 & endoplasmic reticulum & CC & n-t & 0.000\\
+GO:0022625 & cytosolic large ribosomal subunit & CC & n-t & 0.000\\
+GO:0015935 & small ribosomal subunit & CC & n-t & 0.000\\
+GO:0020002 & host cell plasma membrane & CC & t & 0.000\\
+GO:0020030 & infected host cell surface knob & CC & t & 0.000\\
+GO:0020036 & Maurer's cleft & CC & t & 0.000\\
+GO:0016021 & integral to membrane & CC & t & 0.000\\
+GO:0015934 & large ribosomal subunit & CC & n-t & 0.001\\
+\dots & \dots & \dots & \dots & \dots \\
+\end{tabular}
+\end{center}
+\end{table}
+\end{frame}
+
+
 
 \end{document}
+
