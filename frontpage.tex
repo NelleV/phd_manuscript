@@ -1,0 +1,132 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      Fichier maître (Main.tex)      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[a4paper, 12pt, twoside,openright]{book}
+%\usepackage[utf8]{inputenc}		% LaTeX, comprend les accents !
+\usepackage[T1]{fontenc}		
+\usepackage[french,english]{babel}
+\usepackage{lmodern}
+\usepackage{ae,aecompl}
+\usepackage[top=2.5cm, bottom=2cm,left=3cm, right=2.5cm,headheight=15pt]{geometry}
+\usepackage{graphicx}
+\usepackage{eso-pic}	
+\usepackage{array}		
+
+\usepackage{color}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{url}
+\usepackage{tocloft}
+\usepackage{setspace}
+\usepackage{rotating}
+
+\renewcommand{\baselinestretch}{1.0} 
+
+%add hyperlinks 
+\usepackage{hyperref}
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+    citecolor=blue,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+%quote symbols
+\usepackage [autostyle, english = american]{csquotes}
+\MakeOuterQuote{"}
+
+% style biblio
+\bibliographystyle{plain}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.0pt}
+\fancyhead[LE,RO]{}
+\fancyhead[LO,RE]{}
+\fancyfoot[C]{\thepage}
+
+%lof in bold
+\renewcommand\cftloftitlefont{\huge\bfseries}
+
+%orthopen
+% \input Chapter3/header.tex
+
+%abstract in chapter
+\newcommand\abstractname{Abstract}  %%% here
+\makeatletter
+\newenvironment{abstract}{%
+        \small
+        \begin{center}%
+          {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+        \end{center}%
+        \quotation}
+      {\if@twocolumn\else\endquotation\fi}
+\makeatother
+
+%résumé in chapter
+\newcommand\resumename{R\'esum\'e}  %%% here
+\makeatletter
+\newenvironment{resume}{%
+        \small
+        \begin{center}%
+          {\bfseries \resumename\vspace{-.5em}\vspace{\z@}}%
+        \end{center}%
+        \quotation}
+      {\if@twocolumn\else\endquotation\fi}
+\makeatother
+
+%verbatim in footnote
+\newsavebox\myVerb
+\newenvironment{verbbox}{\lrbox\myVerb}{\endlrbox}
+\newcommand*{\verbBox}{\usebox\myVerb}
+
+%todo command
+\newcommand {\todo}[1]{\textcolor{red}{{\bf TODO: #1}}}
+
+\input{Pagedegarde}
+
+\author{Nelle \scshape{Varoquaux}}
+\title{Inferring the 3D structure of the genome. \\
+       Inf\'{e}rence de la structure tri-dimensionelle du g\'{e}nome.}
+
+\ED{\'{E}cole doctorale n\textsuperscript{o}
+432: Sciences des m\'{e}tiers de l'ing\'{e}nieur}
+\doctorat{Doctorat ParisTech}
+\specialite{Bio-informatique}
+\directeur{Jean-Philippe \scshape{Vert}}
+\date{3 d\'ecembre 2015}
+\jurya{M. Emmanuel Barillot}{Directeur de Recherche}{Pr\'{e}sident}
+\juryb{M. William S. Noble}{Professor}{Examinateur}
+\juryc{M. Marc Marti-Renom}{Research Professor}{Rapporteur}
+\juryd{M. Julien Mozziconacci}{Ma\^{i}tre de conf\'{e}rences}{Examinateur}
+\jurye{M. St\'{e}phane Robin}{Directeur de Recherche}{Rapporteur}
+\juryf{M. Jean-Philippe Vert}{Directeur de Recherche}{Examinateur}
+
+\ecole{l'\'{E}cole nationale sup\'erieure des mines de Paris}
+
+\adresse{
+	\textbf{MINES ParisTech\\ Centre de Bio-Informatique (CBIO)}\\	35 rue Saint-Honor\'e, 77300 Fontainebleau, France
+}
+
+\begin{document}
+\pagenumbering{roman}
+\pagedegarde
+
+\begingroup
+\let\cleardoublepage\relax
+\let\clearpage\relax
+\end{document}
+
+
+
+
